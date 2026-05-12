@@ -1,0 +1,31 @@
+{
+  "name": "NutriTrack",
+  "short_name": "NutriTrack",
+  "description": "Vegan nutrition and exercise tracker",
+  "start_url": "/NutriTrack/",
+  "scope": "/NutriTrack/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0f1a",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/NutriTrack/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/NutriTrack/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/NutriTrack/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
