@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#0a0f1a"/>
+  <!-- Bowl shape -->
+  <ellipse cx="256" cy="310" rx="130" ry="28" fill="#1e293b"/>
+  <path d="M126 240 Q126 340 256 340 Q386 340 386 240 Z" fill="#1e293b"/>
+  <!-- Bowl rim highlight -->
+  <path d="M126 240 Q256 220 386 240" fill="none" stroke="#3b82f6" stroke-width="8" stroke-linecap="round"/>
+  <!-- Steam lines -->
+  <path d="M200 200 Q195 180 200 160 Q205 140 200 120" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" opacity="0.7"/>
+  <path d="M256 195 Q251 175 256 155 Q261 135 256 115" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+  <path d="M312 200 Q307 180 312 160 Q317 140 312 120" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" opacity="0.7"/>
+</svg>
