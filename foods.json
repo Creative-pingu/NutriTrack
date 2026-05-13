@@ -38,7 +38,7 @@
   },
   "foods": [
     {
-      "id": "oat",
+      "id": "oats",
       "name": "Oats (rolled)",
       "category": "Grains",
       "source": "usda",
