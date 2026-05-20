@@ -50,7 +50,7 @@ function mapFoodRecord(r) {
 }
 
 // Bump this string whenever you deploy a new foods.json to bust the ATHS cache.
-const FOODS_DB_VERSION = "2";
+const FOODS_DB_VERSION = "3";
 
 async function loadFoodDB() {
   const resp = await fetch(`/NutriTrack/foods.json?v=${FOODS_DB_VERSION}`);
