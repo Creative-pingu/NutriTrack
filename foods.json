@@ -572,6 +572,7 @@
     },
     {
       "id": "almonds_raw",
+      "servings": [{"label":"1 tbsp","grams":9},{"label":"1 handful","grams":28}],
       "name": "Almonds, raw",
       "category": "Nuts & Seeds",
       "calories": 579.0,
@@ -613,6 +614,7 @@
     },
     {
       "id": "amaranth_raw",
+      "servings": [{"label":"1 cup dry","grams":192},{"label":"1/4 cup dry","grams":48}],
       "name": "Amaranth, raw",
       "category": "Grains",
       "calories": 371.0,
@@ -654,6 +656,7 @@
     },
     {
       "id": "apple",
+      "servings": [{"label":"1 medium","grams":182},{"label":"1 cup slices","grams":109}],
       "name": "Apple",
       "category": "Fruit",
       "calories": 52.0,
@@ -1269,6 +1272,7 @@
     },
     {
       "id": "avocado_raw",
+      "servings": [{"label":"1/2 avocado","grams":75},{"label":"1 whole avocado","grams":150}],
       "name": "Avocado",
       "category": "Fruit",
       "calories": 160.0,
@@ -1515,6 +1519,7 @@
     },
     {
       "id": "banana",
+      "servings": [{"label":"1 medium","grams":118},{"label":"1 large","grams":136}],
       "name": "Banana",
       "category": "Fruit",
       "calories": 89.0,

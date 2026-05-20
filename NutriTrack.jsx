@@ -50,7 +50,7 @@ function mapFoodRecord(r) {
 }
 
 // Bump this string whenever you deploy a new foods.json to bust the ATHS cache.
-const FOODS_DB_VERSION = "3";
+const FOODS_DB_VERSION = "4";
 
 async function loadFoodDB() {
   const resp = await fetch(`/NutriTrack/foods.json?v=${FOODS_DB_VERSION}`);
@@ -71,7 +71,6 @@ const SUPP_DOSE_UNITS = ["mcg","mg","g","IU","tablet","capsule","ml","tsp","tbsp
 const UNIT_TO_G = {g:1,gram:1,grams:1,kg:1000,ml:1,milliliter:1,millilitre:1,milliliters:1,millilitres:1,l:1000,liter:1,litre:1,liters:1,litres:1,tsp:5,teaspoon:5,teaspoons:5,tbsp:15,tablespoon:15,tablespoons:15,cup:240,cups:240,oz:28.35,ounce:28.35,ounces:28.35,lb:453.6,pound:453.6,pounds:453.6,whole:1,piece:1,pinch:1};
 function toGrams(amount, unit) { const f = UNIT_TO_G[(unit||"g").toLowerCase()] ?? 1; return Math.round(amount * f * 10) / 10; }
 
-const USE_REGEX_PARSER = true;
 
 const TYPICAL_WEIGHT_G = {"onion":110,"onion small":70,"onion medium":110,"onion large":150,"garlic clove":3,"garlic":3,"shallot":30,"spring onion":15,"leek":150,"leek stick":150,"tomato":120,"tomato small":70,"tomato medium":120,"tomato large":180,"cherry tomato":17,"lemon":65,"lime":45,"orange":140,"apple":180,"pear":180,"banana":120,"avocado":150,"potato":170,"sweet potato":180,"carrot":60,"beetroot":150,"bell pepper":120,"capsicum":120,"cucumber":200,"bay leaf":0.5,"thyme sprig":1,"thyme":1,"rosemary sprig":2,"rosemary":2,"parsley sprig":2,"sage leaf":0.3,"chili":5,"chilli":5,"chili pepper":5,"chilli pepper":5};
 const COUNT_NOUNS = new Set(["clove","cloves","slice","slices","sprig","sprigs","piece","pieces","head","heads","stalk","stalks","stick","sticks","bunch","bunches"]);
@@ -133,13 +132,7 @@ async function fetchRecipePagesWithProgress(recipes, onProgress) {
   const pool = Array.from({ length: Math.min(WORKER_FETCH_CONCURRENCY, recipes.length) }, () => worker());
   await Promise.all(pool); return results;
 }
-async function parseIngredientsWithClaude(ingredientLines) {
-  if (!ingredientLines || !ingredientLines.length) return [];
-  const prompt = `Parse these ingredient strings into a JSON array. Return ONLY the JSON array.\nEach object: {"name":string,"amount":number,"unit":string}\nIngredients:\n${ingredientLines.map((l,i)=>`${i+1}. ${l}`).join("\n")}`;
-  const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, messages: [{ role: "user", content: prompt }] }) });
-  const data = await res.json(); const text = (data.content?.[0]?.text || "[]").replace(/```json|```/g,"").trim();
-  try { return JSON.parse(text); } catch { return []; }
-}
+
 const UNICODE_FRACTIONS = {"\u00BC":0.25,"\u00BD":0.5,"\u00BE":0.75,"\u2153":1/3,"\u2154":2/3,"\u215B":0.125};
 const KNOWN_UNITS = new Set(["g","gram","grams","kg","kilogram","kilograms","ml","milliliter","millilitre","milliliters","millilitres","l","liter","litre","liters","litres","tsp","teaspoon","teaspoons","tbsp","tablespoon","tablespoons","tbs","cup","cups","oz","ounce","ounces","lb","lbs","pound","pounds","pinch","pinches","dash","dashes"]);
 function normaliseUnit(token) {
@@ -205,7 +198,7 @@ function parseIngredientLine(rawLine) {
   return { name, amount, unit };
 }
 async function parseIngredientsLocal(ingredientLines) { if (!ingredientLines || !ingredientLines.length) return []; return ingredientLines.map(l => { const p = parseIngredientLine(l); return p || { name: (l||"").trim().toLowerCase(), amount: 0, unit: "" }; }); }
-async function parseIngredients(ingredientLines) { return USE_REGEX_PARSER ? parseIngredientsLocal(ingredientLines) : parseIngredientsWithClaude(ingredientLines); }
+async function parseIngredients(ingredientLines) { return parseIngredientsLocal(ingredientLines); }
 async function parseRecipesFromPasteText(text) {
   const prompt = `Extract all recipes from the following text and return ONLY a JSON array.\nEach recipe: { "title": string, "servings": number, "source": string, "ingredientLines": string[] }\nText:\n${text.slice(0, 8000)}`;
   const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 2000, messages: [{ role: "user", content: prompt }] }) });
@@ -347,6 +340,7 @@ const STORAGE_KEYS = {
   lastExportedAt:   "nt-last-exported-at",
   lastValidatedAt:  "nt-last-validated-at",
   displayMode:      "nt-display-mode",
+  recents:          "nt-recents",
 };
 
 // ── STORAGE HEALTH THRESHOLDS (Phase 6b) ──────────────────────────────────
@@ -537,11 +531,14 @@ export default function NutriTrack() {
 
   // Food add/edit
   const [addMode,        setAddMode]        = useState("food");
-  const [searchTerm,     setSearchTerm]     = useState("");
+  const [searchTerm,         setSearchTerm]         = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+  const searchDebounceRef = useRef(null);
   const [selectedFood,   setSelectedFood]   = useState(null);
   const [amount,         setAmount]         = useState("100");
   const [meal,           setMeal]           = useState("Breakfast");
   const [editingEntryId, setEditingEntryId] = useState(null);
+  const [recents,        setRecents]        = useState([]);
   const [detailNutrient, setDetailNutrient] = useState(null);
 
   // Logged-entry editing (Phase 5.7)
@@ -565,7 +562,7 @@ export default function NutriTrack() {
   const [exBurnEdit,  setExBurnEdit]  = useState("");
 
   // Custom food
-  const [cf, setCf] = useState({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"" });
+  const [cf, setCf] = useState({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
 
   // Recipe creation
   const [recipeInProgress,  setRecipeInProgress]  = useState({ name:"", source:"", servings:"4", ingredients:[] });
@@ -622,6 +619,7 @@ export default function NutriTrack() {
       const ss = await loadData(STORAGE_KEYS.supplementStacks, DEFAULT_SUPPLEMENT_STACKS);
       const le = await loadData(STORAGE_KEYS.lastExportedAt,   null);
       const dm = await loadData(STORAGE_KEYS.displayMode,      "advanced");
+      const rr = await loadData(STORAGE_KEYS.recents,          []);
       // Recompute goals from stored profile so they're always fresh on load
       // Phase 6b — detect parse errors or shape failures
       // Keys that returned PARSE_ERROR are replaced with their fallback for
@@ -643,9 +641,17 @@ export default function NutriTrack() {
       const safeSs = resolve(ss, DEFAULT_SUPPLEMENT_STACKS, "supplementStacks", STORAGE_KEYS.supplementStacks);
 
       const computedOnLoad = computeGoals(safeP);
-      setLogs(safeL); setGoals({ ...computedOnLoad, ...(g === PARSE_ERROR ? {} : g), ...computedOnLoad }); setGoalOverrides(go === PARSE_ERROR ? {} : go); setCustomFoods(safeC); setProfile(safeP); setExRatio(safeEr); setRecipes(safeRc);
-      setLastSyncedAt((ns === PARSE_ERROR ? { lastSyncedAt: null } : ns).lastSyncedAt); setSyncQueue(sq === PARSE_ERROR ? [] : sq); setSupplementStacks(safeSs); setLastExportedAt(le === PARSE_ERROR ? null : le);
-      setDisplayMode(dm === PARSE_ERROR ? "advanced" : (dm === "simplified" ? "simplified" : "advanced"));
+      const safeG  = resolve(g,  DEFAULT_GOALS,              "goals",          STORAGE_KEYS.goals);
+      const safeGo = resolve(go, {},                          "goalOverrides",  STORAGE_KEYS.goalOverrides);
+      const safeNs = resolve(ns, { lastSyncedAt: null },      "notionStatus",   STORAGE_KEYS.notionStatus);
+      const safeSq = resolve(sq, [],                          "syncQueue",      STORAGE_KEYS.syncQueue);
+      const safeLe = resolve(le, null,                        "lastExportedAt", STORAGE_KEYS.lastExportedAt);
+      const safeDm = resolve(dm, "advanced",                  "displayMode",    STORAGE_KEYS.displayMode);
+      const safeRr = resolve(rr, [],                          "recents",        STORAGE_KEYS.recents);
+
+      setLogs(safeL); setGoals({ ...computedOnLoad, ...safeG, ...computedOnLoad }); setGoalOverrides(safeGo); setCustomFoods(safeC); setProfile(safeP); setExRatio(safeEr); setRecipes(safeRc);
+      setLastSyncedAt(safeNs.lastSyncedAt); setSyncQueue(safeSq); setSupplementStacks(safeSs); setLastExportedAt(safeLe);
+      setDisplayMode(safeDm === "simplified" ? "simplified" : "advanced"); setRecents(Array.isArray(safeRr) ? safeRr : []);
 
       // Shape validation (runs on the resolved safe values)
       const shapeFailures = validateStorageShapes({ logs: safeL, recipes: safeRc, customFoods: safeC, profile: safeP, exRatio: safeEr, supplementStacks: safeSs });
@@ -677,8 +683,9 @@ export default function NutriTrack() {
   useEffect(() => { if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.recipes))          saveData(STORAGE_KEYS.recipes,          recipes);          }, [recipes,          loaded]);
   useEffect(() => { if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.syncQueue))        saveData(STORAGE_KEYS.syncQueue,        syncQueue);        }, [syncQueue,        loaded]);
   useEffect(() => { if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.supplementStacks)) saveData(STORAGE_KEYS.supplementStacks, supplementStacks); }, [supplementStacks, loaded]);
-  useEffect(() => { if (loaded && lastExportedAt !== null) saveData(STORAGE_KEYS.lastExportedAt, lastExportedAt); }, [lastExportedAt, loaded]);
-  useEffect(() => { if (loaded) saveData(STORAGE_KEYS.displayMode, displayMode); }, [displayMode, loaded]);
+  useEffect(() => { if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.lastExportedAt) && lastExportedAt !== null) saveData(STORAGE_KEYS.lastExportedAt, lastExportedAt); }, [lastExportedAt, loaded]);
+  useEffect(() => { if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.displayMode)) saveData(STORAGE_KEYS.displayMode, displayMode); }, [displayMode, loaded]);
+  useEffect(() => { if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.recents)) saveData(STORAGE_KEYS.recents, recents); }, [recents, loaded]);
 
   // Phase 6f — load food DB from external JSON asset
   useEffect(() => {
@@ -689,11 +696,10 @@ export default function NutriTrack() {
     return () => { cancelled = true; };
   }, []);
 
-  // Phase 6b — refresh storage byte count after any save
+  // Phase 6b — refresh storage byte count when Settings page is opened (not on every save)
   useEffect(() => {
-    if (!loaded) return;
-    setStorageEstimate(measureLocalStorageBytes());
-  }, [logs, goals, goalOverrides, customFoods, profile, exRatio, recipes, syncQueue, supplementStacks, lastExportedAt, displayMode, loaded]);
+    if (view === "settings") setStorageEstimate(measureLocalStorageBytes());
+  }, [view]);
 
   // allFoodsForRender: includes soft-deleted custom foods so historical log entries still resolve
   // Phase 6d — online/offline detection
@@ -715,7 +721,7 @@ export default function NutriTrack() {
     window.addEventListener("offline", onOffline);
     // Probe on mount so initial state is accurate
     probe();
-    // Poll every 10s to catch transitions iOS misses
+    // Poll every 5s to catch transitions iOS misses
     const interval = setInterval(probe, 5000);
     return () => {
       window.removeEventListener("online",  onOnline);
@@ -748,13 +754,13 @@ export default function NutriTrack() {
   }, []);
 
   // allFoodsForRender: includes soft-deleted custom foods so historical log entries still resolve
-  const allFoodsForRender = [...foodDB, ...customFoods];
+  const allFoodsForRender = useMemo(() => [...foodDB, ...customFoods], [foodDB, customFoods]);
   // allFoods: excludes soft-deleted custom foods — used for search, recipe creation, matching
-  const allFoods = [...foodDB, ...customFoods.filter(f => !f.deleted)];
+  const allFoods = useMemo(() => [...foodDB, ...customFoods.filter(f => !f.deleted)], [foodDB, customFoods]);
   const dayLog   = logs[currentDate] || [];
 
   // ── DAILY TOTALS ─────────────────────────────────────────────────────
-  const dailyTotals = useCallback(() => {
+  const totals = useMemo(() => {
     const t = {}; Object.keys(NUTRIENT_META).forEach(k => t[k] = 0);
     dayLog.forEach(e => {
       if (e.type === "exercise") return;
@@ -778,13 +784,11 @@ export default function NutriTrack() {
     });
     return t;
   }, [dayLog, allFoodsForRender]);
-
-  const totals = dailyTotals();
   const exerciseBurn = dayLog.filter(e => e.type === "exercise").reduce((s,e) => s + (e.calories_burned||0), 0);
   const ratioSum = (exRatio.carb + exRatio.fat + exRatio.pro) || 100;
 
   // Merge: computed goals < stored goals < manual overrides
-  const resolvedGoals = { ...goals, ...goalOverrides };
+  const resolvedGoals = useMemo(() => ({ ...goals, ...goalOverrides }), [goals, goalOverrides]);
 
   // Dynamic protein multiplier: scales 1.0× (no exercise) → 2.0× (burn ≈ TDEE)
   // Clamped to [1.0, 2.0]. Formula: 1 + (burn / TDEE).
@@ -792,14 +796,14 @@ export default function NutriTrack() {
   const proMultiplier = Math.min(2.0, 1.0 + exerciseBurn / tdeeBase);
   const proBase = goals.pro || 70; // computed base before overrides so multiplier applies to formula value
 
-  const effectiveGoals = exerciseBurn > 0 ? { ...resolvedGoals,
+  const effectiveGoals = useMemo(() => exerciseBurn > 0 ? { ...resolvedGoals,
     cal:  resolvedGoals.cal  + exerciseBurn,
     carb: resolvedGoals.carb + Math.round(exerciseBurn * (exRatio.carb / ratioSum) / 4),
     fat:  resolvedGoals.fat  + Math.round(exerciseBurn * (exRatio.fat  / ratioSum) / 9),
     pro:  goalOverrides.pro != null
             ? resolvedGoals.pro  // user has manually set protein — don't scale
             : Math.round(proBase * proMultiplier),
-  } : resolvedGoals;
+  } : resolvedGoals, [resolvedGoals, exerciseBurn, exRatio, ratioSum, goalOverrides, proBase, proMultiplier]);
   const pct = k => Math.round((totals[k] / (effectiveGoals[k] || 1)) * 100);
   const handleMacroTap = k => { if (k==="cal") setView("calDetail"); if (k==="fib") setView("fibDetail"); if (k==="fat") setView("fatDetail"); if (k==="pro") setView("proDetail"); };
 
@@ -822,14 +826,14 @@ export default function NutriTrack() {
         if (e.type==="recipe") {
           (e.derivedIngredients||[]).forEach(ing => {
             const val = ing.snapshot ? ing.snapshot[k] : (allFoodsForRender.find(f=>f.id===ing.foodId)?.[k]);
-            if (val === null || val === undefined) {
+            if (val === null) {
               const est = median != null ? (ing.amount_g/100)*median : (totalWeight>0?(ing.amount_g/totalWeight)*goal*0.1:0);
               if (est/goal >= 0.05) { nullFoods.push(ing.foodName); estTotal += est; }
             }
           }); return;
         }
         const val = e.snapshot ? e.snapshot[k] : (allFoodsForRender.find(f=>f.id===e.foodId)?.[k]);
-        if (val === null || val === undefined) {
+        if (val === null) {
           const est = median != null ? ((e.amount||0)/100)*median : (totalWeight>0?((e.amount||0)/totalWeight)*goal*0.1:0);
           if (est/goal >= 0.05) { nullFoods.push(e.foodName||"Unknown"); estTotal += est; }
         }
@@ -837,7 +841,6 @@ export default function NutriTrack() {
       if (nullFoods.length) { foodsByKey[k]=[...new Set(nullFoods)]; arcByKey[k]=Math.min(estTotal/goal,1); }
     });
     return { foodsByKey, arcByKey };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dayLog, allFoodsForRender, effectiveGoals]);
 
   // ── FOOD ACTIONS ──────────────────────────────────────────────────────
@@ -849,10 +852,43 @@ export default function NutriTrack() {
     } else {
       setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), { id:Date.now().toString(), foodId:selectedFood.id, foodName:selectedFood.name, amount:parseFloat(amount), meal, time:new Date().toISOString(), snapshot:buildFoodSnapshot(selectedFood) }] }));
     }
+    upsertRecentFood(selectedFood, amount, meal);
     setSelectedFood(null); setAmount("100"); setSearchTerm(""); setView("log");
   };
   const removeEntry    = id => setLogs(prev => ({ ...prev, [currentDate]: (prev[currentDate]||[]).filter(e => e.id !== id) }));
   const startEditEntry = entry => { const food = allFoods.find(f => f.id === entry.foodId); if (!food) return; setSelectedFood(food); setAmount(String(entry.amount)); setMeal(entry.meal); setEditingEntryId(entry.id); setAddMode("food"); setView("add"); };
+
+  
+  const upsertRecentFood = (food, amountValue, mealValue) => {
+    if (!food?.id) return;
+    const entry = {
+      foodId: food.id,
+      foodName: food.name,
+      lastAmount: Math.max(parseFloat(amountValue) || 0, 0),
+      lastMeal: mealValue || "Breakfast",
+      loggedAt: new Date().toISOString(),
+    };
+    setRecents(prev => [entry, ...prev.filter(r => r.foodId !== food.id)].slice(0, 10));
+  };
+
+  const quickLogRecent = recent => {
+    const food = allFoods.find(f => f.id === recent.foodId);
+    if (!food) return;
+    const amt = Math.max(parseFloat(recent.lastAmount) || 0, 0);
+    if (!amt) return;
+    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), {
+      id:Date.now().toString(),
+      foodId:food.id,
+      foodName:food.name,
+      amount:amt,
+      meal:recent.lastMeal || "Breakfast",
+      time:new Date().toISOString(),
+      snapshot:buildFoodSnapshot(food)
+    }]}));
+    upsertRecentFood(food, amt, recent.lastMeal);
+    setView("log");
+  };
+
 
   // ── EXERCISE ──────────────────────────────────────────────────────────
   const addExercise = burnOverride => {
@@ -1117,8 +1153,9 @@ export default function NutriTrack() {
   const importAllReady = () => { syncReviewData.forEach((_,idx)=>{const r=syncReviewData[idx];if(!r.imported&&r.duplicateAction!==null&&r.duplicateAction!=="skip")importRecipe(idx);}); setSyncQueue([]); setPasteText(""); setView("settings"); setNotionSyncMsg({type:"info",text:"Import complete ✓"}); setTimeout(()=>setNotionSyncMsg(null),3000); };
   const clearSyncQueue = () => { setSyncQueue([]); setNotionSyncMsg({type:"info",text:"Queue cleared."}); setTimeout(()=>setNotionSyncMsg(null),3000); };
 
-  const filteredFoods = searchTerm.length>0 ? allFoods.filter(f=>f.name.toLowerCase().includes(searchTerm.toLowerCase())) : allFoods;
+  const filteredFoods = debouncedSearchTerm.length>0 ? allFoods.filter(f=>f.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) : allFoods;
   const groupedByCategory = filteredFoods.reduce((acc,f)=>{if(!acc[f.cat])acc[f.cat]=[];acc[f.cat].push(f);return acc;},{});
+  const visibleRecents = recents.map(r => ({ ...r, food: allFoods.find(f => f.id === r.foodId) })).filter(r => r.food).slice(0, debouncedSearchTerm ? 5 : 10);
   const filteredIngFoods = recipeIngSearch.length>0 ? allFoods.filter(f=>f.name.toLowerCase().includes(recipeIngSearch.toLowerCase())) : allFoods;
   const groupedIngByCategory = filteredIngFoods.reduce((acc,f)=>{if(!acc[f.cat])acc[f.cat]=[];acc[f.cat].push(f);return acc;},{});
   const formatDate = ds => { const d=new Date(ds+"T12:00:00"); return d.toLocaleDateString("en-GB",{weekday:"short",month:"short",day:"numeric"}); };
@@ -1363,17 +1400,31 @@ export default function NutriTrack() {
             {!selectedFood && <ModePicker/>}
             {!selectedFood ? (
               <>
-                <input ref={searchRef} style={S.input} placeholder="Search foods…" value={searchTerm} onChange={e=>setSearchTerm(e.target.value)} autoFocus/>
+                <input ref={searchRef} style={S.input} placeholder="Search foods…" value={searchTerm} onChange={e=>{ const v=e.target.value; setSearchTerm(v); clearTimeout(searchDebounceRef.current); searchDebounceRef.current=setTimeout(()=>setDebouncedSearchTerm(v),300); }} autoFocus/>
                 {customFoods.length > 0 && (
                   <div style={{textAlign:"right",marginTop:4,marginBottom:2}}>
                     <button style={{background:"none",border:"none",color:"#64748b",fontSize:11,cursor:"pointer",textDecoration:"underline"}} onClick={() => setView("manageCustomFoods")}>Manage custom foods</button>
                   </div>
                 )}
                 <div style={{marginTop:12,maxHeight:"calc(100vh - 220px)",overflowY:"auto"}}>
+                  {visibleRecents.length > 0 && (
+                    <div>
+                      <div style={{fontSize:11,fontWeight:700,color:"#475569",padding:"2px 0 4px",letterSpacing:"0.05em",textTransform:"uppercase"}}>Recent</div>
+                      {visibleRecents.map(r => (
+                        <div key={r.foodId} style={{...S.srchItem,display:"flex",alignItems:"center",justifyContent:"space-between",gap:8}}>
+                          <div style={{flex:1,cursor:"pointer"}} onClick={() => { setSelectedFood(r.food); setAmount(String(r.lastAmount || 100)); setMeal(r.lastMeal || "Breakfast"); }}>
+                            <div style={{fontSize:14,fontWeight:500,color:"#e2e8f0"}}>{r.foodName}</div>
+                            <div style={{fontSize:11,color:"#64748b"}}>{Math.round(r.lastAmount || 0)}g · {r.lastMeal || "Meal"}</div>
+                          </div>
+                          <button style={{background:"#1d4ed8",border:"none",borderRadius:10,color:"#fff",width:34,height:34,fontSize:15,cursor:"pointer",flexShrink:0}} onClick={(e) => { e.stopPropagation(); quickLogRecent(r); }} title="Quick log">↻</button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {foodDBStatus === "loading" && <div style={{padding:"32px 0",textAlign:"center",color:"#64748b",fontSize:13}}>Loading food database…</div>}
                   {foodDBStatus === "error" && <div style={{padding:"24px 12px",textAlign:"center",color:"#ef4444",fontSize:13}}>Food database failed to load. Try restarting the app.</div>}
                   {foodDBStatus === "ready" && (() => {
-                    const mr = searchTerm.length>0 ? recipes.filter(r=>r.name.toLowerCase().includes(searchTerm.toLowerCase())) : recipes;
+                    const mr = debouncedSearchTerm.length>0 ? recipes.filter(r=>r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) : recipes;
                     if (!mr.length) return null;
                     return (<div><div style={{fontSize:11,fontWeight:700,color:"#475569",padding:"10px 0 4px",letterSpacing:"0.05em",textTransform:"uppercase"}}>Recipes</div>
                       {mr.map(r => { const n=r.nutrition_per_serving||{}; return (
@@ -1389,7 +1440,7 @@ export default function NutriTrack() {
                       {foods.map(f => (<div key={f.id} style={{...S.srchItem,contentVisibility:"auto",containIntrinsicSize:"0 48px"}} onClick={() => setSelectedFood(f)}><span style={{fontSize:12,color:"#f59e0b",float:"right"}}>{f.cal} kcal/100g</span><div style={{fontSize:14,fontWeight:500,color:"#e2e8f0"}}>{f.name}</div>{f.source&&f.source!=="usda"&&<div style={{fontSize:11,color:"#475569",marginTop:1}}>Source: {f.source.toUpperCase()}</div>}</div>))}
                     </div>
                   ))}
-                  {filteredFoods.length===0 && recipes.filter(r=>r.name.toLowerCase().includes(searchTerm.toLowerCase())).length===0 && searchTerm.length>0 && <div style={{padding:20,textAlign:"center",color:"#475569",fontSize:14}}>No results for "{searchTerm}"</div>}
+                  {filteredFoods.length===0 && recipes.filter(r=>r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())).length===0 && debouncedSearchTerm.length>0 && <div style={{padding:20,textAlign:"center",color:"#475569",fontSize:14}}>No results for "{debouncedSearchTerm}"</div>}
                 </div>
               </>
             ) : (
@@ -1398,6 +1449,15 @@ export default function NutriTrack() {
                 <div style={{fontSize:12,color:"#64748b",marginBottom:16}}>{selectedFood.cat}</div>
                 <label style={S.label}>Amount (g / ml)</label>
                 <input style={S.input} type="number" value={amount} onChange={e=>setAmount(e.target.value)} inputMode="numeric"/>
+                {!!selectedFood.servings?.length && (
+                  <div style={{display:"flex",gap:6,marginTop:10,marginBottom:10,flexWrap:"wrap"}}>
+                    {selectedFood.servings.map((srv, idx) => (
+                      <button key={`${srv.label}-${idx}`} style={{background:"#172554",border:"1px solid #2563eb",color:"#dbeafe",borderRadius:999,padding:"7px 10px",fontSize:12,cursor:"pointer"}} onClick={() => setAmount(String(srv.grams))}>
+                        {srv.label} · {srv.grams}g
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <div style={{display:"flex",gap:6,marginTop:8,flexWrap:"wrap",marginBottom:16}}>
                   {[25,50,100,150,200,250].map(q => <button key={q} style={S.pill(amount===String(q))} onClick={() => setAmount(String(q))}>{q}</button>)}
                 </div>
@@ -1834,6 +1894,38 @@ export default function NutriTrack() {
       </div>
     );
   }
+  
+  const upsertRecentFood = (food, amountValue, mealValue) => {
+    if (!food?.id) return;
+    const entry = {
+      foodId: food.id,
+      foodName: food.name,
+      lastAmount: Math.max(parseFloat(amountValue) || 0, 0),
+      lastMeal: mealValue || "Breakfast",
+      loggedAt: new Date().toISOString(),
+    };
+    setRecents(prev => [entry, ...prev.filter(r => r.foodId !== food.id)].slice(0, 10));
+  };
+
+  const quickLogRecent = recent => {
+    const food = allFoods.find(f => f.id === recent.foodId);
+    if (!food) return;
+    const amt = Math.max(parseFloat(recent.lastAmount) || 0, 0);
+    if (!amt) return;
+    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), {
+      id:Date.now().toString(),
+      foodId:food.id,
+      foodName:food.name,
+      amount:amt,
+      meal:recent.lastMeal || "Breakfast",
+      time:new Date().toISOString(),
+      snapshot:buildFoodSnapshot(food)
+    }]}));
+    upsertRecentFood(food, amt, recent.lastMeal);
+    setView("log");
+  };
+
+
   // ── EXERCISE ──────────────────────────────────────────────────────────
   if (view === "exercise") {
     const wt=parseFloat(profile.weightKg)||70, act=EXERCISE_ACTIVITIES.find(a=>a.id===exActivity);
@@ -1865,7 +1957,7 @@ export default function NutriTrack() {
 
   // ── CUSTOM FOOD ───────────────────────────────────────────────────────
   if (view === "customAdd") {
-    const fields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"iron",l:"Iron (mg)"},{k:"calc",l:"Calcium (mg)"},{k:"zinc",l:"Zinc (mg)"},{k:"b12",l:"B12 (mcg)"},{k:"vitD",l:"Vitamin D (mcg)"},{k:"omega3",l:"Omega-3 (g)"},{k:"iod",l:"Iodine (mcg)"},{k:"sel",l:"Selenium (mcg)"},{k:"mag",l:"Magnesium (mg)"},{k:"pot",l:"Potassium (mg)"},{k:"fol",l:"Folate (mcg)"}];
+    const fields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"iron",l:"Iron (mg)"},{k:"calc",l:"Calcium (mg)"},{k:"zinc",l:"Zinc (mg)"},{k:"b12",l:"B12 (mcg)"},{k:"vitD",l:"Vitamin D (mcg)"},{k:"omega3",l:"Omega-3 (g)"},{k:"iod",l:"Iodine (mcg)"},{k:"sel",l:"Selenium (mcg)"},{k:"mag",l:"Magnesium (mg)"},{k:"pot",l:"Potassium (mg)"},{k:"fol",l:"Folate (mcg)"},{k:"sod",l:"Sodium (mg)"},{k:"vitA",l:"Vitamin A (mcg)"},{k:"vitC",l:"Vitamin C (mg)"}];
     return (
       <div style={S.app}>
         <div style={S.header}><button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={()=>setView("add")}>← Back</button><span style={{fontSize:15,fontWeight:700}}>Add Custom Food</span><div style={{width:48}}/></div>
@@ -2111,6 +2203,8 @@ export default function NutriTrack() {
     } else {
       const script = document.createElement("script");
       script.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+      script.integrity = "sha384-rRoXxn2yHlrZYB587Ki9RO1tONhLdM6XfORg7Rw4uwH4/Fh/5nP7IUX91bkaKUgs";
+      script.crossOrigin = "anonymous";
       script.onload = () => doZipDownload(window.JSZip);
       script.onerror = () => alert("Export failed: JSZip could not be loaded. Connect to the internet and try again.");
       document.head.appendChild(script);
@@ -2238,7 +2332,10 @@ export default function NutriTrack() {
               <button
                 style={{width:"100%",padding:10,borderRadius:10,border:"none",background:"#7c2d12",color:"#fed7aa",fontSize:13,fontWeight:700,cursor:"pointer"}}
                 onClick={()=>{
-                  // If a backup exists from the inject, restore it first
+                  // If a backup exists from the inject, restore it first.
+                  // nt-logs-backup is intentionally excluded from STORAGE_KEYS — it is a
+                  // debug-only ephemeral key. Including it would cause the corruptedKeys guard,
+                  // storage indicator, and export bundle to treat it as app data.
                   const backup = localStorage.getItem("nt-logs-backup");
                   if (backup !== null) {
                     localStorage.setItem(STORAGE_KEYS.logs, backup);
