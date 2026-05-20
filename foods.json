@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 3,
   "basis": "per_100g",
   "units": {
     "calories": "kcal",
