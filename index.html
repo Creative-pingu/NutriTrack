@@ -97,7 +97,8 @@
             window.addEventListener('load', async () => {
                 try {
                     // Fetch sw.js to extract CACHE_VERSION
-                    const swResponse = await fetch('/NutriTrack/sw.js');
+                    const swResponse = await fetch('/NutriTrack/sw.js', { cache: 'no-store' });
+
                     const swContent = await swResponse.text();
 
                     // Extract CACHE_VERSION using regex
