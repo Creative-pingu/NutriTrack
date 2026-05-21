@@ -115,7 +115,14 @@
                     window.__swUpdateReady = true;
                     window.__swReg = reg;
                     // Signal the React app if it's already mounted
-                    if (window.__onSwUpdate) window.__onSwUpdate();
+                    const notify = () => {
+                      if (window.__onSwUpdate) {
+                        window.__onSwUpdate();
+                      } else {
+                        setTimeout(notify, 100);
+                      }
+                    };
+                    notify();
                   }
                 });
               };
@@ -124,7 +131,14 @@
               if (reg.waiting && navigator.serviceWorker.controller) {
                 window.__swUpdateReady = true;
                 window.__swReg = reg;
-                if (window.__onSwUpdate) window.__onSwUpdate();
+                const notify = () => {
+                  if (window.__onSwUpdate) {
+                    window.__onSwUpdate();
+                  } else {
+                    setTimeout(notify, 100);
+                  }
+                };
+                notify();
               }
         
               reg.addEventListener('updatefound', onUpdateFound);
