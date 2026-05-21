@@ -94,31 +94,49 @@
         // Phase 6d — Service Worker registration
         // Registered after app load to avoid competing with initial resource fetches.
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', async () => {
-                try {
-                    // Fetch sw.js to extract CACHE_VERSION
-                    const swResponse = await fetch('/NutriTrack/sw.js', { cache: 'no-store' });
-
-                    const swContent = await swResponse.text();
-
-                    // Extract CACHE_VERSION using regex
-                    const versionMatch = swContent.match(/const CACHE_VERSION = "([^"]+)"/);
-                    const cacheVersion = versionMatch ? versionMatch[1] : null;
-
-                    if (cacheVersion) {
-                        // Register SW with the extracted version as a query string
-                        const swUrl = `/NutriTrack/sw.js?v=${cacheVersion}`;
-                        const reg = await navigator.serviceWorker.register(swUrl, { scope: '/NutriTrack/' });
-                        console.log('[NutriTrack] SW registered, scope:', reg.scope);
-                        // Trigger update check on every page load
-                        reg.update();
-                    } else {
-                        console.warn('[NutriTrack] Could not extract CACHE_VERSION from sw.js');
-                    }
-                } catch (err) {
-                    console.warn('[NutriTrack] Failed to fetch sw.js or register SW:', err);
-                }
-            });
+          window.addEventListener('load', async () => {
+            try {
+              const swResponse = await fetch('/NutriTrack/sw.js', { cache: 'no-store' });
+              const swContent = await swResponse.text();
+              const versionMatch = swContent.match(/const CACHE_VERSION = "([^"]+)"/);
+              const cacheVersion = versionMatch ? versionMatch[1] : null;
+              if (!cacheVersion) return;
+        
+              const swUrl = `/NutriTrack/sw.js?v=${cacheVersion}`;
+              const reg = await navigator.serviceWorker.register(swUrl, { scope: '/NutriTrack/' });
+              reg.update();
+        
+              // Attach update listener immediately after registration
+              const onUpdateFound = () => {
+                const sw = reg.installing;
+                if (!sw) return;
+                sw.addEventListener('statechange', () => {
+                  if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                    window.__swUpdateReady = true;
+                    window.__swReg = reg;
+                    // Signal the React app if it's already mounted
+                    if (window.__onSwUpdate) window.__onSwUpdate();
+                  }
+                });
+              };
+        
+              // Already waiting (e.g. fast install on reload)
+              if (reg.waiting && navigator.serviceWorker.controller) {
+                window.__swUpdateReady = true;
+                window.__swReg = reg;
+                if (window.__onSwUpdate) window.__onSwUpdate();
+              }
+        
+              reg.addEventListener('updatefound', onUpdateFound);
+        
+              navigator.serviceWorker.addEventListener('controllerchange', () => {
+                window.location.reload();
+              });
+        
+            } catch (err) {
+              console.warn('[NutriTrack] SW registration failed:', err);
+            }
+          });
         }
     </script>
 </body>
