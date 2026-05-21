@@ -1,7 +1,7 @@
 // NutriTrack Service Worker — Phase 6f
 //
 // ── IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached asset ──
-const CACHE_VERSION = "nutritrack-v19";
+const CACHE_VERSION = "nutritrack-v20";
 
 // Full app shell — all assets needed for offline cold start.
 // Paths are relative to the GitHub Pages subpath /NutriTrack/.
