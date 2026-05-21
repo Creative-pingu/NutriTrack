@@ -120,15 +120,63 @@
         // Phase 6d — Service Worker registration
         // Registered after app load to avoid competing with initial resource fetches.
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/NutriTrack/sw.js', { scope: '/NutriTrack/' })
-                    .then(reg => {
-                        console.log('[NutriTrack] SW registered, scope:', reg.scope);
-                        // Trigger update check on every page load
-                        reg.update();
-                    })
-                    .catch(err => console.warn('[NutriTrack] SW registration failed:', err));
-            });
+          window.addEventListener('load', async () => {
+            try {
+              const swResponse = await fetch('/NutriTrack/sw.js', { cache: 'no-store' });
+              const swContent = await swResponse.text();
+              const versionMatch = swContent.match(/const CACHE_VERSION = "([^"]+)"/);
+              const cacheVersion = versionMatch ? versionMatch[1] : null;
+              if (!cacheVersion) return;
+        
+              const swUrl = `/NutriTrack/sw.js?v=${cacheVersion}`;
+              const reg = await navigator.serviceWorker.register(swUrl, { scope: '/NutriTrack/' });
+              reg.update();
+        
+              // Attach update listener immediately after registration
+              const onUpdateFound = () => {
+                const sw = reg.installing;
+                if (!sw) return;
+                sw.addEventListener('statechange', () => {
+                  if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                    window.__swUpdateReady = true;
+                    window.__swReg = reg;
+                    // Signal the React app if it's already mounted
+                    const notify = () => {
+                      if (window.__onSwUpdate) {
+                        window.__onSwUpdate();
+                      } else {
+                        setTimeout(notify, 100);
+                      }
+                    };
+                    notify();
+                  }
+                });
+              };
+        
+              // Already waiting (e.g. fast install on reload)
+              if (reg.waiting && navigator.serviceWorker.controller) {
+                window.__swUpdateReady = true;
+                window.__swReg = reg;
+                const notify = () => {
+                  if (window.__onSwUpdate) {
+                    window.__onSwUpdate();
+                  } else {
+                    setTimeout(notify, 100);
+                  }
+                };
+                notify();
+              }
+        
+              reg.addEventListener('updatefound', onUpdateFound);
+        
+              navigator.serviceWorker.addEventListener('controllerchange', () => {
+                window.location.reload();
+              });
+        
+            } catch (err) {
+              console.warn('[NutriTrack] SW registration failed:', err);
+            }
+          });
         }
     </script>
 </body>
