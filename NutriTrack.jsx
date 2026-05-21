@@ -733,7 +733,7 @@ export default function NutriTrack() {
   // Phase 6d — SW update detection
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.getRegistration().then(reg => {
+    navigator.serviceWorker.getRegistration('/NutriTrack/').then(reg => {
       if (!reg) return;
       swRegRef.current = reg;
       if (reg.waiting) setSwUpdateReady(true);
