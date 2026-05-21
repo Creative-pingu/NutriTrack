@@ -733,25 +733,22 @@ export default function NutriTrack() {
   // Phase 6d — SW update detection
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.getRegistration('/NutriTrack/').then(reg => {
-      if (!reg) return;
-      swRegRef.current = reg;
-      if (reg.waiting) setSwUpdateReady(true);
-      reg.addEventListener("updatefound", () => {
-        const sw = reg.installing;
-        if (!sw) return;
-        sw.addEventListener("statechange", () => {
-          if (sw.state === "installed" && navigator.serviceWorker.controller) {
-            swRegRef.current = reg;
-            setSwUpdateReady(true);
-          }
-        });
-      });
-    });
+    // index.html sets these if update was detected before React mounted
+    if (window.__swUpdateReady) {
+      swRegRef.current = window.__swReg;
+      setSwUpdateReady(true);
+    }
+    // Callback for if update fires after React mounts
+    window.__onSwUpdate = () => {
+      swRegRef.current = window.__swReg;
+      setSwUpdateReady(true);
+    };
     navigator.serviceWorker.addEventListener("controllerchange", () => {
       window.location.reload();
     });
+    return () => { window.__onSwUpdate = null; };
   }, []);
+
 
   // allFoodsForRender: includes soft-deleted custom foods so historical log entries still resolve
   const allFoodsForRender = useMemo(() => [...foodDB, ...customFoods], [foodDB, customFoods]);
