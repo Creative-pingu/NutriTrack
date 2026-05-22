@@ -121,13 +121,13 @@
         // Registered after app load to avoid competing with initial resource fetches.
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/NutriTrack/sw.js', { scope: '/NutriTrack/' })
+                window._swReady = navigator.serviceWorker.register('/NutriTrack/sw.js', { scope: '/NutriTrack/' })
                     .then(reg => {
                         console.log('[NutriTrack] SW registered, scope:', reg.scope);
-                        // Trigger update check on every page load
                         reg.update();
+                        return reg;
                     })
-                    .catch(err => console.warn('[NutriTrack] SW registration failed:', err));
+                    .catch(err => { console.warn('[NutriTrack] SW registration failed:', err); });
             });
         }
     </script>
