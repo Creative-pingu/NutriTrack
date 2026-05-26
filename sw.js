@@ -1,9 +1,9 @@
 // NutriTrack Service Worker — Phase 6f
 //
 // ── IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached asset ──
-const CACHE_VERSION = "nutritrack-v42";
+const CACHE_VERSION = "nutritrack-v43";
 
-//Full app shell — all assets needed for offline cold start.
+// Full app shell — all assets needed for offline cold start.
 // Paths are relative to the GitHub Pages subpath /NutriTrack/.
 // NOTE: foods.json is intentionally excluded — it uses a network-first
 // strategy (see fetch handler below) so updates are always picked up.
