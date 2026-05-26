@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 // FOOD_DB is loaded asynchronously from /NutriTrack/foods.json at app start.
 // Use the foodDB state (and allFoods / allFoodsForRender derived values) inside
 // the NutriTrack component. Do not reference FOOD_DB anywhere directly.
-
+// trivial change
 // Maps a foods.json v1 record (full names) to the internal abbreviation-keyed shape
 // the JSX uses throughout. All downstream code is unchanged.
 function mapFoodRecord(r) {
