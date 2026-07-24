@@ -1,7 +1,7 @@
 // NutriTrack Service Worker — Phase 6m
 //
 // ── IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached asset ──
-const CACHE_VERSION = "nutritrack-v45";
+const CACHE_VERSION = "nutritrack-v46";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.jsx",
