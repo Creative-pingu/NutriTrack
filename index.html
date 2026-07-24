@@ -86,6 +86,13 @@ title: https://raw.githubusercontent.com/Creative-pingu/NutriTrack/main/index.ht
     </div>
 
     <script type="text/babel">
+        // Shim for require() since Babel commonjs uses it
+        window.require = function(mod) {
+            if (mod === 'react') return React;
+            if (mod === 'react-dom') return ReactDOM;
+            throw new Error('Module not found: ' + mod);
+        };
+        
         async function loadApp() {
             try {
                 // No ?v= cache-buster — the service worker handles cache invalidation
@@ -98,7 +105,7 @@ title: https://raw.githubusercontent.com/Creative-pingu/NutriTrack/main/index.ht
                 code = code.replace(/export\s+default/g, 'window._MainApp = ');
 
                 const transformed = Babel.transform(code, { 
-                    presets: ['react', ['env', { modules: 'commonjs' }]] 
+                    presets: ['react', ['env', { modules: false }]] 
                 }).code;
 
                 eval(transformed);
