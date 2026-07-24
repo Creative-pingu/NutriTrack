@@ -103,8 +103,7 @@ self.addEventListener("fetch", event => {
   if (isPrecached) {
     event.respondWith(
       caches.match(request, { ignoreSearch: true }).then(cached => {
-   
-     if (cached) return cached;
+        if (cached) return cached;
         return fetch(request).then(response => {
           if (response.ok) {
             const clone = response.clone();
