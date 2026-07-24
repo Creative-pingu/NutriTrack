@@ -1,3 +1,5 @@
+title: https://raw.githubusercontent.com/Creative-pingu/NutriTrack/main/index.html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +112,7 @@
                     root.render(React.createElement(App));
                 }
             } catch (e) {
-                document.getElementById('root').innerHTML = `<div style="padding:20px; color:red;">${e.message}</div>`;
+                document.getElementById('root').innerHTML = `<div style="padding:20px; color:red;">Error: ${e.message}<br>File: NutriTrack.jsx load failed<br>Check: import statement stripping</div>`;
             }
         }
         loadApp();
