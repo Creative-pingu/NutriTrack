@@ -88,20 +88,31 @@ title: https://raw.githubusercontent.com/Creative-pingu/NutriTrack/main/index.ht
     <script type="text/babel">
         async function loadApp() {
             try {
-                // No ?v= cache-buster — the service worker handles cache invalidation
-                // via CACHE_VERSION bumping in sw.js. See Phase 6d notes.
+                console.log('Step 1: Fetching NutriTrack.jsx');
                 const res = await fetch('./NutriTrack.jsx');
+                console.log('Step 2: Fetch succeeded, status:', res.status);
                 let code = await res.text();
+                console.log('Step 3: Code length:', code.length);
+                console.log('Step 4: First 200 chars:', code.substring(0, 200));
 
                 // Clean for browser execution
+                console.log('Step 5: Stripping imports...');
+                const beforeStrip = code;
                 code = code.replace(/import\s+[\s\S]+?from\s+['"].+?['"];/g, '// Stripped');
+                console.log('Step 6: Imports stripped. Changed:', beforeStrip !== code);
+                
                 code = code.replace(/export\s+default/g, 'window._MainApp = ');
+                console.log('Step 7: Exports replaced');
 
+                console.log('Step 8: Transforming with Babel...');
                 const transformed = Babel.transform(code, { 
                     presets: ['react', ['env', { modules: false }]] 
                 }).code;
+                console.log('Step 9: Babel transform succeeded');
 
+                console.log('Step 10: Evaluating...');
                 eval(transformed);
+                console.log('Step 11: Eval succeeded')
 
                 const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
                 
@@ -112,7 +123,7 @@ title: https://raw.githubusercontent.com/Creative-pingu/NutriTrack/main/index.ht
                     root.render(React.createElement(App));
                 }
             } catch (e) {
-                document.getElementById('root').innerHTML = `<div style="padding:20px; color:red;">Error: ${e.message}<br>File: NutriTrack.jsx load failed<br>Check: import statement stripping</div>`;
+                document.getElementById('root').innerHTML = `<div style="padding:20px; color:red;">Error during load. Check browser console for details.</div>`;
             }
         }
         loadApp();
