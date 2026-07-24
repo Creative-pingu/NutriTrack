@@ -1,7 +1,7 @@
 // NutriTrack Service Worker — Phase 6m
 //
 // ── IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached asset ──
-const CACHE_VERSION = "nutritrack-v46";
+const CACHE_VERSION = "nutritrack-v47";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.jsx",
@@ -13,14 +13,12 @@ const PRECACHE_ASSETS = [
 
 const WORKER_ORIGIN = "https://nutritrack-proxy.nickkropf.workers.dev";
 
-// ── INSTALL: precache all app-shell assets ─────────────────────────────
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_VERSION).then(cache => cache.addAll(PRECACHE_ASSETS))
   );
 });
 
-// ── ACTIVATE: delete old cache versions, claim clients ────────────────
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -33,35 +31,28 @@ self.addEventListener("activate", event => {
   );
 });
 
-// ── SKIP_WAITING: triggered by the in-app "Reload" button ─────────────
 self.addEventListener("message", event => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });
 
-// ── FETCH: routing strategy ────────────────────────────────────────────
 self.addEventListener("fetch", event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // index.html must always reach the network so the SW registration
-  // call re-executes and the browser can detect new SW versions.
   if (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html") {
     return;
   }
 
-  // Cloudflare Worker requests — network-only, never cache.
   if (request.url.startsWith(WORKER_ORIGIN)) {
     return;
   }
 
-  // Non-GET requests — pass through.
   if (request.method !== "GET") {
     return;
   }
 
-  // foods.json — network-first, fall back to cache.
   if (url.pathname === "/NutriTrack/foods.json") {
     event.respondWith(
       fetch(request)
@@ -77,7 +68,6 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // App-shell assets — cache-first, fall back to network.
   const isPrecached = PRECACHE_ASSETS.some(asset => {
     if (asset.startsWith("http")) return request.url === asset;
     return url.pathname === asset || url.pathname.startsWith(asset);
@@ -99,7 +89,6 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Everything else same-origin — network-first, fall back to cache.
   if (url.origin === self.location.origin) {
     event.respondWith(
       fetch(request)
