@@ -85,12 +85,12 @@
                 const res = await fetch('./NutriTrack.jsx');
                 let code = await res.text();
 
-                // Line-based import/export stripping
+                // Phase 6m-4: Replace exports BEFORE filtering lines
+                code = code.replace(/exports+default/g, 'window._MainApp = ');
                 const lines = code.split('
 ');
                 code = lines.filter(line => !line.trim().startsWith('import ') && !line.trim().startsWith('export ')).join('
 ');
-                code = code.replace(/exports+default/g, 'window._MainApp = ');
 
                 const transformed = Babel.transform(code, { 
                     presets: ['react', ['env', { modules: false }]] 
