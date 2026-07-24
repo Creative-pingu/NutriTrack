@@ -1,19 +1,8 @@
-// NutriTrack Service Worker — Phase 6f
+// NutriTrack Service Worker — Phase 6m
 //
 // ── IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached asset ──
-const CACHE_VERSION = "nutritrack-v44";
+const CACHE_VERSION = "nutritrack-v45";
 
-//Full app shell — all assets needed for offline cold start.
-// Paths are relative to the GitHub Pages subpath /NutriTrack/.
-// NOTE: foods.json is intentionally excluded — it uses a network-first
-// strategy (see fetch handler below) so updates are always picked up.
-// NOTE: index.html is intentionally excluded — it must always be fetched
-// from the network so the SW registration call re-executes and the browser
-// can detect new SW versions. See fetch handler exclusion below.
-// NOTE: CDN assets (unpkg) are intentionally excluded — cache.addAll() does
-// not follow redirects; a redirect response rejects the entire addAll() and
-// silently discards the SW install. CDN assets are cached naturally by the
-// browser after the first online visit.
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.jsx",
   "/NutriTrack/foods.json",
@@ -22,14 +11,12 @@ const PRECACHE_ASSETS = [
   "/NutriTrack/icons/apple-touch-icon.png",
 ];
 
-// The Cloudflare Worker origin — never intercept these requests.
 const WORKER_ORIGIN = "https://nutritrack-proxy.nickkropf.workers.dev";
 
 // ── INSTALL: precache all app-shell assets ─────────────────────────────
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_VERSION).then(cache => cache.addAll(PRECACHE_ASSETS))
-    // Do NOT call self.skipWaiting() here — we wait for the user's "Reload" tap.
   );
 });
 
@@ -58,25 +45,23 @@ self.addEventListener("fetch", event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // 0. index.html must always reach the network so the SW registration
-  //    call re-executes and the browser can detect new SW versions.
+  // index.html must always reach the network so the SW registration
+  // call re-executes and the browser can detect new SW versions.
   if (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html") {
-    return; // fall through to browser default (network)
+    return;
   }
 
-  // 1. Cloudflare Worker requests — network-only, never cache.
+  // Cloudflare Worker requests — network-only, never cache.
   if (request.url.startsWith(WORKER_ORIGIN)) {
-    return; // fall through to browser default (network)
+    return;
   }
 
-  // 2. Non-GET requests — pass through.
+  // Non-GET requests — pass through.
   if (request.method !== "GET") {
     return;
   }
 
-  // 3. foods.json — network-first, fall back to cache.
-  //    Kept separate from the precache so updates are always fetched when online.
-  //    The ?v=... query string from the JSX is honoured (no ignoreSearch).
+  // foods.json — network-first, fall back to cache.
   if (url.pathname === "/NutriTrack/foods.json") {
     event.respondWith(
       fetch(request)
@@ -92,10 +77,8 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // 4. App-shell assets (same-origin under /NutriTrack/ OR cross-origin CDN precache)
-  //    Strategy: cache-first, fall back to network.
+  // App-shell assets — cache-first, fall back to network.
   const isPrecached = PRECACHE_ASSETS.some(asset => {
-    // Match by full URL or by pathname (ignores query strings like ?v=...)
     if (asset.startsWith("http")) return request.url === asset;
     return url.pathname === asset || url.pathname.startsWith(asset);
   });
@@ -116,7 +99,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // 5. Everything else same-origin — network-first, fall back to cache.
+  // Everything else same-origin — network-first, fall back to cache.
   if (url.origin === self.location.origin) {
     event.respondWith(
       fetch(request)
