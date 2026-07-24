@@ -98,7 +98,7 @@ title: https://raw.githubusercontent.com/Creative-pingu/NutriTrack/main/index.ht
                 code = code.replace(/export\s+default/g, 'window._MainApp = ');
 
                 const transformed = Babel.transform(code, { 
-                    presets: ['react', ['env', { modules: false }]] 
+                    presets: ['react', ['env', { modules: 'commonjs' }]] 
                 }).code;
 
                 eval(transformed);
