@@ -10,6 +10,9 @@
     <meta name="apple-mobile-web-app-title" content="NutriTrack">
     <link rel="apple-touch-icon" href="/NutriTrack/icons/apple-touch-icon.png">
     <meta name="theme-color" content="#3b82f6">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
         html, body {
             margin: 0; padding: 0; background: #0a0f1a; color: white;
@@ -42,10 +45,16 @@
             background: #7c3aed; color: white; font-size: 12px;
             max-width: 80%; text-align: left; display: none;
         }
-        #loading-screen { display: none; }
+        #build-info {
+            position: fixed; bottom: 10px; right: 10px;
+            background: rgba(0,0,0,0.7); padding: 8px 12px;
+            border-radius: 6px; font-size: 11px; color: #94a3b8;
+            font-family: monospace; z-index: 10000;
+        }
     </style>
 </head>
 <body>
+    <div id="build-info">v51 - 2026-07-25 12:34</div>
     <div id="load-container">
         <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
         <div id="load-status">Initializing...</div>
@@ -53,7 +62,6 @@
         <div id="error-detail"></div>
     </div>
 
-    <!-- Script loading with visual feedback -->
     <script>
         const steps = [];
         function addStep(name) {
@@ -80,7 +88,6 @@
             document.getElementById('error-detail').style.display = 'block';
         }
         
-        // Track loading
         addStep('React');
         addStep('ReactDOM');
         addStep('Babel');
@@ -93,18 +100,18 @@
         addStep('Render app');
     </script>
 
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" 
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js?v=1" 
         onload="updateStep(0, 'loaded')" 
-        onerror="updateStep(0, 'error', 'Failed to load'); showError('React CDN blocked or failed')"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" 
+        onerror="updateStep(0, 'error', 'Failed'); showError('React CDN blocked')"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js?v=1" 
         onload="updateStep(1, 'loaded')" 
-        onerror="updateStep(1, 'error', 'Failed to load'); showError('ReactDOM CDN blocked or failed')"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js" 
+        onerror="updateStep(1, 'error', 'Failed'); showError('ReactDOM CDN blocked')"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js?v=1" 
         onload="updateStep(2, 'loaded')" 
-        onerror="updateStep(2, 'error', 'Failed to load'); showError('Babel CDN blocked or failed - JSX cannot be processed')"></script>
-    <script src="https://unpkg.com/lucide@0.344.0" 
+        onerror="updateStep(2, 'error', 'Failed'); showError('Babel CDN blocked - JSX cannot process')"></script>
+    <script src="https://unpkg.com/lucide@0.344.0?v=1" 
         onload="updateStep(3, 'loaded')" 
-        onerror="updateStep(3, 'error', 'Failed to load')"></script>
+        onerror="updateStep(3, 'error', 'Failed')"></script>
 
     <script>
         updateStep(4, 'current', 'Setting up...');
@@ -138,7 +145,7 @@
             
             async function loadApp() {
                 try {
-                    const res = await fetch('./NutriTrack.jsx');
+                    const res = await fetch('./NutriTrack.jsx?v=51');
                     updateStep(5, 'loaded', 'Status: ' + res.status);
                     
                     updateStep(6, 'current', 'Reading...');
@@ -179,12 +186,11 @@
                     updateStep(10, 'error', 'Failed');
                     showError('Error: ' + e.message + '
 
-Stack: ' + (e.stack || 'No stack'));
+Stack: ' + (e.stack || 'No stack').substring(0, 500));
                     setStatus('ERROR - See details below');
                 }
             }
             
-            // Mark current step
             updateStep(5, 'current');
             loadApp();
         })();
@@ -193,12 +199,12 @@ Stack: ' + (e.stack || 'No stack'));
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/NutriTrack/sw.js', { scope: '/NutriTrack/' })
+                navigator.serviceWorker.register('/NutriTrack/sw.js?v=51', { scope: '/NutriTrack/' })
                     .then(reg => { 
-                        setStatus('SW registered - ' + reg.scope);
-                        fetch('/NutriTrack/sw.js', { cache: 'no-store' }).then(() => reg.update()).catch(() => reg.update()); 
+                        setStatus('SW registered v51');
+                        fetch('/NutriTrack/sw.js?v=51', { cache: 'no-store' }).then(() => reg.update()).catch(() => reg.update()); 
                     })
-                    .catch(err => { setStatus('SW registration failed: ' + err.message); });
+                    .catch(err => { setStatus('SW failed: ' + err.message); });
             });
         }
     </script>
