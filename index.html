@@ -14,58 +14,67 @@
         html, body { margin: 0; padding: 0; background: #0a0f1a; color: white; min-height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; overflow-x: hidden; overflow-y: auto; }
         #root { width: 100%; min-height: 100vh; display: flex; flex-direction: column; }
         #loading-screen { display: flex; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0f1a; z-index: 9999; color: #64748b; }
+        #error-screen { display: flex; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0f1a; z-index: 9999; color: #ef4444; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; line-height: 1.5; }
     </style>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@0.344.0"></script>
+</head>
+<body>
+    <div id="root"><div id="loading-screen">Launching NutriTrack...</div></div>
+    <div id="script-errors" style="display:none;"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" onerror="document.getElementById('script-errors').innerHTML+='React failed to load<br>'"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" onerror="document.getElementById('script-errors').innerHTML+='ReactDOM failed to load<br>'"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" onerror="document.getElementById('script-errors').innerHTML+='Babel failed to load<br>'"></script>
+    <script src="https://unpkg.com/lucide@0.344.0" onerror="document.getElementById('script-errors').innerHTML+='Lucide failed to load<br>'"></script>
+
     <script>
         window.useState = React.useState; window.useEffect = React.useEffect; window.useMemo = React.useMemo; window.useCallback = React.useCallback; window.useRef = React.useRef;
         if (window.lucide) { Object.assign(window, window.lucide); window['lucide-react'] = window.lucide; }
         window.storage = { get: async (k) => ({ value: localStorage.getItem(k) }), set: async (k, v) => { localStorage.setItem(k, v); return v; }, delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; } };
+        
+        // Check if scripts loaded
+        if (!window.React || !window.ReactDOM || !window.Babel) {
+            document.getElementById('loading-screen').innerHTML = 'Error: Required scripts failed to load';
+            document.getElementById('script-errors').style.display = 'block';
+        }
     </script>
-</head>
-<body>
-    <div id="root"><div id="loading-screen">Launching NutriTrack...</div></div>
+
     <script type="text/babel">
         async function loadApp() {
             try {
-                console.log('[NutriTrack] Starting');
                 const res = await fetch('./NutriTrack.jsx');
-                console.log('[NutriTrack] Fetch status:', res.status);
+                if (!res.ok) throw new Error('Failed to fetch NutriTrack.jsx: ' + res.status);
+                
                 let code = await res.text();
-                console.log('[NutriTrack] Code length:', code.length, 'First 100 chars:', code.slice(0, 100));
                 code = code.replace(/exports+default/g, 'window._MainApp = ');
                 const lines = code.split('
 ');
                 code = lines.filter(line => !line.trim().startsWith('import ') && !line.trim().startsWith('export ')).join('
 ');
-                console.log('[NutriTrack] After filter, length:', code.length);
+                
                 const transformed = Babel.transform(code, { presets: ['react', ['env', { modules: false }]] }).code;
-                console.log('[NutriTrack] Transformed');
                 eval(transformed);
+                
                 const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
-                console.log('[NutriTrack] App:', !!App);
                 if (App) {
                     const root = ReactDOM.createRoot(document.getElementById("root"));
                     document.getElementById('root').innerHTML = '';
                     root.render(React.createElement(App));
                 } else {
-                    document.getElementById('root').innerHTML = '<div style="color:red;padding:20px">Error: App not found</div>';
+                    throw new Error('App not found after eval');
                 }
             } catch (e) {
-                console.error('[NutriTrack] Error:', e);
-                document.getElementById('root').innerHTML = '<div style="color:red;padding:20px">Error: ' + e.message + '</div>';
+                document.getElementById('root').innerHTML = '<div id="error-screen"><strong>Error:</strong> ' + e.message + '</div>';
             }
         }
         loadApp();
     </script>
+
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/NutriTrack/sw.js', { scope: '/NutriTrack/' })
                     .then(reg => { fetch('/NutriTrack/sw.js', { cache: 'no-store' }).then(() => reg.update()).catch(() => reg.update()); })
-                    .catch(err => console.warn('SW error:', err));
+                    .catch(err => {});
             });
         }
     </script>
