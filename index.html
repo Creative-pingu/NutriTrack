@@ -59,8 +59,8 @@
     </style>
 </head>
 <body>
-    <div id="sw-status">Checking SW...</div>
-    <div id="build-info">v53 - 2026-07-25 12:55</div>
+    <div id="sw-status">SW: Checking...</div>
+    <div id="build-info">v54 - 2026-07-25 13:00</div>
     <div id="load-container">
         <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
         <div id="load-status">Initializing...</div>
@@ -69,7 +69,6 @@
     </div>
 
     <script>
-        // Setup step tracking
         const steps = [];
         function addStep(name) {
             const el = document.createElement('div');
@@ -93,7 +92,6 @@
             document.getElementById('error-detail').style.display = 'block';
         }
         
-        // Initialize steps
         addStep('React');
         addStep('ReactDOM');
         addStep('Babel');
@@ -105,48 +103,73 @@
         addStep('Eval code');
         addStep('Render app');
         
-        // Unregister old service workers
+        // Unregister old SW with timeout
         if ('serviceWorker' in navigator) {
+            const swTimeout = setTimeout(function() {
+                document.getElementById('sw-status').textContent = 'SW: Timeout';
+                startLoading();
+            }, 2000);
+            
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                document.getElementById('sw-status').textContent = 'Found ' + registrations.length + ' SW(s)';
-                return Promise.all(registrations.map(function(r) { 
-                    return r.unregister().then(function() {
-                        document.getElementById('sw-status').textContent = 'SW unregistered';
-                    });
-                }));
+                clearTimeout(swTimeout);
+                document.getElementById('sw-status').textContent = 'SW: Found ' + registrations.length;
+                Promise.all(registrations.map(function(r) { 
+                    return r.unregister(); 
+                })).then(function() {
+                    document.getElementById('sw-status').textContent = 'SW: Cleared';
+                    startLoading();
+                }).catch(function(e) {
+                    document.getElementById('sw-status').textContent = 'SW: Error';
+                    startLoading();
+                });
             }).catch(function(e) {
-                document.getElementById('sw-status').textContent = 'SW check failed';
+                clearTimeout(swTimeout);
+                document.getElementById('sw-status').textContent = 'SW: API Error';
+                startLoading();
             });
         } else {
-            document.getElementById('sw-status').textContent = 'No SW API';
+            document.getElementById('sw-status').textContent = 'SW: Not supported';
+            startLoading();
         }
         
-        // Load scripts dynamically
-        function loadScript(src, stepIdx, name) {
-            return new Promise(function(resolve, reject) {
-                const script = document.createElement('script');
-                script.src = src;
-                script.onload = function() {
-                    updateStep(stepIdx, 'loaded');
-                    resolve();
-                };
-                script.onerror = function() {
-                    updateStep(stepIdx, 'error');
-                    showError(name + ' CDN failed to load');
-                    reject(new Error(name + ' failed'));
-                };
-                document.head.appendChild(script);
-            });
+        function startLoading() {
+            setStatus('Loading scripts...');
+            
+            // Use static script tags with event listeners
+            const reactScript = document.createElement('script');
+            reactScript.src = 'https://unpkg.com/react@18/umd/react.production.min.js?v=4';
+            reactScript.onload = function() { updateStep(0, 'loaded'); checkAllLoaded(); };
+            reactScript.onerror = function() { updateStep(0, 'error'); showError('React CDN failed'); };
+            document.head.appendChild(reactScript);
+            
+            const reactDOMScript = document.createElement('script');
+            reactDOMScript.src = 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js?v=4';
+            reactDOMScript.onload = function() { updateStep(1, 'loaded'); checkAllLoaded(); };
+            reactDOMScript.onerror = function() { updateStep(1, 'error'); showError('ReactDOM CDN failed'); };
+            document.head.appendChild(reactDOMScript);
+            
+            const babelScript = document.createElement('script');
+            babelScript.src = 'https://unpkg.com/@babel/standalone/babel.min.js?v=4';
+            babelScript.onload = function() { updateStep(2, 'loaded'); checkAllLoaded(); };
+            babelScript.onerror = function() { updateStep(2, 'error'); showError('Babel CDN failed'); };
+            document.head.appendChild(babelScript);
+            
+            const lucideScript = document.createElement('script');
+            lucideScript.src = 'https://unpkg.com/lucide@0.344.0?v=4';
+            lucideScript.onload = function() { updateStep(3, 'loaded'); checkAllLoaded(); };
+            lucideScript.onerror = function() { updateStep(3, 'error'); };
+            document.head.appendChild(lucideScript);
+            
+            let scriptsLoaded = 0;
+            function checkAllLoaded() {
+                scriptsLoaded++;
+                if (scriptsLoaded >= 4) {
+                    setupGlobals();
+                }
+            }
         }
         
-        // Load all CDN scripts
-        Promise.all([
-            loadScript('https://unpkg.com/react@18/umd/react.production.min.js?v=3', 0, 'React'),
-            loadScript('https://unpkg.com/react-dom@18/umd/react-dom.production.min.js?v=3', 1, 'ReactDOM'),
-            loadScript('https://unpkg.com/@babel/standalone/babel.min.js?v=3', 2, 'Babel'),
-            loadScript('https://unpkg.com/lucide@0.344.0?v=3', 3, 'Lucide')
-        ]).then(function() {
-            // All scripts loaded, set up globals
+        function setupGlobals() {
             updateStep(4, 'current', 'Setting up...');
             try {
                 window.useState = React.useState;
@@ -169,14 +192,11 @@
                 updateStep(4, 'error');
                 showError('Globals failed: ' + e.message);
             }
-        }).catch(function() {
-            // At least one script failed
-            setStatus('Some scripts failed - check errors above');
-        });
+        }
         
         function loadApp() {
             updateStep(5, 'current', 'Fetching...');
-            fetch('./NutriTrack.jsx?v=53')
+            fetch('./NutriTrack.jsx?v=54')
                 .then(function(res) {
                     updateStep(5, 'loaded', 'Status: ' + res.status);
                     return res.text();
@@ -216,14 +236,14 @@
                             updateStep(10, 'loaded', 'Success!');
                             setStatus('NutriTrack loaded successfully');
                         } else {
-                            throw new Error('App not found: window._MainApp = ' + typeof window._MainApp);
+                            throw new Error('App not found');
                         }
                     } catch (e) {
                         updateStep(10, 'error');
                         showError('Error: ' + e.message + '
 
 ' + (e.stack || '').substring(0, 300));
-                        setStatus('ERROR - See details below');
+                        setStatus('ERROR');
                     }
                 })
                 .catch(function(e) {
@@ -233,21 +253,18 @@
                 });
         }
         
-        // Register new service worker after everything loads
+        // Register new SW
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 setTimeout(function() {
-                    navigator.serviceWorker.register('/NutriTrack/sw.js?v=53', { scope: '/NutriTrack/' })
+                    navigator.serviceWorker.register('/NutriTrack/sw.js?v=54', { scope: '/NutriTrack/' })
                         .then(function(reg) {
-                            document.getElementById('sw-status').textContent = 'SW v53 registered';
-                            fetch('/NutriTrack/sw.js?v=53', { cache: 'no-store' }).then(function() { 
-                                reg.update(); 
-                            }).catch(function() { reg.update(); });
+                            document.getElementById('sw-status').textContent = 'SW: v54 registered';
                         })
                         .catch(function(err) {
-                            document.getElementById('sw-status').textContent = 'SW reg failed';
+                            document.getElementById('sw-status').textContent = 'SW: Reg failed';
                         });
-                }, 2000);
+                }, 3000);
             });
         }
     </script>
