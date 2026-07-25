@@ -1,5 +1,5 @@
 // NutriTrack Service Worker
-const CACHE_VERSION = "nutritrack-v53";
+const CACHE_VERSION = "nutritrack-v54";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.jsx",
@@ -33,7 +33,6 @@ self.addEventListener("fetch", event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // CRITICAL: index.html must always reach network
   if (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html") {
     return;
   }
