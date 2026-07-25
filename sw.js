@@ -1,7 +1,5 @@
 // NutriTrack Service Worker — Phase 6m
-//
-// ── IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached asset ──
-const CACHE_VERSION = "nutritrack-v47";
+const CACHE_VERSION = "nutritrack-v48";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.jsx",
@@ -22,37 +20,35 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(k => k !== CACHE_VERSION)
-          .map(k => caches.delete(k))
-      )
+      Promise.all(keys.filter(k => k !== CACHE_VERSION).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("message", event => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
+  if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting();
 });
 
 self.addEventListener("fetch", event => {
   const { request } = event;
   const url = new URL(request.url);
 
+  // index.html — network-only
   if (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html") {
     return;
   }
 
+  // Cloudflare Worker — network-only
   if (request.url.startsWith(WORKER_ORIGIN)) {
     return;
   }
 
+  // Non-GET — pass through
   if (request.method !== "GET") {
     return;
   }
 
+  // foods.json — network-first
   if (url.pathname === "/NutriTrack/foods.json") {
     event.respondWith(
       fetch(request)
@@ -68,6 +64,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+  // Precached assets — cache-first with fallback to network
   const isPrecached = PRECACHE_ASSETS.some(asset => {
     if (asset.startsWith("http")) return request.url === asset;
     return url.pathname === asset || url.pathname.startsWith(asset);
@@ -77,18 +74,13 @@ self.addEventListener("fetch", event => {
     event.respondWith(
       caches.match(request, { ignoreSearch: true }).then(cached => {
         if (cached) return cached;
-        return fetch(request).then(response => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(CACHE_VERSION).then(cache => cache.put(request, clone));
-          }
-          return response;
-        });
-      })
+        return fetch(request).catch(() => undefined);
+      }).catch(() => undefined)
     );
     return;
   }
 
+  // Same-origin — network-first
   if (url.origin === self.location.origin) {
     event.respondWith(
       fetch(request)
