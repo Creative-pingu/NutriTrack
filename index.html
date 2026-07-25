@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>NutriTrack</title>
+    <title>NutriTrack - Loading</title>
     <link rel="manifest" href="/NutriTrack/manifest.webmanifest">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -11,70 +11,194 @@
     <link rel="apple-touch-icon" href="/NutriTrack/icons/apple-touch-icon.png">
     <meta name="theme-color" content="#3b82f6">
     <style>
-        html, body { margin: 0; padding: 0; background: #0a0f1a; color: white; min-height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; overflow-x: hidden; overflow-y: auto; }
-        #root { width: 100%; min-height: 100vh; display: flex; flex-direction: column; }
-        #loading-screen { display: flex; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0f1a; z-index: 9999; color: #64748b; }
-        #error-screen { display: flex; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0f1a; z-index: 9999; color: #ef4444; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; line-height: 1.5; }
+        html, body {
+            margin: 0; padding: 0; background: #0a0f1a; color: white;
+            min-height: 100%; width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent; overflow-x: hidden; overflow-y: auto;
+        }
+        #load-container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: #0a0f1a; z-index: 9999;
+        }
+        #load-status {
+            margin-top: 20px; font-size: 14px; color: #94a3b8;
+            text-align: center; max-width: 80%;
+        }
+        #load-steps {
+            margin-top: 30px; width: 80%;
+        }
+        .step {
+            padding: 8px 12px; margin: 4px 0; border-radius: 6px;
+            font-size: 13px; font-family: monospace;
+        }
+        .step.waiting { background: #1e293b; color: #64748b; }
+        .step.loaded { background: #10b981; color: white; }
+        .step.error { background: #ef4444; color: white; }
+        .step.current { background: #3b82f6; color: white; }
+        #error-detail {
+            margin-top: 20px; padding: 15px; border-radius: 8px;
+            background: #7c3aed; color: white; font-size: 12px;
+            max-width: 80%; text-align: left; display: none;
+        }
+        #loading-screen { display: none; }
     </style>
 </head>
 <body>
-    <div id="root"><div id="loading-screen">Launching NutriTrack...</div></div>
-    <div id="script-errors" style="display:none;"></div>
+    <div id="load-container">
+        <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
+        <div id="load-status">Initializing...</div>
+        <div id="load-steps"></div>
+        <div id="error-detail"></div>
+    </div>
 
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" onerror="document.getElementById('script-errors').innerHTML+='React failed to load<br>'"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" onerror="document.getElementById('script-errors').innerHTML+='ReactDOM failed to load<br>'"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js" onerror="document.getElementById('script-errors').innerHTML+='Babel failed to load<br>'"></script>
-    <script src="https://unpkg.com/lucide@0.344.0" onerror="document.getElementById('script-errors').innerHTML+='Lucide failed to load<br>'"></script>
+    <!-- Script loading with visual feedback -->
+    <script>
+        const steps = [];
+        function addStep(name) {
+            const el = document.createElement('div');
+            el.className = 'step waiting';
+            el.textContent = name;
+            el.id = 'step-' + steps.length;
+            document.getElementById('load-steps').appendChild(el);
+            steps.push({ name, el, status: 'waiting' });
+            return steps.length - 1;
+        }
+        function updateStep(idx, status, msg) {
+            if (steps[idx]) {
+                steps[idx].el.className = 'step ' + status;
+                if (msg) steps[idx].el.textContent = steps[idx].name + ': ' + msg;
+                steps[idx].status = status;
+            }
+        }
+        function setStatus(msg) {
+            document.getElementById('load-status').textContent = msg;
+        }
+        function showError(detail) {
+            document.getElementById('error-detail').textContent = detail;
+            document.getElementById('error-detail').style.display = 'block';
+        }
+        
+        // Track loading
+        addStep('React');
+        addStep('ReactDOM');
+        addStep('Babel');
+        addStep('Lucide');
+        addStep('Setup globals');
+        addStep('Fetch NutriTrack.jsx');
+        addStep('Process code');
+        addStep('Babel transform');
+        addStep('Eval code');
+        addStep('Render app');
+    </script>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" 
+        onload="updateStep(0, 'loaded')" 
+        onerror="updateStep(0, 'error', 'Failed to load'); showError('React CDN blocked or failed')"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" 
+        onload="updateStep(1, 'loaded')" 
+        onerror="updateStep(1, 'error', 'Failed to load'); showError('ReactDOM CDN blocked or failed')"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" 
+        onload="updateStep(2, 'loaded')" 
+        onerror="updateStep(2, 'error', 'Failed to load'); showError('Babel CDN blocked or failed - JSX cannot be processed')"></script>
+    <script src="https://unpkg.com/lucide@0.344.0" 
+        onload="updateStep(3, 'loaded')" 
+        onerror="updateStep(3, 'error', 'Failed to load')"></script>
 
     <script>
-        window.useState = React.useState; window.useEffect = React.useEffect; window.useMemo = React.useMemo; window.useCallback = React.useCallback; window.useRef = React.useRef;
-        if (window.lucide) { Object.assign(window, window.lucide); window['lucide-react'] = window.lucide; }
-        window.storage = { get: async (k) => ({ value: localStorage.getItem(k) }), set: async (k, v) => { localStorage.setItem(k, v); return v; }, delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; } };
-        
-        // Check if scripts loaded
-        if (!window.React || !window.ReactDOM || !window.Babel) {
-            document.getElementById('loading-screen').innerHTML = 'Error: Required scripts failed to load';
-            document.getElementById('script-errors').style.display = 'block';
+        updateStep(4, 'current', 'Setting up...');
+        try {
+            window.useState = React.useState;
+            window.useEffect = React.useEffect;
+            window.useMemo = React.useMemo;
+            window.useCallback = React.useCallback;
+            window.useRef = React.useRef;
+            
+            if (window.lucide) {
+                Object.assign(window, window.lucide);
+                window['lucide-react'] = window.lucide;
+            }
+            
+            window.storage = {
+                get: async (k) => ({ value: localStorage.getItem(k) }),
+                set: async (k, v) => { localStorage.setItem(k, v); return v; },
+                delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; }
+            };
+            updateStep(4, 'loaded');
+        } catch (e) {
+            updateStep(4, 'error', 'Failed');
+            showError('Globals setup failed: ' + e.message);
         }
     </script>
 
     <script type="text/babel">
-        async function loadApp() {
-            try {
-                const res = await fetch('./NutriTrack.jsx');
-                if (!res.ok) throw new Error('Failed to fetch NutriTrack.jsx: ' + res.status);
-                
-                let code = await res.text();
-                code = code.replace(/exports+default/g, 'window._MainApp = ');
-                const lines = code.split('
+        (function() {
+            updateStep(5, 'current', 'Fetching...');
+            
+            async function loadApp() {
+                try {
+                    const res = await fetch('./NutriTrack.jsx');
+                    updateStep(5, 'loaded', 'Status: ' + res.status);
+                    
+                    updateStep(6, 'current', 'Reading...');
+                    let code = await res.text();
+                    updateStep(6, 'loaded', code.length + ' chars');
+
+                    updateStep(7, 'current', 'Processing...');
+                    code = code.replace(/exports+default/g, 'window._MainApp = ');
+                    const lines = code.split('
 ');
-                code = lines.filter(line => !line.trim().startsWith('import ') && !line.trim().startsWith('export ')).join('
+                    code = lines.filter(line => !line.trim().startsWith('import ') && !line.trim().startsWith('export ')).join('
 ');
-                
-                const transformed = Babel.transform(code, { presets: ['react', ['env', { modules: false }]] }).code;
-                eval(transformed);
-                
-                const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
-                if (App) {
-                    const root = ReactDOM.createRoot(document.getElementById("root"));
-                    document.getElementById('root').innerHTML = '';
-                    root.render(React.createElement(App));
-                } else {
-                    throw new Error('App not found after eval');
+                    updateStep(7, 'loaded', lines.length + '->' + code.split('
+').length + ' lines');
+
+                    updateStep(8, 'current', 'Transforming...');
+                    const transformed = Babel.transform(code, { 
+                        presets: ['react', ['env', { modules: false }]] 
+                    }).code;
+                    updateStep(8, 'loaded', transformed.length + ' chars');
+
+                    updateStep(9, 'current', 'Executing...');
+                    eval(transformed);
+                    updateStep(9, 'loaded');
+
+                    updateStep(10, 'current', 'Rendering...');
+                    const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
+                    if (App) {
+                        const root = ReactDOM.createRoot(document.getElementById("root"));
+                        document.getElementById('load-container').style.display = 'none';
+                        root.render(React.createElement(App));
+                        updateStep(10, 'loaded', 'Success!');
+                        setStatus('NutriTrack loaded successfully');
+                    } else {
+                        throw new Error('App not found: window._MainApp = ' + typeof window._MainApp);
+                    }
+                } catch (e) {
+                    updateStep(10, 'error', 'Failed');
+                    showError('Error: ' + e.message + '
+
+Stack: ' + (e.stack || 'No stack'));
+                    setStatus('ERROR - See details below');
                 }
-            } catch (e) {
-                document.getElementById('root').innerHTML = '<div id="error-screen"><strong>Error:</strong> ' + e.message + '</div>';
             }
-        }
-        loadApp();
+            
+            // Mark current step
+            updateStep(5, 'current');
+            loadApp();
+        })();
     </script>
 
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/NutriTrack/sw.js', { scope: '/NutriTrack/' })
-                    .then(reg => { fetch('/NutriTrack/sw.js', { cache: 'no-store' }).then(() => reg.update()).catch(() => reg.update()); })
-                    .catch(err => {});
+                    .then(reg => { 
+                        setStatus('SW registered - ' + reg.scope);
+                        fetch('/NutriTrack/sw.js', { cache: 'no-store' }).then(() => reg.update()).catch(() => reg.update()); 
+                    })
+                    .catch(err => { setStatus('SW registration failed: ' + err.message); });
             });
         }
     </script>
