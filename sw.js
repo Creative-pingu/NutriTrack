@@ -1,5 +1,5 @@
 // NutriTrack Service Worker
-const CACHE_VERSION = "nutritrack-v56";
+const CACHE_VERSION = "nutritrack-v57";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.jsx",
@@ -56,8 +56,35 @@ self.addEventListener("fetch", event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // CRITICAL: index.html must always reach network
-  if (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html") {
+  // App shell (index.html): network-first so online users always get the
+  // freshest HTML, but fall back to the last cached copy when offline.
+  // A bare return() here (pass-through) made Safari refuse to load the
+  // page offline ("not connected to the internet"); respondWith with a
+  // cache fallback is what makes the PWA work offline.
+  if (request.method === "GET" &&
+      (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html")) {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_VERSION).then(cache => {
+              // Cache under the request URL and the canonical index.html
+              // path so either form matches on an offline reload.
+              cache.put(request, clone);
+              if (url.pathname === "/NutriTrack/") {
+                cache.put(self.location.origin + "/NutriTrack/index.html", response.clone());
+              }
+            });
+          }
+          return response;
+        })
+        .catch(() =>
+          caches.match(request, { ignoreSearch: true }).then(cached =>
+            cached || caches.match("/NutriTrack/index.html", { ignoreSearch: true })
+          )
+        )
+    );
     return;
   }
 
