@@ -204,12 +204,10 @@
                     
                     updateStep(7, 'current', 'Processing...');
                     code = code.replace(/exports+default/g, 'window._MainApp = ');
-                    const lines = code.split('
-');
+                    const lines = code.split('\n');
                     code = lines.filter(function(line) {
                         return !line.trim().startsWith('import ') && !line.trim().startsWith('export ');
-                    }).join('
-');
+                    }).join('\n');
                     updateStep(7, 'loaded');
                     
                     updateStep(8, 'current', 'Transforming...');
@@ -238,9 +236,7 @@
                         }
                     } catch (e) {
                         updateStep(10, 'error');
-                        showError('Error: ' + e.message + '
-
-' + (e.stack || '').substring(0, 300));
+                        showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
                         setStatus('ERROR');
                     }
                 })
