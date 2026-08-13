@@ -192,11 +192,20 @@
                     updateStep(5, 'loaded', code.length + ' chars');
                     
                     updateStep(6, 'current', 'Processing...');
-                    code = code.replace(/exports+default/g, 'window._MainApp = ');
-                    const lines = code.split('\n');
-                    code = lines.filter(function(line) {
-                        return !line.trim().startsWith('import ') && !line.trim().startsWith('export ');
-                    }).join('\n');
+                    // 1. Drop the `import {...} from "react";` line - React hooks
+                    //    are already exposed on window by setupGlobals().
+                    code = code.replace(/^import\s+\{[\s\S]*?\}\s+from\s+["']react["'];?\s*$/m, '');
+                    // 2. `export default function NutriTrack()` -> `function NutriTrack()`
+                    //    (preserve the declaration; the old regex /exports+default/
+                    //    matched `exportsdefault`, not `export default`, and the
+                    //    line filter stripped the whole declaration line, leaving the
+                    //    function body's `return` statements at top level ->
+                    //    Babel error 'return outside of function').
+                    code = code.replace(/export\s+default\s+function\s+/g, 'function ');
+                    // 3. Drop any remaining bare `export { ... }` / `export const ...`.
+                    code = code.replace(/^export\s+/gm, '');
+                    // 4. Expose the app component for the renderer.
+                    code = code + '\nwindow._MainApp = (typeof NutriTrack !== "undefined" ? NutriTrack : null);';
                     updateStep(6, 'loaded');
                     
                     updateStep(7, 'current', 'Transforming...');
