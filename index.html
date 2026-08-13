@@ -60,7 +60,7 @@
 </head>
 <body>
     <div id="sw-status">SW: Checking...</div>
-    <div id="build-info">v55 - 2026-07-25 13:00</div>
+    <div id="build-info">v56 - 2026-07-25 13:00</div>
     <div id="load-container">
         <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
         <div id="load-status">Initializing...</div>
@@ -93,8 +93,8 @@
         }
         
         // Single source of truth for the app version. Keep in sync with
-        // sw.js CACHE_VERSION ("nutritrack-v55") and the build timestamp.
-        const APP_VERSION = 'v55';
+        // sw.js CACHE_VERSION ("nutritrack-v56") and the build timestamp.
+        const APP_VERSION = 'v56';
 
         addStep('React');
         addStep('ReactDOM');
@@ -183,7 +183,7 @@
         
         function loadApp() {
             updateStep(4, 'current', 'Fetching...');
-            fetch('./NutriTrack.jsx?v=55')
+            fetch('./NutriTrack.jsx?v=' + APP_VERSION.replace('v',''))
                 .then(function(res) {
                     updateStep(4, 'loaded', 'Status: ' + res.status);
                     return res.text();
