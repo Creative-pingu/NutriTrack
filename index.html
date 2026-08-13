@@ -60,7 +60,7 @@
 </head>
 <body>
     <div id="sw-status">SW: Checking...</div>
-    <div id="build-info">v54 - 2026-07-25 13:00</div>
+    <div id="build-info">v55 - 2026-07-25 13:00</div>
     <div id="load-container">
         <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
         <div id="load-status">Initializing...</div>
@@ -92,6 +92,10 @@
             document.getElementById('error-detail').style.display = 'block';
         }
         
+        // Single source of truth for the app version. Keep in sync with
+        // sw.js CACHE_VERSION ("nutritrack-v55") and the build timestamp.
+        const APP_VERSION = 'v55';
+
         addStep('React');
         addStep('ReactDOM');
         addStep('Babel');
@@ -103,34 +107,28 @@
         addStep('Eval code');
         addStep('Render app');
         
-        // Unregister old SW with timeout
+        // Register the SW exactly once per load (do NOT unregister here -
+        // unregistering on every load defeats the Phase 6d update detection
+        // in NutriTrack.jsx, since there is never a waiting SW to detect).
+        // The SW serves index.html network-first (never cached), so the
+        // newest index.html always loads; code updates then propagate through
+        // the SW's own lifecycle (updatefound -> controllerchange).
         if ('serviceWorker' in navigator) {
-            const swTimeout = setTimeout(function() {
-                document.getElementById('sw-status').textContent = 'SW: Timeout';
-                startLoading();
-            }, 2000);
-            
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                clearTimeout(swTimeout);
-                document.getElementById('sw-status').textContent = 'SW: Found ' + registrations.length;
-                Promise.all(registrations.map(function(r) { 
-                    return r.unregister(); 
-                })).then(function() {
-                    document.getElementById('sw-status').textContent = 'SW: Cleared';
-                    startLoading();
-                }).catch(function(e) {
-                    document.getElementById('sw-status').textContent = 'SW: Error';
-                    startLoading();
+            navigator.serviceWorker.register('/NutriTrack/sw.js?v=' + APP_VERSION, { scope: '/NutriTrack/' })
+                .then(function(reg) {
+                    document.getElementById('sw-status').textContent = 'SW: ' + APP_VERSION + ' active';
+                    // Expose the ready promise so NutriTrack.jsx's Phase 6d
+                    // update detection can reuse it without racing.
+                    window._swReady = navigator.serviceWorker.ready;
+                })
+                .catch(function(err) {
+                    document.getElementById('sw-status').textContent = 'SW: Reg failed';
                 });
-            }).catch(function(e) {
-                clearTimeout(swTimeout);
-                document.getElementById('sw-status').textContent = 'SW: API Error';
-                startLoading();
-            });
         } else {
             document.getElementById('sw-status').textContent = 'SW: Not supported';
-            startLoading();
         }
+        // Start loading immediately - SW registration is non-blocking.
+        startLoading();
         
         function startLoading() {
             setStatus('Loading scripts...');
@@ -196,7 +194,7 @@
         
         function loadApp() {
             updateStep(5, 'current', 'Fetching...');
-            fetch('./NutriTrack.jsx?v=54')
+            fetch('./NutriTrack.jsx?v=55')
                 .then(function(res) {
                     updateStep(5, 'loaded', 'Status: ' + res.status);
                     return res.text();
@@ -253,20 +251,7 @@
                 });
         }
         
-        // Register new SW
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    navigator.serviceWorker.register('/NutriTrack/sw.js?v=54', { scope: '/NutriTrack/' })
-                        .then(function(reg) {
-                            document.getElementById('sw-status').textContent = 'SW: v54 registered';
-                        })
-                        .catch(function(err) {
-                            document.getElementById('sw-status').textContent = 'SW: Reg failed';
-                        });
-                }, 3000);
-            });
-        }
+
     </script>
 </body>
 </html>
