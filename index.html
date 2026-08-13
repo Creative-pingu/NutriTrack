@@ -99,7 +99,6 @@
         addStep('React');
         addStep('ReactDOM');
         addStep('Babel');
-        addStep('Lucide');
         addStep('Setup globals');
         addStep('Fetch NutriTrack.jsx');
         addStep('Process code');
@@ -152,76 +151,66 @@
             babelScript.onerror = function() { updateStep(2, 'error'); showError('Babel CDN failed'); };
             document.head.appendChild(babelScript);
             
-            const lucideScript = document.createElement('script');
-            lucideScript.src = 'https://unpkg.com/lucide@0.344.0?v=4';
-            lucideScript.onload = function() { updateStep(3, 'loaded'); checkAllLoaded(); };
-            lucideScript.onerror = function() { updateStep(3, 'error'); };
-            document.head.appendChild(lucideScript);
-            
             let scriptsLoaded = 0;
             function checkAllLoaded() {
                 scriptsLoaded++;
-                if (scriptsLoaded >= 4) {
+                if (scriptsLoaded >= 3) {
                     setupGlobals();
                 }
             }
         }
         
         function setupGlobals() {
-            updateStep(4, 'current', 'Setting up...');
+            updateStep(3, 'current', 'Setting up...');
             try {
                 window.useState = React.useState;
                 window.useEffect = React.useEffect;
                 window.useMemo = React.useMemo;
                 window.useCallback = React.useCallback;
                 window.useRef = React.useRef;
-                if (window.lucide) {
-                    Object.assign(window, window.lucide);
-                    window['lucide-react'] = window.lucide;
-                }
                 window.storage = {
                     get: async (k) => ({ value: localStorage.getItem(k) }),
                     set: async (k, v) => { localStorage.setItem(k, v); return v; },
                     delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; }
                 };
-                updateStep(4, 'loaded');
+                updateStep(3, 'loaded');
                 loadApp();
             } catch (e) {
-                updateStep(4, 'error');
+                updateStep(3, 'error');
                 showError('Globals failed: ' + e.message);
             }
         }
         
         function loadApp() {
-            updateStep(5, 'current', 'Fetching...');
+            updateStep(4, 'current', 'Fetching...');
             fetch('./NutriTrack.jsx?v=55')
                 .then(function(res) {
-                    updateStep(5, 'loaded', 'Status: ' + res.status);
+                    updateStep(4, 'loaded', 'Status: ' + res.status);
                     return res.text();
                 })
                 .then(function(code) {
-                    updateStep(6, 'loaded', code.length + ' chars');
+                    updateStep(5, 'loaded', code.length + ' chars');
                     
-                    updateStep(7, 'current', 'Processing...');
+                    updateStep(6, 'current', 'Processing...');
                     code = code.replace(/exports+default/g, 'window._MainApp = ');
                     const lines = code.split('\n');
                     code = lines.filter(function(line) {
                         return !line.trim().startsWith('import ') && !line.trim().startsWith('export ');
                     }).join('\n');
-                    updateStep(7, 'loaded');
+                    updateStep(6, 'loaded');
                     
-                    updateStep(8, 'current', 'Transforming...');
+                    updateStep(7, 'current', 'Transforming...');
                     try {
                         const transformed = Babel.transform(code, { 
                             presets: ['react', ['env', { modules: false }]] 
                         }).code;
+                        updateStep(7, 'loaded');
+                        
+                        updateStep(8, 'current', 'Executing...');
+                        eval(transformed);
                         updateStep(8, 'loaded');
                         
-                        updateStep(9, 'current', 'Executing...');
-                        eval(transformed);
-                        updateStep(9, 'loaded');
-                        
-                        updateStep(10, 'current', 'Rendering...');
+                        updateStep(9, 'current', 'Rendering...');
                         const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
                         if (App) {
                             const container = document.createElement('div');
@@ -229,19 +218,19 @@
                             document.body.appendChild(container);
                             const root = ReactDOM.createRoot(container);
                             root.render(React.createElement(App));
-                            updateStep(10, 'loaded', 'Success!');
+                            updateStep(9, 'loaded', 'Success!');
                             setStatus('NutriTrack loaded successfully');
                         } else {
                             throw new Error('App not found');
                         }
                     } catch (e) {
-                        updateStep(10, 'error');
+                        updateStep(9, 'error');
                         showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
                         setStatus('ERROR');
                     }
                 })
                 .catch(function(e) {
-                    updateStep(10, 'error');
+                    updateStep(9, 'error');
                     showError('Fetch failed: ' + e.message);
                     setStatus('ERROR');
                 });
