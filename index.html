@@ -210,8 +210,12 @@
                     
                     updateStep(7, 'current', 'Transforming...');
                     try {
+                        // Use classic runtime so JSX compiles to
+                        // React.createElement(...) (React is global) instead of
+                        // emitting `import { jsx } from "react/jsx-runtime"`,
+                        // which eval() cannot run as a static import.
                         const transformed = Babel.transform(code, { 
-                            presets: ['react', ['env', { modules: false }]] 
+                            presets: [['react', { runtime: 'classic' }], ['env', { modules: false }]] 
                         }).code;
                         updateStep(7, 'loaded');
                         
