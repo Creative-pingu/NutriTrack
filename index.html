@@ -66,7 +66,7 @@
 </head>
 <body>
     <div id="sw-status">SW: Checking...</div>
-    <div id="build-info">v57 - 2026-07-25 13:00</div>
+    <div id="build-info">v58 - 2026-07-25 13:00</div>
     <div id="load-container">
         <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
         <div id="load-status">Initializing...</div>
@@ -103,8 +103,11 @@
         }
         
         // Single source of truth for the app version. Keep in sync with
-        // sw.js CACHE_VERSION ("nutritrack-v57") and the build timestamp.
-        const APP_VERSION = 'v57';
+        // sw.js CACHE_VERSION ("nutritrack-v58") and the build timestamp.
+        const APP_VERSION = 'v58';
+        // Expose on window so the eval'd NutriTrack.jsx can read it
+        // for the Settings > About panel (eval scope can't see this const).
+        window.APP_VERSION = APP_VERSION;
 
         addStep('React');
         addStep('ReactDOM');

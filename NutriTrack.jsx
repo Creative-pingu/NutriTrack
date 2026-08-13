@@ -50,6 +50,11 @@ function mapFoodRecord(r) {
   };
 }
 
+// App version, exposed by index.html (window.APP_VERSION). Used by the
+// Settings > About panel for on-device diagnostics. Falls back if the
+// global isn't set (e.g. running outside the deployed shell).
+const APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION) || "unknown";
+
 // Bump this string whenever you deploy a new foods.json to bust the ATHS cache.
 const FOODS_DB_VERSION = "3";
 
@@ -2583,6 +2588,28 @@ export default function NutriTrack() {
                 </div>
               </div>
             )}
+          </div>
+
+          {/* About / Diagnostics (on-device version + SW/cache checks) */}
+          <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",textTransform:"uppercase",letterSpacing:"0.05em",marginBottom:10,marginTop:16}}>About</div>
+          <div style={S.card}>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4px 12px"}}>
+              <div style={{fontSize:11,color:"#94a3b8"}}>App version</div>
+              <div style={{fontSize:11,color:"#e2e8f0",fontWeight:600,fontFamily:"monospace"}}>{APP_VERSION}</div>
+              <div style={{fontSize:11,color:"#94a3b8"}}>Foods DB version</div>
+              <div style={{fontSize:11,color:"#e2e8f0",fontWeight:600,fontFamily:"monospace"}}>{FOODS_DB_VERSION}</div>
+              <div style={{fontSize:11,color:"#94a3b8"}}>Last validated</div>
+              <div style={{fontSize:11,color:"#e2e8f0",fontWeight:600}}>{(() => { const v = localStorage.getItem(STORAGE_KEYS.lastValidatedAt); return v ? new Date(v).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}) : "never"; })()}</div>
+              <div style={{fontSize:11,color:"#94a3b8"}}>Connection</div>
+              <div style={{fontSize:11,color:isOnline?"#10b981":"#f59e0b",fontWeight:600}}>{isOnline?"online":"offline"}</div>
+              <div style={{fontSize:11,color:"#94a3b8"}}>Service worker</div>
+              <div style={{fontSize:11,color:"#e2e8f0",fontWeight:600,fontFamily:"monospace"}}>{("serviceWorker" in navigator) ? "supported" : "unsupported"}</div>
+              <div style={{fontSize:11,color:"#94a3b8"}}>Food database</div>
+              <div style={{fontSize:11,color:foodDBStatus==="ready"?"#10b981":foodDBStatus==="error"?"#ef4444":"#f59e0b",fontWeight:600}}>{foodDBStatus}</div>
+            </div>
+            <div style={{borderTop:"1px solid #1e293b",marginTop:12,paddingTop:12,fontSize:11,color:"#475569",lineHeight:1.5}}>
+              NutriTrack — offline-first nutrition tracking. All data is stored locally on this device. Use Export Data above to back up before clearing browser data.
+            </div>
           </div>
 
         </div>
