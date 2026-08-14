@@ -132,22 +132,19 @@ phase report). `index.html` must never be added to `PRECACHE_ASSETS`.
 
 ---
 
-## 6. Open Question for Product Owner (architect to raise)
+## 6. Cart Recovery Across App Suspension — RESOLVED (Option A)
 
-**Cart recovery across app suspension.** iOS can evict a standalone PWA from
-memory at any time. A user mid-batch who gets interrupted (bike break, phone
-call) will lose the in-progress cart because it is session-only (§2.5).
+**Decision: Option A — no persistence.** Confirmed by product owner.
 
-- **Option A (current brief):** Accept the loss. Rationale: batches are small
-  (typically <10 foods), re-adding is cheap, and persistence adds a storage
-  key + migration surface. Recovery is a known, acceptable cost.
-- **Option B:** Persist `batch` to a new `nt-batch` key (add to `STORAGE_KEYS`,
-  load in `loadAll`, save in an effect). Survives suspension. Costs one more
-  key to validate/migrate.
+iOS can evict a standalone PWA from memory at any time. A user mid-batch who
+gets interrupted (bike break, phone call) will lose the in-progress cart
+because it is session-only (§2.5).
 
-**Architect recommendation: Option A** for 6n. If field use shows mid-batch loss
-is painful, promote to a follow-up. This keeps 6n to one deliverable, no new
-persistence. **Needs Nick's confirmation before dev starts.**
+Rationale for accepting the loss: batches are small (typically <10 foods),
+re-adding is cheap, and persistence would add a storage key + migration
+surface. This keeps 6n to one deliverable with no new persistence.
+
+**Promote to a follow-up** if field use shows mid-batch loss is painful.
 
 ---
 
@@ -177,7 +174,7 @@ Scenario **8 is the ID-collision regression test** — do not skip it.
 ## 8. Out of Scope for 6n
 
 - Per-food meal override (locked: one meal per batch).
-- Cart persistence / recovery (§6, deferred unless Nick overrides).
+- Cart persistence / recovery (§6 — deferred follow-up; Option A chosen for 6n).
 - Editing a batch entry's food after adding (remove + re-add is the escape hatch).
 - Multi-select for recipes/supplements (food only this phase).
 - Nutrient RDA / colour coding / info modals (separate major phase).
@@ -187,7 +184,7 @@ Scenario **8 is the ID-collision regression test** — do not skip it.
 ## 9. Definition of Done
 
 - All §7 validation scenarios pass on device.
-- No new `STORAGE_KEYS` entry (per §6 Option A, if confirmed).
+- No new `STORAGE_KEYS` entry (per §6, Option A — confirmed).
 - `CACHE_VERSION` / `APP_VERSION` bumped together if either changed.
 - No React key warnings in console for batch commits.
 - Existing single-select flow (toggle OFF) behavior unchanged — scenarios that
