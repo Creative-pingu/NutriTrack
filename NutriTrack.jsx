@@ -205,11 +205,49 @@ function parseIngredientLine(rawLine) {
 }
 async function parseIngredientsLocal(ingredientLines) { if (!ingredientLines || !ingredientLines.length) return []; return ingredientLines.map(l => { const p = parseIngredientLine(l); return p || { name: (l||"").trim().toLowerCase(), amount: 0, unit: "" }; }); }
 async function parseIngredients(ingredientLines) { return parseIngredientsLocal(ingredientLines); }
+// Phase 7a: local-only recipe splitter. No external calls; full privacy.
+// Splits pasted text into recipes on markdown headings (#/##/###) or lines
+// ending in a colon, then collects the non-blank lines that follow as
+// ingredient lines. Returns the same shape the Claude call returned:
+// [{ title, servings, source, ingredientLines }].
+function parseServingsFromTitle(title) {
+  const m = title.match(/\((?:serves?|servings?)\s*([\d./]+)\)/i);
+  if (m) { const v = parseQuantity(m[1]); if (v && v.amount) return Math.max(1, Math.round(v.amount)); }
+  const m2 = title.match(/(?:serves?|servings?)\s*([\d./]+)/i);
+  if (m2) { const v = parseQuantity(m2[1]); if (v && v.amount) return Math.max(1, Math.round(v.amount)); }
+  return 4;
+}
 async function parseRecipesFromPasteText(text) {
-  const prompt = `Extract all recipes from the following text and return ONLY a JSON array.\nEach recipe: { "title": string, "servings": number, "source": string, "ingredientLines": string[] }\nText:\n${text.slice(0, 8000)}`;
-  const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 2000, messages: [{ role: "user", content: prompt }] }) });
-  const data = await res.json(); const out = (data.content?.[0]?.text || "[]").replace(/```json|```/g,"").trim();
-  try { return JSON.parse(out); } catch { return []; }
+  const rawLines = (text || "").split(/\r?\n/);
+  const recipes = [];
+  let current = null;
+  const isHeading = (line) => /^(?:#{1,6}\s+|\s*\*\s+)/.test(line) || /:$/.test(line.trim());
+  const isIngredientLike = (line) => { const q = parseQuantity(line.replace(/^[\u2022\-\u2013\u2014\*]\s*/, "").trim()); return !!q || KNOWN_UNITS.has(line.trim().split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, "")); };
+  const pushCurrent = () => { if (current && current.ingredientLines.length) recipes.push(current); };
+  for (let line of rawLines) {
+    const t = line.trim();
+    if (!t) continue;
+    const cleaned = t.replace(/^[\u2022\-\u2013\u2014\*#]\s*/, "").replace(/#+\s*$/, "").trim();
+    if (isHeading(t) && (!isIngredientLike(t) || (recipes.length === 0 && !(current && current.ingredientLines.length)))) {
+      const title = cleaned.replace(/:$/, "").trim();
+      if (!title) continue;
+      pushCurrent();
+      current = { title, servings: parseServingsFromTitle(title), source: "pasted", ingredientLines: [] };
+      continue;
+    }
+    // Standalone "serves/servings N" line before any ingredients -> servings count.
+    const sv = cleaned.match(/^(?:serves?|servings?)\s*([\d./]+)$/i);
+    if (sv && current && !current.ingredientLines.length) { current.servings = (() => { const v = parseQuantity(sv[1]); return (v && v.amount) ? Math.max(1, Math.round(v.amount)) : current.servings; })(); continue; }
+    if (!current) current = { title: "Pasted recipe", servings: 4, source: "pasted", ingredientLines: [] };
+    current.ingredientLines.push(cleaned);
+  }
+  pushCurrent();
+  // Fallback: no recognisable structure -> treat the whole paste as one recipe.
+  if (!recipes.length && rawLines.some(l => l && l.trim())) {
+    const lines = rawLines.map(l => l.trim()).filter(Boolean);
+    return [{ title: "Pasted recipe", servings: 4, source: "pasted", ingredientLines: lines }];
+  }
+  return recipes;
 }
 // ── CONSTANTS ─────────────────────────────────────────────────────────────
 // AA_EAR replaced by computeAAGoals(weightKg) — per-kg spreadsheet values
@@ -2529,7 +2567,7 @@ export default function NutriTrack() {
             </div>
             <details style={{marginTop:6}}>
               <summary style={{fontSize:12,color:"#64748b",cursor:"pointer",padding:"8px 0",listStyle:"none",outline:"none",userSelect:"none"}}>▸ Manual import (fallback)</summary>
-              <div style={{marginTop:8}}><div style={{background:"#451a03",border:"1px solid #92400e",borderRadius:8,padding:"10px 12px",marginBottom:10,fontSize:12,color:"#fcd34d",lineHeight:1.5}}>⚠️ Paste-based import requires Claude API access, which is not available in the deployed app. Use "Sync from Notion" instead. This feature will be migrated to the regex parser in a future update.</div><div style={{fontSize:11,color:"#64748b",marginBottom:8,lineHeight:1.5}}>Paste ingredient text from any source.</div>
+              <div style={{marginTop:8}}><div style={{background:"#451a03",border:"1px solid #92400e",borderRadius:8,padding:"10px 12px",marginBottom:10,fontSize:12,color:"#fcd34d",lineHeight:1.5}}>⚠️ Paste-based import is parsed locally on-device. Use markdown headings (#) or a title followed by a colon to split multiple recipes. Nothing is sent to any server.</div><div style={{fontSize:11,color:"#64748b",marginBottom:8,lineHeight:1.5}}>Paste ingredient text from any source.</div>
                 <textarea style={{width:"100%",background:"#1e293b",border:"1px solid #334155",borderRadius:10,padding:"12px 14px",color:"#e2e8f0",fontSize:13,outline:"none",boxSizing:"border-box",minHeight:100,resize:"vertical",fontFamily:"inherit"}} placeholder={"e.g.\n50 g of flour\n1 tsp cornstarch"} value={pasteText} onChange={e=>setPasteText(e.target.value)}/>
                 <button style={{width:"100%",marginTop:8,padding:12,borderRadius:10,border:"1px solid #334155",background:pasteText.trim()&&!syncInProgress?"transparent":"#0f1729",color:pasteText.trim()&&!syncInProgress?"#94a3b8":"#475569",fontSize:13,fontWeight:600,cursor:pasteText.trim()&&!syncInProgress?"pointer":"default"}} disabled={!pasteText.trim()||syncInProgress} onClick={handlePasteSync}>{syncInProgress?"Working…":"Parse pasted text"}</button>
               </div>
