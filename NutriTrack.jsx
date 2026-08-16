@@ -553,6 +553,10 @@ export default function NutriTrack() {
   const [editingEntryId, setEditingEntryId] = useState(null);
   const [detailNutrient, setDetailNutrient] = useState(null);
 
+  // Phase 6n — multi-select batch logging (session-only, no persistence; see brief §2.5/§6)
+  const [multiSelect,    setMultiSelect]    = useState(false); // toggle on food search screen
+  const [batch,          setBatch]          = useState([]);    // [{ food, amount }]  amount is a string
+
   // Logged-entry editing (Phase 5.7)
   const [editingLogEntry,     setEditingLogEntry]     = useState(null); // full entry object
   const [editLogServings,     setEditLogServings]     = useState("1");
@@ -867,6 +871,8 @@ export default function NutriTrack() {
   // ── FOOD ACTIONS ──────────────────────────────────────────────────────
   // Reset serving unit/qty picker whenever a new food is selected
   useEffect(() => { setServingUnit(null); setServingQty("1"); }, [selectedFood]);
+  // Phase 6n: leaving the food add-mode abandons any half-built batch (brief §5.5)
+  useEffect(() => { if (addMode !== "food" && (multiSelect || batch.length)) { setMultiSelect(false); setBatch([]); } }, [addMode]);
   useEffect(() => { setRecipeIngServingUnit(null); setRecipeIngServingQty("1"); }, [recipeIngSelected]);
   // Called after any food log commit. Upserts foodId at top, caps at 10.
   const upsertRecent = (foodId, foodName, amount, mealUsed) => {
@@ -903,6 +909,50 @@ export default function NutriTrack() {
   };
   const removeEntry    = id => setLogs(prev => ({ ...prev, [currentDate]: (prev[currentDate]||[]).filter(e => e.id !== id) }));
   const startEditEntry = entry => { const food = allFoods.find(f => f.id === entry.foodId); if (!food) return; setSelectedFood(food); setAmount(String(entry.amount)); setMeal(entry.meal); setEditingEntryId(entry.id); setAddMode("food"); setView("add"); };
+
+  // ── PHASE 6n: MULTI-SELECT BATCH ──────────────────────────────────────────
+  // Add a food to the in-progress batch. Pre-fill amount from last-logged
+  // recent (brief §4); fall back to "100" (matches single-select default).
+  const addFoodToBatch = (food) => {
+    const last = recents.find(r => r.foodId === food.id);
+    const initialAmount = last ? String(last.lastAmount) : "100";
+    setBatch(prev => prev.some(b => b.food.id === food.id)
+      ? prev
+      : [...prev, { food, amount: initialAmount }]);
+  };
+  const removeFoodFromBatch = idx => setBatch(prev => prev.filter((_, i) => i !== idx));
+  const setBatchAmount = (idx, amount) => setBatch(prev => prev.map((b, i) => i === idx ? { ...b, amount } : b));
+
+  // Toggle multi-select off must clear the cart (brief §5.5 / scenario 5).
+  const toggleMultiSelect = () => {
+    if (multiSelect) { setMultiSelect(false); setBatch([]); } // turning OFF -> discard in-progress cart
+    else setMultiSelect(true);
+  };
+
+  // Commit the whole batch in a single setLogs update (brief §5.3).
+  // One shared meal + timestamp for all entries (brief §2). Each entry gets a
+  // distinct indexed id to avoid Date.now() collisions in a tight loop (§5.1).
+  // Snapshot is captured at commit time per food (§5.2). One upsertRecent per
+  // food AFTER the setLogs call, preserving last-added-at-top order (§5.4).
+  const commitBatch = () => {
+    if (!batch.length) return;
+    const committedAt = new Date().toISOString();
+    const entries = batch.map((b, i) => ({
+      id: `${Date.now()}-${i}`,
+      foodId: b.food.id,
+      foodName: b.food.name,
+      amount: parseFloat(b.amount) || 0,
+      meal,
+      time: committedAt,
+      snapshot: buildFoodSnapshot(b.food)
+    }));
+    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate] || []), ...entries] }));
+    batch.forEach(b => upsertRecent(b.food.id, b.food.name, parseFloat(b.amount) || 0, meal));
+    setBatch([]);
+    setMultiSelect(false);
+    setSearchTerm("");
+    setView("log");
+  };
 
   // ── EXERCISE ──────────────────────────────────────────────────────────
   const addExercise = burnOverride => {
@@ -1392,7 +1442,7 @@ export default function NutriTrack() {
             </div>
           )}
         </div>
-        <button style={S.fab} onClick={() => { setEditingEntryId(null); setAddMode("food"); setView("add"); setTimeout(()=>searchRef.current?.focus(),100); }}>+</button>
+        <button style={S.fab} onClick={() => { setEditingEntryId(null); setAddMode("food"); if (multiSelect) { setMultiSelect(false); setBatch([]); } setView("add"); setTimeout(()=>searchRef.current?.focus(),100); }}>+</button>
         <button style={{...S.fab,right:"calc(84px + env(safe-area-inset-right, 0px))",background:"#16a34a",fontSize:22}} onClick={() => setView("exercise")}>🏃</button>
         <BottomNav/>
       </div>
@@ -1412,7 +1462,7 @@ export default function NutriTrack() {
       return (
         <div style={S.app}>
           <div style={S.header}>
-            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => { setView("log"); setSelectedFood(null); setSearchTerm(""); setEditingEntryId(null); }}>← Back</button>
+            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => { setView("log"); setSelectedFood(null); setSearchTerm(""); setEditingEntryId(null); if (multiSelect) { setMultiSelect(false); setBatch([]); } }}>← Back</button>
             <span style={{fontSize:15,fontWeight:700}}>{selectedFood?(editingEntryId?"Edit Entry":"Log Amount"):"Add Food"}</span>
             {!selectedFood ? <button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,cursor:"pointer",fontWeight:600}} onClick={() => setView("customAdd")}>+ Custom</button> : <div style={{width:64}}/>}
           </div>
@@ -1425,6 +1475,23 @@ export default function NutriTrack() {
                   <div style={{textAlign:"right",marginTop:4,marginBottom:2}}>
                     <button style={{background:"none",border:"none",color:"#64748b",fontSize:11,cursor:"pointer",textDecoration:"underline"}} onClick={() => setView("manageCustomFoods")}>Manage custom foods</button>
                   </div>
+                )}
+                {/* Phase 6n — explicit multi-select toggle (brief §2.1). Default OFF keeps single-select unchanged. */}
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,marginTop:8,marginBottom:2}}>
+                  <button style={{display:"flex",alignItems:"center",gap:8,background:"none",border:"none",color:multiSelect?"#3b82f6":"#64748b",fontSize:12,fontWeight:600,cursor:"pointer",padding:0}} onClick={toggleMultiSelect}>
+                    <span style={{width:34,height:20,borderRadius:10,background:multiSelect?"#1d4ed8":"#334155",position:"relative",transition:"background 0.15s",flexShrink:0}}>
+                      <span style={{position:"absolute",top:2,left:multiSelect?16:2,width:16,height:16,borderRadius:8,background:"#fff",transition:"left 0.15s"}}/>
+                    </span>
+                    Multi-Select{multiSelect?" ON":""}
+                  </button>
+                  {multiSelect && batch.length > 0 && (
+                    <button style={{background:"#16a34a",border:"none",borderRadius:8,color:"#fff",fontSize:12,fontWeight:700,padding:"6px 12px",cursor:"pointer"}} onClick={() => setView("batchReview")}>
+                      Review batch ({batch.length}) →
+                    </button>
+                  )}
+                </div>
+                {multiSelect && (
+                  <div style={{fontSize:11,color:"#64748b",marginBottom:6}}>Tap foods to add them to the batch. Quantities are entered on the review screen.</div>
                 )}
                 <div style={{marginTop:12,maxHeight:"calc(100vh - 220px)",overflowY:"auto"}}>
                   {foodDBStatus === "loading" && <div style={{padding:"32px 0",textAlign:"center",color:"#64748b",fontSize:13}}>Loading food database…</div>}
@@ -1442,16 +1509,18 @@ export default function NutriTrack() {
                           if (!food) return null;
                           return (
                             <div key={r.foodId} style={{...S.srchItem,display:"flex",alignItems:"center",gap:8}}
-                              onClick={() => { setSelectedFood(food); setAmount(String(r.lastAmount)); setMeal(r.lastMeal || meal); }}>
+                              onClick={() => multiSelect ? addFoodToBatch(food) : (setSelectedFood(food), setAmount(String(r.lastAmount)), setMeal(r.lastMeal || meal))}>
                               <div style={{flex:1,minWidth:0}}>
                                 <div style={{fontSize:14,fontWeight:500,color:"#e2e8f0",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{r.foodName}</div>
                                 <div style={{fontSize:11,color:"#64748b"}}>{r.lastAmount}g · {r.lastMeal}</div>
                               </div>
+                              {!multiSelect && (
                               <button
                                 style={{background:"#1d4ed8",border:"none",borderRadius:8,color:"#fff",fontSize:11,fontWeight:700,padding:"6px 10px",cursor:"pointer",flexShrink:0,whiteSpace:"nowrap"}}
                                 onClick={e => { e.stopPropagation(); quickLogRecent(r); }}>
                                 ⚡ Log
                               </button>
+                              )}
                             </div>
                           );
                         })}
@@ -1472,7 +1541,13 @@ export default function NutriTrack() {
                   })()}
                   {Object.entries(groupedByCategory).map(([cat,foods]) => (
                     <div key={cat}><div style={{fontSize:11,fontWeight:700,color:"#475569",padding:"10px 0 4px",letterSpacing:"0.05em",textTransform:"uppercase"}}>{cat}</div>
-                      {foods.map(f => (<div key={f.id} style={{...S.srchItem,contentVisibility:"auto",containIntrinsicSize:"0 48px"}} onClick={() => setSelectedFood(f)}><span style={{fontSize:12,color:"#f59e0b",float:"right"}}>{fmtE(f.cal)} {energyLabel}/100g</span><div style={{fontSize:14,fontWeight:500,color:"#e2e8f0"}}>{f.name}</div>{f.source&&f.source!=="usda"&&<div style={{fontSize:11,color:"#475569",marginTop:1}}>Source: {f.source.toUpperCase()}</div>}</div>))}
+                      {foods.map(f => {
+                        const inBatch = multiSelect && batch.some(b => b.food.id === f.id);
+                        return (<div key={f.id} style={{...S.srchItem,contentVisibility:"auto",containIntrinsicSize:"0 48px",...(multiSelect?{display:"flex",alignItems:"center",gap:8}:{})}} onClick={() => multiSelect ? addFoodToBatch(f) : setSelectedFood(f)}>
+                          {multiSelect && <span style={{width:20,height:20,borderRadius:6,border:`1px solid ${inBatch?"#16a34a":"#334155"}`,background:inBatch?"#16a34a":"transparent",color:"#fff",fontSize:13,fontWeight:700,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>{inBatch?"✓":""}</span>}
+                          <div style={{flex:1,minWidth:0}}><span style={{fontSize:12,color:"#f59e0b",float:"right"}}>{fmtE(f.cal)} {energyLabel}/100g</span><div style={{fontSize:14,fontWeight:500,color:inBatch?"#86efac":"#e2e8f0"}}>{f.name}</div>{f.source&&f.source!=="usda"&&<div style={{fontSize:11,color:"#475569",marginTop:1}}>Source: {f.source.toUpperCase()}</div>}</div>
+                        </div>);
+                      })}
                     </div>
                   ))}
                   {filteredFoods.length===0 && recipes.filter(r=>r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())).length===0 && debouncedSearchTerm.length>0 && <div style={{padding:20,textAlign:"center",color:"#475569",fontSize:14}}>No results for "{debouncedSearchTerm}"</div>}
@@ -1649,7 +1724,69 @@ export default function NutriTrack() {
       );
     }
   }
-  // ── SUPPLEMENT LOG CONFIRMATION ───────────────────────────────────────
+  // ── PHASE 6n: BATCH REVIEW (multi-select commit screen) ──────────────────
+  if (view === "batchReview") {
+    const totalCal = batch.reduce((sum, b) => sum + ((b.food.cal ?? 0) * (parseFloat(b.amount) || 0) / 100), 0);
+    return (
+      <div style={S.app}>
+        <div style={S.header}>
+          <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => { setBatch([]); setMultiSelect(false); setView("add"); setTimeout(()=>searchRef.current?.focus(),100); }}>
+            ← Back
+          </button>
+          <span style={{fontSize:15,fontWeight:700}}>Batch · {batch.length} {batch.length===1?"food":"foods"}</span>
+          <button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,cursor:"pointer",fontWeight:600}} onClick={() => { setBatch([]); setMultiSelect(false); setView("add"); setTimeout(()=>searchRef.current?.focus(),100); }}>+ Add</button>
+        </div>
+        <div style={S.section}>
+          {batch.length === 0 ? (
+            <div style={{padding:"32px 0",textAlign:"center",color:"#64748b",fontSize:14}}>Batch is empty. Go back and tap foods to add them.</div>
+          ) : (
+            <>
+              <div style={{fontSize:11,color:"#64748b",marginBottom:8}}>Enter the amount (g / ml) for each food. Quantities were pre-filled from your last log where available.</div>
+              <div style={{marginBottom:12}}>
+                {batch.map((b, idx) => {
+                  const cal = (b.food.cal ?? 0) * (parseFloat(b.amount) || 0) / 100;
+                  return (
+                    <div key={b.food.id} style={{...S.card,marginBottom:8,padding:"10px 12px"}}>
+                      <div style={{display:"flex",alignItems:"center",gap:8}}>
+                        <div style={{flex:1,minWidth:0}}>
+                          <div style={{fontSize:14,fontWeight:500,color:"#e2e8f0",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{b.food.name}</div>
+                          <div style={{fontSize:11,color:"#64748b"}}>{b.food.cat} · {fmtE(cal)} {energyLabel}</div>
+                        </div>
+                        <button style={{background:"none",border:"none",color:"#ef4444",fontSize:18,cursor:"pointer",flexShrink:0,padding:"0 4px"}} onClick={() => removeFoodFromBatch(idx)} aria-label="Remove from batch">×</button>
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",gap:6,marginTop:8}}>
+                        <input type="number" inputMode="numeric" value={b.amount}
+                          onChange={e => setBatchAmount(idx, e.target.value)}
+                          style={{...S.input,width:90,textAlign:"center",marginBottom:0,padding:"8px 10px"}}/>
+                        <span style={{fontSize:13,color:"#64748b"}}>g / ml</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div style={S.card}>
+                <label style={S.label}>Meal (applies to all foods in batch)</label>
+                <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
+                  {MEALS.map(m => <button key={m} style={S.pill(meal===m)} onClick={() => setMeal(m)}>{m}</button>)}
+                </div>
+                <div style={{background:"#0a0f1a",borderRadius:10,padding:12,marginBottom:12}}>
+                  <div style={{display:"flex",justifyContent:"space-between",fontSize:13}}>
+                    <span style={{color:"#94a3b8"}}>Batch total</span>
+                    <span style={{color:"#f59e0b",fontWeight:700}}>{fmtE(totalCal)} {energyLabel}</span>
+                  </div>
+                </div>
+                <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:"#16a34a",color:"#fff",fontSize:15,fontWeight:700,cursor:"pointer"}} onClick={commitBatch}>
+                  Log All ({batch.length}) to {meal}
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+        <BottomNav/>
+      </div>
+    );
+  }
+  // ── SUPPLEMENT LOG CONFIRMATION ─────────────────────────────────────
   if (view === "suppLogConfirm" && suppLogStack) {
     const checkedCount = suppLogItems.filter(i=>i.checked).length;
     return (
