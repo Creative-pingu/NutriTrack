@@ -63,6 +63,17 @@
             display: none; /* checklist logged to console instead */
         }
     </style>
+    <!-- Phase 7b: static <script defer> tags replace the runtime CDN
+         injection + dynamic-execution flow. defer preserves execution order
+         (React -> ReactDOM -> NutriTrack.js -> inline init). NutriTrack.js
+         is pre-compiled from NutriTrack.jsx at build time (Babel classic
+         runtime); Babel is no longer loaded at runtime. -->
+    <!-- Set APP_VERSION synchronously before the defer scripts run;
+         NutriTrack.js reads window.APP_VERSION at load time. -->
+    <script>window.APP_VERSION = 'v61';</script>
+    <script defer src="https://unpkg.com/react@18/umd/react.production.min.js?v=4"></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js?v=4"></script>
+    <script defer src="./NutriTrack.js?v=61"></script>
 </head>
 <body>
     <div id="sw-status">SW: Checking...</div>
@@ -74,26 +85,15 @@
         <div id="error-detail"></div>
     </div>
 
-    <script>
-        const steps = [];
-        function addStep(name) {
-            // The checklist is hidden in the UI (display:none on #load-steps);
-            // step transitions are logged to the console for developer inspection.
-            const el = document.createElement('div');
-            el.className = 'step waiting';
-            el.textContent = name;
-            document.getElementById('load-steps').appendChild(el);
-            steps.push({ name, el });
-            console.log('[NutriTrack] step:', name);
-            return steps.length - 1;
-        }
-        function updateStep(idx, status, msg) {
-            if (steps[idx]) {
-                steps[idx].el.className = 'step ' + status;
-                if (msg) steps[idx].el.textContent = steps[idx].name + ': ' + msg;
-                console.log('[NutriTrack] ' + steps[idx].name + ' -> ' + status + (msg ? ' (' + msg + ')' : ''));
-            }
-        }
+    <script defer>
+        // This defer script runs after the <head> defer scripts
+        // (React -> ReactDOM -> NutriTrack.js) have all loaded and
+        // executed, so React, ReactDOM, and window._MainApp are ready.
+        // Phase 7b: NutriTrack.js is pre-compiled JSX loaded as a static
+        // script (no fetch+eval, no Babel at runtime - S2/R12 resolved).
+
+        const APP_VERSION = window.APP_VERSION;
+
         function setStatus(msg) {
             document.getElementById('load-status').textContent = msg;
         }
@@ -101,20 +101,8 @@
             document.getElementById('error-detail').textContent = detail;
             document.getElementById('error-detail').style.display = 'block';
         }
-        
-        // Single source of truth for the app version. Keep in sync with
-        // sw.js CACHE_VERSION ("nutritrack-v61") and the build timestamp.
-        const APP_VERSION = 'v61';
-        // Expose on window so NutriTrack.js (loaded as a static script)
-        // can read it for the Settings > About panel.
-        window.APP_VERSION = APP_VERSION;
+        console.log('[NutriTrack] init: React', typeof React, 'ReactDOM', typeof ReactDOM, '_MainApp', typeof window._MainApp);
 
-        addStep('React');
-        addStep('ReactDOM');
-        addStep('Setup globals');
-        addStep('Load NutriTrack.js');
-        addStep('Render app');
-        
         // Register the SW exactly once per load (do NOT unregister here -
         // unregistering on every load defeats the Phase 6d update detection
         // in NutriTrack.jsx, since there is never a waiting SW to detect).
@@ -125,7 +113,7 @@
             navigator.serviceWorker.register('/NutriTrack/sw.js?v=' + APP_VERSION, { scope: '/NutriTrack/' })
                 .then(function(reg) {
                     document.getElementById('sw-status').textContent = 'SW: ' + APP_VERSION + ' active';
-                    // Expose the ready promise so NutriTrack.jsx's Phase 6d
+                    // Expose the ready promise so NutriTrack.js's Phase 6d
                     // update detection can reuse it without racing.
                     window._swReady = navigator.serviceWorker.ready;
                 })
@@ -135,98 +123,40 @@
         } else {
             document.getElementById('sw-status').textContent = 'SW: Not supported';
         }
-        // Start loading immediately - SW registration is non-blocking.
-        startLoading();
-        
-        function startLoading() {
-            setStatus('Loading scripts...');
-            
-            // React/ReactDOM are UMD globals (no eval). Babel is no longer
-            // loaded at runtime: JSX is pre-compiled to NutriTrack.js at
-            // build time (Phase 7b), removing the dynamic code-evaluation XSS vector (S2/R12).
-            const reactScript = document.createElement('script');
-            reactScript.src = 'https://unpkg.com/react@18/umd/react.production.min.js?v=4';
-            reactScript.onload = function() { updateStep(0, 'loaded'); checkAllLoaded(); };
-            reactScript.onerror = function() { updateStep(0, 'error'); showError('React CDN failed'); };
-            document.head.appendChild(reactScript);
-            
-            const reactDOMScript = document.createElement('script');
-            reactDOMScript.src = 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js?v=4';
-            reactDOMScript.onload = function() { updateStep(1, 'loaded'); checkAllLoaded(); };
-            reactDOMScript.onerror = function() { updateStep(1, 'error'); showError('ReactDOM CDN failed'); };
-            document.head.appendChild(reactDOMScript);
-            
-            let scriptsLoaded = 0;
-            function checkAllLoaded() {
-                scriptsLoaded++;
-                if (scriptsLoaded >= 2) {
-                    setupGlobals();
-                }
-            }
-        }
-        
-        function setupGlobals() {
-            updateStep(2, 'current', 'Setting up...');
-            try {
-                window.useState = React.useState;
-                window.useEffect = React.useEffect;
-                window.useMemo = React.useMemo;
-                window.useCallback = React.useCallback;
-                window.useRef = React.useRef;
-                window.storage = {
-                    get: async (k) => ({ value: localStorage.getItem(k) }),
-                    set: async (k, v) => { localStorage.setItem(k, v); return v; },
-                    delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; }
-                };
-                updateStep(2, 'loaded');
-                loadApp();
-            } catch (e) {
-                updateStep(2, 'error');
-                showError('Globals failed: ' + e.message);
-            }
-        }
-        
-        function loadApp() {
-            updateStep(3, 'current', 'Loading...');
 
-            // Phase 7b: load the pre-compiled NutriTrack.js as a static
-            // <script> instead of fetching NutriTrack.jsx, transpiling it
-            // with the Babel CDN, and dynamically executing the result. NutriTrack.js
-            // is generated at build time (Babel classic runtime) and sets
-            // window._MainApp on load. No dynamic code evaluation remains.
-            const appScript = document.createElement('script');
-            appScript.src = './NutriTrack.js?v=' + APP_VERSION.replace('v','');
-            appScript.onload = function() {
-                updateStep(3, 'loaded');
-                updateStep(4, 'current', 'Rendering...');
-                try {
-                    const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
-                    if (App) {
-                        const container = document.createElement('div');
-                        document.getElementById('load-container').style.display = 'none';
-                        document.body.appendChild(container);
-                        const root = ReactDOM.createRoot(container);
-                        root.render(React.createElement(App));
-                        updateStep(4, 'loaded', 'Success!');
-                        setStatus('NutriTrack loaded successfully');
-                    } else {
-                        throw new Error('App not found');
-                    }
-                } catch (e) {
-                    updateStep(4, 'error');
-                    showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
-                    setStatus('ERROR');
-                }
+        try {
+            if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
+                throw new Error('React/ReactDOM failed to load from CDN');
+            }
+            // Expose hooks + storage on window for NutriTrack.js (classic
+            // runtime compiles JSX to React.createElement, and the hooks
+            // are referenced as bare globals per the app's convention).
+            window.useState = React.useState;
+            window.useEffect = React.useEffect;
+            window.useMemo = React.useMemo;
+            window.useCallback = React.useCallback;
+            window.useRef = React.useRef;
+            window.storage = {
+                get: async (k) => ({ value: localStorage.getItem(k) }),
+                set: async (k, v) => { localStorage.setItem(k, v); return v; },
+                delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; }
             };
-            appScript.onerror = function() {
-                updateStep(3, 'error');
-                showError('Failed to load NutriTrack.js');
-                setStatus('ERROR');
-            };
-            document.head.appendChild(appScript);
-        }
-        
 
+            const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
+            if (App) {
+                const container = document.createElement('div');
+                document.getElementById('load-container').style.display = 'none';
+                document.body.appendChild(container);
+                const root = ReactDOM.createRoot(container);
+                root.render(React.createElement(App));
+                setStatus('NutriTrack loaded successfully');
+            } else {
+                throw new Error('App component not found in NutriTrack.js');
+            }
+        } catch (e) {
+            showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
+            setStatus('ERROR');
+        }
     </script>
 </body>
 </html>
