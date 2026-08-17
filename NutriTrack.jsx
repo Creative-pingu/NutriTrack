@@ -822,6 +822,9 @@ export default function NutriTrack() {
   const [recipeLogMeal,     setRecipeLogMeal]     = useState("Breakfast");
   const [recipeLogReturn,   setRecipeLogReturn]   = useState("recipeDetail");
   const [recipeLogReviewIngredients, setRecipeLogReviewIngredients] = useState([]);
+  // Phase 10: add ingredients directly on the recipe log review page.
+  const [reviewAddOpen,    setReviewAddOpen]    = useState(false);
+  const [reviewAddAmount,  setReviewAddAmount]  = useState("100");
 
   // Supplement stack editor
   const [editingStackId,   setEditingStackId]   = useState(null);
@@ -950,6 +953,21 @@ export default function NutriTrack() {
       .then(data => { if (!cancelled) { setFoodDB(data); setFoodDBStatus("ready"); } })
       .catch(() => { if (!cancelled) setFoodDBStatus("error"); });
     return () => { cancelled = true; };
+  }, []);
+
+  // App-wide select-on-focus: when any number/text/search input gains
+  // focus, select its full value so edits start from the end (easy
+  // delete/replace) instead of the caret landing at the left edge.
+  // Uses focusin (bubbles) so dynamically rendered inputs are covered.
+  useEffect(() => {
+    const onSelectFocus = e => {
+      const t = e.target;
+      if (t && t.tagName === "INPUT" && typeof t.select === "function" && (t.type === "number" || t.type === "text" || t.type === "search" || t.type === "")) {
+        try { t.select(); } catch (_) {}
+      }
+    };
+    document.addEventListener("focusin", onSelectFocus);
+    return () => document.removeEventListener("focusin", onSelectFocus);
   }, []);
 
   // Phase 6b — refresh storage byte count when Settings page is opened (not on every save)
@@ -1291,6 +1309,15 @@ export default function NutriTrack() {
     setView("log");
     setRecipeLogServings("1"); setRecipeLogGrams(""); setRecipeLogMode("servings");
     setSelectedRecipe(null); setRecipeLogReturn("recipeDetail"); setRecipeLogReviewIngredients([]);
+  };
+  // Phase 10: add an extra ingredient while reviewing a recipe log.
+  // Pushes into the review list only — the saved recipe is never touched.
+  const addIngredientToReview = food => {
+    const g = parseFloat(reviewAddAmount);
+    const amt = (!isNaN(g) && g > 0) ? Math.round(g * 10) / 10 : 100;
+    const snap = buildFoodSnapshot(food);
+    setRecipeLogReviewIngredients(prev => [...prev, { foodId:food.id, foodName:food.name, amount_g:amt, snapshot:snap }]);
+    setReviewAddAmount("100"); setRecipeIngSearch(""); setReviewAddOpen(false);
   };
 
   // ── SUPPLEMENT ACTIONS ────────────────────────────────────────────────
@@ -2380,6 +2407,20 @@ export default function NutriTrack() {
               );
             })}
           </div>
+          <button style={{width:"100%",padding:"10px 0",borderRadius:10,border:"1px solid #1e293b",background:"transparent",color:"#3b82f6",fontSize:13,fontWeight:600,cursor:"pointer",marginBottom:8}} onClick={()=>{ setReviewAddOpen(o=>!o); setRecipeIngSearch(""); setReviewAddAmount("100"); }}>+ Add ingredient</button>
+          {reviewAddOpen && (
+            <div style={{...S.card,marginBottom:12}}>
+              <input style={S.input} placeholder="Search foods…" value={recipeIngSearch} onChange={e=>setRecipeIngSearch(e.target.value)} autoFocus/>
+              <div style={{marginTop:8,display:"flex",alignItems:"center",gap:8}}>
+                <input style={{...S.input,width:100,marginBottom:0}} type="number" inputMode="decimal" value={reviewAddAmount} onChange={e=>setReviewAddAmount(e.target.value)}/>
+                <span style={{fontSize:12,color:"#64748b"}}>g</span>
+              </div>
+              <div style={{marginTop:10,maxHeight:260,overflowY:"auto"}}>
+                {Object.entries(groupedIngByCategory).map(([cat,foods])=>(<div key={cat}><div style={{fontSize:11,fontWeight:700,color:"#475569",padding:"8px 0 4px",letterSpacing:"0.05em",textTransform:"uppercase"}}>{cat}</div>{foods.map(f=>(<div key={f.id} style={{...S.srchItem,contentVisibility:"auto",containIntrinsicSize:"0 44px"}} onClick={()=>addIngredientToReview(f)}><span style={{fontSize:12,color:"#f59e0b",float:"right"}}>{fmtE(f.cal)} {energyLabel}/100g</span><div style={{fontSize:14,fontWeight:500,color:"#e2e8f0"}}>{f.name}</div></div>))}</div>))}
+                {filteredIngFoods.length===0&&<div style={{padding:16,textAlign:"center",color:"#475569",fontSize:13}}>No foods found for "{recipeIngSearch}"</div>}
+              </div>
+            </div>
+          )}
           <div style={{background:"#0a0f1a",borderRadius:10,padding:12,margin:"12px 0"}}>
             <div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8,textTransform:"uppercase"}}>Preview</div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:6}}>

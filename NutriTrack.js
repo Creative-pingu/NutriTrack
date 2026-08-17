@@ -1978,72 +1978,81 @@ function NutriTrack() {
     _useState156 = _slicedToArray(_useState155, 2),
     recipeLogReviewIngredients = _useState156[0],
     setRecipeLogReviewIngredients = _useState156[1];
+  // Phase 10: add ingredients directly on the recipe log review page.
+  var _useState157 = useState(false),
+    _useState158 = _slicedToArray(_useState157, 2),
+    reviewAddOpen = _useState158[0],
+    setReviewAddOpen = _useState158[1];
+  var _useState159 = useState("100"),
+    _useState160 = _slicedToArray(_useState159, 2),
+    reviewAddAmount = _useState160[0],
+    setReviewAddAmount = _useState160[1];
 
   // Supplement stack editor
-  var _useState157 = useState(null),
-    _useState158 = _slicedToArray(_useState157, 2),
-    editingStackId = _useState158[0],
-    setEditingStackId = _useState158[1];
-  var _useState159 = useState(""),
-    _useState160 = _slicedToArray(_useState159, 2),
-    stackEditorName = _useState160[0],
-    setStackEditorName = _useState160[1];
-  var _useState161 = useState([]),
+  var _useState161 = useState(null),
     _useState162 = _slicedToArray(_useState161, 2),
-    stackEditorItems = _useState162[0],
-    setStackEditorItems = _useState162[1];
+    editingStackId = _useState162[0],
+    setEditingStackId = _useState162[1];
+  var _useState163 = useState(""),
+    _useState164 = _slicedToArray(_useState163, 2),
+    stackEditorName = _useState164[0],
+    setStackEditorName = _useState164[1];
+  var _useState165 = useState([]),
+    _useState166 = _slicedToArray(_useState165, 2),
+    stackEditorItems = _useState166[0],
+    setStackEditorItems = _useState166[1];
 
   // Supplement item editor
-  var _useState163 = useState(null),
-    _useState164 = _slicedToArray(_useState163, 2),
-    editingItemIdx = _useState164[0],
-    setEditingItemIdx = _useState164[1];
-  var _useState165 = useState({
+  var _useState167 = useState(null),
+    _useState168 = _slicedToArray(_useState167, 2),
+    editingItemIdx = _useState168[0],
+    setEditingItemIdx = _useState168[1];
+  var _useState169 = useState({
       name: "",
       dose_amount: "",
       dose_unit: "mcg",
       nutrients: {}
     }),
-    _useState166 = _slicedToArray(_useState165, 2),
-    itemEditorData = _useState166[0],
-    setItemEditorData = _useState166[1];
-  var _useState167 = useState("b12"),
-    _useState168 = _slicedToArray(_useState167, 2),
-    itemNutKey = _useState168[0],
-    setItemNutKey = _useState168[1];
-  var _useState169 = useState(""),
     _useState170 = _slicedToArray(_useState169, 2),
-    itemNutVal = _useState170[0],
-    setItemNutVal = _useState170[1];
+    itemEditorData = _useState170[0],
+    setItemEditorData = _useState170[1];
+  var _useState171 = useState("b12"),
+    _useState172 = _slicedToArray(_useState171, 2),
+    itemNutKey = _useState172[0],
+    setItemNutKey = _useState172[1];
+  var _useState173 = useState(""),
+    _useState174 = _slicedToArray(_useState173, 2),
+    itemNutVal = _useState174[0],
+    setItemNutVal = _useState174[1];
 
   // Supplement log confirmation
-  var _useState171 = useState(null),
-    _useState172 = _slicedToArray(_useState171, 2),
-    suppLogStack = _useState172[0],
-    setSuppLogStack = _useState172[1];
-  var _useState173 = useState([]),
-    _useState174 = _slicedToArray(_useState173, 2),
-    suppLogItems = _useState174[0],
-    setSuppLogItems = _useState174[1];
+  var _useState175 = useState(null),
+    _useState176 = _slicedToArray(_useState175, 2),
+    suppLogStack = _useState176[0],
+    setSuppLogStack = _useState176[1];
+  var _useState177 = useState([]),
+    _useState178 = _slicedToArray(_useState177, 2),
+    suppLogItems = _useState178[0],
+    setSuppLogItems = _useState178[1];
 
   // One-off supplement
-  var _useState175 = useState({
+  var _useState179 = useState({
       name: "",
       dose_amount: "",
       dose_unit: "mcg",
       nutrients: {}
     }),
-    _useState176 = _slicedToArray(_useState175, 2),
-    oneOffData = _useState176[0],
-    setOneOffData = _useState176[1];
-  var _useState177 = useState("b12"),
-    _useState178 = _slicedToArray(_useState177, 2),
-    oneOffNutKey = _useState178[0],
-    setOneOffNutKey = _useState178[1];
-  var _useState179 = useState(""),
     _useState180 = _slicedToArray(_useState179, 2),
-    oneOffNutVal = _useState180[0],
-    setOneOffNutVal = _useState180[1];
+    oneOffData = _useState180[0],
+    setOneOffData = _useState180[1];
+  var _useState181 = useState("b12"),
+    _useState182 = _slicedToArray(_useState181, 2),
+    oneOffNutKey = _useState182[0],
+    setOneOffNutKey = _useState182[1];
+  var _useState183 = useState(""),
+    _useState184 = _slicedToArray(_useState183, 2),
+    oneOffNutVal = _useState184[0],
+    setOneOffNutVal = _useState184[1];
   var searchRef = useRef(null);
   var recipeIngRef = useRef(null);
   var corruptedKeys = useRef(new Set()); // Phase 6b: keys that failed JSON.parse — never overwrite
@@ -2250,6 +2259,25 @@ function NutriTrack() {
     });
     return function () {
       cancelled = true;
+    };
+  }, []);
+
+  // App-wide select-on-focus: when any number/text/search input gains
+  // focus, select its full value so edits start from the end (easy
+  // delete/replace) instead of the caret landing at the left edge.
+  // Uses focusin (bubbles) so dynamically rendered inputs are covered.
+  useEffect(function () {
+    var onSelectFocus = function onSelectFocus(e) {
+      var t = e.target;
+      if (t && t.tagName === "INPUT" && typeof t.select === "function" && (t.type === "number" || t.type === "text" || t.type === "search" || t.type === "")) {
+        try {
+          t.select();
+        } catch (_) {}
+      }
+    };
+    document.addEventListener("focusin", onSelectFocus);
+    return function () {
+      return document.removeEventListener("focusin", onSelectFocus);
     };
   }, []);
 
@@ -2916,6 +2944,24 @@ function NutriTrack() {
     setSelectedRecipe(null);
     setRecipeLogReturn("recipeDetail");
     setRecipeLogReviewIngredients([]);
+  };
+  // Phase 10: add an extra ingredient while reviewing a recipe log.
+  // Pushes into the review list only — the saved recipe is never touched.
+  var addIngredientToReview = function addIngredientToReview(food) {
+    var g = parseFloat(reviewAddAmount);
+    var amt = !isNaN(g) && g > 0 ? Math.round(g * 10) / 10 : 100;
+    var snap = buildFoodSnapshot(food);
+    setRecipeLogReviewIngredients(function (prev) {
+      return [].concat(_toConsumableArray(prev), [{
+        foodId: food.id,
+        foodName: food.name,
+        amount_g: amt,
+        snapshot: snap
+      }]);
+    });
+    setReviewAddAmount("100");
+    setRecipeIngSearch("");
+    setReviewAddOpen(false);
   };
 
   // ── SUPPLEMENT ACTIONS ────────────────────────────────────────────────
@@ -7316,7 +7362,114 @@ function NutriTrack() {
           });
         }
       }, "\xD7"));
-    })), /*#__PURE__*/React.createElement("div", {
+    })), /*#__PURE__*/React.createElement("button", {
+      style: {
+        width: "100%",
+        padding: "10px 0",
+        borderRadius: 10,
+        border: "1px solid #1e293b",
+        background: "transparent",
+        color: "#3b82f6",
+        fontSize: 13,
+        fontWeight: 600,
+        cursor: "pointer",
+        marginBottom: 8
+      },
+      onClick: function onClick() {
+        setReviewAddOpen(function (o) {
+          return !o;
+        });
+        setRecipeIngSearch("");
+        setReviewAddAmount("100");
+      }
+    }, "+ Add ingredient"), reviewAddOpen && /*#__PURE__*/React.createElement("div", {
+      style: _objectSpread(_objectSpread({}, S.card), {}, {
+        marginBottom: 12
+      })
+    }, /*#__PURE__*/React.createElement("input", {
+      style: S.input,
+      placeholder: "Search foods\u2026",
+      value: recipeIngSearch,
+      onChange: function onChange(e) {
+        return setRecipeIngSearch(e.target.value);
+      },
+      autoFocus: true
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 8,
+        display: "flex",
+        alignItems: "center",
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      style: _objectSpread(_objectSpread({}, S.input), {}, {
+        width: 100,
+        marginBottom: 0
+      }),
+      type: "number",
+      inputMode: "decimal",
+      value: reviewAddAmount,
+      onChange: function onChange(e) {
+        return setReviewAddAmount(e.target.value);
+      }
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, "g")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 10,
+        maxHeight: 260,
+        overflowY: "auto"
+      }
+    }, Object.entries(groupedIngByCategory).map(function (_ref21) {
+      var _ref22 = _slicedToArray(_ref21, 2),
+        cat = _ref22[0],
+        foods = _ref22[1];
+      return /*#__PURE__*/React.createElement("div", {
+        key: cat
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          fontWeight: 700,
+          color: "#475569",
+          padding: "8px 0 4px",
+          letterSpacing: "0.05em",
+          textTransform: "uppercase"
+        }
+      }, cat), foods.map(function (f) {
+        return /*#__PURE__*/React.createElement("div", {
+          key: f.id,
+          style: _objectSpread(_objectSpread({}, S.srchItem), {}, {
+            contentVisibility: "auto",
+            containIntrinsicSize: "0 44px"
+          }),
+          onClick: function onClick() {
+            return addIngredientToReview(f);
+          }
+        }, /*#__PURE__*/React.createElement("span", {
+          style: {
+            fontSize: 12,
+            color: "#f59e0b",
+            "float": "right"
+          }
+        }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 14,
+            fontWeight: 500,
+            color: "#e2e8f0"
+          }
+        }, f.name));
+      }));
+    }), filteredIngFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: 16,
+        textAlign: "center",
+        color: "#475569",
+        fontSize: 13
+      }
+    }, "No foods found for \"", recipeIngSearch, "\""))), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0a0f1a",
         borderRadius: 10,
@@ -7715,10 +7868,10 @@ function NutriTrack() {
         maxHeight: "calc(100vh - 160px)",
         overflowY: "auto"
       }
-    }, Object.entries(groupedIngByCategory).map(function (_ref21) {
-      var _ref22 = _slicedToArray(_ref21, 2),
-        cat = _ref22[0],
-        foods = _ref22[1];
+    }, Object.entries(groupedIngByCategory).map(function (_ref23) {
+      var _ref24 = _slicedToArray(_ref23, 2),
+        cat = _ref24[0],
+        foods = _ref24[1];
       return /*#__PURE__*/React.createElement("div", {
         key: cat
       }, /*#__PURE__*/React.createElement("div", {
@@ -8025,10 +8178,10 @@ function NutriTrack() {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Activity"), Object.entries(actGroups).map(function (_ref23) {
-      var _ref24 = _slicedToArray(_ref23, 2),
-        grp = _ref24[0],
-        acts = _ref24[1];
+    }, "Activity"), Object.entries(actGroups).map(function (_ref25) {
+      var _ref26 = _slicedToArray(_ref25, 2),
+        grp = _ref26[0],
+        acts = _ref26[1];
       return /*#__PURE__*/React.createElement("div", {
         key: grp,
         style: {
@@ -8295,10 +8448,10 @@ function NutriTrack() {
         gap: 8,
         marginBottom: 12
       }
-    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(function (_ref25) {
-      var _ref26 = _slicedToArray(_ref25, 2),
-        val = _ref26[0],
-        label = _ref26[1];
+    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(function (_ref27) {
+      var _ref28 = _slicedToArray(_ref27, 2),
+        val = _ref28[0],
+        label = _ref28[1];
       return /*#__PURE__*/React.createElement("button", {
         key: val,
         style: {
@@ -8322,9 +8475,9 @@ function NutriTrack() {
         color: "#475569",
         marginBottom: 8
       }
-    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(function (_ref27) {
-      var k = _ref27.k,
-        l = _ref27.l;
+    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(function (_ref29) {
+      var k = _ref29.k,
+        l = _ref29.l;
       return /*#__PURE__*/React.createElement("div", {
         key: k,
         style: S.cfRow
@@ -8470,9 +8623,9 @@ function NutriTrack() {
         marginTop: 4,
         color: "#64748b"
       }
-    }, "Fat: ", goals.fat, "g (25% TDEE \xF7 9) \xB7 Carbs: ", goals.carb, "g (residual) \xB7 Fibre: ", goals.fib, "g (14g/1000kcal)")))), sections.map(function (_ref28) {
-      var title = _ref28.title,
-        keys = _ref28.keys;
+    }, "Fat: ", goals.fat, "g (25% TDEE \xF7 9) \xB7 Carbs: ", goals.carb, "g (residual) \xB7 Fibre: ", goals.fib, "g (14g/1000kcal)")))), sections.map(function (_ref30) {
+      var title = _ref30.title,
+        keys = _ref30.keys;
       return /*#__PURE__*/React.createElement("div", {
         key: title,
         style: _objectSpread(_objectSpread({}, S.card), {}, {
@@ -8611,10 +8764,10 @@ function NutriTrack() {
       key: "pro",
       label: "Protein (%)",
       color: NUTRIENT_META.pro.color
-    }].map(function (_ref29) {
-      var key = _ref29.key,
-        label = _ref29.label,
-        color = _ref29.color;
+    }].map(function (_ref31) {
+      var key = _ref31.key,
+        label = _ref31.label,
+        color = _ref31.color;
       return /*#__PURE__*/React.createElement("div", {
         key: key,
         style: {
@@ -9116,10 +9269,10 @@ function NutriTrack() {
         display: "flex",
         gap: 8
       }
-    }, [["advanced", "Advanced"], ["simplified", "Simplified"]].map(function (_ref30) {
-      var _ref31 = _slicedToArray(_ref30, 2),
-        val = _ref31[0],
-        label = _ref31[1];
+    }, [["advanced", "Advanced"], ["simplified", "Simplified"]].map(function (_ref32) {
+      var _ref33 = _slicedToArray(_ref32, 2),
+        val = _ref33[0],
+        label = _ref33[1];
       return /*#__PURE__*/React.createElement("button", {
         key: val,
         style: {
@@ -9147,10 +9300,10 @@ function NutriTrack() {
         gap: 8,
         marginBottom: 4
       }
-    }, [["kcal", "kcal"], ["kJ", "kJ"]].map(function (_ref32) {
-      var _ref33 = _slicedToArray(_ref32, 2),
-        val = _ref33[0],
-        label = _ref33[1];
+    }, [["kcal", "kcal"], ["kJ", "kJ"]].map(function (_ref34) {
+      var _ref35 = _slicedToArray(_ref34, 2),
+        val = _ref35[0],
+        label = _ref35[1];
       return /*#__PURE__*/React.createElement("button", {
         key: val,
         style: {
@@ -9778,10 +9931,10 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.04em"
       }
-    }, "Storage key readout"), Object.entries(STORAGE_KEYS).map(function (_ref34) {
-      var _ref35 = _slicedToArray(_ref34, 2),
-        name = _ref35[0],
-        key = _ref35[1];
+    }, "Storage key readout"), Object.entries(STORAGE_KEYS).map(function (_ref36) {
+      var _ref37 = _slicedToArray(_ref36, 2),
+        name = _ref37[0],
+        key = _ref37[1];
       var raw = localStorage.getItem(key);
       var status, preview;
       if (raw === null) {
@@ -10526,10 +10679,10 @@ function NutriTrack() {
           gap: 6,
           flexWrap: "wrap"
         }
-      }, [["overwrite", "Overwrite"], ["copy", "Save as copy"], ["skip", "Skip"]].map(function (_ref36) {
-        var _ref37 = _slicedToArray(_ref36, 2),
-          action = _ref37[0],
-          label = _ref37[1];
+      }, [["overwrite", "Overwrite"], ["copy", "Save as copy"], ["skip", "Skip"]].map(function (_ref38) {
+        var _ref39 = _slicedToArray(_ref38, 2),
+          action = _ref39[0],
+          label = _ref39[1];
         return /*#__PURE__*/React.createElement("button", {
           key: action,
           style: _objectSpread(_objectSpread({}, S.pill(r.duplicateAction === action)), {}, {
@@ -10766,10 +10919,10 @@ function NutriTrack() {
         maxHeight: "calc(100vh - 220px)",
         overflowY: "auto"
       }
-    }, Object.entries(groupedNotionFoods).map(function (_ref38) {
-      var _ref39 = _slicedToArray(_ref38, 2),
-        cat = _ref39[0],
-        foods = _ref39[1];
+    }, Object.entries(groupedNotionFoods).map(function (_ref40) {
+      var _ref41 = _slicedToArray(_ref40, 2),
+        cat = _ref41[0],
+        foods = _ref41[1];
       return /*#__PURE__*/React.createElement("div", {
         key: cat
       }, /*#__PURE__*/React.createElement("div", {
@@ -10872,10 +11025,10 @@ function NutriTrack() {
     });
     var aaGoals = computeAAGoals(profile.weightKg);
     // Apply same exercise multiplier as protein goal
-    var scaledAAGoals = Object.fromEntries(Object.entries(aaGoals).map(function (_ref40) {
-      var _ref41 = _slicedToArray(_ref40, 2),
-        k = _ref41[0],
-        v = _ref41[1];
+    var scaledAAGoals = Object.fromEntries(Object.entries(aaGoals).map(function (_ref42) {
+      var _ref43 = _slicedToArray(_ref42, 2),
+        k = _ref43[0],
+        v = _ref43[1];
       return [k, v * proMultiplier];
     }));
     var limitingKey = "aaLys",
@@ -11327,12 +11480,12 @@ function NutriTrack() {
       kcal: fatK,
       grams: totals.fat,
       mult: "×9"
-    }].map(function (_ref42, i) {
-      var key = _ref42.key,
-        label = _ref42.label,
-        kcal = _ref42.kcal,
-        grams = _ref42.grams,
-        mult = _ref42.mult;
+    }].map(function (_ref44, i) {
+      var key = _ref44.key,
+        label = _ref44.label,
+        kcal = _ref44.kcal,
+        grams = _ref44.grams,
+        mult = _ref44.mult;
       return /*#__PURE__*/React.createElement("div", {
         key: key,
         style: {
@@ -11623,11 +11776,11 @@ function NutriTrack() {
       value: fibInsol,
       color: FIB_INSOL_COLOR,
       note: "Adds bulk, speeds gut transit, supports bowel regularity"
-    }].map(function (_ref43, i) {
-      var label = _ref43.label,
-        value = _ref43.value,
-        color = _ref43.color,
-        note = _ref43.note;
+    }].map(function (_ref45, i) {
+      var label = _ref45.label,
+        value = _ref45.value,
+        color = _ref45.color,
+        note = _ref45.note;
       return /*#__PURE__*/React.createElement("div", {
         key: label,
         style: {
@@ -11998,11 +12151,11 @@ function NutriTrack() {
       value: fatPufa,
       color: FAT_PUFA_COLOR,
       note: "Includes omega-3 & omega-6 — essential, anti-inflammatory"
-    }].map(function (_ref44, i) {
-      var label = _ref44.label,
-        value = _ref44.value,
-        color = _ref44.color,
-        note = _ref44.note;
+    }].map(function (_ref46, i) {
+      var label = _ref46.label,
+        value = _ref46.value,
+        color = _ref46.color,
+        note = _ref46.note;
       return /*#__PURE__*/React.createElement("div", {
         key: label,
         style: {
@@ -12607,10 +12760,10 @@ function NutriTrack() {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Activity"), Object.entries(_actGroups).map(function (_ref45) {
-      var _ref46 = _slicedToArray(_ref45, 2),
-        grp = _ref46[0],
-        acts = _ref46[1];
+    }, "Activity"), Object.entries(_actGroups).map(function (_ref47) {
+      var _ref48 = _slicedToArray(_ref47, 2),
+        grp = _ref48[0],
+        acts = _ref48[1];
       return /*#__PURE__*/React.createElement("div", {
         key: grp,
         style: {
