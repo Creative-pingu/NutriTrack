@@ -1,21 +1,22 @@
 // NutriTrack Service Worker
-const CACHE_VERSION = "nutritrack-v60";
+const CACHE_VERSION = "nutritrack-v61";
 
 const PRECACHE_ASSETS = [
-  "/NutriTrack/NutriTrack.jsx",
+  "/NutriTrack/NutriTrack.js",
   "/NutriTrack/foods.json",
   "/NutriTrack/icons/icon-192.png",
   "/NutriTrack/icons/icon-512.png",
   "/NutriTrack/icons/apple-touch-icon.png",
 ];
 
-// CDN scripts the app loads at bootstrap (React, ReactDOM, Babel).
+// CDN scripts the app loads at bootstrap (React, ReactDOM).
 // These are cross-origin; precaching them makes the app boot offline.
 // Keep these in sync with the <script src> URLs in index.html.
 const CDN_ASSETS = [
   "https://unpkg.com/react@18/umd/react.production.min.js",
   "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js",
-  "https://unpkg.com/@babel/standalone/babel.min.js",
+  // Babel is no longer loaded at runtime: JSX is pre-compiled to
+  // NutriTrack.js at build time (Phase 7b), removing the dynamic code-evaluation XSS vector.
 ];
 
 const WORKER_ORIGIN = "https://nutritrack-proxy.nickkropf.workers.dev";
@@ -96,7 +97,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // CDN scripts (React/ReactDOM/Babel): cache-first, revalidate in
+  // CDN scripts (React/ReactDOM): cache-first, revalidate in
   // background. Offline -> served from cache; online -> fresh response
   // updates the cache for next time. ignoreSearch so cache-busting
   // query strings (?v=4) don't fragment the cache.

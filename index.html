@@ -66,7 +66,7 @@
 </head>
 <body>
     <div id="sw-status">SW: Checking...</div>
-    <div id="build-info">v58 - 2026-07-25 13:00</div>
+    <div id="build-info">v61 - 2026-08-17 00:00</div>
     <div id="load-container">
         <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
         <div id="load-status">Initializing...</div>
@@ -103,20 +103,16 @@
         }
         
         // Single source of truth for the app version. Keep in sync with
-        // sw.js CACHE_VERSION ("nutritrack-v60") and the build timestamp.
-        const APP_VERSION = 'v60';
-        // Expose on window so the eval'd NutriTrack.jsx can read it
-        // for the Settings > About panel (eval scope can't see this const).
+        // sw.js CACHE_VERSION ("nutritrack-v61") and the build timestamp.
+        const APP_VERSION = 'v61';
+        // Expose on window so NutriTrack.js (loaded as a static script)
+        // can read it for the Settings > About panel.
         window.APP_VERSION = APP_VERSION;
 
         addStep('React');
         addStep('ReactDOM');
-        addStep('Babel');
         addStep('Setup globals');
-        addStep('Fetch NutriTrack.jsx');
-        addStep('Process code');
-        addStep('Babel transform');
-        addStep('Eval code');
+        addStep('Load NutriTrack.js');
         addStep('Render app');
         
         // Register the SW exactly once per load (do NOT unregister here -
@@ -145,7 +141,9 @@
         function startLoading() {
             setStatus('Loading scripts...');
             
-            // Use static script tags with event listeners
+            // React/ReactDOM are UMD globals (no eval). Babel is no longer
+            // loaded at runtime: JSX is pre-compiled to NutriTrack.js at
+            // build time (Phase 7b), removing the dynamic code-evaluation XSS vector (S2/R12).
             const reactScript = document.createElement('script');
             reactScript.src = 'https://unpkg.com/react@18/umd/react.production.min.js?v=4';
             reactScript.onload = function() { updateStep(0, 'loaded'); checkAllLoaded(); };
@@ -158,23 +156,17 @@
             reactDOMScript.onerror = function() { updateStep(1, 'error'); showError('ReactDOM CDN failed'); };
             document.head.appendChild(reactDOMScript);
             
-            const babelScript = document.createElement('script');
-            babelScript.src = 'https://unpkg.com/@babel/standalone/babel.min.js?v=4';
-            babelScript.onload = function() { updateStep(2, 'loaded'); checkAllLoaded(); };
-            babelScript.onerror = function() { updateStep(2, 'error'); showError('Babel CDN failed'); };
-            document.head.appendChild(babelScript);
-            
             let scriptsLoaded = 0;
             function checkAllLoaded() {
                 scriptsLoaded++;
-                if (scriptsLoaded >= 3) {
+                if (scriptsLoaded >= 2) {
                     setupGlobals();
                 }
             }
         }
         
         function setupGlobals() {
-            updateStep(3, 'current', 'Setting up...');
+            updateStep(2, 'current', 'Setting up...');
             try {
                 window.useState = React.useState;
                 window.useEffect = React.useEffect;
@@ -186,80 +178,52 @@
                     set: async (k, v) => { localStorage.setItem(k, v); return v; },
                     delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; }
                 };
-                updateStep(3, 'loaded');
+                updateStep(2, 'loaded');
                 loadApp();
             } catch (e) {
-                updateStep(3, 'error');
+                updateStep(2, 'error');
                 showError('Globals failed: ' + e.message);
             }
         }
         
         function loadApp() {
-            updateStep(4, 'current', 'Fetching...');
-            fetch('./NutriTrack.jsx?v=' + APP_VERSION.replace('v',''))
-                .then(function(res) {
-                    updateStep(4, 'loaded', 'Status: ' + res.status);
-                    return res.text();
-                })
-                .then(function(code) {
-                    updateStep(5, 'loaded', code.length + ' chars');
-                    
-                    updateStep(6, 'current', 'Processing...');
-                    // 1. Drop the `import {...} from "react";` line - React hooks
-                    //    are already exposed on window by setupGlobals().
-                    code = code.replace(/^import\s+\{[\s\S]*?\}\s+from\s+["']react["'];?\s*$/m, '');
-                    // 2. `export default function NutriTrack()` -> `function NutriTrack()`
-                    //    (preserve the declaration; the old regex /exports+default/
-                    //    matched `exportsdefault`, not `export default`, and the
-                    //    line filter stripped the whole declaration line, leaving the
-                    //    function body's `return` statements at top level ->
-                    //    Babel error 'return outside of function').
-                    code = code.replace(/export\s+default\s+function\s+/g, 'function ');
-                    // 3. Drop any remaining bare `export { ... }` / `export const ...`.
-                    code = code.replace(/^export\s+/gm, '');
-                    // 4. Expose the app component for the renderer.
-                    code = code + '\nwindow._MainApp = (typeof NutriTrack !== "undefined" ? NutriTrack : null);';
-                    updateStep(6, 'loaded');
-                    
-                    updateStep(7, 'current', 'Transforming...');
-                    try {
-                        // Use classic runtime so JSX compiles to
-                        // React.createElement(...) (React is global) instead of
-                        // emitting `import { jsx } from "react/jsx-runtime"`,
-                        // which eval() cannot run as a static import.
-                        const transformed = Babel.transform(code, { 
-                            presets: [['react', { runtime: 'classic' }], ['env', { modules: false }]] 
-                        }).code;
-                        updateStep(7, 'loaded');
-                        
-                        updateStep(8, 'current', 'Executing...');
-                        eval(transformed);
-                        updateStep(8, 'loaded');
-                        
-                        updateStep(9, 'current', 'Rendering...');
-                        const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
-                        if (App) {
-                            const container = document.createElement('div');
-                            document.getElementById('load-container').style.display = 'none';
-                            document.body.appendChild(container);
-                            const root = ReactDOM.createRoot(container);
-                            root.render(React.createElement(App));
-                            updateStep(9, 'loaded', 'Success!');
-                            setStatus('NutriTrack loaded successfully');
-                        } else {
-                            throw new Error('App not found');
-                        }
-                    } catch (e) {
-                        updateStep(9, 'error');
-                        showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
-                        setStatus('ERROR');
+            updateStep(3, 'current', 'Loading...');
+
+            // Phase 7b: load the pre-compiled NutriTrack.js as a static
+            // <script> instead of fetching NutriTrack.jsx, transpiling it
+            // with the Babel CDN, and dynamically executing the result. NutriTrack.js
+            // is generated at build time (Babel classic runtime) and sets
+            // window._MainApp on load. No dynamic code evaluation remains.
+            const appScript = document.createElement('script');
+            appScript.src = './NutriTrack.js?v=' + APP_VERSION.replace('v','');
+            appScript.onload = function() {
+                updateStep(3, 'loaded');
+                updateStep(4, 'current', 'Rendering...');
+                try {
+                    const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
+                    if (App) {
+                        const container = document.createElement('div');
+                        document.getElementById('load-container').style.display = 'none';
+                        document.body.appendChild(container);
+                        const root = ReactDOM.createRoot(container);
+                        root.render(React.createElement(App));
+                        updateStep(4, 'loaded', 'Success!');
+                        setStatus('NutriTrack loaded successfully');
+                    } else {
+                        throw new Error('App not found');
                     }
-                })
-                .catch(function(e) {
-                    updateStep(9, 'error');
-                    showError('Fetch failed: ' + e.message);
+                } catch (e) {
+                    updateStep(4, 'error');
+                    showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
                     setStatus('ERROR');
-                });
+                }
+            };
+            appScript.onerror = function() {
+                updateStep(3, 'error');
+                showError('Failed to load NutriTrack.js');
+                setStatus('ERROR');
+            };
+            document.head.appendChild(appScript);
         }
         
 
