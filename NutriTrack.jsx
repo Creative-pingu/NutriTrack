@@ -386,12 +386,85 @@ const STORAGE_KEYS = {
   displayMode:      "nt-display-mode",
   energyUnit:       "nt-energy-unit",   // W4
   recents:          "nt-recents",       // W1 — recently logged foods
+  errorLogs:        "nt-error-logs",    // Phase 8 — local-only post-mortem error logs (R8)
 };
 
 // ── STORAGE HEALTH THRESHOLDS (Phase 6b) ──────────────────────────────────
 // Named constants so band adjustment is a one-line change.
 const STORAGE_WARN_PCT  = 70; // yellow above this
 const STORAGE_CRIT_PCT  = 90; // red above this
+
+// ── CENTRALIZED ERROR HANDLING (Phase 8 / A2 / R8) ────────────────────────────
+// Translates technical error messages (worker_502: notion_unreachable,
+// network: fetch failed, foods.json fetch failed: 404, ...) into short,
+// user-friendly, actionable strings. Every UI error path should route through
+// friendlyError() so the surface language stays consistent and recoverable.
+//
+// mapError returns { message, type } where type is one of "network" | "worker"
+// | "fooddb" | "storage" | "sw" | "parse" | "unknown". friendlyError() returns
+// just the message string for inline use. Both also log the raw error to the
+// local-only nt-error-logs ring buffer (capped, never transmitted) for
+// post-mortem analysis. Debug messages (prefixed with [debug]) are NOT logged.
+const ERROR_LOG_CAP = 50;
+
+function pushErrorLog(entry) {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.errorLogs);
+    const arr = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(arr)) return;
+    arr.push(entry);
+    while (arr.length > ERROR_LOG_CAP) arr.shift();
+    localStorage.setItem(STORAGE_KEYS.errorLogs, JSON.stringify(arr));
+  } catch { /* logging must never throw into the UI */ }
+}
+
+function mapError(err, context) {
+  const raw = (err && (err.message || String(err))) || "";
+  const ctx = context || "unknown";
+  const ts = new Date().toISOString();
+  // Don't log debug-injected entries (Phase 6b corruption tests).
+  const isDebug = /\[debug\]/i.test(raw);
+  let type = "unknown";
+  let message = "Something went wrong. Please try again.";
+
+  // fooddb is checked BEFORE network: "foods.json fetch failed: 404" contains
+  // "fetch failed", which would otherwise mis-classify a DB load failure as a
+  // connectivity error. More specific patterns first.
+  if (/foods\.json/i.test(raw) && /404/.test(raw)) {
+    type = "fooddb";
+    message = "The food database is missing. Please reload the app.";
+  } else if (/foods\.json/i.test(raw)) {
+    type = "fooddb";
+    message = "The food database could not be loaded. Please reload the app.";
+  } else if (/worker_502/i.test(raw) || /notion_unreachable/i.test(raw)) {
+    type = "worker";
+    message = "Recipe sync is unavailable right now. Please try again later.";
+  } else if (/worker_403/i.test(raw)) {
+    type = "worker";
+    message = "The recipe sync service rejected this app. Sync will be available after the next update.";
+  } else if (/^worker_/i.test(raw)) {
+    type = "worker";
+    message = "The recipe sync service is unavailable. Please try again later.";
+  } else if (/^network:/i.test(raw) || /fetch failed/i.test(raw) || /Failed to fetch/i.test(raw)) {
+    type = "network";
+    message = "No internet connection. Some features are limited. Check your connection and retry.";
+  } else if (/storage|quota|exceeded/i.test(raw)) {
+    type = "storage";
+    message = "Data could not be saved (storage full). Please export your data and clear old browser data, then retry.";
+  } else if (/parsing|parse failed/i.test(raw) || /No recipes found/i.test(raw) || /No parseable/i.test(raw)) {
+    type = "parse";
+    message = "Could not parse the recipe text. Check the format and try again.";
+  }
+
+  if (!isDebug) {
+    pushErrorLog({ ts, context: ctx, type, raw: raw.slice(0, 500) });
+  }
+  return { type, message };
+}
+
+function friendlyError(err, context) {
+  return mapError(err, context).message;
+}
 
 // ── STORAGE ADAPTER (Phase 5.5 fix) ──────────────────────────────────────
 // Previous implementation called window.storage.get / window.storage.set,
@@ -765,26 +838,75 @@ export default function NutriTrack() {
   }, [view]);
 
   // allFoodsForRender: includes soft-deleted custom foods so historical log entries still resolve
-  // Phase 6d — online/offline detection
-  // navigator.onLine lies in iOS standalone mode; we probe with a real fetch.
+  // Phase 8 (A1 / R7) — hybrid online/offline detection.
+  // navigator.onLine is unreliable in iOS PWA standalone mode, so we combine it
+  // with a real Worker /health probe. Strategy:
+  //   1. navigator.onLine is the fast gate (instant, but may lie on iOS).
+  //   2. If navigator claims online, probe Worker /health with a short 1000ms
+  //      timeout (down from 4000ms) so the UX reflects reality within ~2s.
+  //   3. On a probe failure/timeout while navigator claims online, fall back to
+  //      the last known cached state rather than flipping straight to offline
+  //      (avoids flicker on a single hiccup; a genuine outage is confirmed by
+  //      the next poll).
+  //   4. If navigator explicitly reports offline, trust it immediately.
+  // The last-known state is cached in localStorage so a cold start resolves
+  // instantly before the first probe completes.
   useEffect(() => {
-    const probe = () => new Promise(resolve => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", `${WORKER_URL}/health`, true);
-      xhr.timeout = 4000;
-      xhr.onload  = () => resolve(xhr.status >= 200 && xhr.status < 500);
-      xhr.onerror   = () => resolve(false);
-      xhr.ontimeout = () => resolve(false);
-      xhr.send();
-    }).then(online => setIsOnline(online));
+    const LAST_ONLINE_KEY = "nt-last-online";
+    const PROBE_TIMEOUT_MS = 1000;     // A1: 4000ms -> 1000ms
 
-    const onOnline  = () => { setIsOnline(true);  probe(); };
-    const onOffline = () => { setIsOnline(false); };
+    const readCached = () => {
+      try {
+        const raw = localStorage.getItem(LAST_ONLINE_KEY);
+        if (raw === null) return null;
+        const v = JSON.parse(raw);
+        return typeof v === "object" && v ? Boolean(v.online) : null;
+      } catch { return null; }
+    };
+    const writeCached = online => {
+      try { localStorage.setItem(LAST_ONLINE_KEY, JSON.stringify({ online, ts: Date.now() })); }
+      catch { /* cache write must never throw */ }
+    };
+
+    // A 502/503 from the Worker means the Worker itself is up but its upstream
+    // (Notion) is unreachable — that is a sync outage, NOT a connectivity
+    // outage, so we keep reporting online and let the sync UI surface the error.
+    const probe = () => {
+      // Step 1: navigator.onLine fast gate.
+      if (typeof navigator !== "undefined" && navigator.onLine === false) {
+        setIsOnline(false); writeCached(false); return Promise.resolve(false);
+      }
+      // Step 2: confirm with a real /health fetch.
+      return new Promise(resolve => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `${WORKER_URL}/health`, true);
+        xhr.timeout = PROBE_TIMEOUT_MS;
+        xhr.onload  = () => {
+          const ok = xhr.status >= 200 && xhr.status < 500;
+          // Step 3: on a transient failure, fall back to last-known state
+          // rather than forcing offline (genuine outage confirmed on next poll).
+          const next = ok ? true : (readCached() === true);
+          setIsOnline(next); writeCached(next); resolve(next);
+        };
+        xhr.onerror   = () => {
+          const next = readCached() === true;
+          setIsOnline(next); writeCached(next); resolve(next);
+        };
+        xhr.ontimeout = () => {
+          const next = readCached() === true;
+          setIsOnline(next); writeCached(next); resolve(next);
+        };
+        xhr.send();
+      });
+    };
+
+    const onOnline  = () => { setIsOnline(true);  writeCached(true);  probe(); };
+    const onOffline = () => { setIsOnline(false); writeCached(false); };
     window.addEventListener("online",  onOnline);
     window.addEventListener("offline", onOffline);
-    // Probe on mount so initial state is accurate
+    // Probe on mount so initial state is accurate (within ~1s).
     probe();
-    // Poll every 5s to catch transitions iOS misses
+    // Poll every 5s to catch transitions iOS misses.
     const interval = setInterval(probe, 5000);
     return () => {
       window.removeEventListener("online",  onOnline);
@@ -1200,7 +1322,7 @@ export default function NutriTrack() {
   const handleTestConnection = async () => {
     setNotionSyncMsg({ type:"info", text:"Testing connection…" });
     try { const data = await fetchHealth(); setNotionSyncMsg({ type:"info", text:`✓ Connected to Worker (v${data.version||"?"})` }); setTimeout(() => setNotionSyncMsg(null), 4000); }
-    catch (err) { const msg = err.message||""; let f = msg.includes("worker_403")?"Worker rejected. Check ALLOWED_ORIGINS.":msg.startsWith("network:")?"Could not reach Worker. Are you online?": `Connection failed: ${msg}`; setNotionSyncMsg({ type:"error", text:f }); setTimeout(() => setNotionSyncMsg(null), 8000); }
+    catch (err) { setNotionSyncMsg({ type:"error", text: friendlyError(err, "testConnection") }); setTimeout(() => setNotionSyncMsg(null), 8000); }
   };
 
   const handleResetSyncHistory = () => { setLastSyncedAt(null); saveData(STORAGE_KEYS.notionStatus,{lastSyncedAt:null}); setNotionSyncMsg({type:"info",text:"Sync history cleared."}); setTimeout(()=>setNotionSyncMsg(null),4000); };
@@ -1223,21 +1345,20 @@ export default function NutriTrack() {
       if (skipped>0) setNotionSyncMsg({type:"info",text:`${parsed.length} recipe${parsed.length===1?"":"s"} for review. ${skipped} skipped.`});
       setSyncProgress(null);
     } catch (err) {
-      const msg=err.message||""; let f=msg.includes("worker_403")?"Worker rejected. Check ALLOWED_ORIGINS.":msg.includes("worker_502")?"Notion unreachable.":msg.startsWith("network:")?"Lost connection.":`Sync failed: ${msg}`;
-      setNotionSyncMsg({type:"error",text:f}); setSyncInProgress(false); setSyncProgress(null); setTimeout(()=>setNotionSyncMsg(null),8000);
+      setNotionSyncMsg({type:"error",text: friendlyError(err, "workerSync")}); setSyncInProgress(false); setSyncProgress(null); setTimeout(()=>setNotionSyncMsg(null),8000);
     }
   };
 
   const handlePasteSync = async () => {
     if (!pasteText.trim()) return; setSyncInProgress(true); setNotionSyncMsg({type:"info",text:"Parsing pasted content…"});
     try { const rr=await parseRecipesFromPasteText(pasteText); if(!rr.length){setNotionSyncMsg({type:"error",text:"No recipes found."});setSyncInProgress(false);setTimeout(()=>setNotionSyncMsg(null),5000);return;} const parsed=await Promise.all(rr.map(async r=>({...r,ingredients:await parseIngredients(r.ingredientLines)}))); buildReviewData(parsed); }
-    catch { setNotionSyncMsg({type:"error",text:"Parsing failed."}); setSyncInProgress(false); setTimeout(()=>setNotionSyncMsg(null),4000); }
+    catch (err) { setNotionSyncMsg({type:"error",text: friendlyError(err, "pasteSync")}); setSyncInProgress(false); setTimeout(()=>setNotionSyncMsg(null),4000); }
   };
 
   const handleParserTest = async () => {
     if (!parserTestText.trim()) return; setSyncInProgress(true);
     try { const lines=parserTestText.split(/\r?\n/).map(l=>l.trim()).filter(Boolean); const ing=await parseIngredients(lines); buildReviewData([{title:"Parser Test",servings:1,source:"regex parser test",ingredientLines:lines,ingredients:ing}]); }
-    catch (err) { setNotionSyncMsg({type:"error",text:`Parser failed: ${err.message||"unknown"}`}); setSyncInProgress(false); }
+    catch (err) { setNotionSyncMsg({type:"error",text: friendlyError(err, "parserTest")}); setSyncInProgress(false); }
   };
 
   const importRecipe = idx => {
@@ -1533,7 +1654,7 @@ export default function NutriTrack() {
                 )}
                 <div style={{marginTop:12,maxHeight:"calc(100vh - 220px)",overflowY:"auto"}}>
                   {foodDBStatus === "loading" && <div style={{padding:"32px 0",textAlign:"center",color:"#64748b",fontSize:13}}>Loading food database…</div>}
-                  {foodDBStatus === "error" && <div style={{padding:"24px 12px",textAlign:"center",color:"#ef4444",fontSize:13}}>Food database failed to load. Try restarting the app.</div>}
+                  {foodDBStatus === "error" && <div style={{padding:"24px 12px",textAlign:"center",color:"#ef4444",fontSize:13}}>The food database could not be loaded. Please reload the app.</div>}
                   {foodDBStatus === "ready" && (() => {
                     // W1 — Recents section (only when search box is empty)
                     const visibleRecents = debouncedSearchTerm.length === 0
@@ -2782,6 +2903,34 @@ export default function NutriTrack() {
               <div style={{fontSize:11,color:"#94a3b8"}}>Food database</div>
               <div style={{fontSize:11,color:foodDBStatus==="ready"?"#10b981":foodDBStatus==="error"?"#ef4444":"#f59e0b",fontWeight:600}}>{foodDBStatus}</div>
             </div>
+            {(() => {
+              let logs = [];
+              try { const raw = localStorage.getItem(STORAGE_KEYS.errorLogs); logs = raw ? JSON.parse(raw) : []; if (!Array.isArray(logs)) logs = []; } catch { logs = []; }
+              return (
+                <details style={{marginTop:12,fontSize:11}}>
+                  <summary style={{color:"#64748b",cursor:"pointer",padding:"4px 0",listStyle:"none",outline:"none",userSelect:"none"}}>
+                    ▸ Error logs ({logs.length})
+                  </summary>
+                  <div style={{marginTop:8}}>
+                    {logs.length === 0 ? (
+                      <div style={{color:"#64748b",padding:"6px 0"}}>No errors recorded. Logs are stored only on this device and never transmitted.</div>
+                    ) : (
+                      <div style={{display:"flex",flexDirection:"column",gap:6,maxHeight:160,overflowY:"auto"}}>
+                        {logs.slice().reverse().map((l, i) => (
+                          <div key={i} style={{background:"#1e293b",borderRadius:6,padding:"6px 8px",fontFamily:"monospace",fontSize:10,color:"#94a3b8",lineHeight:1.4}}>
+                            <div style={{color:"#e2e8f0"}}>{l.ts ? new Date(l.ts).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}) : "?"} · {(l.context||"unknown")} · {(l.type||"unknown")}</div>
+                            <div style={{color:"#64748b",marginTop:2,wordBreak:"break-word"}}>{l.raw||""}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {logs.length > 0 && (
+                      <button style={{marginTop:8,background:"none",border:"1px solid #334155",borderRadius:6,color:"#94a3b8",fontSize:10,fontWeight:600,padding:"4px 8px",cursor:"pointer"}} onClick={() => { try { localStorage.removeItem(STORAGE_KEYS.errorLogs); } catch {} setView("settings"); }}>Clear logs</button>
+                    )}
+                  </div>
+                </details>
+              );
+            })()}
             <div style={{borderTop:"1px solid #1e293b",marginTop:12,paddingTop:12,fontSize:11,color:"#475569",lineHeight:1.5}}>
               NutriTrack — offline-first nutrition tracking. All data is stored locally on this device. Use Export Data above to back up before clearing browser data.
             </div>
