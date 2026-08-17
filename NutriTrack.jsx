@@ -1450,7 +1450,7 @@ export default function NutriTrack() {
       </div>
     )}
     {!isOnline && (
-      <div style={{background:"#1a1a2e",borderBottom:"1px solid #475569",padding:"10px 14px",fontSize:12,color:"#94a3b8",flexShrink:0,zIndex:199}}>
+      <div style={{position:"sticky",top:0,left:0,right:0,background:"#1a1a2e",borderBottom:"1px solid #475569",padding:"10px 14px",paddingTop:"calc(10px + env(safe-area-inset-top, 0px))",fontSize:12,color:"#94a3b8",zIndex:200,boxShadow:"0 2px 8px rgba(0,0,0,0.3)"}}>
         Offline — Notion sync unavailable.
       </div>
     )}
