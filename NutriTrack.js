@@ -5,6 +5,7 @@
 // replacing the runtime fetch+dynamic-execution flow that caused the S2/R12 XSS risk.
 // Source: NutriTrack.jsx
 
+
 // FOOD_DB is loaded asynchronously from /NutriTrack/foods.json at app start.
 // Use the foodDB state (and allFoods / allFoodsForRender derived values) inside
 // the NutriTrack component. Do not reference FOOD_DB anywhere directly.
@@ -1050,6 +1051,98 @@ function suppItemSummary(items) {
   if (!items || !items.length) return "No items";
   return items.slice(0, 3).map(i => `${i.name} ${i.dose_amount}${i.dose_unit}`).join(", ") + (items.length > 3 ? ` +${items.length - 3} more` : "");
 }
+
+// ── Phase 9 (A8) — Custom food promotion to foods.json schema v1 ────────
+// Custom foods are stored internally with the abbreviation keys the JSX uses
+// (cal, pro, carb, ...). To promote a custom food into the main foods.json we
+// must emit the long-name schema v1 shape (calories, protein, ...). Every
+// nutrient field required by foods.json schema v1 must be present in the
+// exported patch — missing values are explicitly `null`, never omitted, so the
+// patch merges cleanly without silent schema drift.
+// Order mirrors mapFoodRecord() / foods.json column order for readability.
+const CUSTOM_FOOD_TO_DB = [["cal", "calories"], ["pro", "protein"], ["carb", "carbohydrates"], ["fat", "fat"], ["fib", "fibre"], ["fibSol", "fibre_soluble"], ["fibInsol", "fibre_insoluble"], ["fatSat", "fat_saturated"], ["fatMufa", "fat_mufa"], ["fatPufa", "fat_pufa"], ["aaHis", "histidine"], ["aaIle", "isoleucine"], ["aaLeu", "leucine"], ["aaLys", "lysine"], ["aaMet", "methionine"], ["aaPhe", "phenylalanine"], ["aaThr", "threonine"], ["aaTrp", "tryptophan"], ["aaVal", "valine"], ["iron", "iron"], ["calc", "calcium"], ["zinc", "zinc"], ["b12", "b12"], ["vitD", "vitamin_d"], ["omega3", "omega3"], ["iod", "iodine"], ["sel", "selenium"], ["mag", "magnesium"], ["pot", "potassium"], ["fol", "folate"], ["sod", "sodium"], ["vitA", "vitamin_a"], ["vitC", "vitamin_c"]];
+// Numeric nutrient keys: stored as numbers or null (unknown). Empty/missing
+// string inputs from the form are normalized to 0 at save time, but legacy
+// custom foods (pre-Phase-9) only carry the 19 NUTRIENT_META keys, so the
+// 14 subtype keys are absent and must be normalized to null on migration.
+const CUSTOM_NUMERIC_KEYS = [...Object.keys(NUTRIENT_META), ...FOOD_SUBTYPE_KEYS];
+
+// Convert one internal custom food record to foods.json schema v1. All
+// nutrient fields are present (value or null). Non-nutrient metadata
+// (id/name/source/fdc_id/servings) is filled with sensible defaults.
+function customFoodToDbRecord(food) {
+  const record = {
+    id: (food.id || "").replace(/^custom_/, "custom_"),
+    name: food.name || "Unnamed custom food",
+    category: food.cat || "Other",
+    source: food.source || "user",
+    fdc_id: food.fdc_id ?? null
+  };
+  for (const [shortKey, longKey] of CUSTOM_FOOD_TO_DB) {
+    const v = food[shortKey];
+    if (typeof v === "number" && !Number.isNaN(v)) record[longKey] = v;else record[longKey] = null;
+  }
+  record.servings = Array.isArray(food.servings) && food.servings.length ? food.servings : null;
+  return record;
+}
+
+// Build a JSON patch array (RFC 6902 "add" ops) that, when applied to
+// foods.json, appends the promoted custom food(s). Each op targets
+// /foods/<index> so the patch is position-independent of any manual edits
+// the maintainer makes first — it appends at the end of the foods array.
+// The envelope carries schema_version 1 to match the deployed foods.json.
+function buildCustomFoodPatch(foods /* internal custom-food records */) {
+  const ops = [];
+  const records = (foods || []).filter(f => f && !f.deleted).map(customFoodToDbRecord);
+  records.forEach((rec, i) => {
+    ops.push({
+      op: "add",
+      path: `/foods/-`,
+      value: rec
+    });
+  });
+  return {
+    schema_version: 1,
+    basis: "per_100g",
+    patch: ops,
+    exported_at: new Date().toISOString()
+  };
+}
+
+// One-time migration: ensure every custom food record carries ALL numeric
+// nutrient keys. Pre-Phase-9 records only had NUTRIENT_META keys; missing
+// subtype keys are filled with null so buildFoodSnapshot and export are
+// consistent. Returns { foods: migrated[], changed: boolean }.
+function migrateCustomFoods(rawFoods) {
+  if (!Array.isArray(rawFoods)) return {
+    foods: [],
+    changed: false
+  };
+  let changed = false;
+  const foods = rawFoods.map(f => {
+    if (!f || typeof f !== "object") {
+      changed = true;
+      return null;
+    }
+    const out = {
+      ...f
+    };
+    for (const k of CUSTOM_NUMERIC_KEYS) {
+      if (out[k] === undefined) {
+        out[k] = null;
+        changed = true;
+      } else if (out[k] === "" || typeof out[k] === "string" && out[k].trim() === "") {
+        out[k] = null;
+        changed = true;
+      }
+    }
+    return out;
+  }).filter(Boolean);
+  return {
+    foods,
+    changed
+  };
+}
 // ── COMPONENTS ────────────────────────────────────────────────────────────
 function Ring({
   value,
@@ -1283,6 +1376,7 @@ function NutriTrack() {
     vitA: "",
     vitC: ""
   });
+  const [customFoodExportMsg, setCustomFoodExportMsg] = useState(null);
 
   // Recipe creation
   const [recipeInProgress, setRecipeInProgress] = useState({
@@ -1374,6 +1468,14 @@ function NutriTrack() {
       };
       const safeL = resolve(l, {}, "logs", STORAGE_KEYS.logs);
       const safeC = resolve(c, [], "customFoods", STORAGE_KEYS.customFoods);
+      // Phase 9 (A8) — one-time migration: backfill all numeric nutrient
+      // keys (incl. fibre/fat subtypes + amino acids) as null on legacy
+      // custom-food records so export + buildFoodSnapshot stay consistent.
+      const migratedCustom = migrateCustomFoods(safeC);
+      const safeCf = migratedCustom.foods;
+      if (migratedCustom.changed && !corruptedKeys.current.has(STORAGE_KEYS.customFoods)) {
+        saveData(STORAGE_KEYS.customFoods, safeCf);
+      }
       const safeP = resolve(p, DEFAULT_PROFILE, "profile", STORAGE_KEYS.profile);
       const safeEr = resolve(er, DEFAULT_EX_RATIO, "exRatio", STORAGE_KEYS.exRatio);
       const safeRc = resolve(rc, [], "recipes", STORAGE_KEYS.recipes);
@@ -1397,7 +1499,7 @@ function NutriTrack() {
         ...computedOnLoad
       });
       setGoalOverrides(safeGo);
-      setCustomFoods(safeC);
+      setCustomFoods(safeCf);
       setProfile(safeP);
       setExRatio(safeEr);
       setRecipes(safeRc);
@@ -1413,7 +1515,7 @@ function NutriTrack() {
       const shapeFailures = validateStorageShapes({
         logs: safeL,
         recipes: safeRc,
-        customFoods: safeC,
+        customFoods: safeCf,
         profile: safeP,
         exRatio: safeEr,
         supplementStacks: safeSs,
@@ -2264,11 +2366,16 @@ function NutriTrack() {
   };
   const saveCustomFood = () => {
     if (!cf.name.trim() || !cf.cal) return;
+    // Phase 9 (A8): new custom foods are schema-complete at creation —
+    // all NUTRIENT_META keys are captured from the form, and the 14
+    // subtype keys (fibre/fat subtypes + amino acids) the form does not
+    // collect are set to null (unknown), matching foods.json convention.
     const newFood = {
       id: `custom_${Date.now()}`,
       name: cf.name.trim(),
       cat: cf.cat || "Other",
-      ...Object.fromEntries(Object.keys(NUTRIENT_META).map(k => [k, parseFloat(cf[k]) || 0]))
+      ...Object.fromEntries(Object.keys(NUTRIENT_META).map(k => [k, parseFloat(cf[k]) || 0])),
+      ...Object.fromEntries(FOOD_SUBTYPE_KEYS.map(k => [k, null]))
     };
     setCustomFoods(prev => [...prev, newFood]);
     setCf({
@@ -2289,7 +2396,10 @@ function NutriTrack() {
       sel: "",
       mag: "",
       pot: "",
-      fol: ""
+      fol: "",
+      sod: "",
+      vitA: "",
+      vitC: ""
     });
     setView("add");
   };
@@ -3023,10 +3133,38 @@ function NutriTrack() {
       flexShrink: 0
     },
     onClick: () => {
+      // Phase 9 (R4/R10) — apply the SW update with a graceful
+      // fallback. Ask the waiting SW to skip waiting; if the new
+      // controller never takes over (activation failure / no waiting
+      // worker / SW disabled), fall back to a hard reload so the
+      // banner never strands the user on a stale build.
       const reg = swRegRef.current;
-      if (reg && reg.waiting) reg.waiting.postMessage({
-        type: "SKIP_WAITING"
-      });
+      const applyViaController = () => {
+        if (reg && reg.waiting) reg.waiting.postMessage({
+          type: "SKIP_WAITING"
+        });
+      };
+      if (!("serviceWorker" in navigator) || !navigator.serviceWorker.controller || !reg || !reg.waiting) {
+        window.location.reload();
+        return;
+      }
+      let reloaded = false;
+      const fallback = setTimeout(() => {
+        if (!reloaded) {
+          reloaded = true;
+          window.location.reload();
+        }
+      }, 4000);
+      const onControllerChange = () => {
+        clearTimeout(fallback);
+        navigator.serviceWorker.removeEventListener("controllerchange", onControllerChange);
+        if (!reloaded) {
+          reloaded = true;
+          window.location.reload();
+        }
+      };
+      navigator.serviceWorker.addEventListener("controllerchange", onControllerChange);
+      applyViaController();
     }
   }, "OK")), !isOnline && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -10911,9 +11049,68 @@ function NutriTrack() {
         cursor: "pointer"
       },
       onClick: () => setView("customAdd")
-    }, "+ New")), /*#__PURE__*/React.createElement("div", {
+    }, "+ New"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "none",
+        color: active.length === 0 ? "#1e293b" : "#3b82f6",
+        fontSize: 13,
+        fontWeight: 600,
+        cursor: active.length === 0 ? "default" : "pointer"
+      },
+      onClick: () => {
+        const envelope = buildCustomFoodPatch(customFoods);
+        const blob = new Blob([JSON.stringify(envelope, null, 2)], {
+          type: "application/json"
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `nutritrack-custom-foods-patch-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+        setCustomFoodExportMsg("Patch exported — append each entry to the foods array in foods.json.");
+        setTimeout(() => setCustomFoodExportMsg(null), 6000);
+      },
+      disabled: active.length === 0
+    }, "Export patch")), /*#__PURE__*/React.createElement("div", {
       style: S.section
-    }, active.length === 0 && deleted.length === 0 && /*#__PURE__*/React.createElement("div", {
+    }, customFoodExportMsg && /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: "#052e1a",
+        border: "1px solid #10b981",
+        borderRadius: 10,
+        padding: "10px 14px",
+        marginBottom: 12,
+        fontSize: 12,
+        color: "#34d399"
+      }
+    }, "✓ ", customFoodExportMsg), /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.card,
+        marginBottom: 12
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#94a3b8",
+        lineHeight: 1.6
+      }
+    }, /*#__PURE__*/React.createElement("strong", {
+      style: {
+        color: "#e2e8f0"
+      }
+    }, "Promote to foods.json:"), " Export a JSON patch of your active custom foods. Every nutrient field (macros, fibre/fat subtypes, amino acids, micronutrients) is included — unknown values are ", /*#__PURE__*/React.createElement("code", {
+      style: {
+        color: "#cbd5e1"
+      }
+    }, "null"), ", matching foods.json schema v1. Apply by appending each entry to the ", /*#__PURE__*/React.createElement("code", {
+      style: {
+        color: "#cbd5e1"
+      }
+    }, "foods"), " array in foods.json.")), active.length === 0 && deleted.length === 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         textAlign: "center",
         padding: "40px 0",
@@ -11029,5 +11226,6 @@ function NutriTrack() {
   }
   return null;
 }
+
 
 window._MainApp = (typeof NutriTrack !== "undefined" ? NutriTrack : null);
