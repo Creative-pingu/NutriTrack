@@ -104,10 +104,12 @@
         
         // Single source of truth for the app version. Keep in sync with
         // sw.js CACHE_VERSION ("nutritrack-v61") and the build timestamp.
-        const APP_VERSION = 'v61';
+        const SHELL_APP_VERSION = 'v61';
         // Expose on window so NutriTrack.js (loaded as a static script)
-        // can read it for the Settings > About panel.
-        window.APP_VERSION = APP_VERSION;
+        // can read it for the Settings > About panel. NutriTrack.js declares
+        // its own `const APP_VERSION` reading this global, so the shell must
+        // NOT also use that name (would collide and abort the app script).
+        window.APP_VERSION = SHELL_APP_VERSION;
 
         addStep('React');
         addStep('ReactDOM');
@@ -122,9 +124,9 @@
         // newest index.html always loads; code updates then propagate through
         // the SW's own lifecycle (updatefound -> controllerchange).
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/NutriTrack/sw.js?v=' + APP_VERSION, { scope: '/NutriTrack/' })
+            navigator.serviceWorker.register('/NutriTrack/sw.js?v=' + SHELL_APP_VERSION, { scope: '/NutriTrack/' })
                 .then(function(reg) {
-                    document.getElementById('sw-status').textContent = 'SW: ' + APP_VERSION + ' active';
+                    document.getElementById('sw-status').textContent = 'SW: ' + SHELL_APP_VERSION + ' active';
                     // Expose the ready promise so NutriTrack.jsx's Phase 6d
                     // update detection can reuse it without racing.
                     window._swReady = navigator.serviceWorker.ready;
@@ -195,7 +197,7 @@
             // is generated at build time (Babel classic runtime) and sets
             // window._MainApp on load. No dynamic code evaluation remains.
             const appScript = document.createElement('script');
-            appScript.src = './NutriTrack.js?v=' + APP_VERSION.replace('v','');
+            appScript.src = './NutriTrack.js?v=' + SHELL_APP_VERSION.replace('v','');
             appScript.onload = function() {
                 updateStep(3, 'loaded');
                 updateStep(4, 'current', 'Rendering...');
