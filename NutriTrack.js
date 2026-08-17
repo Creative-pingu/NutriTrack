@@ -2740,7 +2740,7 @@ function NutriTrack() {
       color: "#e2e8f0",
       minHeight: "100vh",
       fontFamily: "'DM Sans', system-ui, sans-serif",
-      paddingBottom: 80,
+      paddingBottom: 150,
       paddingTop: "env(safe-area-inset-top, 0px)"
     },
     header: {
@@ -8183,7 +8183,142 @@ function NutriTrack() {
       },
       disabled: !parserTestText.trim() || syncInProgress,
       onClick: handleParserTest
-    }, syncInProgress ? "Working…" : "Run parser")))), /*#__PURE__*/React.createElement("div", {
+    }, syncInProgress ? "Working…" : "Run parser")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderTop: "1px solid #1e293b",
+        marginTop: 12,
+        paddingTop: 12
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        fontWeight: 600,
+        marginBottom: 4,
+        textTransform: "uppercase",
+        letterSpacing: "0.04em"
+      }
+    }, "Inject test error"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b",
+        marginBottom: 8,
+        lineHeight: 1.5
+      }
+    }, "Surfaces the friendly error message (and logs it) for each error type. Works offline — no network needed."), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: 6
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      style: {
+        padding: 8,
+        borderRadius: 8,
+        border: "1px solid #334155",
+        background: "#0f1729",
+        color: "#94a3b8",
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(new Error("network: fetch failed"), "injectTest")
+      })
+    }, "network"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        padding: 8,
+        borderRadius: 8,
+        border: "1px solid #334155",
+        background: "#0f1729",
+        color: "#94a3b8",
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(new Error("worker_502: notion_unreachable"), "injectTest")
+      })
+    }, "worker_502"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        padding: 8,
+        borderRadius: 8,
+        border: "1px solid #334155",
+        background: "#0f1729",
+        color: "#94a3b8",
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(new Error("worker_403: forbidden"), "injectTest")
+      })
+    }, "worker_403"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        padding: 8,
+        borderRadius: 8,
+        border: "1px solid #334155",
+        background: "#0f1729",
+        color: "#94a3b8",
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(new Error("foods.json fetch failed: 404"), "injectTest")
+      })
+    }, "fooddb 404"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        padding: 8,
+        borderRadius: 8,
+        border: "1px solid #334155",
+        background: "#0f1729",
+        color: "#94a3b8",
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(new Error("QuotaExceededError"), "injectTest")
+      })
+    }, "storage quota"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        padding: 8,
+        borderRadius: 8,
+        border: "1px solid #334155",
+        background: "#0f1729",
+        color: "#94a3b8",
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(new Error("No recipes found."), "injectTest")
+      })
+    }, "parse")), notionSyncMsg && notionSyncMsg.type === "error" && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 8,
+        background: "#2d0f0f",
+        border: "1px solid #7f1d1d",
+        borderRadius: 8,
+        padding: "8px 10px",
+        fontSize: 11,
+        color: "#fca5a5",
+        lineHeight: 1.4
+      }
+    }, notionSyncMsg.text), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#475569",
+        marginTop: 6
+      }
+    }, "Logged to Settings → About → Error logs.")))), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         fontWeight: 700,

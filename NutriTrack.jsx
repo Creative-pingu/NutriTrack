@@ -1389,7 +1389,7 @@ export default function NutriTrack() {
   );
   // ── STYLES ────────────────────────────────────────────────────────────
   const S = {
-    app:       { background:"#0a0f1a", color:"#e2e8f0", minHeight:"100vh", fontFamily:"'DM Sans', system-ui, sans-serif", paddingBottom:80, paddingTop:"env(safe-area-inset-top, 0px)" },
+    app:       { background:"#0a0f1a", color:"#e2e8f0", minHeight:"100vh", fontFamily:"'DM Sans', system-ui, sans-serif", paddingBottom:150, paddingTop:"env(safe-area-inset-top, 0px)" },
     header:    { padding:"16px 20px 8px", display:"flex", alignItems:"center", justifyContent:"space-between" },
     section:   { padding:"0 20px" },
     card:      { background:"#111827", borderRadius:14, padding:16, marginBottom:10, border:"1px solid #1e293b" },
@@ -2856,6 +2856,22 @@ export default function NutriTrack() {
                 <div style={{fontSize:11,color:"#64748b",marginBottom:8,lineHeight:1.5}}>Test regex ingredient parser — paste lines (one per line).</div>
                 <textarea style={{width:"100%",background:"#1e293b",border:"1px solid #334155",borderRadius:10,padding:"12px 14px",color:"#e2e8f0",fontSize:13,outline:"none",boxSizing:"border-box",minHeight:80,resize:"vertical",fontFamily:"inherit"}} placeholder={"200g cherry tomatoes\n1 capsicum\n2 medium onions"} value={parserTestText} onChange={e=>setParserTestText(e.target.value)}/>
                 <button style={{width:"100%",marginTop:8,padding:10,borderRadius:10,border:"1px solid #334155",background:parserTestText.trim()&&!syncInProgress?"transparent":"#0f1729",color:parserTestText.trim()&&!syncInProgress?"#94a3b8":"#475569",fontSize:13,fontWeight:600,cursor:parserTestText.trim()&&!syncInProgress?"pointer":"default"}} disabled={!parserTestText.trim()||syncInProgress} onClick={handleParserTest}>{syncInProgress?"Working…":"Run parser"}</button>
+              </div>
+              <div style={{borderTop:"1px solid #1e293b",marginTop:12,paddingTop:12}}>
+                <div style={{fontSize:11,color:"#475569",fontWeight:600,marginBottom:4,textTransform:"uppercase",letterSpacing:"0.04em"}}>Inject test error</div>
+                <div style={{fontSize:11,color:"#64748b",marginBottom:8,lineHeight:1.5}}>Surfaces the friendly error message (and logs it) for each error type. Works offline — no network needed.</div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("network: fetch failed"),"injectTest")})}>network</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("worker_502: notion_unreachable"),"injectTest")})}>worker_502</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("worker_403: forbidden"),"injectTest")})}>worker_403</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("foods.json fetch failed: 404"),"injectTest")})}>fooddb 404</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("QuotaExceededError"),"injectTest")})}>storage quota</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("No recipes found."),"injectTest")})}>parse</button>
+                </div>
+                {notionSyncMsg && notionSyncMsg.type==="error" && (
+                  <div style={{marginTop:8,background:"#2d0f0f",border:"1px solid #7f1d1d",borderRadius:8,padding:"8px 10px",fontSize:11,color:"#fca5a5",lineHeight:1.4}}>{notionSyncMsg.text}</div>
+                )}
+                <div style={{fontSize:10,color:"#475569",marginTop:6}}>Logged to Settings → About → Error logs.</div>
               </div>
             </div>
           </details>
