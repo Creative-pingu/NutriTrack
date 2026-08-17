@@ -5,7 +5,6 @@
 // replacing the runtime fetch+dynamic-execution flow that caused the S2/R12 XSS risk.
 // Source: NutriTrack.jsx
 
-
 function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
@@ -2852,20 +2851,6 @@ function NutriTrack() {
       });
     });
   };
-  // Phase 10: reorder ingredients (reorder is part of the edit user flow).
-  var moveIngInRecipe = function moveIngInRecipe(idx, dir) {
-    return setRecipeInProgress(function (prev) {
-      var arr = _toConsumableArray(prev.ingredients);
-      var j = idx + dir;
-      if (j < 0 || j >= arr.length) return prev;
-      var _ref5 = [arr[j], arr[idx]];
-      arr[idx] = _ref5[0];
-      arr[j] = _ref5[1];
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        ingredients: arr
-      });
-    });
-  };
   var logRecipe = function logRecipe() {
     if (!selectedRecipe) return;
     var rs = Math.max(Number(selectedRecipe.servings) || 1, 0.01),
@@ -3346,10 +3331,10 @@ function NutriTrack() {
       var finalDose = hasOverride ? newDose : i.dose_amount;
       // Rescale nutrients proportionally to dose change
       var scaleFactor = i.dose_amount > 0 && hasOverride ? newDose / i.dose_amount : 1;
-      var nutrients = Object.fromEntries(Object.entries(i.nutrients || {}).map(function (_ref6) {
-        var _ref7 = _slicedToArray(_ref6, 2),
-          k = _ref7[0],
-          v = _ref7[1];
+      var nutrients = Object.fromEntries(Object.entries(i.nutrients || {}).map(function (_ref5) {
+        var _ref6 = _slicedToArray(_ref5, 2),
+          k = _ref6[0],
+          v = _ref6[1];
         return [k, Math.round(v * scaleFactor * 1000) / 1000];
       }));
       return {
@@ -3402,7 +3387,7 @@ function NutriTrack() {
     setView("notionReview");
   };
   var handleTestConnection = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
       var data, _t;
       return _regenerator().w(function (_context2) {
         while (1) switch (_context2.p = _context2.n) {
@@ -3441,7 +3426,7 @@ function NutriTrack() {
       }, _callee2, null, [[1, 3]]);
     }));
     return function handleTestConnection() {
-      return _ref8.apply(this, arguments);
+      return _ref7.apply(this, arguments);
     };
   }();
   var handleResetSyncHistory = function handleResetSyncHistory() {
@@ -3458,7 +3443,7 @@ function NutriTrack() {
     }, 4000);
   };
   var handleWorkerSync = /*#__PURE__*/function () {
-    var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+    var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
       var lr, rl, fa, enriched, usable, skipped, parsed, i, r, ing, _t2, _t3;
       return _regenerator().w(function (_context3) {
         while (1) switch (_context3.p = _context3.n) {
@@ -3623,11 +3608,11 @@ function NutriTrack() {
       }, _callee3, null, [[8, 10], [2, 14]]);
     }));
     return function handleWorkerSync() {
-      return _ref9.apply(this, arguments);
+      return _ref8.apply(this, arguments);
     };
   }();
   var handlePasteSync = /*#__PURE__*/function () {
-    var _ref0 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+    var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
       var rr, parsed, _t8;
       return _regenerator().w(function (_context5) {
         while (1) switch (_context5.p = _context5.n) {
@@ -3664,7 +3649,7 @@ function NutriTrack() {
           case 4:
             _context5.n = 5;
             return Promise.all(rr.map(/*#__PURE__*/function () {
-              var _ref1 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(r) {
+              var _ref0 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(r) {
                 var _t4, _t5, _t6, _t7;
                 return _regenerator().w(function (_context4) {
                   while (1) switch (_context4.n) {
@@ -3683,7 +3668,7 @@ function NutriTrack() {
                 }, _callee4);
               }));
               return function (_x12) {
-                return _ref1.apply(this, arguments);
+                return _ref0.apply(this, arguments);
               };
             }()));
           case 5:
@@ -3708,11 +3693,11 @@ function NutriTrack() {
       }, _callee5, null, [[2, 6]]);
     }));
     return function handlePasteSync() {
-      return _ref0.apply(this, arguments);
+      return _ref9.apply(this, arguments);
     };
   }();
   var handleParserTest = /*#__PURE__*/function () {
-    var _ref10 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+    var _ref1 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
       var lines, ing, _t9;
       return _regenerator().w(function (_context6) {
         while (1) switch (_context6.p = _context6.n) {
@@ -3755,7 +3740,7 @@ function NutriTrack() {
       }, _callee6, null, [[2, 4]]);
     }));
     return function handleParserTest() {
-      return _ref10.apply(this, arguments);
+      return _ref1.apply(this, arguments);
     };
   }();
   var importRecipe = function importRecipe(idx) {
@@ -4851,10 +4836,10 @@ function NutriTrack() {
     var ModePicker = function ModePicker() {
       return /*#__PURE__*/React.createElement("div", {
         style: S.modePicker
-      }, [["food", "🍎 Food"], ["recipe", "📖 Recipe"], ["supplement", "💊 Supps"]].map(function (_ref11) {
-        var _ref12 = _slicedToArray(_ref11, 2),
-          m = _ref12[0],
-          label = _ref12[1];
+      }, [["food", "🍎 Food"], ["recipe", "📖 Recipe"], ["supplement", "💊 Supps"]].map(function (_ref10) {
+        var _ref11 = _slicedToArray(_ref10, 2),
+          m = _ref11[0],
+          label = _ref11[1];
         return /*#__PURE__*/React.createElement("button", {
           key: m,
           style: S.modeTab(addMode === m),
@@ -5148,10 +5133,10 @@ function NutriTrack() {
             }
           }, r.servings, " ", r.servings === 1 ? "serving" : "servings", " \xB7 ", r.ingredients.length, " ingredients"));
         }));
-      }(), Object.entries(groupedByCategory).map(function (_ref13) {
-        var _ref14 = _slicedToArray(_ref13, 2),
-          cat = _ref14[0],
-          foods = _ref14[1];
+      }(), Object.entries(groupedByCategory).map(function (_ref12) {
+        var _ref13 = _slicedToArray(_ref12, 2),
+          cat = _ref13[0],
+          foods = _ref13[1];
         return /*#__PURE__*/React.createElement("div", {
           key: cat
         }, /*#__PURE__*/React.createElement("div", {
@@ -5773,11 +5758,11 @@ function NutriTrack() {
         style: {
           marginBottom: 12
         }
-      }, Object.entries(oneOffData.nutrients).map(function (_ref15) {
+      }, Object.entries(oneOffData.nutrients).map(function (_ref14) {
         var _NUTRIENT_META$k, _NUTRIENT_META$k2;
-        var _ref16 = _slicedToArray(_ref15, 2),
-          k = _ref16[0],
-          v = _ref16[1];
+        var _ref15 = _slicedToArray(_ref14, 2),
+          k = _ref15[0],
+          v = _ref15[1];
         return /*#__PURE__*/React.createElement("div", {
           key: k,
           style: {
@@ -6513,11 +6498,11 @@ function NutriTrack() {
       style: {
         marginBottom: 12
       }
-    }, Object.entries(itemEditorData.nutrients).map(function (_ref17) {
+    }, Object.entries(itemEditorData.nutrients).map(function (_ref16) {
       var _NUTRIENT_META$k3, _NUTRIENT_META$k4;
-      var _ref18 = _slicedToArray(_ref17, 2),
-        k = _ref18[0],
-        v = _ref18[1];
+      var _ref17 = _slicedToArray(_ref16, 2),
+        k = _ref17[0],
+        v = _ref17[1];
       return /*#__PURE__*/React.createElement("div", {
         key: k,
         style: {
@@ -6716,10 +6701,10 @@ function NutriTrack() {
       }, {
         k: "fat",
         l: "fat"
-      }].map(function (_ref19) {
+      }].map(function (_ref18) {
         var _n$k, _n$k2;
-        var k = _ref19.k,
-          l = _ref19.l;
+        var k = _ref18.k,
+          l = _ref18.l;
         return /*#__PURE__*/React.createElement("div", {
           key: k,
           style: {
@@ -7034,10 +7019,10 @@ function NutriTrack() {
         padding: 4,
         marginBottom: 16
       }
-    }, [["servings", "By Servings"], ["grams", "By Weight"]].map(function (_ref20) {
-      var _ref21 = _slicedToArray(_ref20, 2),
-        mode = _ref21[0],
-        label = _ref21[1];
+    }, [["servings", "By Servings"], ["grams", "By Weight"]].map(function (_ref19) {
+      var _ref20 = _slicedToArray(_ref19, 2),
+        mode = _ref20[0],
+        label = _ref20[1];
       return /*#__PURE__*/React.createElement("button", {
         key: mode,
         style: {
@@ -7605,47 +7590,7 @@ function NutriTrack() {
         }
       }, /*#__PURE__*/React.createElement("div", {
         style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 4,
           flex: 1,
-          minWidth: 0
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          flexDirection: "column"
-        }
-      }, /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "none",
-          color: i > 0 ? "#94a3b8" : "#334155",
-          fontSize: 12,
-          lineHeight: 1,
-          cursor: i > 0 ? "pointer" : "default",
-          padding: "1px 2px"
-        },
-        disabled: i === 0,
-        onClick: function onClick() {
-          return moveIngInRecipe(i, -1);
-        }
-      }, "\u25B2"), /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "none",
-          color: i < recipeInProgress.ingredients.length - 1 ? "#94a3b8" : "#334155",
-          fontSize: 12,
-          lineHeight: 1,
-          cursor: i < recipeInProgress.ingredients.length - 1 ? "pointer" : "default",
-          padding: "1px 2px"
-        },
-        disabled: i === recipeInProgress.ingredients.length - 1,
-        onClick: function onClick() {
-          return moveIngInRecipe(i, 1);
-        }
-      }, "\u25BC")), /*#__PURE__*/React.createElement("div", {
-        style: {
           minWidth: 0
         }
       }, /*#__PURE__*/React.createElement("div", {
@@ -7661,7 +7606,7 @@ function NutriTrack() {
           fontSize: 11,
           color: "#64748b"
         }
-      }, ingCal, " ", energyLabel))), /*#__PURE__*/React.createElement("div", {
+      }, ingCal, " ", energyLabel)), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           alignItems: "center",
@@ -7678,6 +7623,9 @@ function NutriTrack() {
         type: "number",
         inputMode: "decimal",
         value: ing.amount_g,
+        onFocus: function onFocus(e) {
+          return e.target.select();
+        },
         onChange: function onChange(e) {
           return updateIngAmountInRecipe(i, e.target.value);
         }
@@ -7767,10 +7715,10 @@ function NutriTrack() {
         maxHeight: "calc(100vh - 160px)",
         overflowY: "auto"
       }
-    }, Object.entries(groupedIngByCategory).map(function (_ref22) {
-      var _ref23 = _slicedToArray(_ref22, 2),
-        cat = _ref23[0],
-        foods = _ref23[1];
+    }, Object.entries(groupedIngByCategory).map(function (_ref21) {
+      var _ref22 = _slicedToArray(_ref21, 2),
+        cat = _ref22[0],
+        foods = _ref22[1];
       return /*#__PURE__*/React.createElement("div", {
         key: cat
       }, /*#__PURE__*/React.createElement("div", {
@@ -8077,10 +8025,10 @@ function NutriTrack() {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Activity"), Object.entries(actGroups).map(function (_ref24) {
-      var _ref25 = _slicedToArray(_ref24, 2),
-        grp = _ref25[0],
-        acts = _ref25[1];
+    }, "Activity"), Object.entries(actGroups).map(function (_ref23) {
+      var _ref24 = _slicedToArray(_ref23, 2),
+        grp = _ref24[0],
+        acts = _ref24[1];
       return /*#__PURE__*/React.createElement("div", {
         key: grp,
         style: {
@@ -8347,10 +8295,10 @@ function NutriTrack() {
         gap: 8,
         marginBottom: 12
       }
-    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(function (_ref26) {
-      var _ref27 = _slicedToArray(_ref26, 2),
-        val = _ref27[0],
-        label = _ref27[1];
+    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(function (_ref25) {
+      var _ref26 = _slicedToArray(_ref25, 2),
+        val = _ref26[0],
+        label = _ref26[1];
       return /*#__PURE__*/React.createElement("button", {
         key: val,
         style: {
@@ -8374,9 +8322,9 @@ function NutriTrack() {
         color: "#475569",
         marginBottom: 8
       }
-    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(function (_ref28) {
-      var k = _ref28.k,
-        l = _ref28.l;
+    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(function (_ref27) {
+      var k = _ref27.k,
+        l = _ref27.l;
       return /*#__PURE__*/React.createElement("div", {
         key: k,
         style: S.cfRow
@@ -8522,9 +8470,9 @@ function NutriTrack() {
         marginTop: 4,
         color: "#64748b"
       }
-    }, "Fat: ", goals.fat, "g (25% TDEE \xF7 9) \xB7 Carbs: ", goals.carb, "g (residual) \xB7 Fibre: ", goals.fib, "g (14g/1000kcal)")))), sections.map(function (_ref29) {
-      var title = _ref29.title,
-        keys = _ref29.keys;
+    }, "Fat: ", goals.fat, "g (25% TDEE \xF7 9) \xB7 Carbs: ", goals.carb, "g (residual) \xB7 Fibre: ", goals.fib, "g (14g/1000kcal)")))), sections.map(function (_ref28) {
+      var title = _ref28.title,
+        keys = _ref28.keys;
       return /*#__PURE__*/React.createElement("div", {
         key: title,
         style: _objectSpread(_objectSpread({}, S.card), {}, {
@@ -8663,10 +8611,10 @@ function NutriTrack() {
       key: "pro",
       label: "Protein (%)",
       color: NUTRIENT_META.pro.color
-    }].map(function (_ref30) {
-      var key = _ref30.key,
-        label = _ref30.label,
-        color = _ref30.color;
+    }].map(function (_ref29) {
+      var key = _ref29.key,
+        label = _ref29.label,
+        color = _ref29.color;
       return /*#__PURE__*/React.createElement("div", {
         key: key,
         style: {
@@ -9168,10 +9116,10 @@ function NutriTrack() {
         display: "flex",
         gap: 8
       }
-    }, [["advanced", "Advanced"], ["simplified", "Simplified"]].map(function (_ref31) {
-      var _ref32 = _slicedToArray(_ref31, 2),
-        val = _ref32[0],
-        label = _ref32[1];
+    }, [["advanced", "Advanced"], ["simplified", "Simplified"]].map(function (_ref30) {
+      var _ref31 = _slicedToArray(_ref30, 2),
+        val = _ref31[0],
+        label = _ref31[1];
       return /*#__PURE__*/React.createElement("button", {
         key: val,
         style: {
@@ -9199,10 +9147,10 @@ function NutriTrack() {
         gap: 8,
         marginBottom: 4
       }
-    }, [["kcal", "kcal"], ["kJ", "kJ"]].map(function (_ref33) {
-      var _ref34 = _slicedToArray(_ref33, 2),
-        val = _ref34[0],
-        label = _ref34[1];
+    }, [["kcal", "kcal"], ["kJ", "kJ"]].map(function (_ref32) {
+      var _ref33 = _slicedToArray(_ref32, 2),
+        val = _ref33[0],
+        label = _ref33[1];
       return /*#__PURE__*/React.createElement("button", {
         key: val,
         style: {
@@ -9830,10 +9778,10 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.04em"
       }
-    }, "Storage key readout"), Object.entries(STORAGE_KEYS).map(function (_ref35) {
-      var _ref36 = _slicedToArray(_ref35, 2),
-        name = _ref36[0],
-        key = _ref36[1];
+    }, "Storage key readout"), Object.entries(STORAGE_KEYS).map(function (_ref34) {
+      var _ref35 = _slicedToArray(_ref34, 2),
+        name = _ref35[0],
+        key = _ref35[1];
       var raw = localStorage.getItem(key);
       var status, preview;
       if (raw === null) {
@@ -10578,10 +10526,10 @@ function NutriTrack() {
           gap: 6,
           flexWrap: "wrap"
         }
-      }, [["overwrite", "Overwrite"], ["copy", "Save as copy"], ["skip", "Skip"]].map(function (_ref37) {
-        var _ref38 = _slicedToArray(_ref37, 2),
-          action = _ref38[0],
-          label = _ref38[1];
+      }, [["overwrite", "Overwrite"], ["copy", "Save as copy"], ["skip", "Skip"]].map(function (_ref36) {
+        var _ref37 = _slicedToArray(_ref36, 2),
+          action = _ref37[0],
+          label = _ref37[1];
         return /*#__PURE__*/React.createElement("button", {
           key: action,
           style: _objectSpread(_objectSpread({}, S.pill(r.duplicateAction === action)), {}, {
@@ -10818,10 +10766,10 @@ function NutriTrack() {
         maxHeight: "calc(100vh - 220px)",
         overflowY: "auto"
       }
-    }, Object.entries(groupedNotionFoods).map(function (_ref39) {
-      var _ref40 = _slicedToArray(_ref39, 2),
-        cat = _ref40[0],
-        foods = _ref40[1];
+    }, Object.entries(groupedNotionFoods).map(function (_ref38) {
+      var _ref39 = _slicedToArray(_ref38, 2),
+        cat = _ref39[0],
+        foods = _ref39[1];
       return /*#__PURE__*/React.createElement("div", {
         key: cat
       }, /*#__PURE__*/React.createElement("div", {
@@ -10924,10 +10872,10 @@ function NutriTrack() {
     });
     var aaGoals = computeAAGoals(profile.weightKg);
     // Apply same exercise multiplier as protein goal
-    var scaledAAGoals = Object.fromEntries(Object.entries(aaGoals).map(function (_ref41) {
-      var _ref42 = _slicedToArray(_ref41, 2),
-        k = _ref42[0],
-        v = _ref42[1];
+    var scaledAAGoals = Object.fromEntries(Object.entries(aaGoals).map(function (_ref40) {
+      var _ref41 = _slicedToArray(_ref40, 2),
+        k = _ref41[0],
+        v = _ref41[1];
       return [k, v * proMultiplier];
     }));
     var limitingKey = "aaLys",
@@ -11379,12 +11327,12 @@ function NutriTrack() {
       kcal: fatK,
       grams: totals.fat,
       mult: "×9"
-    }].map(function (_ref43, i) {
-      var key = _ref43.key,
-        label = _ref43.label,
-        kcal = _ref43.kcal,
-        grams = _ref43.grams,
-        mult = _ref43.mult;
+    }].map(function (_ref42, i) {
+      var key = _ref42.key,
+        label = _ref42.label,
+        kcal = _ref42.kcal,
+        grams = _ref42.grams,
+        mult = _ref42.mult;
       return /*#__PURE__*/React.createElement("div", {
         key: key,
         style: {
@@ -11675,11 +11623,11 @@ function NutriTrack() {
       value: fibInsol,
       color: FIB_INSOL_COLOR,
       note: "Adds bulk, speeds gut transit, supports bowel regularity"
-    }].map(function (_ref44, i) {
-      var label = _ref44.label,
-        value = _ref44.value,
-        color = _ref44.color,
-        note = _ref44.note;
+    }].map(function (_ref43, i) {
+      var label = _ref43.label,
+        value = _ref43.value,
+        color = _ref43.color,
+        note = _ref43.note;
       return /*#__PURE__*/React.createElement("div", {
         key: label,
         style: {
@@ -12050,11 +11998,11 @@ function NutriTrack() {
       value: fatPufa,
       color: FAT_PUFA_COLOR,
       note: "Includes omega-3 & omega-6 — essential, anti-inflammatory"
-    }].map(function (_ref45, i) {
-      var label = _ref45.label,
-        value = _ref45.value,
-        color = _ref45.color,
-        note = _ref45.note;
+    }].map(function (_ref44, i) {
+      var label = _ref44.label,
+        value = _ref44.value,
+        color = _ref44.color,
+        note = _ref44.note;
       return /*#__PURE__*/React.createElement("div", {
         key: label,
         style: {
@@ -12659,10 +12607,10 @@ function NutriTrack() {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Activity"), Object.entries(_actGroups).map(function (_ref46) {
-      var _ref47 = _slicedToArray(_ref46, 2),
-        grp = _ref47[0],
-        acts = _ref47[1];
+    }, "Activity"), Object.entries(_actGroups).map(function (_ref45) {
+      var _ref46 = _slicedToArray(_ref45, 2),
+        grp = _ref46[0],
+        acts = _ref46[1];
       return /*#__PURE__*/React.createElement("div", {
         key: grp,
         style: {
