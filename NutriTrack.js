@@ -1216,6 +1216,7 @@ function NutriTrack() {
   const [syncReviewData, setSyncReviewData] = useState([]);
   const [pasteText, setPasteText] = useState("");
   const [parserTestText, setParserTestText] = useState("");
+  const [errorLogsVersion, setErrorLogsVersion] = useState(0); // bump to force Error logs viewer re-render after clear/inject
   const [notionIngPick, setNotionIngPick] = useState(null);
   const [notionIngSearch, setNotionIngSearch] = useState("");
 
@@ -3027,9 +3028,9 @@ function NutriTrack() {
         type: "SKIP_WAITING"
       });
     }
-  }, "OK")), !isOnline && /*#__PURE__*/React.createElement("div", {
+  }, "OK")), !isOnline && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
-      position: "sticky",
+      position: "fixed",
       top: 0,
       left: 0,
       right: 0,
@@ -3042,7 +3043,12 @@ function NutriTrack() {
       zIndex: 200,
       boxShadow: "0 2px 8px rgba(0,0,0,0.3)"
     }
-  }, "Offline — Notion sync unavailable.")), document.body);
+  }, "Offline — Notion sync unavailable."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: "calc(40px + env(safe-area-inset-top, 0px))",
+      flexShrink: 0
+    }
+  }))), document.body);
   // ── LOG VIEW ──────────────────────────────────────────────────────────
   if (view === "log") {
     const grouped = {};
@@ -8222,10 +8228,13 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setNotionSyncMsg({
-        type: "error",
-        text: friendlyError(new Error("network: fetch failed"), "injectTest")
-      })
+      onClick: () => {
+        setNotionSyncMsg({
+          type: "error",
+          text: friendlyError(new Error("network: fetch failed"), "injectTest")
+        });
+        setErrorLogsVersion(v => v + 1);
+      }
     }, "network"), /*#__PURE__*/React.createElement("button", {
       style: {
         padding: 8,
@@ -8237,10 +8246,13 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setNotionSyncMsg({
-        type: "error",
-        text: friendlyError(new Error("worker_502: notion_unreachable"), "injectTest")
-      })
+      onClick: () => {
+        setNotionSyncMsg({
+          type: "error",
+          text: friendlyError(new Error("worker_502: notion_unreachable"), "injectTest")
+        });
+        setErrorLogsVersion(v => v + 1);
+      }
     }, "worker_502"), /*#__PURE__*/React.createElement("button", {
       style: {
         padding: 8,
@@ -8252,10 +8264,13 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setNotionSyncMsg({
-        type: "error",
-        text: friendlyError(new Error("worker_403: forbidden"), "injectTest")
-      })
+      onClick: () => {
+        setNotionSyncMsg({
+          type: "error",
+          text: friendlyError(new Error("worker_403: forbidden"), "injectTest")
+        });
+        setErrorLogsVersion(v => v + 1);
+      }
     }, "worker_403"), /*#__PURE__*/React.createElement("button", {
       style: {
         padding: 8,
@@ -8267,10 +8282,13 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setNotionSyncMsg({
-        type: "error",
-        text: friendlyError(new Error("foods.json fetch failed: 404"), "injectTest")
-      })
+      onClick: () => {
+        setNotionSyncMsg({
+          type: "error",
+          text: friendlyError(new Error("foods.json fetch failed: 404"), "injectTest")
+        });
+        setErrorLogsVersion(v => v + 1);
+      }
     }, "fooddb 404"), /*#__PURE__*/React.createElement("button", {
       style: {
         padding: 8,
@@ -8282,10 +8300,13 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setNotionSyncMsg({
-        type: "error",
-        text: friendlyError(new Error("QuotaExceededError"), "injectTest")
-      })
+      onClick: () => {
+        setNotionSyncMsg({
+          type: "error",
+          text: friendlyError(new Error("QuotaExceededError"), "injectTest")
+        });
+        setErrorLogsVersion(v => v + 1);
+      }
     }, "storage quota"), /*#__PURE__*/React.createElement("button", {
       style: {
         padding: 8,
@@ -8297,10 +8318,13 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setNotionSyncMsg({
-        type: "error",
-        text: friendlyError(new Error("No recipes found."), "injectTest")
-      })
+      onClick: () => {
+        setNotionSyncMsg({
+          type: "error",
+          text: friendlyError(new Error("No recipes found."), "injectTest")
+        });
+        setErrorLogsVersion(v => v + 1);
+      }
     }, "parse")), notionSyncMsg && notionSyncMsg.type === "error" && /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 8,
@@ -8551,6 +8575,7 @@ function NutriTrack() {
         fontWeight: 600
       }
     }, foodDBStatus)), (() => {
+      void errorLogsVersion; // re-read localStorage whenever logs are cleared/injected
       let logs = [];
       try {
         const raw = localStorage.getItem(STORAGE_KEYS.errorLogs);
@@ -8632,7 +8657,7 @@ function NutriTrack() {
           try {
             localStorage.removeItem(STORAGE_KEYS.errorLogs);
           } catch {}
-          setView("settings");
+          setErrorLogsVersion(v => v + 1);
         }
       }, "Clear logs")));
     })(), /*#__PURE__*/React.createElement("div", {

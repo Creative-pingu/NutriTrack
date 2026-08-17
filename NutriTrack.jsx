@@ -648,6 +648,7 @@ export default function NutriTrack() {
   const [syncReviewData, setSyncReviewData] = useState([]);
   const [pasteText,      setPasteText]      = useState("");
   const [parserTestText, setParserTestText] = useState("");
+  const [errorLogsVersion, setErrorLogsVersion] = useState(0); // bump to force Error logs viewer re-render after clear/inject
   const [notionIngPick,  setNotionIngPick]  = useState(null);
   const [notionIngSearch,setNotionIngSearch]= useState("");
 
@@ -1450,9 +1451,12 @@ export default function NutriTrack() {
       </div>
     )}
     {!isOnline && (
-      <div style={{position:"sticky",top:0,left:0,right:0,background:"#1a1a2e",borderBottom:"1px solid #475569",padding:"10px 14px",paddingTop:"calc(10px + env(safe-area-inset-top, 0px))",fontSize:12,color:"#94a3b8",zIndex:200,boxShadow:"0 2px 8px rgba(0,0,0,0.3)"}}>
-        Offline — Notion sync unavailable.
-      </div>
+      <>
+        <div style={{position:"fixed",top:0,left:0,right:0,background:"#1a1a2e",borderBottom:"1px solid #475569",padding:"10px 14px",paddingTop:"calc(10px + env(safe-area-inset-top, 0px))",fontSize:12,color:"#94a3b8",zIndex:200,boxShadow:"0 2px 8px rgba(0,0,0,0.3)"}}>
+          Offline — Notion sync unavailable.
+        </div>
+        <div style={{height:"calc(40px + env(safe-area-inset-top, 0px))",flexShrink:0}} />
+      </>
     )}
   </>, document.body);
   // ── LOG VIEW ──────────────────────────────────────────────────────────
@@ -2861,12 +2865,12 @@ export default function NutriTrack() {
                 <div style={{fontSize:11,color:"#475569",fontWeight:600,marginBottom:4,textTransform:"uppercase",letterSpacing:"0.04em"}}>Inject test error</div>
                 <div style={{fontSize:11,color:"#64748b",marginBottom:8,lineHeight:1.5}}>Surfaces the friendly error message (and logs it) for each error type. Works offline — no network needed.</div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
-                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("network: fetch failed"),"injectTest")})}>network</button>
-                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("worker_502: notion_unreachable"),"injectTest")})}>worker_502</button>
-                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("worker_403: forbidden"),"injectTest")})}>worker_403</button>
-                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("foods.json fetch failed: 404"),"injectTest")})}>fooddb 404</button>
-                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("QuotaExceededError"),"injectTest")})}>storage quota</button>
-                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>setNotionSyncMsg({type:"error",text:friendlyError(new Error("No recipes found."),"injectTest")})}>parse</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>{setNotionSyncMsg({type:"error",text:friendlyError(new Error("network: fetch failed"),"injectTest")}); setErrorLogsVersion(v=>v+1);}}>network</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>{setNotionSyncMsg({type:"error",text:friendlyError(new Error("worker_502: notion_unreachable"),"injectTest")}); setErrorLogsVersion(v=>v+1);}}>worker_502</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>{setNotionSyncMsg({type:"error",text:friendlyError(new Error("worker_403: forbidden"),"injectTest")}); setErrorLogsVersion(v=>v+1);}}>worker_403</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>{setNotionSyncMsg({type:"error",text:friendlyError(new Error("foods.json fetch failed: 404"),"injectTest")}); setErrorLogsVersion(v=>v+1);}}>fooddb 404</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>{setNotionSyncMsg({type:"error",text:friendlyError(new Error("QuotaExceededError"),"injectTest")}); setErrorLogsVersion(v=>v+1);}}>storage quota</button>
+                  <button style={{padding:8,borderRadius:8,border:"1px solid #334155",background:"#0f1729",color:"#94a3b8",fontSize:11,fontWeight:600,cursor:"pointer"}} onClick={()=>{setNotionSyncMsg({type:"error",text:friendlyError(new Error("No recipes found."),"injectTest")}); setErrorLogsVersion(v=>v+1);}}>parse</button>
                 </div>
                 {notionSyncMsg && notionSyncMsg.type==="error" && (
                   <div style={{marginTop:8,background:"#2d0f0f",border:"1px solid #7f1d1d",borderRadius:8,padding:"8px 10px",fontSize:11,color:"#fca5a5",lineHeight:1.4}}>{notionSyncMsg.text}</div>
@@ -2920,6 +2924,7 @@ export default function NutriTrack() {
               <div style={{fontSize:11,color:foodDBStatus==="ready"?"#10b981":foodDBStatus==="error"?"#ef4444":"#f59e0b",fontWeight:600}}>{foodDBStatus}</div>
             </div>
             {(() => {
+              void errorLogsVersion; // re-read localStorage whenever logs are cleared/injected
               let logs = [];
               try { const raw = localStorage.getItem(STORAGE_KEYS.errorLogs); logs = raw ? JSON.parse(raw) : []; if (!Array.isArray(logs)) logs = []; } catch { logs = []; }
               return (
@@ -2941,7 +2946,7 @@ export default function NutriTrack() {
                       </div>
                     )}
                     {logs.length > 0 && (
-                      <button style={{marginTop:8,background:"none",border:"1px solid #334155",borderRadius:6,color:"#94a3b8",fontSize:10,fontWeight:600,padding:"4px 8px",cursor:"pointer"}} onClick={() => { try { localStorage.removeItem(STORAGE_KEYS.errorLogs); } catch {} setView("settings"); }}>Clear logs</button>
+                      <button style={{marginTop:8,background:"none",border:"1px solid #334155",borderRadius:6,color:"#94a3b8",fontSize:10,fontWeight:600,padding:"4px 8px",cursor:"pointer"}} onClick={() => { try { localStorage.removeItem(STORAGE_KEYS.errorLogs); } catch {} setErrorLogsVersion(v=>v+1); }}>Clear logs</button>
                     )}
                   </div>
                 </details>
