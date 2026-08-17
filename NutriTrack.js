@@ -1377,6 +1377,11 @@ function NutriTrack() {
     vitC: ""
   });
   const [customFoodExportMsg, setCustomFoodExportMsg] = useState(null);
+  // Phase 9: editing an existing custom food (null = creating a new one);
+  // simple/advanced input mode for the custom-food form (simple = the 6
+  // values typically printed on a food package; advanced = all 19 fields).
+  const [editingCustomFoodId, setEditingCustomFoodId] = useState(null);
+  const [cfMode, setCfMode] = useState("simple");
 
   // Recipe creation
   const [recipeInProgress, setRecipeInProgress] = useState({
@@ -2364,20 +2369,7 @@ function NutriTrack() {
     d.setDate(d.getDate() + delta);
     setCurrentDate(dateKey(d));
   };
-  const saveCustomFood = () => {
-    if (!cf.name.trim() || !cf.cal) return;
-    // Phase 9 (A8): new custom foods are schema-complete at creation —
-    // all NUTRIENT_META keys are captured from the form, and the 14
-    // subtype keys (fibre/fat subtypes + amino acids) the form does not
-    // collect are set to null (unknown), matching foods.json convention.
-    const newFood = {
-      id: `custom_${Date.now()}`,
-      name: cf.name.trim(),
-      cat: cf.cat || "Other",
-      ...Object.fromEntries(Object.keys(NUTRIENT_META).map(k => [k, parseFloat(cf[k]) || 0])),
-      ...Object.fromEntries(FOOD_SUBTYPE_KEYS.map(k => [k, null]))
-    };
-    setCustomFoods(prev => [...prev, newFood]);
+  const resetCfForm = () => {
     setCf({
       name: "",
       cat: "Other",
@@ -2401,7 +2393,52 @@ function NutriTrack() {
       vitA: "",
       vitC: ""
     });
-    setView("add");
+    setEditingCustomFoodId(null);
+    setCfMode("simple");
+  };
+  const openEditCustomFood = food => {
+    // Load an existing custom food into the form for editing. Preserve any
+    // saved subtype values so they round-trip; the form only edits the 19
+    // NUTRIENT_META keys; subtypes stay as stored (or null).
+    const vals = {};
+    Object.keys(NUTRIENT_META).forEach(k => {
+      vals[k] = food[k] === null || food[k] === undefined ? "" : String(food[k]);
+    });
+    setCf({
+      name: food.name || "",
+      cat: food.cat || "Other",
+      ...vals
+    });
+    setEditingCustomFoodId(food.id);
+    setCfMode("advanced"); // editing surfaces all fields
+    setView("customAdd");
+  };
+  const saveCustomFood = () => {
+    if (!cf.name.trim() || !cf.cal) return;
+    // Phase 9 (A8): custom foods are schema-complete — all NUTRIENT_META
+    // keys are captured from the form, and the 14 subtype keys (fibre/fat
+    // subtypes + amino acids) the form does not collect are set to null
+    // (unknown), matching foods.json convention. When editing, preserve
+    // any previously-saved subtype values rather than blanking them.
+    const id = editingCustomFoodId || `custom_${Date.now()}`;
+    const existing = editingCustomFoodId ? customFoods.find(f => f.id === editingCustomFoodId) : null;
+    const subtypes = Object.fromEntries(FOOD_SUBTYPE_KEYS.map(k => [k, existing ? existing[k] ?? null : null]));
+    const savedFood = {
+      ...existing,
+      // preserve deleted flag, servings, etc. when editing
+      id,
+      name: cf.name.trim(),
+      cat: cf.cat || "Other",
+      ...Object.fromEntries(Object.keys(NUTRIENT_META).map(k => [k, parseFloat(cf[k]) || 0])),
+      ...subtypes
+    };
+    if (editingCustomFoodId) {
+      setCustomFoods(prev => prev.map(f => f.id === editingCustomFoodId ? savedFood : f));
+    } else {
+      setCustomFoods(prev => [...prev, savedFood]);
+    }
+    resetCfForm();
+    setView("manageCustomFoods");
   };
   const softDeleteCustomFood = id => setCustomFoods(prev => prev.map(f => f.id === id ? {
     ...f,
@@ -3794,7 +3831,10 @@ function NutriTrack() {
           cursor: "pointer",
           fontWeight: 600
         },
-        onClick: () => setView("customAdd")
+        onClick: () => {
+          resetCfForm();
+          setView("customAdd");
+        }
       }, "+ Custom") : /*#__PURE__*/React.createElement("div", {
         style: {
           width: 64
@@ -6340,7 +6380,10 @@ function NutriTrack() {
         cursor: "pointer",
         fontWeight: 600
       },
-      onClick: () => setView("customAdd")
+      onClick: () => {
+        resetCfForm();
+        setView("customAdd");
+      }
     }, "+ Custom") : /*#__PURE__*/React.createElement("div", {
       style: {
         width: 64
@@ -6774,7 +6817,29 @@ function NutriTrack() {
 
   // ── CUSTOM FOOD ───────────────────────────────────────────────────────
   if (view === "customAdd") {
-    const fields = [{
+    // Phase 9: simple mode shows the 6 values typically printed on a food
+    // package; advanced mode shows all 19 NUTRIENT_META fields. The 14
+    // subtype keys are never edited in the form (saved as null / preserved).
+    const simpleFields = [{
+      k: "cal",
+      l: "Calories (kcal)"
+    }, {
+      k: "pro",
+      l: "Protein (g)"
+    }, {
+      k: "carb",
+      l: "Carbs (g)"
+    }, {
+      k: "fat",
+      l: "Fat (g)"
+    }, {
+      k: "fib",
+      l: "Fibre (g)"
+    }, {
+      k: "sod",
+      l: "Sodium (mg)"
+    }];
+    const advancedFields = [{
       k: "cal",
       l: "Calories (kcal)"
     }, {
@@ -6832,6 +6897,8 @@ function NutriTrack() {
       k: "vitC",
       l: "Vitamin C (mg)"
     }];
+    const fields = cfMode === "simple" ? simpleFields : advancedFields;
+    const isEditing = !!editingCustomFoodId;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -6844,13 +6911,16 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: () => setView("add")
+      onClick: () => {
+        resetCfForm();
+        setView("manageCustomFoods");
+      }
     }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
       }
-    }, "Add Custom Food"), /*#__PURE__*/React.createElement("div", {
+    }, isEditing ? "Edit Custom Food" : "Add Custom Food"), /*#__PURE__*/React.createElement("div", {
       style: {
         width: 48
       }
@@ -6864,7 +6934,7 @@ function NutriTrack() {
         color: "#64748b",
         marginBottom: 12
       }
-    }, "All values per 100g or 100ml."), /*#__PURE__*/React.createElement("label", {
+    }, "All values per 100g or 100ml. Missing values are saved as 0; subtypes the form does not collect are saved as null (unknown) and can be added later via promotion to foods.json."), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Food name *"), /*#__PURE__*/React.createElement("input", {
       style: {
@@ -6877,7 +6947,33 @@ function NutriTrack() {
         ...p,
         name: e.target.value
       }))
-    }), fields.map(({
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8,
+        marginBottom: 12
+      }
+    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(([val, label]) => /*#__PURE__*/React.createElement("button", {
+      key: val,
+      style: {
+        flex: 1,
+        padding: "8px 0",
+        borderRadius: 8,
+        border: "none",
+        background: cfMode === val ? "#3b82f6" : "#1e293b",
+        color: cfMode === val ? "#fff" : "#64748b",
+        fontSize: 12,
+        fontWeight: 700,
+        cursor: "pointer"
+      },
+      onClick: () => setCfMode(val)
+    }, label))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        marginBottom: 8
+      }
+    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(({
       k,
       l
     }) => /*#__PURE__*/React.createElement("div", {
@@ -6919,7 +7015,7 @@ function NutriTrack() {
       },
       onClick: saveCustomFood,
       disabled: !cf.name.trim() || !cf.cal
-    }, "Save Food"))));
+    }, isEditing ? "Save Changes" : "Save Food"))));
   }
 
   // ── GOALS ─────────────────────────────────────────────────────────────
@@ -8481,6 +8577,48 @@ function NutriTrack() {
         marginTop: 6
       }
     }, "Logged to Settings → About → Error logs.")))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 700,
+        color: "#94a3b8",
+        textTransform: "uppercase",
+        letterSpacing: "0.05em",
+        marginBottom: 10,
+        marginTop: 16
+      }
+    }, "Custom Foods"), /*#__PURE__*/React.createElement("div", {
+      style: S.card
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b",
+        marginBottom: 14,
+        lineHeight: 1.5
+      }
+    }, "Create, edit, and promote your own foods. Custom foods are stored on this device and can be exported as a foods.json-schema patch to merge into the main database."), /*#__PURE__*/React.createElement("button", {
+      style: {
+        width: "100%",
+        padding: 14,
+        borderRadius: 12,
+        border: "none",
+        background: "#3b82f6",
+        color: "#fff",
+        fontSize: 15,
+        fontWeight: 700,
+        cursor: "pointer",
+        marginBottom: 10
+      },
+      onClick: () => {
+        resetCfForm();
+        setView("manageCustomFoods");
+      }
+    }, "Manage custom foods"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#475569",
+        textAlign: "center"
+      }
+    }, customFoods.filter(f => !f.deleted).length, " active custom food", customFoods.filter(f => !f.deleted).length === 1 ? "" : "s")), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         fontWeight: 700,
@@ -11048,7 +11186,10 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: () => setView("customAdd")
+      onClick: () => {
+        resetCfForm();
+        setView("customAdd");
+      }
     }, "+ New"), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "none",
@@ -11145,7 +11286,12 @@ function NutriTrack() {
         padding: "10px 0",
         borderBottom: i < active.length - 1 ? "1px solid #1e293b" : "none"
       }
-    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 14,
         fontWeight: 500,
@@ -11156,7 +11302,25 @@ function NutriTrack() {
         fontSize: 11,
         color: "#64748b"
       }
-    }, f.cat, " · ", fmtE(f.cal), " ", energyLabel, "/100g")), /*#__PURE__*/React.createElement("button", {
+    }, f.cat, " · ", fmtE(f.cal), " ", energyLabel, "/100g")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        flexShrink: 0
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "1px solid #3b82f6",
+        borderRadius: 8,
+        color: "#3b82f6",
+        fontSize: 12,
+        fontWeight: 600,
+        padding: "4px 10px",
+        cursor: "pointer"
+      },
+      onClick: () => openEditCustomFood(f)
+    }, "Edit"), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "none",
         border: "1px solid #ef4444",
@@ -11168,7 +11332,7 @@ function NutriTrack() {
         cursor: "pointer"
       },
       onClick: () => softDeleteCustomFood(f.id)
-    }, "Delete")))), deleted.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }, "Delete"))))), deleted.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         ...S.card,
         marginTop: 12,

@@ -799,6 +799,11 @@ export default function NutriTrack() {
   // Custom food
   const [cf, setCf] = useState({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
   const [customFoodExportMsg, setCustomFoodExportMsg] = useState(null);
+  // Phase 9: editing an existing custom food (null = creating a new one);
+  // simple/advanced input mode for the custom-food form (simple = the 6
+  // values typically printed on a food package; advanced = all 19 fields).
+  const [editingCustomFoodId, setEditingCustomFoodId] = useState(null);
+  const [cfMode, setCfMode] = useState("simple");
 
   // Recipe creation
   const [recipeInProgress,  setRecipeInProgress]  = useState({ name:"", source:"", servings:"4", ingredients:[] });
@@ -1336,20 +1341,47 @@ export default function NutriTrack() {
 
   const changeDate = delta => { const d = new Date(currentDate); d.setDate(d.getDate()+delta); setCurrentDate(dateKey(d)); };
 
+  const resetCfForm = () => {
+    setCf({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
+    setEditingCustomFoodId(null);
+    setCfMode("simple");
+  };
+
+  const openEditCustomFood = food => {
+    // Load an existing custom food into the form for editing. Preserve any
+    // saved subtype values so they round-trip; the form only edits the 19
+    // NUTRIENT_META keys; subtypes stay as stored (or null).
+    const vals = {};
+    Object.keys(NUTRIENT_META).forEach(k => { vals[k] = (food[k] === null || food[k] === undefined) ? "" : String(food[k]); });
+    setCf({ name: food.name || "", cat: food.cat || "Other", ...vals });
+    setEditingCustomFoodId(food.id);
+    setCfMode("advanced"); // editing surfaces all fields
+    setView("customAdd");
+  };
+
   const saveCustomFood = () => {
     if (!cf.name.trim() || !cf.cal) return;
-    // Phase 9 (A8): new custom foods are schema-complete at creation —
-    // all NUTRIENT_META keys are captured from the form, and the 14
-    // subtype keys (fibre/fat subtypes + amino acids) the form does not
-    // collect are set to null (unknown), matching foods.json convention.
-    const newFood = {
-      id:`custom_${Date.now()}`, name:cf.name.trim(), cat:cf.cat||"Other",
+    // Phase 9 (A8): custom foods are schema-complete — all NUTRIENT_META
+    // keys are captured from the form, and the 14 subtype keys (fibre/fat
+    // subtypes + amino acids) the form does not collect are set to null
+    // (unknown), matching foods.json convention. When editing, preserve
+    // any previously-saved subtype values rather than blanking them.
+    const id = editingCustomFoodId || `custom_${Date.now()}`;
+    const existing = editingCustomFoodId ? customFoods.find(f => f.id === editingCustomFoodId) : null;
+    const subtypes = Object.fromEntries(FOOD_SUBTYPE_KEYS.map(k => [k, existing ? (existing[k] ?? null) : null]));
+    const savedFood = {
+      ...existing, // preserve deleted flag, servings, etc. when editing
+      id, name:cf.name.trim(), cat:cf.cat||"Other",
       ...Object.fromEntries(Object.keys(NUTRIENT_META).map(k => [k, parseFloat(cf[k])||0])),
-      ...Object.fromEntries(FOOD_SUBTYPE_KEYS.map(k => [k, null])),
+      ...subtypes,
     };
-    setCustomFoods(prev => [...prev, newFood]);
-    setCf({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
-    setView("add");
+    if (editingCustomFoodId) {
+      setCustomFoods(prev => prev.map(f => f.id === editingCustomFoodId ? savedFood : f));
+    } else {
+      setCustomFoods(prev => [...prev, savedFood]);
+    }
+    resetCfForm();
+    setView("manageCustomFoods");
   };
 
   const softDeleteCustomFood = id => setCustomFoods(prev => prev.map(f => f.id === id ? { ...f, deleted: true } : f));
@@ -1766,7 +1798,7 @@ export default function NutriTrack() {
           <div style={S.header}>
             <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => { setView("log"); setSelectedFood(null); setSearchTerm(""); setEditingEntryId(null); if (multiSelect) { setMultiSelect(false); setBatch([]); } }}>← Back</button>
             <span style={{fontSize:15,fontWeight:700}}>{selectedFood?(editingEntryId?"Edit Entry":"Log Amount"):"Add Food"}</span>
-            {!selectedFood ? <button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,cursor:"pointer",fontWeight:600}} onClick={() => setView("customAdd")}>+ Custom</button> : <div style={{width:64}}/>}
+            {!selectedFood ? <button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,cursor:"pointer",fontWeight:600}} onClick={() => { resetCfForm(); setView("customAdd"); }}>+ Custom</button> : <div style={{width:64}}/>}
           </div>
           <div style={S.section}>
             {!selectedFood && <ModePicker/>}
@@ -2396,7 +2428,7 @@ export default function NutriTrack() {
   if (view === "recipeIngAdd") {
     return (
       <div style={S.app}>
-        <div style={S.header}><button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={()=>{setRecipeIngSelected(null);setRecipeIngSearch("");setView("recipeCreate");}}>← Back</button><span style={{fontSize:15,fontWeight:700}}>{recipeIngSelected?"Set Amount":"Add Ingredient"}</span>{!recipeIngSelected?<button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,cursor:"pointer",fontWeight:600}} onClick={()=>setView("customAdd")}>+ Custom</button>:<div style={{width:64}}/>}</div>
+        <div style={S.header}><button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={()=>{setRecipeIngSelected(null);setRecipeIngSearch("");setView("recipeCreate");}}>← Back</button><span style={{fontSize:15,fontWeight:700}}>{recipeIngSelected?"Set Amount":"Add Ingredient"}</span>{!recipeIngSelected?<button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,cursor:"pointer",fontWeight:600}} onClick={()=>{resetCfForm();setView("customAdd");}}>+ Custom</button>:<div style={{width:64}}/>}</div>
         {!recipeIngSelected ? (
           <div style={S.section}>
             <input ref={recipeIngRef} style={S.input} placeholder="Search foods…" value={recipeIngSearch} onChange={e=>setRecipeIngSearch(e.target.value)} autoFocus/>
@@ -2505,15 +2537,27 @@ export default function NutriTrack() {
 
   // ── CUSTOM FOOD ───────────────────────────────────────────────────────
   if (view === "customAdd") {
-    const fields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"iron",l:"Iron (mg)"},{k:"calc",l:"Calcium (mg)"},{k:"zinc",l:"Zinc (mg)"},{k:"b12",l:"B12 (mcg)"},{k:"vitD",l:"Vitamin D (mcg)"},{k:"omega3",l:"Omega-3 (g)"},{k:"iod",l:"Iodine (mcg)"},{k:"sel",l:"Selenium (mcg)"},{k:"mag",l:"Magnesium (mg)"},{k:"pot",l:"Potassium (mg)"},{k:"fol",l:"Folate (mcg)"},{k:"sod",l:"Sodium (mg)"},{k:"vitA",l:"Vitamin A (mcg)"},{k:"vitC",l:"Vitamin C (mg)"}];
+    // Phase 9: simple mode shows the 6 values typically printed on a food
+    // package; advanced mode shows all 19 NUTRIENT_META fields. The 14
+    // subtype keys are never edited in the form (saved as null / preserved).
+    const simpleFields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"sod",l:"Sodium (mg)"}];
+    const advancedFields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"iron",l:"Iron (mg)"},{k:"calc",l:"Calcium (mg)"},{k:"zinc",l:"Zinc (mg)"},{k:"b12",l:"B12 (mcg)"},{k:"vitD",l:"Vitamin D (mcg)"},{k:"omega3",l:"Omega-3 (g)"},{k:"iod",l:"Iodine (mcg)"},{k:"sel",l:"Selenium (mcg)"},{k:"mag",l:"Magnesium (mg)"},{k:"pot",l:"Potassium (mg)"},{k:"fol",l:"Folate (mcg)"},{k:"sod",l:"Sodium (mg)"},{k:"vitA",l:"Vitamin A (mcg)"},{k:"vitC",l:"Vitamin C (mg)"}];
+    const fields = cfMode === "simple" ? simpleFields : advancedFields;
+    const isEditing = !!editingCustomFoodId;
     return (
       <div style={S.app}>
-        <div style={S.header}><button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={()=>setView("add")}>← Back</button><span style={{fontSize:15,fontWeight:700}}>Add Custom Food</span><div style={{width:48}}/></div>
+        <div style={S.header}><button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={()=>{resetCfForm();setView("manageCustomFoods");}}>← Back</button><span style={{fontSize:15,fontWeight:700}}>{isEditing?"Edit Custom Food":"Add Custom Food"}</span><div style={{width:48}}/></div>
         <div style={S.section}><div style={S.card}>
-          <div style={{fontSize:12,color:"#64748b",marginBottom:12}}>All values per 100g or 100ml.</div>
+          <div style={{fontSize:12,color:"#64748b",marginBottom:12}}>All values per 100g or 100ml. Missing values are saved as 0; subtypes the form does not collect are saved as null (unknown) and can be added later via promotion to foods.json.</div>
           <label style={S.label}>Food name *</label><input style={{...S.input,marginBottom:12}} placeholder="e.g. Alpro Oat Yogurt" value={cf.name} onChange={e=>setCf(p=>({...p,name:e.target.value}))}/>
+          <div style={{display:"flex",gap:8,marginBottom:12}}>
+            {[["simple","Simple"],["advanced","Advanced"]].map(([val,label])=>(
+              <button key={val} style={{flex:1,padding:"8px 0",borderRadius:8,border:"none",background:cfMode===val?"#3b82f6":"#1e293b",color:cfMode===val?"#fff":"#64748b",fontSize:12,fontWeight:700,cursor:"pointer"}} onClick={()=>setCfMode(val)}>{label}</button>
+            ))}
+          </div>
+          <div style={{fontSize:11,color:"#475569",marginBottom:8}}>{cfMode==="simple"?"Standard values found on a food package.":"All 19 nutrient fields."}</div>
           {fields.map(({k,l})=>(<div key={k} style={S.cfRow}><span style={{fontSize:13,color:"#e2e8f0",width:160}}>{l}</span><input style={{...S.input,width:90,textAlign:"right",padding:"8px 12px"}} type="number" inputMode="decimal" placeholder="0" value={cf[k]} onChange={e=>setCf(p=>({...p,[k]:e.target.value}))}/></div>))}
-          <button style={{width:"100%",marginTop:16,padding:14,borderRadius:12,border:"none",background:cf.name.trim()&&cf.cal?"#3b82f6":"#1e293b",color:cf.name.trim()&&cf.cal?"#fff":"#64748b",fontSize:15,fontWeight:700,cursor:"pointer"}} onClick={saveCustomFood} disabled={!cf.name.trim()||!cf.cal}>Save Food</button>
+          <button style={{width:"100%",marginTop:16,padding:14,borderRadius:12,border:"none",background:cf.name.trim()&&cf.cal?"#3b82f6":"#1e293b",color:cf.name.trim()&&cf.cal?"#fff":"#64748b",fontSize:15,fontWeight:700,cursor:"pointer"}} onClick={saveCustomFood} disabled={!cf.name.trim()||!cf.cal}>{isEditing?"Save Changes":"Save Food"}</button>
         </div></div>
       </div>
     );
@@ -3019,6 +3063,14 @@ export default function NutriTrack() {
             </div>
           </details>
 
+          {/* Custom Foods (Phase 9) */}
+          <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",textTransform:"uppercase",letterSpacing:"0.05em",marginBottom:10,marginTop:16}}>Custom Foods</div>
+          <div style={S.card}>
+            <div style={{fontSize:12,color:"#64748b",marginBottom:14,lineHeight:1.5}}>Create, edit, and promote your own foods. Custom foods are stored on this device and can be exported as a foods.json-schema patch to merge into the main database.</div>
+            <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:"#3b82f6",color:"#fff",fontSize:15,fontWeight:700,cursor:"pointer",marginBottom:10}} onClick={() => { resetCfForm(); setView("manageCustomFoods"); }}>Manage custom foods</button>
+            <div style={{fontSize:12,color:"#475569",textAlign:"center"}}>{customFoods.filter(f=>!f.deleted).length} active custom food{customFoods.filter(f=>!f.deleted).length===1?"":"s"}</div>
+          </div>
+
           {/* Export Data */}
           <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",textTransform:"uppercase",letterSpacing:"0.05em",marginBottom:10,marginTop:16}}>Export Data</div>
           <div style={S.card}>
@@ -3406,7 +3458,7 @@ export default function NutriTrack() {
         <div style={S.header}>
           <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => setView("add")}>← Back</button>
           <span style={{fontSize:15,fontWeight:700}}>Custom Foods</span>
-          <button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,fontWeight:600,cursor:"pointer"}} onClick={() => setView("customAdd")}>+ New</button>
+          <button style={{background:"none",border:"none",color:"#3b82f6",fontSize:13,fontWeight:600,cursor:"pointer"}} onClick={() => { resetCfForm(); setView("customAdd"); }}>+ New</button>
           <button style={{background:"none",border:"none",color:active.length===0?"#1e293b":"#3b82f6",fontSize:13,fontWeight:600,cursor:active.length===0?"default":"pointer"}} onClick={() => { const envelope = buildCustomFoodPatch(customFoods); const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = `nutritrack-custom-foods-patch-${new Date().toISOString().slice(0,10)}.json`; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(() => URL.revokeObjectURL(url), 10000); setCustomFoodExportMsg("Patch exported — append each entry to the foods array in foods.json."); setTimeout(() => setCustomFoodExportMsg(null), 6000); }} disabled={active.length === 0}>Export patch</button>
         </div>
         <div style={S.section}>
@@ -3426,11 +3478,14 @@ export default function NutriTrack() {
               <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:10,textTransform:"uppercase",letterSpacing:"0.05em"}}>Active ({active.length})</div>
               {active.map((f, i) => (
                 <div key={f.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 0",borderBottom:i<active.length-1?"1px solid #1e293b":"none"}}>
-                  <div>
+                  <div style={{flex:1,minWidth:0}}>
                     <div style={{fontSize:14,fontWeight:500,color:"#e2e8f0"}}>{f.name}</div>
                     <div style={{fontSize:11,color:"#64748b"}}>{f.cat} · {fmtE(f.cal)} {energyLabel}/100g</div>
                   </div>
-                  <button style={{background:"none",border:"1px solid #ef4444",borderRadius:8,color:"#ef4444",fontSize:12,fontWeight:600,padding:"4px 10px",cursor:"pointer"}} onClick={() => softDeleteCustomFood(f.id)}>Delete</button>
+                  <div style={{display:"flex",gap:6,flexShrink:0}}>
+                    <button style={{background:"none",border:"1px solid #3b82f6",borderRadius:8,color:"#3b82f6",fontSize:12,fontWeight:600,padding:"4px 10px",cursor:"pointer"}} onClick={() => openEditCustomFood(f)}>Edit</button>
+                    <button style={{background:"none",border:"1px solid #ef4444",borderRadius:8,color:"#ef4444",fontSize:12,fontWeight:600,padding:"4px 10px",cursor:"pointer"}} onClick={() => softDeleteCustomFood(f.id)}>Delete</button>
+                  </div>
                 </div>
               ))}
             </div>
