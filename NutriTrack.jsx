@@ -18,6 +18,8 @@ function mapFoodRecord(r) {
     carb:     r.carbohydrates,
     fat:      r.fat,
     fib:      r.fibre,
+    alc:      r.alcohol   ?? 0,   // Phase 11: alcohol grams per 100g/ml
+    water:    r.water     ?? 0,   // Phase 11: water grams per 100g/ml (logged as ml)
     fibSol:   r.fibre_soluble,
     fibInsol: r.fibre_insoluble,
     fatSat:   r.fat_saturated,
@@ -56,7 +58,7 @@ function mapFoodRecord(r) {
 const APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION) || "unknown";
 
 // Bump this string whenever you deploy a new foods.json to bust the ATHS cache.
-const FOODS_DB_VERSION = "3";
+const FOODS_DB_VERSION = "4";
 
 async function loadFoodDB() {
   const resp = await fetch(`/NutriTrack/foods.json?v=${FOODS_DB_VERSION}`);
@@ -274,9 +276,11 @@ const NUTRIENT_META = {
   sod:    { label:"Sodium",     unit:"mg",   color:"#F97316" },
   vitA:   { label:"Vitamin A",  unit:"mcg",  color:"#EAB308" },
   vitC:   { label:"Vitamin C",  unit:"mg",   color:"#84CC16" },
+  alc:    { label:"Alcohol",   unit:"g",    color:"#F87171" },   // Phase 11: alcohol grams; calories (g x 7) added to daily total
+  water:  { label:"Water",    unit:"ml",   color:"#38BDF8" },   // Phase 11: water content (g/100g logged as ml); has its own goal
 };
 
-const NUTRIENT_ALL_KEYS = ["cal","pro","carb","fat","fib","iron","calc","zinc","b12","vitD","omega3","iod","sel","mag","pot","fol","sod","vitA","vitC"];
+const NUTRIENT_ALL_KEYS = ["cal","pro","carb","fat","fib","alc","water","iron","calc","zinc","b12","vitD","omega3","iod","sel","mag","pot","fol","sod","vitA","vitC"];
 
 // ── Goal computation (spreadsheet formulas, May 2026) ───────────────────
 // Source: Nutrient_Tracking_Logic_v1.xlsx
@@ -318,6 +322,8 @@ function computeGoals(profile) {
     sod:    2300,
     vitA:   male ? 900   : 700,
     vitC:   male ? 90    : 75,
+    alc:    10,     // Phase 11: alcohol (g) — keep-low guideline for endurance
+    water:  2500,   // Phase 11: water (ml) — endurance cycling hydration baseline
   };
 }
 
@@ -357,7 +363,7 @@ const EXERCISE_ACTIVITIES = [
   { id:"running_hard",     label:"Running",  intensity:"Hard",     met:12.0 },
 ];
 
-const MACROS = ["cal","pro","carb","fat","fib"];
+const MACROS = ["cal","pro","carb","fat","fib","alc"];
 const MICROS = ["iron","calc","zinc","b12","vitD","omega3","iod","sel","mag","pot","fol","sod","vitA","vitC"];
 const MEALS  = ["Breakfast","Lunch","Dinner","Snack"];
 
@@ -416,12 +422,12 @@ const NUTRIENT_EXPLANATIONS = {
 // WHO base RDAs (population averages). Optimal scales RDAs for active endurance
 // athletes (higher protein, antioxidant vitamins, electrolytes).
 const WHO_GOALS = {
-  cal: 2000, pro: 50, carb: 260, fat: 70, fib: 25,
+  cal: 2000, pro: 50, carb: 260, fat: 70, fib: 25, alc: 10, water: 2500,
   iron: 14, calc: 1000, zinc: 11, b12: 2.4, vitD: 15, omega3: 1.6, iod: 150,
   sel: 55, mag: 400, pot: 3510, fol: 400, sod: 2000, vitA: 900, vitC: 90,
 };
 const OPTIMAL_GOALS = {
-  cal: 2800, pro: 90, carb: 400, fat: 85, fib: 38,
+  cal: 2800, pro: 90, carb: 400, fat: 85, fib: 38, alc: 10, water: 3500,
   iron: 18, calc: 1200, zinc: 15, b12: 3.0, vitD: 25, omega3: 3.0, iod: 200,
   sel: 75, mag: 500, pot: 4000, fol: 600, sod: 2300, vitA: 1000, vitC: 120,
 };
@@ -635,6 +641,8 @@ const CUSTOM_FOOD_TO_DB = [
   ["carb",   "carbohydrates"],
   ["fat",    "fat"],
   ["fib",    "fibre"],
+  ["alc",    "alcohol"],   // Phase 11
+  ["water",  "water"],     // Phase 11
   ["fibSol", "fibre_soluble"],
   ["fibInsol","fibre_insoluble"],
   ["fatSat", "fat_saturated"],
@@ -862,7 +870,7 @@ export default function NutriTrack() {
   const [exBurnEdit,  setExBurnEdit]  = useState("");
 
   // Custom food
-  const [cf, setCf] = useState({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
+  const [cf, setCf] = useState({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", alc:"", water:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
   const [customFoodExportMsg, setCustomFoodExportMsg] = useState(null);
   // Phase 9: editing an existing custom food (null = creating a new one);
   // simple/advanced input mode for the custom-food form (simple = the 6
@@ -907,12 +915,6 @@ export default function NutriTrack() {
   const [suppLogItems, setSuppLogItems] = useState([]);
 
   // One-off supplement
-  // Phase 11a: Water & Alcohol entry form state
-  const [waterAmount, setWaterAmount] = useState("250");
-  const [waterUnit,   setWaterUnit]   = useState("ml");
-  const [alcCategory, setAlcCategory] = useState(ALCOHOL_CATEGORIES[0].id);
-  const [alcVolume,   setAlcVolume]   = useState("");
-  const [alcAbv,      setAlcAbv]      = useState(String(ALCOHOL_CATEGORIES[0].abv));
   // Phase 11b: traffic-light info tooltip state (nutrient key or null)
   const [trafficInfoKey, setTrafficInfoKey] = useState(null);
   const [oneOffData,   setOneOffData]   = useState({ name:"", dose_amount:"", dose_unit:"mcg", nutrients:{} });
@@ -1159,10 +1161,7 @@ export default function NutriTrack() {
   const totals = useMemo(() => {
     const t = {}; Object.keys(NUTRIENT_META).forEach(k => t[k] = 0);
     dayLog.forEach(e => {
-      if (e.type === "exercise") return;
-      // Phase 11a: water contributes no calories/nutrients; alcohol adds calories only.
-      if (e.type === "water") return;
-      if (e.type === "alcohol") { t.cal += (e.calories ?? 0); return; }
+      if (e.type === "exercise" || e.type === "water" || e.type === "alcohol") return; // legacy 11a entry types (no longer created); skip defensively
       if (e.type === "supplement") {
         (e.items || []).forEach(item => {
           Object.keys(item.nutrients || {}).forEach(k => { if (NUTRIENT_META[k]) t[k] += (item.nutrients[k] ?? 0); });
@@ -1181,6 +1180,8 @@ export default function NutriTrack() {
       if (e.snapshot) { Object.keys(NUTRIENT_META).forEach(k => { t[k] += (e.snapshot[k] ?? 0) * m; }); }
       else { const food = allFoodsForRender.find(f => f.id === e.foodId); if (!food) return; Object.keys(NUTRIENT_META).forEach(k => { t[k] += (food[k] ?? 0) * m; }); }
     });
+    // Phase 11: alcohol calories (g x 7) added on top of food calories (drink calories now exclude alcohol).
+    t.cal = Math.round((t.cal + (t.alc * 7)) * 10) / 10;
     return t;
   }, [dayLog, allFoodsForRender]);
   const exerciseBurn = dayLog.filter(e => e.type === "exercise").reduce((s,e) => s + (e.calories_burned||0), 0);
@@ -1267,24 +1268,6 @@ export default function NutriTrack() {
       upsertRecent(selectedFood.id, selectedFood.name, parseFloat(amount), meal);
     }
     setSelectedFood(null); setAmount("100"); setSearchTerm(""); setView("log");
-  };
-
-  // Phase 11a: log a water entry. type:"water", amount stored in ml for totals.
-  const logWater = () => {
-    const ml = waterAmountMl(waterAmount, waterUnit);
-    if (!ml) return;
-    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), { id:Date.now().toString(), type:"water", amount:ml, unit:"ml", meal, time:new Date().toISOString() }] }));
-    setWaterAmount("250"); setWaterUnit("ml"); setView("log");
-  };
-  // Phase 11a: log an alcohol entry. Calories contribute to the daily total.
-  const logAlcohol = () => {
-    const vol = parseFloat(alcVolume) || 0;
-    const abv = parseFloat(alcAbv) || 0;
-    if (!vol || !abv) return;
-    const cals = alcoholCalories(vol, abv);
-    const cat = ALCOHOL_CATEGORIES.find(c => c.id === alcCategory) || ALCOHOL_CATEGORIES[0];
-    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), { id:Date.now().toString(), type:"alcohol", category:cat.id, categoryLabel:cat.label, volume:vol, abv, calories:cals, meal, time:new Date().toISOString(), snapshot:{ cal:cals } }] }));
-    setAlcVolume(""); setView("log");
   };
 
   // Quick-log a recent food at its lastAmount/lastMeal without opening the amount screen
@@ -1467,7 +1450,7 @@ export default function NutriTrack() {
   const changeDate = delta => { const d = new Date(currentDate); d.setDate(d.getDate()+delta); setCurrentDate(dateKey(d)); };
 
   const resetCfForm = () => {
-    setCf({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
+    setCf({ name:"", cat:"Other", cal:"", pro:"", carb:"", fat:"", fib:"", alc:"", water:"", iron:"", calc:"", zinc:"", b12:"", vitD:"", omega3:"", iod:"", sel:"", mag:"", pot:"", fol:"", sod:"", vitA:"", vitC:"" });
     setEditingCustomFoodId(null);
     setCfMode("simple");
   };
@@ -1760,11 +1743,14 @@ export default function NutriTrack() {
     const grouped = {}; MEALS.forEach(m => grouped[m] = []);
     dayLog.forEach(e => { if (e.type==="exercise"||e.type==="supplement"||e.type==="water"||e.type==="alcohol") return; if (!grouped[e.meal]) grouped[e.meal]=[]; grouped[e.meal].push(e); });
     const suppEntries = dayLog.filter(e => e.type === "supplement");
-    const waterEntries = dayLog.filter(e => e.type === "water");
-    const alcEntries   = dayLog.filter(e => e.type === "alcohol");
     const info = "ⓘ"; // ⓘ = circled-i info glyph, used by traffic-light info buttons in this view
-    const waterTotalMl = waterEntries.reduce((s,e) => s + (e.amount||0), 0);
-    const alcTotalCals = alcEntries.reduce((s,e) => s + (e.calories||0), 0);
+    // Phase 11: water total (ml) and alcohol total (g) computed from the food model (food.water/food.alc per 100g).
+    const waterTotalMl = Math.round(dayLog.reduce((s,e) => {
+      if (e.type==="exercise"||e.type=="supplement"||e.type=="water"||e.type=="alcohol") return s;
+      if (e.type=="recipe") return s + (e.derivedIngredients||[]).reduce((a,ing)=>{ const m=ing.amount_g/100; const v=ing.snapshot?ing.snapshot.water:(allFoodsForRender.find(f=>f.id===ing.foodId)?.water); return a+(typeof v=="number"?v*m:0); },0);
+      const m=(e.amount||0)/100; const v=e.snapshot?e.snapshot.water:(allFoodsForRender.find(f=>f.id===e.foodId)?.water); return s+(typeof v=="number"?v*m:0);
+    }, 0));
+    const alcTotalG = Math.round((totals.alc||0) * 10) / 10;
     return (
       <div style={S.app}>
         {globalBanners}
@@ -1809,6 +1795,26 @@ export default function NutriTrack() {
             <button style={{background:"none",border:"none",color:"#60a5fa",fontSize:12,cursor:"pointer",padding:0,textDecoration:"underline"}} onClick={e=>{e.stopPropagation();setNullPanelKey(null);handleMacroTap(nullPanelKey);}}>View full detail →</button>
           </div>
         )}
+        {/* Phase 11: water meter (from food.water content) + alcohol summary */}
+        <div style={{display:"flex",alignItems:"center",gap:12,padding:"8px 20px 0"}}>
+          <div style={{display:"flex",alignItems:"center",gap:8,flex:1,background:"#08151f",border:"1px solid #0c4a6e",borderRadius:10,padding:"8px 12px"}}>
+            <Ring value={waterTotalMl} max={effectiveGoals.water||2500} color={NUTRIENT_META.water.color} size={36} stroke={4}>
+              <text x="50%" y="50%" textAnchor="middle" dy="0.35em" fill={NUTRIENT_META.water.color} fontSize={9} fontWeight={700}>{Math.min(999,Math.round(waterTotalMl/(effectiveGoals.water||2500)*100))}%</text>
+            </Ring>
+            <div style={{flex:1}}>
+              <div style={{fontSize:11,fontWeight:700,color:"#7dd3fc",textTransform:"uppercase",letterSpacing:"0.05em"}}>💧 Water</div>
+              <div style={{fontSize:12,color:"#e2e8f0",fontWeight:600}}>{fmtE(waterTotalMl)} <span style={{color:"#64748b",fontWeight:400}}>ml</span> <span style={{color:"#475569"}}>/ {fmtE(effectiveGoals.water||2500)} ml</span></div>
+            </div>
+          </div>
+          {alcTotalG > 0 && (
+            <div style={{display:"flex",alignItems:"center",gap:8,background:"#1f1208",border:"1px solid #92400e",borderRadius:10,padding:"8px 12px"}}>
+              <div style={{flex:1}}>
+                <div style={{fontSize:11,fontWeight:700,color:"#fcd34d",textTransform:"uppercase",letterSpacing:"0.05em"}}>🍾 Alcohol</div>
+                <div style={{fontSize:12,color:"#fbbf24",fontWeight:600}}>{n1(alcTotalG)} <span style={{color:"#64748b",fontWeight:400}}>g</span> <span style={{color:"#f59e0b"}}>· {fmtE(Math.round((alcTotalG*7)*10)/10)} {energyLabel}</span></div>
+              </div>
+            </div>
+          )}
+        </div>
         {exerciseBurn > 0 && (
           <div style={{margin:"0 20px 8px",background:"#0f2d1a",border:"1px solid #16a34a",borderRadius:10,padding:"8px 14px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
             <span style={{fontSize:13,color:"#4ade80"}}>🏃 {fmtE(exerciseBurn)} {energyLabel} burned today</span>
@@ -1900,34 +1906,8 @@ export default function NutriTrack() {
               </div>
             );
           })}
-          {dayLog.filter(e=>e.type!=="exercise"&&e.type!=="supplement"&&e.type!=="water"&&e.type!=="alcohol").length===0 && !suppEntries.length && !waterEntries.length && !alcEntries.length && (
+          {dayLog.filter(e=>e.type!=="exercise"&&e.type!=="supplement"&&e.type!=="water"&&e.type!=="alcohol").length===0 && !suppEntries.length && (
             <div style={{textAlign:"center",padding:"40px 0",color:"#475569"}}><div style={{fontSize:32,marginBottom:8}}>🥗</div><div style={{fontSize:14}}>No food logged today</div><div style={{fontSize:12,color:"#64748b"}}>Tap + to add your first meal</div></div>
-          )}
-          {waterEntries.length > 0 && (
-            <div>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"12px 0 4px"}}><div style={S.mealHdr}>Water</div><span style={{fontSize:12,color:"#38bdf8",fontWeight:600}}>💧 {fmtE(waterTotalMl)} ml</span></div>
-              {waterEntries.map(e => (
-                <SwipeableEntry key={e.id} onDelete={() => removeEntry(e.id)}>
-                  <div style={{...S.entry,background:"#08151f"}}>
-                    <div style={{flex:1}}><div style={{fontSize:14,fontWeight:500,color:"#7dd3fc"}}>💧 Water</div><div style={{fontSize:12,color:"#64748b"}}>{e.amount} ml · {e.meal||"Snack"}</div></div>
-                    <div style={{display:"flex",alignItems:"center"}}><span style={{fontSize:12,color:"#64748b",marginRight:4}}>{new Date(e.time).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}</span><button style={S.delBtn} onClick={ev => { ev.stopPropagation(); removeEntry(e.id); }}>×</button></div>
-                  </div>
-                </SwipeableEntry>
-              ))}
-            </div>
-          )}
-          {alcEntries.length > 0 && (
-            <div>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"12px 0 4px"}}><div style={S.mealHdr}>Alcohol</div><span style={{fontSize:12,color:"#fbbf24",fontWeight:600}}>{fmtE(alcTotalCals)} {energyLabel}</span></div>
-              {alcEntries.map(e => (
-                <SwipeableEntry key={e.id} onDelete={() => removeEntry(e.id)}>
-                  <div style={{...S.entry,background:"#1f1208"}}>
-                    <div style={{flex:1}}><div style={{fontSize:14,fontWeight:500,color:"#fcd34d"}}>🍾 {e.categoryLabel||e.category}</div><div style={{fontSize:12,color:"#64748b"}}>{e.volume} ml · {e.abv}% ABV · {e.meal||"Snack"}</div></div>
-                    <div style={{display:"flex",alignItems:"center"}}><span style={{fontSize:12,color:"#f59e0b",marginRight:4,fontWeight:600}}>{fmtE(e.calories)} {energyLabel}</span><button style={S.delBtn} onClick={ev => { ev.stopPropagation(); removeEntry(e.id); }}>×</button></div>
-                  </div>
-                </SwipeableEntry>
-              ))}
-            </div>
           )}
           {suppEntries.length > 0 && (
             <div>
@@ -1964,7 +1944,7 @@ export default function NutriTrack() {
   if (view === "add") {
     const ModePicker = () => (
       <div style={S.modePicker}>
-        {[["food","🍎 Food"],["recipe","📖 Recipe"],["supplement","💊 Supps"],["hydrate","💧 Water/Alc"]].map(([m,label]) => (
+        {[["food","🍎 Food"],["recipe","📖 Recipe"],["supplement","💊 Supps"]].map(([m,label]) => (
           <button key={m} style={S.modeTab(addMode===m)} onClick={() => { setAddMode(m); setSelectedFood(null); setSearchTerm(""); }}>{label}</button>
         ))}
       </div>
@@ -2235,61 +2215,8 @@ export default function NutriTrack() {
         </div>
       );
     }
-
-    // Phase 11a: Water & Alcohol entry
-    if (addMode === "hydrate") {
-      const alcCals = alcoholCalories(alcVolume, alcAbv);
-      return (
-        <div style={S.app}>
-          <div style={S.header}>
-            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => setView("log")}>← Back</button>
-            <span style={{fontSize:15,fontWeight:700}}>{water} Water / Alcohol</span><div style={{width:64}}/>
-          </div>
-          <div style={S.section}>
-            <ModePicker/>
-            <div style={S.card}>
-              <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:10,textTransform:"uppercase",letterSpacing:"0.05em"}}>{water} Water</div>
-              <div style={{display:"flex",gap:8,marginBottom:12}}>
-                <div style={{flex:1}}><label style={S.label}>Amount</label><input style={S.input} type="number" inputMode="numeric" value={waterAmount} onChange={e=>setWaterAmount(e.target.value)} placeholder="250"/></div>
-                <div style={{width:110}}><label style={S.label}>Unit</label><select style={{...S.input,padding:"11px 8px"}} value={waterUnit} onChange={e=>setWaterUnit(e.target.value)}>{WATER_UNITS.map(u=><option key={u} value={u}>{u}{u!=="ml"?" ("+WATER_UNIT_TO_ML[u]+"ml)":""}</option>)}</select></div>
-              </div>
-              <label style={S.label}>Meal</label>
-              <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
-                {MEALS.map(m => <button key={m} style={S.pill(meal===m)} onClick={() => setMeal(m)}>{m}</button>)}
-              </div>
-              <div style={{background:"#08151f",borderRadius:10,padding:"10px 12px",marginBottom:12,display:"flex",justifyContent:"space-between"}}>
-                <span style={{fontSize:13,color:"#7dd3fc"}}>Total</span>
-                <span style={{fontSize:13,color:"#38bdf8",fontWeight:700}}>{fmtE(waterAmountMl(waterAmount, waterUnit))} ml</span>
-              </div>
-              <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:(waterAmountMl(waterAmount,waterUnit)>0)?"#0ea5e9":"#1e293b",color:"#fff",fontSize:15,fontWeight:700,cursor:(waterAmountMl(waterAmount,waterUnit)>0)?"pointer":"default"}} disabled={!(waterAmountMl(waterAmount,waterUnit)>0)} onClick={logWater}>Add water to {meal}</button>
-            </div>
-            <div style={{...S.card,marginTop:12}}>
-              <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:10,textTransform:"uppercase",letterSpacing:"0.05em"}}>{beer} Alcohol</div>
-              <label style={S.label}>Drink category</label>
-              <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
-                {ALCOHOL_CATEGORIES.map(c => <button key={c.id} style={S.pill(alcCategory===c.id)} onClick={() => { setAlcCategory(c.id); setAlcAbv(String(c.abv)); }}>{c.label}</button>)}
-              </div>
-              <div style={{display:"flex",gap:8,marginBottom:12}}>
-                <div style={{flex:1}}><label style={S.label}>Volume (ml)</label><input style={S.input} type="number" inputMode="decimal" value={alcVolume} onChange={e=>setAlcVolume(e.target.value)} placeholder="e.g. 330"/></div>
-                <div style={{width:100}}><label style={S.label}>ABV (%)</label><input style={S.input} type="number" inputMode="decimal" value={alcAbv} onChange={e=>setAlcAbv(e.target.value)} placeholder="5"/></div>
-              </div>
-              <label style={S.label}>Meal</label>
-              <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
-                {MEALS.map(m => <button key={m} style={S.pill(meal===m)} onClick={() => setMeal(m)}>{m}</button>)}
-              </div>
-              <div style={{background:"#1f1208",borderRadius:10,padding:"10px 12px",marginBottom:12,display:"flex",justifyContent:"space-between"}}>
-                <span style={{fontSize:13,color:"#fcd34d"}}>Calories</span>
-                <span style={{fontSize:13,color:"#fbbf24",fontWeight:700}}>{fmtE(alcCals)} {energyLabel}</span>
-              </div>
-              <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:(parseFloat(alcVolume)>0&&parseFloat(alcAbv)>0)?"#d97706":"#1e293b",color:"#fff",fontSize:15,fontWeight:700,cursor:(parseFloat(alcVolume)>0&&parseFloat(alcAbv)>0)?"pointer":"default"}} disabled={!(parseFloat(alcVolume)>0&&parseFloat(alcAbv)>0)} onClick={logAlcohol}>Add drink to {meal}</button>
-              <div style={{fontSize:11,color:"#64748b",marginTop:8,lineHeight:1.5}}>Calories = volume × ABV% × 7.89. Alcohol calories count toward your daily total.</div>
-            </div>
-          </div>
-          <BottomNav/>
-        </div>
-      );
-    }
   }
+
   // ── PHASE 6n: BATCH REVIEW (multi-select commit screen) ──────────────────
   if (view === "batchReview") {
     const totalCal = batch.reduce((sum, b) => sum + ((b.food.cal ?? 0) * (parseFloat(b.amount) || 0) / 100), 0);
@@ -2786,8 +2713,8 @@ export default function NutriTrack() {
     // Phase 9: simple mode shows the 6 values typically printed on a food
     // package; advanced mode shows all 19 NUTRIENT_META fields. The 14
     // subtype keys are never edited in the form (saved as null / preserved).
-    const simpleFields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"sod",l:"Sodium (mg)"}];
-    const advancedFields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"iron",l:"Iron (mg)"},{k:"calc",l:"Calcium (mg)"},{k:"zinc",l:"Zinc (mg)"},{k:"b12",l:"B12 (mcg)"},{k:"vitD",l:"Vitamin D (mcg)"},{k:"omega3",l:"Omega-3 (g)"},{k:"iod",l:"Iodine (mcg)"},{k:"sel",l:"Selenium (mcg)"},{k:"mag",l:"Magnesium (mg)"},{k:"pot",l:"Potassium (mg)"},{k:"fol",l:"Folate (mcg)"},{k:"sod",l:"Sodium (mg)"},{k:"vitA",l:"Vitamin A (mcg)"},{k:"vitC",l:"Vitamin C (mg)"}];
+    const simpleFields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"alc",l:"Alcohol (g)"},{k:"water",l:"Water (ml)"},{k:"sod",l:"Sodium (mg)"}];
+    const advancedFields=[{k:"cal",l:"Calories (kcal)"},{k:"pro",l:"Protein (g)"},{k:"carb",l:"Carbs (g)"},{k:"fat",l:"Fat (g)"},{k:"fib",l:"Fibre (g)"},{k:"alc",l:"Alcohol (g)"},{k:"water",l:"Water (ml)"},{k:"iron",l:"Iron (mg)"},{k:"calc",l:"Calcium (mg)"},{k:"zinc",l:"Zinc (mg)"},{k:"b12",l:"B12 (mcg)"},{k:"vitD",l:"Vitamin D (mcg)"},{k:"omega3",l:"Omega-3 (g)"},{k:"iod",l:"Iodine (mcg)"},{k:"sel",l:"Selenium (mcg)"},{k:"mag",l:"Magnesium (mg)"},{k:"pot",l:"Potassium (mg)"},{k:"fol",l:"Folate (mcg)"},{k:"sod",l:"Sodium (mg)"},{k:"vitA",l:"Vitamin A (mcg)"},{k:"vitC",l:"Vitamin C (mg)"}];
     const fields = cfMode === "simple" ? simpleFields : advancedFields;
     const isEditing = !!editingCustomFoodId;
     return (
@@ -2815,7 +2742,7 @@ export default function NutriTrack() {
     const ht  = parseFloat(profile.heightCm)  || 170;
     const hasProfile = !!(profile.weightKg && profile.heightCm && profile.age && profile.sex);
     const proMultiplierDisplay = Math.min(2.0, 1.0 + exerciseBurn / (resolvedGoals.cal || 2000));
-    const sections = [{ title:"Macros", keys:MACROS }, { title:"Micros", keys:MICROS }];
+    const sections = [{ title:"Macros", keys:MACROS }, { title:"Micros", keys:MICROS }, { title:"Hydration", keys:["water"] }];
     return (
       <div style={S.app}>
         <div style={S.header}><span style={{fontSize:17,fontWeight:700}}>Daily Goals</span></div>
@@ -2932,9 +2859,8 @@ export default function NutriTrack() {
           });
           continue;
         }
-        // Phase 11a: water contributes no nutrients; alcohol adds calories to the food cal column.
-        if (e.type === "water") continue;
-        if (e.type === "alcohol") { food.cal += (e.calories || 0); continue; }
+        // Phase 11: legacy 11a water/alcohol entry types are skipped (no longer created).
+        if (e.type === "water" || e.type === "alcohol") continue;
         // food or recipe
         if (e.type === "recipe") {
           (e.derivedIngredients || []).forEach(ing => {
@@ -2948,6 +2874,8 @@ export default function NutriTrack() {
           else { const f = allFoods.find(x => x.id === e.foodId); if (!f) continue; NUTRIENT_ALL_KEYS.forEach(k => { food[k] += (f[k] ?? 0) * m; }); }
         }
       }
+      // Phase 11: add alcohol calories (g x 7) so exported cal matches the displayed total.
+      food.cal = Math.round((food.cal + (food.alc * 7)) * 10) / 10;
 
       // Only include the day if there is something logged
       const hasFood = NUTRIENT_ALL_KEYS.some(k => food[k] > 0);
@@ -2964,6 +2892,8 @@ export default function NutriTrack() {
         carbs_g:      fmt(food.carb),
         fat_g:        fmt(food.fat),
         fibre_g:      fmt(food.fib),
+        alcohol_g:    fmt(food.alc),   // Phase 11
+        water_ml:     fmt(food.water), // Phase 11
         iron_mg:      fmt(food.iron),
         calcium_mg:   fmt(food.calc),
         zinc_mg:      fmt(food.zinc),
@@ -2996,7 +2926,7 @@ export default function NutriTrack() {
 
     // ── Build CSV string ───────────────────────────────────────────────
     const csvEscape = v => { const s = String(v); return s.includes(",") || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s; };
-    const csvHeaders = ["date","cal","protein_g","carbs_g","fat_g","fibre_g","iron_mg","calcium_mg","zinc_mg","b12_mcg","vitD_mcg","omega3_g","iodine_mcg","selenium_mcg","magnesium_mg","potassium_mg","folate_mcg","supp_b12_mcg","supp_vitD_mcg","supp_iron_mg","supp_iodine_mcg","supp_omega3_g","supp_cal_kcal","supp_protein_g","supp_zinc_mg","supp_calc_mg","supp_mag_mg","supp_pot_mg","supp_fol_mcg","supp_sel_mcg","exercise_kcal"];
+    const csvHeaders = ["date","cal","protein_g","carbs_g","fat_g","fibre_g","alcohol_g","water_ml","iron_mg","calcium_mg","zinc_mg","b12_mcg","vitD_mcg","omega3_g","iodine_mcg","selenium_mcg","magnesium_mg","potassium_mg","folate_mcg","supp_b12_mcg","supp_vitD_mcg","supp_iron_mg","supp_iodine_mcg","supp_omega3_g","supp_cal_kcal","supp_protein_g","supp_zinc_mg","supp_calc_mg","supp_mag_mg","supp_pot_mg","supp_fol_mcg","supp_sel_mcg","exercise_kcal"];
     const csvBody = [csvHeaders.join(","), ...csvRows.map(row => csvHeaders.map(h => csvEscape(row[h] ?? "")).join(","))].join("\n");
 
     // ── Build JSON object ──────────────────────────────────────────────

@@ -34,7 +34,9 @@
     "folate": "mcg",
     "sodium": "mg",
     "vitamin_a": "mcg",
-    "vitamin_c": "mg"
+    "vitamin_c": "mg",
+    "water": "g",
+    "alcohol": "g"
   },
   "foods": [
     {
@@ -89,7 +91,9 @@
           "label": "1 cup",
           "grams": 90
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "rice_brown",
@@ -129,7 +133,9 @@
       "fdc_id": null,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "rice_white",
@@ -169,7 +175,9 @@
       "fdc_id": null,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "quinoa",
@@ -209,7 +217,9 @@
       "fdc_id": null,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "bread_whole",
@@ -249,7 +259,9 @@
       "fdc_id": null,
       "sodium": 400,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "pasta",
@@ -289,7 +301,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tortilla_corn",
@@ -329,7 +343,9 @@
       "fdc_id": null,
       "sodium": 310,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tortilla_whole_wheat",
@@ -369,7 +385,9 @@
       "fdc_id": 1100612,
       "sodium": 604,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "flour_wheat",
@@ -409,7 +427,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "pasta_dry",
@@ -463,7 +483,9 @@
           "label": "Large portion",
           "grams": 120
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "rice_brown_dry",
@@ -517,7 +539,9 @@
           "label": "1 cup",
           "grams": 185
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "rice_white_dry",
@@ -571,7 +595,9 @@
           "label": "1 cup",
           "grams": 185
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "quinoa_dry",
@@ -625,7 +651,9 @@
           "label": "1 cup",
           "grams": 170
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "lentils",
@@ -665,7 +693,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.5
+      "vitamin_c": 1.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "chickpeas",
@@ -705,7 +735,9 @@
       "fdc_id": null,
       "sodium": 24,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "black_beans",
@@ -745,7 +777,9 @@
       "fdc_id": null,
       "sodium": 238,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "kidney_beans",
@@ -785,7 +819,9 @@
       "fdc_id": null,
       "sodium": 358,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tofu_firm",
@@ -825,7 +861,9 @@
       "fdc_id": null,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.1
+      "vitamin_c": 0.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tempeh",
@@ -865,7 +903,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "peanuts",
@@ -919,7 +959,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "peanut_butter",
@@ -973,7 +1015,9 @@
           "label": "2 tbsp",
           "grams": 32
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "hummus",
@@ -1027,7 +1071,9 @@
           "label": "½ cup",
           "grams": 120
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "lentils_dry",
@@ -1081,7 +1127,9 @@
           "label": "1 cup",
           "grams": 180
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "chickpeas_dry",
@@ -1135,7 +1183,9 @@
           "label": "1 cup",
           "grams": 180
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "black_beans_dry",
@@ -1189,7 +1239,9 @@
           "label": "1 cup",
           "grams": 180
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "kidney_beans_dry",
@@ -1229,7 +1281,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "almonds",
@@ -1283,7 +1337,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "chia_seeds",
@@ -1337,7 +1393,9 @@
           "label": "2 tbsp",
           "grams": 24
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "flaxseed",
@@ -1391,7 +1449,9 @@
           "label": "2 tbsp",
           "grams": 22
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sunflower_seeds",
@@ -1445,7 +1505,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "cashews",
@@ -1499,7 +1561,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "walnuts",
@@ -1553,7 +1617,9 @@
           "label": "½ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sesame_seeds",
@@ -1607,7 +1673,9 @@
           "label": "¼ cup",
           "grams": 36
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tahini",
@@ -1661,7 +1729,9 @@
           "label": "2 tbsp",
           "grams": 30
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "broccoli",
@@ -1701,7 +1771,9 @@
       "fdc_id": null,
       "sodium": 33,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "spinach",
@@ -1741,7 +1813,9 @@
       "fdc_id": null,
       "sodium": 63,
       "vitamin_a": 0.47,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "kale",
@@ -1781,7 +1855,9 @@
       "fdc_id": null,
       "sodium": 38,
       "vitamin_a": 0.5,
-      "vitamin_c": 93.4
+      "vitamin_c": 93.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sweet_potato",
@@ -1821,7 +1897,9 @@
       "fdc_id": null,
       "sodium": 5,
       "vitamin_a": 0.96,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "potato",
@@ -1861,7 +1939,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tomato",
@@ -1901,7 +1981,9 @@
       "fdc_id": null,
       "sodium": 5,
       "vitamin_a": 0.04,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "onion",
@@ -1955,7 +2037,9 @@
           "label": "1 large",
           "grams": 150
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "carrot",
@@ -1995,7 +2079,9 @@
       "fdc_id": null,
       "sodium": 69,
       "vitamin_a": 0.83,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "avocado",
@@ -2035,7 +2121,9 @@
       "fdc_id": null,
       "sodium": 7,
       "vitamin_a": 0.01,
-      "vitamin_c": 10.0
+      "vitamin_c": 10.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "bell_pepper",
@@ -2075,7 +2163,9 @@
       "fdc_id": null,
       "sodium": 4,
       "vitamin_a": 0.16,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "corn",
@@ -2115,7 +2205,9 @@
       "fdc_id": null,
       "sodium": 15,
       "vitamin_a": 0.01,
-      "vitamin_c": 6.8
+      "vitamin_c": 6.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "cassava",
@@ -2155,7 +2247,9 @@
       "fdc_id": null,
       "sodium": 14,
       "vitamin_a": 0.0,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "plantain",
@@ -2195,7 +2289,9 @@
       "fdc_id": null,
       "sodium": 4,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "banana",
@@ -2249,7 +2345,9 @@
           "label": "1 large",
           "grams": 150
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "orange",
@@ -2289,7 +2387,9 @@
       "fdc_id": null,
       "sodium": 0,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "mango",
@@ -2329,7 +2429,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.05,
-      "vitamin_c": 36.4
+      "vitamin_c": 36.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "papaya",
@@ -2369,7 +2471,9 @@
       "fdc_id": null,
       "sodium": 8,
       "vitamin_a": 0.05,
-      "vitamin_c": 61.8
+      "vitamin_c": 61.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "apple",
@@ -2423,7 +2527,9 @@
           "label": "1 large",
           "grams": 220
         }
-      ]
+      ],
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "dates",
@@ -2463,7 +2569,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.4
+      "vitamin_c": 0.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "oat_milk",
@@ -2503,7 +2611,9 @@
       "fdc_id": null,
       "sodium": 74,
       "vitamin_a": 0.05,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "soy_milk",
@@ -2557,7 +2667,9 @@
           "label": "1 cup (250ml)",
           "grams": 250
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "soy_cream",
@@ -2597,7 +2709,9 @@
       "fdc_id": null,
       "sodium": 30,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "coconut_milk",
@@ -2637,7 +2751,9 @@
       "fdc_id": null,
       "sodium": 15,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.0
+      "vitamin_c": 1.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "soy_yogurt",
@@ -2677,7 +2793,9 @@
       "fdc_id": null,
       "sodium": 36,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "olive_oil",
@@ -2731,7 +2849,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sunflower_oil",
@@ -2785,7 +2905,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "coconut_oil",
@@ -2839,7 +2961,9 @@
           "label": "¼ cup",
           "grams": 55
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "nooch",
@@ -2893,7 +3017,9 @@
           "label": "¼ cup",
           "grams": 20
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sugar_brown",
@@ -2943,7 +3069,9 @@
           "label": "1 tbsp",
           "grams": 12
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sugar_white",
@@ -2993,7 +3121,9 @@
           "label": "1 tbsp",
           "grams": 12
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "soy_sauce",
@@ -3043,7 +3173,9 @@
           "label": "1 tbsp",
           "grams": 15
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "vegan_mayo",
@@ -3097,7 +3229,9 @@
           "label": "2 tbsp",
           "grams": 28
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "cornflakes",
@@ -3137,7 +3271,9 @@
       "fdc_id": null,
       "sodium": 600,
       "vitamin_a": 0.38,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "muesli",
@@ -3177,7 +3313,9 @@
       "fdc_id": null,
       "sodium": 120,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "dark_chocolate",
@@ -3217,7 +3355,9 @@
       "fdc_id": null,
       "sodium": 20,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "protein_powder",
@@ -3257,13 +3397,15 @@
       "fdc_id": null,
       "sodium": 100,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "red_wine",
       "name": "Red Wine (per 100ml)",
       "category": "Alcohol",
-      "calories": 85,
+      "calories": 10.8,
       "protein": 0.1,
       "carbohydrates": 2.6,
       "fat": 0,
@@ -3297,13 +3439,15 @@
       "fdc_id": null,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 87,
+      "alcohol": 10.6
     },
     {
       "id": "white_wine",
       "name": "White Wine (per 100ml)",
       "category": "Alcohol",
-      "calories": 82,
+      "calories": 8.5,
       "protein": 0.1,
       "carbohydrates": 2.6,
       "fat": 0,
@@ -3337,13 +3481,15 @@
       "fdc_id": null,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 87,
+      "alcohol": 10.5
     },
     {
       "id": "beer_lager",
       "name": "Beer / Lager (per 100ml)",
       "category": "Alcohol",
-      "calories": 43,
+      "calories": 17.8,
       "protein": 0.5,
       "carbohydrates": 3.5,
       "fat": 0,
@@ -3377,13 +3523,15 @@
       "fdc_id": null,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 92,
+      "alcohol": 3.6
     },
     {
       "id": "spirit",
       "name": "Spirit 40% ABV (per 100ml)",
       "category": "Alcohol",
-      "calories": 231,
+      "calories": 9.1,
       "protein": 0,
       "carbohydrates": 0,
       "fat": 0,
@@ -3417,7 +3565,9 @@
       "fdc_id": null,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 67,
+      "alcohol": 31.7
     },
     {
       "id": "quinoa_raw",
@@ -3471,7 +3621,9 @@
           "label": "1 cup",
           "grams": 170
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "quinoa_cooked",
@@ -3511,7 +3663,9 @@
       "fdc_id": null,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "barley_raw",
@@ -3551,7 +3705,9 @@
       "fdc_id": null,
       "sodium": 12,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "barley_cooked",
@@ -3591,7 +3747,9 @@
       "fdc_id": null,
       "sodium": 3,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "buckwheat_raw",
@@ -3631,7 +3789,9 @@
       "fdc_id": null,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "buckwheat_cooked",
@@ -3671,7 +3831,9 @@
       "fdc_id": null,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "millet_raw",
@@ -3711,7 +3873,9 @@
       "fdc_id": null,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "millet_cooked",
@@ -3751,7 +3915,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "brown_rice_raw",
@@ -3805,7 +3971,9 @@
           "label": "1 cup",
           "grams": 185
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "brown_rice_cooked",
@@ -3845,7 +4013,9 @@
       "fdc_id": null,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "amaranth_raw",
@@ -3885,7 +4055,9 @@
       "fdc_id": null,
       "sodium": 21,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "amaranth_cooked",
@@ -3925,7 +4097,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.9
+      "vitamin_c": 0.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "lentils_raw",
@@ -3965,7 +4139,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 4.5
+      "vitamin_c": 4.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "lentils_cooked",
@@ -4005,7 +4181,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.5
+      "vitamin_c": 1.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "black_beans_cooked",
@@ -4045,7 +4223,9 @@
       "fdc_id": null,
       "sodium": 238,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "chickpeas_cooked",
@@ -4085,7 +4265,9 @@
       "fdc_id": null,
       "sodium": 282,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "kidney_beans_cooked",
@@ -4125,7 +4307,9 @@
       "fdc_id": null,
       "sodium": 358,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "green_peas_frozen",
@@ -4165,7 +4349,9 @@
       "fdc_id": null,
       "sodium": 68,
       "vitamin_a": 0.04,
-      "vitamin_c": 14.2
+      "vitamin_c": 14.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "split_peas_dry",
@@ -4205,7 +4391,9 @@
       "fdc_id": null,
       "sodium": 15,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.4
+      "vitamin_c": 0.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "banana_raw",
@@ -4259,7 +4447,9 @@
           "label": "1 large",
           "grams": 150
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "avocado_raw",
@@ -4309,7 +4499,9 @@
           "label": "1 avocado",
           "grams": 150
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "mango_raw",
@@ -4349,7 +4541,9 @@
       "fdc_id": null,
       "sodium": 1,
       "vitamin_a": 0.05,
-      "vitamin_c": 36.4
+      "vitamin_c": 36.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "papaya_raw",
@@ -4389,7 +4583,9 @@
       "fdc_id": null,
       "sodium": 8,
       "vitamin_a": 0.05,
-      "vitamin_c": 61.8
+      "vitamin_c": 61.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "guava_raw",
@@ -4429,7 +4625,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.03,
-      "vitamin_c": 228.3
+      "vitamin_c": 228.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "dates_dry",
@@ -4469,7 +4667,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.4
+      "vitamin_c": 0.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "flaxseeds",
@@ -4509,7 +4709,9 @@
       "fdc_id": null,
       "sodium": 30,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "hemp_seeds",
@@ -4549,7 +4751,9 @@
       "fdc_id": null,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "pumpkin_seeds",
@@ -4603,7 +4807,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "almonds_raw",
@@ -4657,7 +4863,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "walnuts_raw",
@@ -4711,7 +4919,9 @@
           "label": "½ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "cashews_raw",
@@ -4765,7 +4975,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "cassava_raw",
@@ -4805,7 +5017,9 @@
       "fdc_id": null,
       "sodium": 14,
       "vitamin_a": 0.0,
-      "vitamin_c": 20.6
+      "vitamin_c": 20.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "cassava_boiled",
@@ -4845,7 +5059,9 @@
       "fdc_id": null,
       "sodium": 14,
       "vitamin_a": 0.0,
-      "vitamin_c": 20.6
+      "vitamin_c": 20.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "plantain_raw",
@@ -4885,7 +5101,9 @@
       "fdc_id": null,
       "sodium": 3,
       "vitamin_a": 0.06,
-      "vitamin_c": 18.4
+      "vitamin_c": 18.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "plantain_boiled",
@@ -4925,7 +5143,9 @@
       "fdc_id": null,
       "sodium": 2,
       "vitamin_a": 0.04,
-      "vitamin_c": 11.5
+      "vitamin_c": 11.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "yucca_flour",
@@ -4965,7 +5185,9 @@
       "fdc_id": null,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "arepa_cornmeal",
@@ -5005,7 +5227,9 @@
       "fdc_id": null,
       "sodium": 400,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "shiitake_raw",
@@ -5045,7 +5269,9 @@
       "fdc_id": null,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "portobello_raw",
@@ -5085,7 +5311,9 @@
       "fdc_id": null,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "oyster_mushrooms_raw",
@@ -5125,7 +5353,9 @@
       "fdc_id": null,
       "sodium": 18,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tofu_silken",
@@ -5165,7 +5395,9 @@
       "fdc_id": null,
       "sodium": 21,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.1
+      "vitamin_c": 0.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "edamame_frozen",
@@ -5205,7 +5437,9 @@
       "fdc_id": null,
       "sodium": 6,
       "vitamin_a": 0.02,
-      "vitamin_c": 6.1
+      "vitamin_c": 6.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "soy_milk_unsweetened",
@@ -5259,7 +5493,9 @@
           "label": "1 cup (250ml)",
           "grams": 250
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "tvp_dry",
@@ -5299,7 +5535,9 @@
       "fdc_id": null,
       "sodium": 350,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "kale_raw",
@@ -5339,7 +5577,9 @@
       "fdc_id": null,
       "sodium": 38,
       "vitamin_a": 0.5,
-      "vitamin_c": 93.4
+      "vitamin_c": 93.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "spinach_raw",
@@ -5379,7 +5619,9 @@
       "fdc_id": null,
       "sodium": 63,
       "vitamin_a": 0.47,
-      "vitamin_c": 28.1
+      "vitamin_c": 28.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "sweet_potato_baked",
@@ -5419,7 +5661,9 @@
       "fdc_id": null,
       "sodium": 27,
       "vitamin_a": 0.96,
-      "vitamin_c": 17.6
+      "vitamin_c": 17.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_1",
@@ -5459,7 +5703,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_2",
@@ -5499,7 +5745,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_3",
@@ -5539,7 +5787,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_4",
@@ -5579,7 +5829,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_5",
@@ -5619,7 +5871,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_6",
@@ -5659,7 +5913,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_7",
@@ -5699,7 +5955,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_8",
@@ -5739,7 +5997,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_9",
@@ -5779,7 +6039,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_10",
@@ -5819,7 +6081,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "taco_11",
@@ -5859,7 +6123,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_12",
@@ -5899,7 +6165,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "taco_13",
@@ -5939,7 +6207,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_14",
@@ -5979,7 +6249,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_15",
@@ -6019,7 +6291,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_16",
@@ -6059,7 +6333,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_17",
@@ -6099,7 +6375,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_18",
@@ -6139,7 +6417,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_19",
@@ -6179,7 +6459,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_20",
@@ -6219,7 +6501,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_21",
@@ -6259,7 +6543,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_22",
@@ -6299,7 +6585,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_23",
@@ -6339,7 +6627,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_24",
@@ -6379,7 +6669,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_25",
@@ -6419,7 +6711,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_26",
@@ -6459,7 +6753,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_27",
@@ -6499,7 +6795,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_28",
@@ -6539,7 +6837,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_29",
@@ -6579,7 +6879,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_30",
@@ -6619,7 +6921,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_31",
@@ -6659,7 +6963,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_32",
@@ -6699,7 +7005,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_33",
@@ -6739,7 +7047,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_34",
@@ -6779,7 +7089,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_35",
@@ -6819,7 +7131,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_36",
@@ -6859,7 +7173,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_37",
@@ -6899,7 +7215,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_38",
@@ -6939,7 +7257,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_39",
@@ -6979,7 +7299,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_40",
@@ -7019,7 +7341,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_41",
@@ -7059,7 +7383,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_42",
@@ -7099,7 +7425,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_43",
@@ -7139,7 +7467,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_44",
@@ -7179,7 +7509,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_45",
@@ -7219,7 +7551,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_46",
@@ -7259,7 +7593,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_47",
@@ -7299,7 +7635,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_48",
@@ -7339,7 +7677,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_49",
@@ -7379,7 +7719,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_50",
@@ -7419,7 +7761,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_51",
@@ -7459,7 +7803,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_52",
@@ -7499,7 +7845,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_53",
@@ -7539,7 +7887,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_54",
@@ -7579,7 +7929,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_55",
@@ -7619,7 +7971,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_56",
@@ -7659,7 +8013,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_57",
@@ -7699,7 +8055,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_58",
@@ -7739,7 +8097,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_59",
@@ -7779,7 +8139,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_60",
@@ -7819,7 +8181,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_61",
@@ -7859,7 +8223,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_62",
@@ -7899,7 +8265,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_63",
@@ -7939,7 +8307,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_64",
@@ -7979,7 +8349,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_65",
@@ -8019,7 +8391,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_66",
@@ -8059,7 +8433,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_67",
@@ -8099,7 +8475,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_68",
@@ -8139,7 +8517,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_69",
@@ -8179,7 +8559,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_70",
@@ -8219,7 +8601,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_71",
@@ -8259,7 +8643,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_72",
@@ -8299,7 +8685,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_73",
@@ -8339,7 +8727,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_74",
@@ -8379,7 +8769,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_75",
@@ -8419,7 +8811,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_76",
@@ -8459,7 +8853,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "taco_77",
@@ -8499,7 +8895,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "taco_78",
@@ -8539,7 +8937,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "taco_79",
@@ -8579,7 +8979,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "taco_80",
@@ -8619,7 +9021,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "taco_81",
@@ -8659,7 +9063,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_82",
@@ -8709,7 +9115,9 @@
           "label": "1 tbsp minced",
           "grams": 9
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_83",
@@ -8749,7 +9157,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_84",
@@ -8789,7 +9199,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_85",
@@ -8829,7 +9241,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_86",
@@ -8869,7 +9283,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_87",
@@ -8909,7 +9325,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_88",
@@ -8949,7 +9367,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_89",
@@ -8989,7 +9409,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_90",
@@ -9029,7 +9451,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_91",
@@ -9069,7 +9493,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_92",
@@ -9109,7 +9535,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_93",
@@ -9149,7 +9577,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_94",
@@ -9189,7 +9619,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_95",
@@ -9229,7 +9661,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_96",
@@ -9269,7 +9703,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_97",
@@ -9309,7 +9745,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_98",
@@ -9349,7 +9787,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_99",
@@ -9389,7 +9829,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_100",
@@ -9429,7 +9871,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_101",
@@ -9469,7 +9913,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_102",
@@ -9509,7 +9955,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_103",
@@ -9549,7 +9997,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_104",
@@ -9589,7 +10039,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_105",
@@ -9629,7 +10081,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_106",
@@ -9669,7 +10123,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_107",
@@ -9709,7 +10165,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_108",
@@ -9749,7 +10207,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_109",
@@ -9789,7 +10249,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_110",
@@ -9829,7 +10291,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_112",
@@ -9869,7 +10333,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_113",
@@ -9909,7 +10375,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_114",
@@ -9949,7 +10417,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_115",
@@ -9989,7 +10459,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_116",
@@ -10029,7 +10501,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_117",
@@ -10069,7 +10543,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_118",
@@ -10109,7 +10585,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_119",
@@ -10149,7 +10627,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_120",
@@ -10189,7 +10669,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_121",
@@ -10229,7 +10711,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_122",
@@ -10269,7 +10753,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_123",
@@ -10309,7 +10795,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_124",
@@ -10349,7 +10837,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_125",
@@ -10389,7 +10879,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_126",
@@ -10429,7 +10921,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_128",
@@ -10469,7 +10963,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_129",
@@ -10509,7 +11005,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_130",
@@ -10549,7 +11047,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_131",
@@ -10589,7 +11089,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_132",
@@ -10629,7 +11131,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_134",
@@ -10669,7 +11173,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_135",
@@ -10709,7 +11215,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_136",
@@ -10749,7 +11257,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_137",
@@ -10789,7 +11299,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_140",
@@ -10829,7 +11341,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_141",
@@ -10869,7 +11383,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_142",
@@ -10909,7 +11425,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 96,
+      "alcohol": 0
     },
     {
       "id": "taco_143",
@@ -10949,7 +11467,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_144",
@@ -10989,7 +11509,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_145",
@@ -11029,7 +11551,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_146",
@@ -11069,7 +11593,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_147",
@@ -11109,7 +11635,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_148",
@@ -11149,7 +11677,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_149",
@@ -11189,7 +11719,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_150",
@@ -11229,7 +11761,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_151",
@@ -11269,7 +11803,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_152",
@@ -11309,7 +11845,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_153",
@@ -11349,7 +11887,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_154",
@@ -11389,7 +11929,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_155",
@@ -11429,7 +11971,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_156",
@@ -11469,7 +12013,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_157",
@@ -11509,7 +12055,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_158",
@@ -11549,7 +12097,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_159",
@@ -11589,7 +12139,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_160",
@@ -11629,7 +12181,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_161",
@@ -11669,7 +12223,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "taco_162",
@@ -11709,7 +12265,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_163",
@@ -11749,7 +12307,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_164",
@@ -11789,7 +12349,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "taco_165",
@@ -11829,7 +12391,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "taco_166",
@@ -11869,7 +12433,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_167",
@@ -11909,7 +12475,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_168",
@@ -11949,7 +12517,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_169",
@@ -11989,7 +12559,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_170",
@@ -12029,7 +12601,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_171",
@@ -12069,7 +12643,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_172",
@@ -12109,7 +12685,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_173",
@@ -12149,7 +12727,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_174",
@@ -12189,7 +12769,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_175",
@@ -12229,7 +12811,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_176",
@@ -12269,7 +12853,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_177",
@@ -12309,7 +12895,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_178",
@@ -12349,7 +12937,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "taco_179",
@@ -12389,7 +12979,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_180",
@@ -12429,7 +13021,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_181",
@@ -12469,7 +13063,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_182",
@@ -12509,7 +13105,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_183",
@@ -12549,7 +13147,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_184",
@@ -12589,7 +13189,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_185",
@@ -12629,7 +13231,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_186",
@@ -12669,7 +13273,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_187",
@@ -12709,7 +13315,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_188",
@@ -12749,7 +13357,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_189",
@@ -12789,7 +13399,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_190",
@@ -12829,7 +13441,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_191",
@@ -12869,7 +13483,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_192",
@@ -12909,7 +13525,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_193",
@@ -12949,7 +13567,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_194",
@@ -12989,7 +13609,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_195",
@@ -13029,7 +13651,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_196",
@@ -13069,7 +13693,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_197",
@@ -13109,7 +13735,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_198",
@@ -13149,7 +13777,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_199",
@@ -13189,7 +13819,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_200",
@@ -13229,7 +13861,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_201",
@@ -13269,7 +13903,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_202",
@@ -13309,7 +13945,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_203",
@@ -13349,7 +13987,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_204",
@@ -13389,7 +14029,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_205",
@@ -13429,7 +14071,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_206",
@@ -13469,7 +14113,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_207",
@@ -13509,7 +14155,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_208",
@@ -13549,7 +14197,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_209",
@@ -13589,7 +14239,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_210",
@@ -13629,7 +14281,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_211",
@@ -13669,7 +14323,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_212",
@@ -13709,7 +14365,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_213",
@@ -13749,7 +14407,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_214",
@@ -13789,7 +14449,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_215",
@@ -13829,7 +14491,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_216",
@@ -13869,7 +14533,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_217",
@@ -13909,7 +14575,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_218",
@@ -13949,7 +14617,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 89,
+      "alcohol": 0
     },
     {
       "id": "taco_219",
@@ -13989,7 +14659,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 89,
+      "alcohol": 0
     },
     {
       "id": "taco_220",
@@ -14029,7 +14701,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 89,
+      "alcohol": 0
     },
     {
       "id": "taco_221",
@@ -14069,7 +14743,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "taco_222",
@@ -14109,7 +14785,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "taco_223",
@@ -14149,7 +14827,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_224",
@@ -14189,7 +14869,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_225",
@@ -14229,7 +14911,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_226",
@@ -14269,7 +14953,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_227",
@@ -14309,7 +14995,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_228",
@@ -14349,7 +15037,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_229",
@@ -14389,7 +15079,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_230",
@@ -14429,7 +15121,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_231",
@@ -14469,7 +15163,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_232",
@@ -14509,7 +15205,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_233",
@@ -14549,7 +15247,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_234",
@@ -14589,7 +15289,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_235",
@@ -14629,7 +15331,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "taco_236",
@@ -14669,7 +15373,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 90,
+      "alcohol": 0
     },
     {
       "id": "taco_237",
@@ -14709,7 +15415,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_238",
@@ -14749,7 +15457,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_239",
@@ -14789,7 +15499,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_240",
@@ -14829,7 +15541,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_241",
@@ -14869,7 +15583,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_242",
@@ -14909,7 +15625,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_243",
@@ -14949,7 +15667,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_244",
@@ -14989,7 +15709,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "taco_245",
@@ -15029,7 +15751,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "taco_246",
@@ -15069,7 +15793,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_247",
@@ -15109,7 +15835,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_248",
@@ -15149,7 +15877,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_249",
@@ -15189,7 +15919,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_250",
@@ -15229,7 +15961,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_251",
@@ -15269,7 +16003,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_252",
@@ -15309,7 +16045,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_253",
@@ -15349,7 +16087,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_254",
@@ -15389,7 +16129,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_255",
@@ -15429,7 +16171,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_256",
@@ -15469,7 +16213,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_257",
@@ -15509,7 +16255,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_258",
@@ -15549,7 +16297,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_259",
@@ -15603,7 +16353,9 @@
           "label": "¼ cup",
           "grams": 55
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_260",
@@ -15657,7 +16409,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_261",
@@ -15707,7 +16461,9 @@
           "label": "1 tbsp",
           "grams": 14
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_262",
@@ -15757,7 +16513,9 @@
           "label": "1 tbsp",
           "grams": 14
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_263",
@@ -15797,7 +16555,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_264",
@@ -15837,7 +16597,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_265",
@@ -15877,7 +16639,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_266",
@@ -15917,7 +16681,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_267",
@@ -15957,7 +16723,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_268",
@@ -16011,7 +16779,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_269",
@@ -16065,7 +16835,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_270",
@@ -16119,7 +16891,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_271",
@@ -16159,7 +16933,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_272",
@@ -16213,7 +16989,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_292",
@@ -16253,7 +17031,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_293",
@@ -16293,7 +17073,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_295",
@@ -16333,7 +17115,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_310",
@@ -16373,7 +17157,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_322",
@@ -16413,7 +17199,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_323",
@@ -16453,7 +17241,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_434",
@@ -16493,7 +17283,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_437",
@@ -16533,7 +17325,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_446",
@@ -16573,7 +17367,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "taco_447",
@@ -16613,7 +17409,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_448",
@@ -16653,7 +17451,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_449",
@@ -16693,7 +17493,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_451",
@@ -16733,7 +17535,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "taco_452",
@@ -16773,7 +17577,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "taco_453",
@@ -16813,7 +17619,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_454",
@@ -16853,7 +17661,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_455",
@@ -16893,7 +17703,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_456",
@@ -16933,7 +17745,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_459",
@@ -16973,7 +17787,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_460",
@@ -17013,7 +17829,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_461",
@@ -17053,7 +17871,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_462",
@@ -17093,7 +17913,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_463",
@@ -17133,7 +17955,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_464",
@@ -17173,7 +17997,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_465",
@@ -17213,7 +18039,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_466",
@@ -17253,7 +18081,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "taco_467",
@@ -17293,7 +18123,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_468",
@@ -17333,7 +18165,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_469",
@@ -17373,7 +18207,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_470",
@@ -17413,7 +18249,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_471",
@@ -17453,7 +18291,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_472",
@@ -17493,7 +18333,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_473",
@@ -17533,7 +18375,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_474",
@@ -17573,7 +18417,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_475",
@@ -17613,7 +18459,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_476",
@@ -17653,7 +18501,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_477",
@@ -17693,7 +18543,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_478",
@@ -17733,7 +18585,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_479",
@@ -17773,7 +18627,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_480",
@@ -17813,7 +18669,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_481",
@@ -17853,7 +18711,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_482",
@@ -17893,7 +18753,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "taco_483",
@@ -17933,7 +18795,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 89,
+      "alcohol": 0
     },
     {
       "id": "taco_484",
@@ -17973,7 +18837,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_485",
@@ -18013,7 +18879,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_491",
@@ -18053,7 +18921,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_492",
@@ -18093,7 +18963,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_494",
@@ -18143,7 +19015,9 @@
           "label": "1 tbsp",
           "grams": 12
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_495",
@@ -18183,7 +19057,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_496",
@@ -18223,7 +19099,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_497",
@@ -18263,7 +19141,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_498",
@@ -18303,7 +19183,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_499",
@@ -18343,7 +19225,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_500",
@@ -18383,7 +19267,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_501",
@@ -18423,7 +19309,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_503",
@@ -18463,7 +19351,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_504",
@@ -18503,7 +19393,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_505",
@@ -18543,7 +19435,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_506",
@@ -18583,7 +19477,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_507",
@@ -18633,7 +19529,9 @@
           "label": "1 tbsp",
           "grams": 21
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_508",
@@ -18683,7 +19581,9 @@
           "label": "1 tbsp",
           "grams": 20
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_509",
@@ -18723,7 +19623,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_511",
@@ -18763,7 +19665,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_512",
@@ -18803,7 +19707,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_513",
@@ -18843,7 +19749,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_514",
@@ -18883,7 +19791,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_515",
@@ -18923,7 +19833,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_518",
@@ -18973,7 +19885,9 @@
           "label": "1 tbsp",
           "grams": 15
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_519",
@@ -19013,7 +19927,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_520",
@@ -19053,7 +19969,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_521",
@@ -19093,7 +20011,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_522",
@@ -19133,7 +20053,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_523",
@@ -19173,7 +20095,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_524",
@@ -19227,7 +20151,9 @@
           "label": "2 tbsp",
           "grams": 28
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_526",
@@ -19267,7 +20193,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_527",
@@ -19307,7 +20235,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_528",
@@ -19347,7 +20277,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_530",
@@ -19387,7 +20319,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_532",
@@ -19427,7 +20361,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_533",
@@ -19467,7 +20403,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_534",
@@ -19507,7 +20445,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_535",
@@ -19547,7 +20487,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_539",
@@ -19587,7 +20529,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_540",
@@ -19627,7 +20571,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_542",
@@ -19667,7 +20613,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_543",
@@ -19707,7 +20655,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_544",
@@ -19747,7 +20697,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_545",
@@ -19787,7 +20739,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_546",
@@ -19827,7 +20781,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_548",
@@ -19867,7 +20823,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_549",
@@ -19907,7 +20865,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_550",
@@ -19947,7 +20907,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_551",
@@ -19987,7 +20949,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_552",
@@ -20027,7 +20991,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_553",
@@ -20067,7 +21033,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_554",
@@ -20107,7 +21075,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_555",
@@ -20147,7 +21117,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_556",
@@ -20187,7 +21159,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_557",
@@ -20241,7 +21215,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_558",
@@ -20281,7 +21257,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_559",
@@ -20321,7 +21299,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_560",
@@ -20361,7 +21341,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_561",
@@ -20401,7 +21383,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_562",
@@ -20441,7 +21425,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_563",
@@ -20481,7 +21467,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_564",
@@ -20521,7 +21509,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_565",
@@ -20561,7 +21551,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_566",
@@ -20601,7 +21593,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_567",
@@ -20641,7 +21635,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_568",
@@ -20681,7 +21677,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_569",
@@ -20721,7 +21719,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_570",
@@ -20761,7 +21761,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_571",
@@ -20801,7 +21803,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_572",
@@ -20841,7 +21845,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_573",
@@ -20881,7 +21887,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_574",
@@ -20921,7 +21929,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_575",
@@ -20961,7 +21971,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_576",
@@ -21001,7 +22013,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_577",
@@ -21041,7 +22055,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_578",
@@ -21081,7 +22097,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_579",
@@ -21121,7 +22139,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_580",
@@ -21161,7 +22181,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_581",
@@ -21201,7 +22223,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_582",
@@ -21241,7 +22265,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_583",
@@ -21281,7 +22307,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_584",
@@ -21321,7 +22349,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_585",
@@ -21361,7 +22391,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_586",
@@ -21401,7 +22433,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_587",
@@ -21441,7 +22475,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_588",
@@ -21481,7 +22517,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_589",
@@ -21521,7 +22559,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_590",
@@ -21561,7 +22601,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_591",
@@ -21601,7 +22643,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_592",
@@ -21641,7 +22685,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_593",
@@ -21681,7 +22727,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_594",
@@ -21721,7 +22769,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_595",
@@ -21761,7 +22811,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_596",
@@ -21801,7 +22853,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "taco_597",
@@ -21841,7 +22895,9 @@
       "fdc_id": null,
       "sodium": null,
       "vitamin_a": null,
-      "vitamin_c": null
+      "vitamin_c": null,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_321358",
@@ -21895,7 +22951,9 @@
           "label": "½ cup",
           "grams": 120
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_321360",
@@ -21935,7 +22993,9 @@
       "fdc_id": 321360,
       "sodium": 9,
       "vitamin_a": 0.03,
-      "vitamin_c": 14.0
+      "vitamin_c": 14.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_321611",
@@ -21975,7 +23035,9 @@
       "fdc_id": 321611,
       "sodium": 236,
       "vitamin_a": 0.02,
-      "vitamin_c": 5.7
+      "vitamin_c": 5.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_323294",
@@ -22015,7 +23077,9 @@
       "fdc_id": 323294,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.6
+      "vitamin_c": 0.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_323604",
@@ -22065,7 +23129,9 @@
           "label": "2 eggs",
           "grams": 100
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_323697",
@@ -22105,7 +23171,9 @@
       "fdc_id": 323697,
       "sodium": 166,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_323793",
@@ -22145,7 +23213,9 @@
       "fdc_id": 323793,
       "sodium": 447,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_324317",
@@ -22185,7 +23255,9 @@
       "fdc_id": 324317,
       "sodium": 469,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_324653",
@@ -22225,7 +23297,9 @@
       "fdc_id": 324653,
       "sodium": 1208,
       "vitamin_a": 0.02,
-      "vitamin_c": 1.6
+      "vitamin_c": 1.6,
+      "water": 96,
+      "alcohol": 0
     },
     {
       "id": "usda_325036",
@@ -22265,7 +23339,9 @@
       "fdc_id": 325036,
       "sodium": 1602,
       "vitamin_a": 0.21,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_325198",
@@ -22305,7 +23381,9 @@
       "fdc_id": 325198,
       "sodium": 1270,
       "vitamin_a": 0.21,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_325287",
@@ -22345,7 +23423,9 @@
       "fdc_id": 325287,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 35.0
+      "vitamin_c": 35.0,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "usda_325430",
@@ -22385,7 +23465,9 @@
       "fdc_id": 325430,
       "sodium": 0,
       "vitamin_a": 0.05,
-      "vitamin_c": 6.6
+      "vitamin_c": 6.6,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "usda_325524",
@@ -22425,7 +23507,9 @@
       "fdc_id": 325524,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.6
+      "vitamin_c": 0.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_326196",
@@ -22465,7 +23549,9 @@
       "fdc_id": 326196,
       "sodium": 10,
       "vitamin_a": 0.47,
-      "vitamin_c": 27.3
+      "vitamin_c": 27.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_326698",
@@ -22515,7 +23601,9 @@
           "label": "1 tbsp",
           "grams": 15
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_327046",
@@ -22555,7 +23643,9 @@
       "fdc_id": 327046,
       "sodium": 3,
       "vitamin_a": 0.0,
-      "vitamin_c": 92.7
+      "vitamin_c": 92.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_327357",
@@ -22595,7 +23685,9 @@
       "fdc_id": 327357,
       "sodium": 0,
       "vitamin_a": 0.02,
-      "vitamin_c": 5.4
+      "vitamin_c": 5.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_328637",
@@ -22635,7 +23727,9 @@
       "fdc_id": 328637,
       "sodium": 644,
       "vitamin_a": 0.27,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_328841",
@@ -22675,7 +23769,9 @@
       "fdc_id": 328841,
       "sodium": 321,
       "vitamin_a": 0.03,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_329370",
@@ -22715,7 +23811,9 @@
       "fdc_id": 329370,
       "sodium": 627,
       "vitamin_a": 0.16,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_329490",
@@ -22755,7 +23853,9 @@
       "fdc_id": 329490,
       "sodium": 388,
       "vitamin_a": 0.41,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_329596",
@@ -22795,7 +23895,9 @@
       "fdc_id": 329596,
       "sodium": 48,
       "vitamin_a": 0.38,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_329716",
@@ -22835,7 +23937,9 @@
       "fdc_id": 329716,
       "sodium": 110,
       "vitamin_a": 0.88,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_330137",
@@ -22875,7 +23979,9 @@
       "fdc_id": 330137,
       "sodium": 36,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_330415",
@@ -22915,7 +24021,9 @@
       "fdc_id": 330415,
       "sodium": 40,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "usda_330458",
@@ -22969,7 +24077,9 @@
           "label": "¼ cup",
           "grams": 55
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_332282",
@@ -23019,7 +24129,9 @@
           "label": "1 cup",
           "grams": 250
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_332791",
@@ -23059,7 +24171,9 @@
       "fdc_id": 332791,
       "sodium": 1462,
       "vitamin_a": 0.01,
-      "vitamin_c": 1.3
+      "vitamin_c": 1.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_333008",
@@ -23099,7 +24213,9 @@
       "fdc_id": 333008,
       "sodium": 120,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_333281",
@@ -23139,7 +24255,9 @@
       "fdc_id": 333281,
       "sodium": 130,
       "vitamin_a": 0.05,
-      "vitamin_c": 9.0
+      "vitamin_c": 9.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_334536",
@@ -23179,7 +24297,9 @@
       "fdc_id": 334536,
       "sodium": 340,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.3
+      "vitamin_c": 0.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_334720",
@@ -23219,7 +24339,9 @@
       "fdc_id": 334720,
       "sodium": 280,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.0
+      "vitamin_c": 1.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746764",
@@ -23259,7 +24381,9 @@
       "fdc_id": 746764,
       "sodium": 58,
       "vitamin_a": 0.83,
-      "vitamin_c": 2.6
+      "vitamin_c": 2.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746765",
@@ -23299,7 +24423,9 @@
       "fdc_id": 746765,
       "sodium": 1550,
       "vitamin_a": 0.19,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746766",
@@ -23339,7 +24465,9 @@
       "fdc_id": 746766,
       "sodium": 52,
       "vitamin_a": 0.15,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746767",
@@ -23379,7 +24507,9 @@
       "fdc_id": 746767,
       "sodium": 188,
       "vitamin_a": 0.24,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746768",
@@ -23419,7 +24549,9 @@
       "fdc_id": 746768,
       "sodium": 10,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.2
+      "vitamin_c": 1.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746769",
@@ -23459,7 +24591,9 @@
       "fdc_id": 746769,
       "sodium": 8,
       "vitamin_a": 0.29,
-      "vitamin_c": 4.0
+      "vitamin_c": 4.0,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "usda_746770",
@@ -23499,7 +24633,9 @@
       "fdc_id": 746770,
       "sodium": 16,
       "vitamin_a": 0.21,
-      "vitamin_c": 36.7
+      "vitamin_c": 36.7,
+      "water": 90,
+      "alcohol": 0
     },
     {
       "id": "usda_746771",
@@ -23539,7 +24675,9 @@
       "fdc_id": 746771,
       "sodium": 0,
       "vitamin_a": 0.01,
-      "vitamin_c": 59.1
+      "vitamin_c": 59.1,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "usda_746772",
@@ -23579,7 +24717,9 @@
       "fdc_id": 746772,
       "sodium": 40,
       "vitamin_a": 0.05,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746773",
@@ -23619,7 +24759,9 @@
       "fdc_id": 746773,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 4.3
+      "vitamin_c": 4.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746775",
@@ -23659,7 +24801,9 @@
       "fdc_id": 746775,
       "sodium": 38758,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746776",
@@ -23699,7 +24843,9 @@
       "fdc_id": 746776,
       "sodium": 52,
       "vitamin_a": 0.05,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746777",
@@ -23749,7 +24895,9 @@
           "label": "2 tbsp",
           "grams": 30
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746778",
@@ -23789,7 +24937,9 @@
       "fdc_id": 746778,
       "sodium": 47,
       "vitamin_a": 0.06,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746782",
@@ -23843,7 +24993,9 @@
           "label": "1 cup (250ml)",
           "grams": 258
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_746784",
@@ -23883,7 +25035,9 @@
       "fdc_id": 746784,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747429",
@@ -23923,7 +25077,9 @@
       "fdc_id": 747429,
       "sodium": 1152,
       "vitamin_a": 0.18,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747430",
@@ -23963,7 +25119,9 @@
       "fdc_id": 747430,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747431",
@@ -24003,7 +25161,9 @@
       "fdc_id": 747431,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747432",
@@ -24043,7 +25203,9 @@
       "fdc_id": 747432,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747433",
@@ -24083,7 +25245,9 @@
       "fdc_id": 747433,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747434",
@@ -24123,7 +25287,9 @@
       "fdc_id": 747434,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747435",
@@ -24163,7 +25329,9 @@
       "fdc_id": 747435,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747436",
@@ -24203,7 +25371,9 @@
       "fdc_id": 747436,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747437",
@@ -24243,7 +25413,9 @@
       "fdc_id": 747437,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747438",
@@ -24283,7 +25455,9 @@
       "fdc_id": 747438,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747439",
@@ -24323,7 +25497,9 @@
       "fdc_id": 747439,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747440",
@@ -24363,7 +25539,9 @@
       "fdc_id": 747440,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747441",
@@ -24403,7 +25581,9 @@
       "fdc_id": 747441,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.5
+      "vitamin_c": 1.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747442",
@@ -24443,7 +25623,9 @@
       "fdc_id": 747442,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747443",
@@ -24483,7 +25665,9 @@
       "fdc_id": 747443,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747444",
@@ -24523,7 +25707,9 @@
       "fdc_id": 747444,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747445",
@@ -24563,7 +25749,9 @@
       "fdc_id": 747445,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747446",
@@ -24603,7 +25791,9 @@
       "fdc_id": 747446,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747447",
@@ -24643,7 +25833,9 @@
       "fdc_id": 747447,
       "sodium": 33,
       "vitamin_a": 0.03,
-      "vitamin_c": 89.2
+      "vitamin_c": 89.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747693",
@@ -24693,7 +25885,9 @@
           "label": "1 tbsp",
           "grams": 15
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_747997",
@@ -24733,7 +25927,9 @@
       "fdc_id": 747997,
       "sodium": 166,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_748236",
@@ -24773,7 +25969,9 @@
       "fdc_id": 748236,
       "sodium": 48,
       "vitamin_a": 0.38,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_748278",
@@ -24827,7 +26025,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_748323",
@@ -24881,7 +26081,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_748366",
@@ -24935,7 +26137,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_748608",
@@ -24989,7 +26193,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_748967",
@@ -25039,7 +26245,9 @@
           "label": "2 eggs",
           "grams": 100
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_789828",
@@ -25089,7 +26297,9 @@
           "label": "1 tbsp",
           "grams": 14
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_789890",
@@ -25129,7 +26339,9 @@
       "fdc_id": 789890,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_789951",
@@ -25169,7 +26381,9 @@
       "fdc_id": 789951,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790018",
@@ -25209,7 +26423,9 @@
       "fdc_id": 790018,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790085",
@@ -25249,7 +26465,9 @@
       "fdc_id": 790085,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790146",
@@ -25289,7 +26507,9 @@
       "fdc_id": 790146,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790214",
@@ -25329,7 +26549,9 @@
       "fdc_id": 790214,
       "sodium": 0,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790276",
@@ -25369,7 +26591,9 @@
       "fdc_id": 790276,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790508",
@@ -25419,7 +26643,9 @@
           "label": "1 tbsp",
           "grams": 14
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790577",
@@ -25469,7 +26695,9 @@
           "label": "1 onion",
           "grams": 110
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_790646",
@@ -25519,7 +26747,9 @@
           "label": "1 onion",
           "grams": 110
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104647",
@@ -25569,7 +26799,9 @@
           "label": "1 tbsp minced",
           "grams": 9
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104705",
@@ -25609,7 +26841,9 @@
       "fdc_id": 1104705,
       "sodium": 20,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104766",
@@ -25649,7 +26883,9 @@
       "fdc_id": 1104766,
       "sodium": 13,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104812",
@@ -25689,7 +26925,9 @@
       "fdc_id": 1104812,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104867",
@@ -25729,7 +26967,9 @@
       "fdc_id": 1104867,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104913",
@@ -25769,7 +27009,9 @@
       "fdc_id": 1104913,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1104962",
@@ -25819,7 +27061,9 @@
           "label": "1 onion",
           "grams": 110
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1105073",
@@ -25859,7 +27103,9 @@
       "fdc_id": 1105073,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 8.7
+      "vitamin_c": 8.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1105314",
@@ -25899,7 +27145,9 @@
       "fdc_id": 1105314,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 8.7
+      "vitamin_c": 8.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1750339",
@@ -25939,7 +27187,9 @@
       "fdc_id": 1750339,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 5.7
+      "vitamin_c": 5.7,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_1750340",
@@ -25989,7 +27239,9 @@
           "label": "1 medium",
           "grams": 180
         }
-      ]
+      ],
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_1750341",
@@ -26029,7 +27281,9 @@
       "fdc_id": 1750341,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 5.7
+      "vitamin_c": 5.7,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_1750342",
@@ -26069,7 +27323,9 @@
       "fdc_id": 1750342,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 6.3
+      "vitamin_c": 6.3,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_1750343",
@@ -26109,7 +27365,9 @@
       "fdc_id": 1750343,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 5.7
+      "vitamin_c": 5.7,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_1750348",
@@ -26163,7 +27421,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1750349",
@@ -26217,7 +27477,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1750350",
@@ -26257,7 +27519,9 @@
       "fdc_id": 1750350,
       "sodium": 0,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1750351",
@@ -26311,7 +27575,9 @@
           "label": "¼ cup",
           "grams": 60
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999626",
@@ -26351,7 +27617,9 @@
       "fdc_id": 1999626,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 4.6
+      "vitamin_c": 4.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999627",
@@ -26391,7 +27659,9 @@
       "fdc_id": 1999627,
       "sodium": 18,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999628",
@@ -26431,7 +27701,9 @@
       "fdc_id": 1999628,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999629",
@@ -26471,7 +27743,9 @@
       "fdc_id": 1999629,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 2.1
+      "vitamin_c": 2.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999630",
@@ -26511,7 +27785,9 @@
       "fdc_id": 1999630,
       "sodium": 51,
       "vitamin_a": 0.05,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999631",
@@ -26551,7 +27827,9 @@
       "fdc_id": 1999631,
       "sodium": 151,
       "vitamin_a": 0.06,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999632",
@@ -26591,7 +27869,9 @@
       "fdc_id": 1999632,
       "sodium": 63,
       "vitamin_a": 0.47,
-      "vitamin_c": 28.1
+      "vitamin_c": 28.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999633",
@@ -26631,7 +27911,9 @@
       "fdc_id": 1999633,
       "sodium": 63,
       "vitamin_a": 0.47,
-      "vitamin_c": 28.1
+      "vitamin_c": 28.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_1999634",
@@ -26671,7 +27953,9 @@
       "fdc_id": 1999634,
       "sodium": 5,
       "vitamin_a": 0.02,
-      "vitamin_c": 15.0
+      "vitamin_c": 15.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2003586",
@@ -26711,7 +27995,9 @@
       "fdc_id": 2003586,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003587",
@@ -26751,7 +28037,9 @@
       "fdc_id": 2003587,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003588",
@@ -26791,7 +28079,9 @@
       "fdc_id": 2003588,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003589",
@@ -26831,7 +28121,9 @@
       "fdc_id": 2003589,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003590",
@@ -26871,7 +28163,9 @@
       "fdc_id": 2003590,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 58.0
+      "vitamin_c": 58.0,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_2003591",
@@ -26911,7 +28205,9 @@
       "fdc_id": 2003591,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 50.0
+      "vitamin_c": 50.0,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "usda_2003592",
@@ -26951,7 +28247,9 @@
       "fdc_id": 2003592,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.1
+      "vitamin_c": 0.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003593",
@@ -26991,7 +28289,9 @@
       "fdc_id": 2003593,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 67.0
+      "vitamin_c": 67.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003594",
@@ -27031,7 +28331,9 @@
       "fdc_id": 2003594,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 67.0
+      "vitamin_c": 67.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003595",
@@ -27071,7 +28373,9 @@
       "fdc_id": 2003595,
       "sodium": 1,
       "vitamin_a": 0.01,
-      "vitamin_c": 40.0
+      "vitamin_c": 40.0,
+      "water": 88,
+      "alcohol": 0
     },
     {
       "id": "usda_2003596",
@@ -27111,7 +28415,9 @@
       "fdc_id": 2003596,
       "sodium": 391,
       "vitamin_a": 0.05,
-      "vitamin_c": 22.0
+      "vitamin_c": 22.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2003597",
@@ -27151,7 +28457,9 @@
       "fdc_id": 2003597,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 50.0
+      "vitamin_c": 50.0,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "usda_2003598",
@@ -27191,7 +28499,9 @@
       "fdc_id": 2003598,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003599",
@@ -27231,7 +28541,9 @@
       "fdc_id": 2003599,
       "sodium": 10,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003600",
@@ -27271,7 +28583,9 @@
       "fdc_id": 2003600,
       "sodium": 13,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.7
+      "vitamin_c": 3.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003601",
@@ -27311,7 +28625,9 @@
       "fdc_id": 2003601,
       "sodium": 8,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003602",
@@ -27351,7 +28667,9 @@
       "fdc_id": 2003602,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003603",
@@ -27391,7 +28709,9 @@
       "fdc_id": 2003603,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2003604",
@@ -27431,7 +28751,9 @@
       "fdc_id": 2003604,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.5
+      "vitamin_c": 3.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2257044",
@@ -27471,7 +28793,9 @@
       "fdc_id": 2257044,
       "sodium": 55,
       "vitamin_a": 0.06,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2257045",
@@ -27511,7 +28835,9 @@
       "fdc_id": 2257045,
       "sodium": 151,
       "vitamin_a": 0.06,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2257046",
@@ -27551,7 +28877,9 @@
       "fdc_id": 2257046,
       "sodium": 74,
       "vitamin_a": 0.05,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2258586",
@@ -27591,7 +28919,9 @@
       "fdc_id": 2258586,
       "sodium": 69,
       "vitamin_a": 0.83,
-      "vitamin_c": 5.9
+      "vitamin_c": 5.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2258587",
@@ -27631,7 +28961,9 @@
       "fdc_id": 2258587,
       "sodium": 78,
       "vitamin_a": 0.83,
-      "vitamin_c": 2.8
+      "vitamin_c": 2.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2258588",
@@ -27671,7 +29003,9 @@
       "fdc_id": 2258588,
       "sodium": 3,
       "vitamin_a": 0.02,
-      "vitamin_c": 80.4
+      "vitamin_c": 80.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2258589",
@@ -27711,7 +29045,9 @@
       "fdc_id": 2258589,
       "sodium": 2,
       "vitamin_a": 0.01,
-      "vitamin_c": 183.5
+      "vitamin_c": 183.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2258590",
@@ -27751,7 +29087,9 @@
       "fdc_id": 2258590,
       "sodium": 4,
       "vitamin_a": 0.16,
-      "vitamin_c": 127.7
+      "vitamin_c": 127.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2258591",
@@ -27791,7 +29129,9 @@
       "fdc_id": 2258591,
       "sodium": 3,
       "vitamin_a": 0.06,
-      "vitamin_c": 93.0
+      "vitamin_c": 93.0,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "usda_2259792",
@@ -27831,7 +29171,9 @@
       "fdc_id": 2259792,
       "sodium": 52,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.0
+      "vitamin_c": 1.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2259793",
@@ -27871,7 +29213,9 @@
       "fdc_id": 2259793,
       "sodium": 46,
       "vitamin_a": 0.07,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2259794",
@@ -27911,7 +29255,9 @@
       "fdc_id": 2259794,
       "sodium": 36,
       "vitamin_a": 0.03,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2259795",
@@ -27951,7 +29297,9 @@
       "fdc_id": 2259795,
       "sodium": 1602,
       "vitamin_a": 0.21,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2259796",
@@ -27991,7 +29339,9 @@
       "fdc_id": 2259796,
       "sodium": 917,
       "vitamin_a": 0.17,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2261420",
@@ -28031,7 +29381,9 @@
       "fdc_id": 2261420,
       "sodium": 10,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2261421",
@@ -28071,7 +29423,9 @@
       "fdc_id": 2261421,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2261422",
@@ -28111,7 +29465,9 @@
       "fdc_id": 2261422,
       "sodium": 58,
       "vitamin_a": 0.0,
-      "vitamin_c": 25.0
+      "vitamin_c": 25.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2262072",
@@ -28165,7 +29521,9 @@
           "label": "2 tbsp",
           "grams": 32
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2262073",
@@ -28219,7 +29577,9 @@
           "label": "2 tbsp",
           "grams": 30
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2262074",
@@ -28273,7 +29633,9 @@
           "label": "2 tbsp",
           "grams": 32
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2262075",
@@ -28327,7 +29689,9 @@
           "label": "2 tbsp",
           "grams": 22
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346384",
@@ -28367,7 +29731,9 @@
       "fdc_id": 2346384,
       "sodium": 341,
       "vitamin_a": 0.04,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346385",
@@ -28407,7 +29773,9 @@
       "fdc_id": 2346385,
       "sodium": 321,
       "vitamin_a": 0.28,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346386",
@@ -28447,7 +29815,9 @@
       "fdc_id": 2346386,
       "sodium": 38,
       "vitamin_a": 0.29,
-      "vitamin_c": 0.6
+      "vitamin_c": 0.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346387",
@@ -28487,7 +29857,9 @@
       "fdc_id": 2346387,
       "sodium": 53,
       "vitamin_a": 0.09,
-      "vitamin_c": 1.0
+      "vitamin_c": 1.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346388",
@@ -28527,7 +29899,9 @@
       "fdc_id": 2346388,
       "sodium": 10,
       "vitamin_a": 0.03,
-      "vitamin_c": 2.8
+      "vitamin_c": 2.8,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "usda_2346389",
@@ -28567,7 +29941,9 @@
       "fdc_id": 2346389,
       "sodium": 8,
       "vitamin_a": 0.29,
-      "vitamin_c": 4.0
+      "vitamin_c": 4.0,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "usda_2346390",
@@ -28607,7 +29983,9 @@
       "fdc_id": 2346390,
       "sodium": 25,
       "vitamin_a": 0.18,
-      "vitamin_c": 3.7
+      "vitamin_c": 3.7,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "usda_2346391",
@@ -28647,7 +30025,9 @@
       "fdc_id": 2346391,
       "sodium": 28,
       "vitamin_a": 0.18,
-      "vitamin_c": 9.2
+      "vitamin_c": 9.2,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "usda_2346392",
@@ -28687,7 +30067,9 @@
       "fdc_id": 2346392,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.8
+      "vitamin_c": 0.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346393",
@@ -28727,7 +30109,9 @@
       "fdc_id": 2346393,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346394",
@@ -28767,7 +30151,9 @@
       "fdc_id": 2346394,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.3
+      "vitamin_c": 1.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346395",
@@ -28807,7 +30193,9 @@
       "fdc_id": 2346395,
       "sodium": 0,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.1
+      "vitamin_c": 1.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346396",
@@ -28861,7 +30249,9 @@
           "label": "1 cup",
           "grams": 90
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346397",
@@ -28915,7 +30305,9 @@
           "label": "1 cup",
           "grams": 90
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346398",
@@ -28955,7 +30347,9 @@
       "fdc_id": 2346398,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 47.8
+      "vitamin_c": 47.8,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_2346399",
@@ -28995,7 +30389,9 @@
       "fdc_id": 2346399,
       "sodium": 0,
       "vitamin_a": 0.0,
-      "vitamin_c": 7.0
+      "vitamin_c": 7.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346400",
@@ -29035,7 +30431,9 @@
       "fdc_id": 2346400,
       "sodium": 6,
       "vitamin_a": 0.04,
-      "vitamin_c": 12.2
+      "vitamin_c": 12.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346401",
@@ -29075,7 +30473,9 @@
       "fdc_id": 2346401,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 11.4
+      "vitamin_c": 11.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346402",
@@ -29115,7 +30515,9 @@
       "fdc_id": 2346402,
       "sodium": 11,
       "vitamin_a": 0.0,
-      "vitamin_c": 12.6
+      "vitamin_c": 12.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346403",
@@ -29155,7 +30557,9 @@
       "fdc_id": 2346403,
       "sodium": 10,
       "vitamin_a": 0.0,
-      "vitamin_c": 14.0
+      "vitamin_c": 14.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346404",
@@ -29195,7 +30599,9 @@
       "fdc_id": 2346404,
       "sodium": 5,
       "vitamin_a": 0.96,
-      "vitamin_c": 19.6
+      "vitamin_c": 19.6,
+      "water": 87,
+      "alcohol": 0
     },
     {
       "id": "usda_2346405",
@@ -29235,7 +30641,9 @@
       "fdc_id": 2346405,
       "sodium": 80,
       "vitamin_a": 0.02,
-      "vitamin_c": 3.1
+      "vitamin_c": 3.1,
+      "water": 95,
+      "alcohol": 0
     },
     {
       "id": "usda_2346406",
@@ -29275,7 +30683,9 @@
       "fdc_id": 2346406,
       "sodium": 2,
       "vitamin_a": 0.01,
-      "vitamin_c": 2.8
+      "vitamin_c": 2.8,
+      "water": 96,
+      "alcohol": 0
     },
     {
       "id": "usda_2346407",
@@ -29315,7 +30725,9 @@
       "fdc_id": 2346407,
       "sodium": 18,
       "vitamin_a": 0.01,
-      "vitamin_c": 36.6
+      "vitamin_c": 36.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346408",
@@ -29355,7 +30767,9 @@
       "fdc_id": 2346408,
       "sodium": 27,
       "vitamin_a": 0.0,
-      "vitamin_c": 57.0
+      "vitamin_c": 57.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346409",
@@ -29395,7 +30809,9 @@
       "fdc_id": 2346409,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 58.8
+      "vitamin_c": 58.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346410",
@@ -29435,7 +30851,9 @@
       "fdc_id": 2346410,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 26.2
+      "vitamin_c": 26.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346411",
@@ -29475,7 +30893,9 @@
       "fdc_id": 2346411,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 9.7
+      "vitamin_c": 9.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346412",
@@ -29515,7 +30935,9 @@
       "fdc_id": 2346412,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.2
+      "vitamin_c": 3.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346413",
@@ -29555,7 +30977,9 @@
       "fdc_id": 2346413,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.2
+      "vitamin_c": 3.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2346414",
@@ -29595,7 +31019,9 @@
       "fdc_id": 2346414,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 24.9
+      "vitamin_c": 24.9,
+      "water": 86,
+      "alcohol": 0
     },
     {
       "id": "usda_2512371",
@@ -29635,7 +31061,9 @@
       "fdc_id": 2512371,
       "sodium": 21,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512372",
@@ -29675,7 +31103,9 @@
       "fdc_id": 2512372,
       "sodium": 17,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512373",
@@ -29715,7 +31145,9 @@
       "fdc_id": 2512373,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512374",
@@ -29755,7 +31187,9 @@
       "fdc_id": 2512374,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512375",
@@ -29795,7 +31229,9 @@
       "fdc_id": 2512375,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512376",
@@ -29835,7 +31271,9 @@
       "fdc_id": 2512376,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512377",
@@ -29875,7 +31313,9 @@
       "fdc_id": 2512377,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512378",
@@ -29915,7 +31355,9 @@
       "fdc_id": 2512378,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512379",
@@ -29955,7 +31397,9 @@
       "fdc_id": 2512379,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512380",
@@ -29995,7 +31439,9 @@
       "fdc_id": 2512380,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2512381",
@@ -30049,7 +31495,9 @@
           "label": "1 cup",
           "grams": 185
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2514743",
@@ -30089,7 +31537,9 @@
       "fdc_id": 2514743,
       "sodium": 75,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515373",
@@ -30129,7 +31579,9 @@
       "fdc_id": 2515373,
       "sodium": 3,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.7
+      "vitamin_c": 0.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515374",
@@ -30169,7 +31621,9 @@
       "fdc_id": 2515374,
       "sodium": 12,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515375",
@@ -30209,7 +31663,9 @@
       "fdc_id": 2515375,
       "sodium": 0,
       "vitamin_a": 0.0,
-      "vitamin_c": 6.3
+      "vitamin_c": 6.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515376",
@@ -30263,7 +31719,9 @@
           "label": "½ cup",
           "grams": 70
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515377",
@@ -30303,7 +31761,9 @@
       "fdc_id": 2515377,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 43.0
+      "vitamin_c": 43.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515378",
@@ -30343,7 +31803,9 @@
       "fdc_id": 2515378,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515379",
@@ -30383,7 +31845,9 @@
       "fdc_id": 2515379,
       "sodium": 0,
       "vitamin_a": 0.03,
-      "vitamin_c": 2.9
+      "vitamin_c": 2.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515380",
@@ -30423,7 +31887,9 @@
       "fdc_id": 2515380,
       "sodium": 7,
       "vitamin_a": 0.01,
-      "vitamin_c": 1.9
+      "vitamin_c": 1.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515381",
@@ -30463,7 +31929,9 @@
       "fdc_id": 2515381,
       "sodium": 3,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2515382",
@@ -30503,7 +31971,9 @@
       "fdc_id": 2515382,
       "sodium": 53,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.5
+      "vitamin_c": 1.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644281",
@@ -30543,7 +32013,9 @@
       "fdc_id": 2644281,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644282",
@@ -30597,7 +32069,9 @@
           "label": "1 cup",
           "grams": 180
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644283",
@@ -30651,7 +32125,9 @@
           "label": "1 cup",
           "grams": 180
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644284",
@@ -30691,7 +32167,9 @@
       "fdc_id": 2644284,
       "sodium": 4,
       "vitamin_a": 0.01,
-      "vitamin_c": 1.5
+      "vitamin_c": 1.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644285",
@@ -30731,7 +32209,9 @@
       "fdc_id": 2644285,
       "sodium": 238,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644286",
@@ -30771,7 +32251,9 @@
       "fdc_id": 2644286,
       "sodium": 286,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.9
+      "vitamin_c": 0.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644287",
@@ -30811,7 +32293,9 @@
       "fdc_id": 2644287,
       "sodium": 287,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644288",
@@ -30851,7 +32335,9 @@
       "fdc_id": 2644288,
       "sodium": 282,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644289",
@@ -30891,7 +32377,9 @@
       "fdc_id": 2644289,
       "sodium": 358,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644290",
@@ -30931,7 +32419,9 @@
       "fdc_id": 2644290,
       "sodium": 358,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644291",
@@ -30971,7 +32461,9 @@
       "fdc_id": 2644291,
       "sodium": 282,
       "vitamin_a": 0.04,
-      "vitamin_c": 4.8
+      "vitamin_c": 4.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644292",
@@ -31011,7 +32503,9 @@
       "fdc_id": 2644292,
       "sodium": 358,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.4
+      "vitamin_c": 1.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644293",
@@ -31051,7 +32545,9 @@
       "fdc_id": 2644293,
       "sodium": 291,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.3
+      "vitamin_c": 0.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2644294",
@@ -31091,7 +32587,9 @@
       "fdc_id": 2644294,
       "sodium": 287,
       "vitamin_a": 0.0,
-      "vitamin_c": 1.3
+      "vitamin_c": 1.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2646168",
@@ -31131,7 +32629,9 @@
       "fdc_id": 2646168,
       "sodium": 57,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2646170",
@@ -31171,7 +32671,9 @@
       "fdc_id": 2646170,
       "sodium": 74,
       "vitamin_a": 0.01,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647437",
@@ -31211,7 +32713,9 @@
       "fdc_id": 2647437,
       "sodium": 51,
       "vitamin_a": 0.01,
-      "vitamin_c": 0.5
+      "vitamin_c": 0.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647438",
@@ -31251,7 +32755,9 @@
       "fdc_id": 2647438,
       "sodium": 536,
       "vitamin_a": 0.22,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647439",
@@ -31291,7 +32797,9 @@
       "fdc_id": 2647439,
       "sodium": 1370,
       "vitamin_a": 0.18,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647440",
@@ -31331,7 +32839,9 @@
       "fdc_id": 2647440,
       "sodium": 876,
       "vitamin_a": 0.2,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647441",
@@ -31371,7 +32881,9 @@
       "fdc_id": 2647441,
       "sodium": 600,
       "vitamin_a": 0.22,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647442",
@@ -31411,7 +32923,9 @@
       "fdc_id": 2647442,
       "sodium": 375,
       "vitamin_a": 0.18,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2647443",
@@ -31451,7 +32965,9 @@
       "fdc_id": 2647443,
       "sodium": 1150,
       "vitamin_a": 0.18,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2684441",
@@ -31491,7 +33007,9 @@
       "fdc_id": 2684441,
       "sodium": 59,
       "vitamin_a": 0.01,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2684443",
@@ -31531,7 +33049,9 @@
       "fdc_id": 2684443,
       "sodium": 119,
       "vitamin_a": 0.01,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685568",
@@ -31571,7 +33091,9 @@
       "fdc_id": 2685568,
       "sodium": 8,
       "vitamin_a": 0.01,
-      "vitamin_c": 17.9
+      "vitamin_c": 17.9,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2685569",
@@ -31611,7 +33133,9 @@
       "fdc_id": 2685569,
       "sodium": 2,
       "vitamin_a": 0.01,
-      "vitamin_c": 19.7
+      "vitamin_c": 19.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685570",
@@ -31651,7 +33175,9 @@
       "fdc_id": 2685570,
       "sodium": 4,
       "vitamin_a": 0.53,
-      "vitamin_c": 21.0
+      "vitamin_c": 21.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685571",
@@ -31691,7 +33217,9 @@
       "fdc_id": 2685571,
       "sodium": 4,
       "vitamin_a": 0.04,
-      "vitamin_c": 11.5
+      "vitamin_c": 11.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685572",
@@ -31731,7 +33259,9 @@
       "fdc_id": 2685572,
       "sodium": 65,
       "vitamin_a": 0.15,
-      "vitamin_c": 45.0
+      "vitamin_c": 45.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685573",
@@ -31771,7 +33301,9 @@
       "fdc_id": 2685573,
       "sodium": 30,
       "vitamin_a": 0.0,
-      "vitamin_c": 48.2
+      "vitamin_c": 48.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685574",
@@ -31811,7 +33343,9 @@
       "fdc_id": 2685574,
       "sodium": 17,
       "vitamin_a": 0.38,
-      "vitamin_c": 35.3
+      "vitamin_c": 35.3,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685575",
@@ -31851,7 +33385,9 @@
       "fdc_id": 2685575,
       "sodium": 25,
       "vitamin_a": 0.04,
-      "vitamin_c": 85.0
+      "vitamin_c": 85.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685576",
@@ -31891,7 +33427,9 @@
       "fdc_id": 2685576,
       "sodium": 78,
       "vitamin_a": 0.0,
-      "vitamin_c": 4.9
+      "vitamin_c": 4.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685577",
@@ -31931,7 +33469,9 @@
       "fdc_id": 2685577,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 2.2
+      "vitamin_c": 2.2,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2685578",
@@ -31971,7 +33511,9 @@
       "fdc_id": 2685578,
       "sodium": 200,
       "vitamin_a": 0.03,
-      "vitamin_c": 9.0
+      "vitamin_c": 9.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2685579",
@@ -32011,7 +33553,9 @@
       "fdc_id": 2685579,
       "sodium": 430,
       "vitamin_a": 0.06,
-      "vitamin_c": 15.0
+      "vitamin_c": 15.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2685580",
@@ -32051,7 +33595,9 @@
       "fdc_id": 2685580,
       "sodium": 59,
       "vitamin_a": 0.14,
-      "vitamin_c": 21.9
+      "vitamin_c": 21.9,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2685581",
@@ -32091,7 +33637,9 @@
       "fdc_id": 2685581,
       "sodium": 270,
       "vitamin_a": 0.05,
-      "vitamin_c": 12.0
+      "vitamin_c": 12.0,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2685582",
@@ -32131,7 +33679,9 @@
       "fdc_id": 2685582,
       "sodium": 17,
       "vitamin_a": 0.09,
-      "vitamin_c": 19.1
+      "vitamin_c": 19.1,
+      "water": 94,
+      "alcohol": 0
     },
     {
       "id": "usda_2710815",
@@ -32171,7 +33721,9 @@
       "fdc_id": 2710815,
       "sodium": 1,
       "vitamin_a": 0.1,
-      "vitamin_c": 10.0
+      "vitamin_c": 10.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710816",
@@ -32211,7 +33763,9 @@
       "fdc_id": 2710816,
       "sodium": 18,
       "vitamin_a": 0.0,
-      "vitamin_c": 18.0
+      "vitamin_c": 18.0,
+      "water": 90,
+      "alcohol": 0
     },
     {
       "id": "usda_2710817",
@@ -32251,7 +33805,9 @@
       "fdc_id": 2710817,
       "sodium": 3,
       "vitamin_a": 0.06,
-      "vitamin_c": 18.4
+      "vitamin_c": 18.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710818",
@@ -32291,7 +33847,9 @@
       "fdc_id": 2710818,
       "sodium": 3,
       "vitamin_a": 0.01,
-      "vitamin_c": 18.4
+      "vitamin_c": 18.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710819",
@@ -32345,7 +33903,9 @@
           "label": "2 tbsp",
           "grams": 24
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710820",
@@ -32385,7 +33945,9 @@
       "fdc_id": 2710820,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710821",
@@ -32425,7 +33987,9 @@
       "fdc_id": 2710821,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710822",
@@ -32465,7 +34029,9 @@
       "fdc_id": 2710822,
       "sodium": 27,
       "vitamin_a": 0.02,
-      "vitamin_c": 15.0
+      "vitamin_c": 15.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710823",
@@ -32505,7 +34071,9 @@
       "fdc_id": 2710823,
       "sodium": 2,
       "vitamin_a": 0.04,
-      "vitamin_c": 5.6
+      "vitamin_c": 5.6,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710824",
@@ -32555,7 +34123,9 @@
           "label": "1 avocado",
           "grams": 150
         }
-      ]
+      ],
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710825",
@@ -32595,7 +34165,9 @@
       "fdc_id": 2710825,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710826",
@@ -32635,7 +34207,9 @@
       "fdc_id": 2710826,
       "sodium": 15,
       "vitamin_a": 0.01,
-      "vitamin_c": 6.8
+      "vitamin_c": 6.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710827",
@@ -32675,7 +34249,9 @@
       "fdc_id": 2710827,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710828",
@@ -32715,7 +34291,9 @@
       "fdc_id": 2710828,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710829",
@@ -32755,7 +34333,9 @@
       "fdc_id": 2710829,
       "sodium": 7,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710830",
@@ -32795,7 +34375,9 @@
       "fdc_id": 2710830,
       "sodium": 5,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710831",
@@ -32835,7 +34417,9 @@
       "fdc_id": 2710831,
       "sodium": 3,
       "vitamin_a": 0.0,
-      "vitamin_c": 92.7
+      "vitamin_c": 92.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710832",
@@ -32875,7 +34459,9 @@
       "fdc_id": 2710832,
       "sodium": 2,
       "vitamin_a": 0.03,
-      "vitamin_c": 26.7
+      "vitamin_c": 26.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710833",
@@ -32915,7 +34501,9 @@
       "fdc_id": 2710833,
       "sodium": 2,
       "vitamin_a": 0.05,
-      "vitamin_c": 36.4
+      "vitamin_c": 36.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710834",
@@ -32955,7 +34543,9 @@
       "fdc_id": 2710834,
       "sodium": 1,
       "vitamin_a": 0.04,
-      "vitamin_c": 36.4
+      "vitamin_c": 36.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710835",
@@ -32995,7 +34585,9 @@
       "fdc_id": 2710835,
       "sodium": 6,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710836",
@@ -33035,7 +34627,9 @@
       "fdc_id": 2710836,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 4.0
+      "vitamin_c": 4.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710837",
@@ -33075,7 +34669,9 @@
       "fdc_id": 2710837,
       "sodium": 0,
       "vitamin_a": 0.02,
-      "vitamin_c": 9.5
+      "vitamin_c": 9.5,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710838",
@@ -33115,7 +34711,9 @@
       "fdc_id": 2710838,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710839",
@@ -33155,7 +34753,9 @@
       "fdc_id": 2710839,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710840",
@@ -33195,7 +34795,9 @@
       "fdc_id": 2710840,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710841",
@@ -33235,7 +34837,9 @@
       "fdc_id": 2710841,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710842",
@@ -33275,7 +34879,9 @@
       "fdc_id": 2710842,
       "sodium": 1,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.0
+      "vitamin_c": 0.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2710843",
@@ -33315,7 +34921,9 @@
       "fdc_id": 2710843,
       "sodium": 4,
       "vitamin_a": 0.03,
-      "vitamin_c": 18.4
+      "vitamin_c": 18.4,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727577",
@@ -33355,7 +34963,9 @@
       "fdc_id": 2727577,
       "sodium": 0,
       "vitamin_a": 0.0,
-      "vitamin_c": 18.0
+      "vitamin_c": 18.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727578",
@@ -33395,7 +35005,9 @@
       "fdc_id": 2727578,
       "sodium": 1,
       "vitamin_a": 0.43,
-      "vitamin_c": 9.0
+      "vitamin_c": 9.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727579",
@@ -33435,7 +35047,9 @@
       "fdc_id": 2727579,
       "sodium": 17,
       "vitamin_a": 0.01,
-      "vitamin_c": 5.0
+      "vitamin_c": 5.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727580",
@@ -33475,7 +35089,9 @@
       "fdc_id": 2727580,
       "sodium": 20,
       "vitamin_a": 0.0,
-      "vitamin_c": 25.0
+      "vitamin_c": 25.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727581",
@@ -33515,7 +35131,9 @@
       "fdc_id": 2727581,
       "sodium": 1,
       "vitamin_a": 0.01,
-      "vitamin_c": 21.0
+      "vitamin_c": 21.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727582",
@@ -33555,7 +35173,9 @@
       "fdc_id": 2727582,
       "sodium": 1,
       "vitamin_a": 0.01,
-      "vitamin_c": 11.7
+      "vitamin_c": 11.7,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727583",
@@ -33595,7 +35215,9 @@
       "fdc_id": 2727583,
       "sodium": 9,
       "vitamin_a": 0.0,
-      "vitamin_c": 45.0
+      "vitamin_c": 45.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727584",
@@ -33635,7 +35257,9 @@
       "fdc_id": 2727584,
       "sodium": 20,
       "vitamin_a": 0.08,
-      "vitamin_c": 12.0
+      "vitamin_c": 12.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727585",
@@ -33675,7 +35299,9 @@
       "fdc_id": 2727585,
       "sodium": 16,
       "vitamin_a": 0.05,
-      "vitamin_c": 18.8
+      "vitamin_c": 18.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727586",
@@ -33715,7 +35341,9 @@
       "fdc_id": 2727586,
       "sodium": 12,
       "vitamin_a": 0.0,
-      "vitamin_c": 8.0
+      "vitamin_c": 8.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727587",
@@ -33755,7 +35383,9 @@
       "fdc_id": 2727587,
       "sodium": 4,
       "vitamin_a": 0.0,
-      "vitamin_c": 5.8
+      "vitamin_c": 5.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727588",
@@ -33795,7 +35425,9 @@
       "fdc_id": 2727588,
       "sodium": 8,
       "vitamin_a": 0.0,
-      "vitamin_c": 0.1
+      "vitamin_c": 0.1,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2727589",
@@ -33835,7 +35467,9 @@
       "fdc_id": 2727589,
       "sodium": 14,
       "vitamin_a": 0.0,
-      "vitamin_c": 4.0
+      "vitamin_c": 4.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747653",
@@ -33875,7 +35509,9 @@
       "fdc_id": 2747653,
       "sodium": 226,
       "vitamin_a": 0.32,
-      "vitamin_c": 30.0
+      "vitamin_c": 30.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747655",
@@ -33915,7 +35551,9 @@
       "fdc_id": 2747655,
       "sodium": 52,
       "vitamin_a": 0.01,
-      "vitamin_c": 12.0
+      "vitamin_c": 12.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747659",
@@ -33955,7 +35593,9 @@
       "fdc_id": 2747659,
       "sodium": 10,
       "vitamin_a": 0.0,
-      "vitamin_c": 17.0
+      "vitamin_c": 17.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747660",
@@ -33995,7 +35635,9 @@
       "fdc_id": 2747660,
       "sodium": 13,
       "vitamin_a": 0.01,
-      "vitamin_c": 95.0
+      "vitamin_c": 95.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747661",
@@ -34035,7 +35677,9 @@
       "fdc_id": 2747661,
       "sodium": 3,
       "vitamin_a": 0.02,
-      "vitamin_c": 119.0
+      "vitamin_c": 119.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747662",
@@ -34075,7 +35719,9 @@
       "fdc_id": 2747662,
       "sodium": 3,
       "vitamin_a": 0.03,
-      "vitamin_c": 80.0
+      "vitamin_c": 80.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747663",
@@ -34115,7 +35761,9 @@
       "fdc_id": 2747663,
       "sodium": 7,
       "vitamin_a": 0.02,
-      "vitamin_c": 44.9
+      "vitamin_c": 44.9,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747664",
@@ -34155,7 +35803,9 @@
       "fdc_id": 2747664,
       "sodium": 22,
       "vitamin_a": 0.0,
-      "vitamin_c": 8.0
+      "vitamin_c": 8.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747665",
@@ -34195,7 +35845,9 @@
       "fdc_id": 2747665,
       "sodium": 39,
       "vitamin_a": 0.0,
-      "vitamin_c": 14.8
+      "vitamin_c": 14.8,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747674",
@@ -34235,7 +35887,9 @@
       "fdc_id": 2747674,
       "sodium": 54,
       "vitamin_a": 0.0,
-      "vitamin_c": 21.0
+      "vitamin_c": 21.0,
+      "water": 0,
+      "alcohol": 0
     },
     {
       "id": "usda_2747675",
@@ -34275,7 +35929,9 @@
       "fdc_id": 2747675,
       "sodium": 1,
       "vitamin_a": 0.03,
-      "vitamin_c": 8.1
+      "vitamin_c": 8.1,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "usda_2747676",
@@ -34315,7 +35971,9 @@
       "fdc_id": 2747676,
       "sodium": 2,
       "vitamin_a": 0.0,
-      "vitamin_c": 3.0
+      "vitamin_c": 3.0,
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "jam_fruit",
@@ -34365,7 +36023,9 @@
           "label": "1 tbsp",
           "grams": 20
         }
-      ]
+      ],
+      "water": 91,
+      "alcohol": 0
     },
     {
       "id": "jam_raspberry",
@@ -34414,6 +36074,64 @@
         {
           "label": "1 tbsp",
           "grams": 20
+        }
+      ],
+      "water": 0,
+      "alcohol": 0
+    },
+    {
+      "id": "water_plain",
+      "name": "Water",
+      "category": "Beverages",
+      "calories": 0,
+      "protein": 0,
+      "carbohydrates": 0,
+      "fat": 0,
+      "fibre": 0,
+      "fibre_soluble": 0.0,
+      "fibre_insoluble": 0.0,
+      "fat_saturated": 0.0,
+      "fat_mufa": 0.0,
+      "fat_pufa": 0.0,
+      "histidine": 0.0,
+      "isoleucine": 0.0,
+      "leucine": 0.0,
+      "lysine": 0.0,
+      "methionine": 0.0,
+      "phenylalanine": 0.0,
+      "threonine": 0.0,
+      "tryptophan": 0.0,
+      "valine": 0.0,
+      "iron": 0.0,
+      "calcium": 0.0,
+      "zinc": 0.0,
+      "b12": 0.0,
+      "vitamin_d": 0.0,
+      "omega3": 0.0,
+      "iodine": 0.0,
+      "selenium": 0.0,
+      "magnesium": 0.0,
+      "potassium": 0.0,
+      "folate": 0.0,
+      "source": "user",
+      "fdc_id": null,
+      "sodium": 0.0,
+      "vitamin_a": 0.0,
+      "vitamin_c": 0.0,
+      "water": 100,
+      "alcohol": 0,
+      "servings": [
+        {
+          "label": "Glass (250ml)",
+          "grams": 250
+        },
+        {
+          "label": "Bottle (500ml)",
+          "grams": 500
+        },
+        {
+          "label": "1 cup",
+          "grams": 240
         }
       ]
     }
