@@ -3433,16 +3433,17 @@ export default function NutriTrack() {
     const suppEntries = dayLog.filter(e => e.type === "supplement");
     const info = "ⓘ"; // ⓘ = circled-i info glyph, used by traffic-light info buttons in this view
     // Phase 11: water total (ml) and alcohol total (g) computed from the food model (food.water/food.alc per 100g).
+    // Note: water values are mostly null (unknown) except for explicit entries like "Water".
     const waterTotalMl = Math.round(dayLog.reduce((s, e) => {
       if (e.type === "exercise" || e.type == "supplement" || e.type == "water" || e.type == "alcohol") return s;
       if (e.type == "recipe") return s + (e.derivedIngredients || []).reduce((a, ing) => {
         const m = ing.amount_g / 100;
         const v = ing.snapshot ? ing.snapshot.water : allFoodsForRender.find(f => f.id === ing.foodId)?.water;
-        return a + (typeof v == "number" ? v * m : 0);
+        return a + (typeof v == "number" ? v : 0) * m;
       }, 0);
       const m = (e.amount || 0) / 100;
       const v = e.snapshot ? e.snapshot.water : allFoodsForRender.find(f => f.id === e.foodId)?.water;
-      return s + (typeof v == "number" ? v * m : 0);
+      return s + (typeof v == "number" ? v : 0) * m;
     }, 0));
     const alcTotalG = Math.round((totals.alc || 0) * 10) / 10;
     return /*#__PURE__*/React.createElement("div", {
@@ -8031,7 +8032,7 @@ export default function NutriTrack() {
         fibre_g: fmt(food.fib),
         alcohol_g: fmt(food.alc),
         // Phase 11
-        water_ml: fmt(food.water),
+        water_ml: fmt(food.water ?? 0),
         // Phase 11
         iron_mg: fmt(food.iron),
         calcium_mg: fmt(food.calc),
