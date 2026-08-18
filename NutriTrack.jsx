@@ -1762,6 +1762,7 @@ export default function NutriTrack() {
     const suppEntries = dayLog.filter(e => e.type === "supplement");
     const waterEntries = dayLog.filter(e => e.type === "water");
     const alcEntries   = dayLog.filter(e => e.type === "alcohol");
+    const info = "ⓘ"; // ⓘ = circled-i info glyph, used by traffic-light info buttons in this view
     const waterTotalMl = waterEntries.reduce((s,e) => s + (e.amount||0), 0);
     const alcTotalCals = alcEntries.reduce((s,e) => s + (e.calories||0), 0);
     return (
