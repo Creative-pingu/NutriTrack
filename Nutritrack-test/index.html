@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>NutriTrack - Loading</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="manifest" href="/NutriTrack/manifest.webmanifest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NutriTrack">
+    <link rel="apple-touch-icon" href="/NutriTrack/icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#3b82f6">
+    <style>
+        html, body {
+            margin: 0; padding: 0; background: #0a0f1a; color: white;
+            min-height: 100%; width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent; overflow-x: hidden; overflow-y: auto;
+        }
+        #load-container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: #0a0f1a; z-index: 9999;
+        }
+        #load-status {
+            margin-top: 20px; font-size: 14px; color: #94a3b8;
+            text-align: center; max-width: 80%;
+        }
+        #load-steps {
+            margin-top: 30px; width: 80%;
+        }
+        .step {
+            padding: 8px 12px; margin: 4px 0; border-radius: 6px;
+            font-size: 13px; font-family: monospace;
+        }
+        .step.waiting { background: #1e293b; color: #64748b; }
+        .step.loaded { background: #10b981; color: white; }
+        .step.error { background: #ef4444; color: white; }
+        .step.current { background: #3b82f6; color: white; }
+        #error-detail {
+            margin-top: 20px; padding: 15px; border-radius: 8px;
+            background: #7c3aed; color: white; font-size: 12px;
+            max-width: 80%; text-align: left; display: none;
+        }
+        #build-info {
+            position: fixed; bottom: 10px; right: 10px;
+            background: rgba(0,0,0,0.7); padding: 8px 12px;
+            border-radius: 6px; font-size: 11px; color: #94a3b8;
+            font-family: monospace; z-index: 10000;
+            display: none; /* developer aid - hidden in production */
+        }
+        #sw-status {
+            position: fixed; top: 10px; right: 10px;
+            background: #3b82f6; color: white; padding: 6px 10px;
+            border-radius: 4px; font-size: 11px; z-index: 10001;
+            display: none; /* developer aid - hidden in production */
+        }
+        #load-steps {
+            margin-top: 30px; width: 80%;
+            display: none; /* checklist logged to console instead */
+        }
+    </style>
+</head>
+<body>
+    <div id="sw-status">SW: Checking...</div>
+    <div id="build-info">v67 - 2026-08-17 00:00</div>
+    <div id="load-container">
+        <h2 style="color: #3b82f6; margin-bottom: 10px;">NutriTrack</h2>
+        <div id="load-status">Initializing...</div>
+        <div id="load-steps"></div>
+        <div id="error-detail"></div>
+    </div>
+
+    <script>
+        const steps = [];
+        function addStep(name) {
+            // The checklist is hidden in the UI (display:none on #load-steps);
+            // step transitions are logged to the console for developer inspection.
+            const el = document.createElement('div');
+            el.className = 'step waiting';
+            el.textContent = name;
+            document.getElementById('load-steps').appendChild(el);
+            steps.push({ name, el });
+            console.log('[NutriTrack] step:', name);
+            return steps.length - 1;
+        }
+        function updateStep(idx, status, msg) {
+            if (steps[idx]) {
+                steps[idx].el.className = 'step ' + status;
+                if (msg) steps[idx].el.textContent = steps[idx].name + ': ' + msg;
+                console.log('[NutriTrack] ' + steps[idx].name + ' -> ' + status + (msg ? ' (' + msg + ')' : ''));
+            }
+        }
+        function setStatus(msg) {
+            document.getElementById('load-status').textContent = msg;
+        }
+        function showError(detail) {
+            document.getElementById('error-detail').textContent = detail;
+            document.getElementById('error-detail').style.display = 'block';
+        }
+        
+        // Single source of truth for the app version. Keep in sync with
+        // sw.js CACHE_VERSION ("nutritrack-v72") and the build timestamp.
+        const SHELL_APP_VERSION = 'v72';
+        // Expose on window so NutriTrack.js (loaded as a static script)
+        // can read it for the Settings > About panel. NutriTrack.js declares
+        // its own `const APP_VERSION` reading this global, so the shell must
+        // NOT also use that name (would collide and abort the app script).
+        window.APP_VERSION = SHELL_APP_VERSION;
+
+        addStep('React');
+        addStep('ReactDOM');
+        addStep('Setup globals');
+        addStep('Load NutriTrack.js');
+        addStep('Render app');
+        
+        // Register the SW exactly once per load (do NOT unregister here -
+        // unregistering on every load defeats the Phase 6d update detection
+        // in NutriTrack.jsx, since there is never a waiting SW to detect).
+        // The SW serves index.html network-first (never cached), so the
+        // newest index.html always loads; code updates then propagate through
+        // the SW's own lifecycle (updatefound -> controllerchange).
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/NutriTrack/sw.js?v=' + SHELL_APP_VERSION, { scope: '/NutriTrack/' })
+                .then(function(reg) {
+                    document.getElementById('sw-status').textContent = 'SW: ' + SHELL_APP_VERSION + ' active';
+                    // Expose the ready promise so NutriTrack.jsx's Phase 6d
+                    // update detection can reuse it without racing.
+                    window._swReady = navigator.serviceWorker.ready;
+                })
+                .catch(function(err) {
+                    // Phase 8 / R8: SW registration failure is non-fatal — the app
+                    // continues to work as a plain web page (just no offline cache).
+                    document.getElementById('sw-status').textContent = 'SW: offline mode unavailable';
+                    console.warn('[NutriTrack] SW registration failed; app continues online.', err);
+                });
+        } else {
+            document.getElementById('sw-status').textContent = 'SW: Not supported';
+        }
+        // Start loading immediately - SW registration is non-blocking.
+        startLoading();
+        
+        function startLoading() {
+            setStatus('Loading scripts...');
+            
+            // React/ReactDOM are UMD globals (no eval). Babel is no longer
+            // loaded at runtime: JSX is pre-compiled to NutriTrack.js at
+            // build time (Phase 7b), removing the dynamic code-evaluation XSS vector (S2/R12).
+            const reactScript = document.createElement('script');
+            reactScript.src = 'https://unpkg.com/react@18/umd/react.production.min.js?v=4';
+            reactScript.onload = function() { updateStep(0, 'loaded'); checkAllLoaded(); };
+            reactScript.onerror = function() { updateStep(0, 'error'); showError('React CDN failed'); };
+            document.head.appendChild(reactScript);
+            
+            const reactDOMScript = document.createElement('script');
+            reactDOMScript.src = 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js?v=4';
+            reactDOMScript.onload = function() { updateStep(1, 'loaded'); checkAllLoaded(); };
+            reactDOMScript.onerror = function() { updateStep(1, 'error'); showError('ReactDOM CDN failed'); };
+            document.head.appendChild(reactDOMScript);
+            
+            let scriptsLoaded = 0;
+            function checkAllLoaded() {
+                scriptsLoaded++;
+                if (scriptsLoaded >= 2) {
+                    setupGlobals();
+                }
+            }
+        }
+        
+        function setupGlobals() {
+            updateStep(2, 'current', 'Setting up...');
+            try {
+                window.useState = React.useState;
+                window.useEffect = React.useEffect;
+                window.useMemo = React.useMemo;
+                window.useCallback = React.useCallback;
+                window.useRef = React.useRef;
+                window.storage = {
+                    get: async (k) => ({ value: localStorage.getItem(k) }),
+                    set: async (k, v) => { localStorage.setItem(k, v); return v; },
+                    delete: async (k) => { localStorage.removeItem(k); return { deleted: true }; }
+                };
+                updateStep(2, 'loaded');
+                loadApp();
+            } catch (e) {
+                updateStep(2, 'error');
+                showError('Globals failed: ' + e.message);
+            }
+        }
+        
+        function loadApp() {
+            updateStep(3, 'current', 'Loading...');
+
+            // Phase 7b: load the pre-compiled NutriTrack.js as a static
+            // <script> instead of fetching NutriTrack.jsx, transpiling it
+            // with the Babel CDN, and dynamically executing the result. NutriTrack.js
+            // is generated at build time (Babel classic runtime) and sets
+            // window._MainApp on load. No dynamic code evaluation remains.
+            const appScript = document.createElement('script');
+            appScript.src = './NutriTrack.js?v=' + SHELL_APP_VERSION.replace('v','');
+            appScript.onload = function() {
+                updateStep(3, 'loaded');
+                updateStep(4, 'current', 'Rendering...');
+                try {
+                    const App = window._MainApp || (typeof NutriTrack !== 'undefined' ? NutriTrack : null);
+                    if (App) {
+                        const container = document.createElement('div');
+                        document.getElementById('load-container').style.display = 'none';
+                        document.body.appendChild(container);
+                        const root = ReactDOM.createRoot(container);
+                        root.render(React.createElement(App));
+                        updateStep(4, 'loaded', 'Success!');
+                        setStatus('NutriTrack loaded successfully');
+                    } else {
+                        throw new Error('App not found');
+                    }
+                } catch (e) {
+                    updateStep(4, 'error');
+                    showError('Error: ' + e.message + '\n\n' + (e.stack || '').substring(0, 300));
+                    setStatus('ERROR');
+                }
+            };
+            appScript.onerror = function() {
+                updateStep(3, 'error');
+                showError('Failed to load NutriTrack.js');
+                setStatus('ERROR');
+            };
+            document.head.appendChild(appScript);
+        }
+        
+
+    </script>
+</body>
+</html>
