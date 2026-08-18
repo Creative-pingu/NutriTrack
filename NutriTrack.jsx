@@ -322,7 +322,6 @@ function computeGoals(profile) {
     sod:    2300,
     vitA:   male ? 900   : 700,
     vitC:   male ? 90    : 75,
-    alc:    10,     // Phase 11: alcohol (g) — keep-low guideline for endurance
     water:  2500,   // Phase 11: water (ml) — endurance cycling hydration baseline
   };
 }
@@ -363,7 +362,7 @@ const EXERCISE_ACTIVITIES = [
   { id:"running_hard",     label:"Running",  intensity:"Hard",     met:12.0 },
 ];
 
-const MACROS = ["cal","pro","carb","fat","fib","alc"];
+const MACROS = ["cal","pro","carb","fat","fib"];
 const MICROS = ["iron","calc","zinc","b12","vitD","omega3","iod","sel","mag","pot","fol","sod","vitA","vitC"];
 const MEALS  = ["Breakfast","Lunch","Dinner","Snack"];
 
@@ -422,12 +421,12 @@ const NUTRIENT_EXPLANATIONS = {
 // WHO base RDAs (population averages). Optimal scales RDAs for active endurance
 // athletes (higher protein, antioxidant vitamins, electrolytes).
 const WHO_GOALS = {
-  cal: 2000, pro: 50, carb: 260, fat: 70, fib: 25, alc: 10, water: 2500,
+  cal: 2000, pro: 50, carb: 260, fat: 70, fib: 25, water: 2500,
   iron: 14, calc: 1000, zinc: 11, b12: 2.4, vitD: 15, omega3: 1.6, iod: 150,
   sel: 55, mag: 400, pot: 3510, fol: 400, sod: 2000, vitA: 900, vitC: 90,
 };
 const OPTIMAL_GOALS = {
-  cal: 2800, pro: 90, carb: 400, fat: 85, fib: 38, alc: 10, water: 3500,
+  cal: 2800, pro: 90, carb: 400, fat: 85, fib: 38, water: 3500,
   iron: 18, calc: 1200, zinc: 15, b12: 3.0, vitD: 25, omega3: 3.0, iod: 200,
   sel: 75, mag: 500, pot: 4000, fol: 600, sod: 2300, vitA: 1000, vitC: 120,
 };
@@ -2116,7 +2115,7 @@ export default function NutriTrack() {
                 <div style={{background:"#0a0f1a",borderRadius:10,padding:12,marginBottom:16}}>
                   <div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8,textTransform:"uppercase"}}>Preview</div>
                   <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}>
-                    {MACROS.map(k => { const val=(selectedFood[k]??0)*(parseFloat(amount)||0)/100; return (<div key={k} style={{textAlign:"center"}}><div style={{fontSize:16,fontWeight:700,color:NUTRIENT_META[k].color}}>{k==="cal"?fmtE(val):n1(val)}</div><div style={{fontSize:10,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].label}</div></div>); })}
+                    {["cal","pro","carb","fat","fib","alc"].map(k => { const val=(selectedFood[k]??0)*(parseFloat(amount)||0)/100; return (<div key={k} style={{textAlign:"center"}}><div style={{fontSize:16,fontWeight:700,color:NUTRIENT_META[k].color}}>{k==="cal"?fmtE(val):n1(val)}</div><div style={{fontSize:10,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].label}</div></div>); })}
                   </div>
                   {MICROS.some(k => selectedFood[k] != null) && (
                     <div style={{marginTop:10,borderTop:"1px solid #1e293b",paddingTop:8}}>
@@ -2481,7 +2480,7 @@ export default function NutriTrack() {
               <div style={{display:"flex",gap:6,marginTop:8,flexWrap:"wrap"}}>{[0.5,1,1.5].map(mult=>{const q=Math.round(tw*mult/r.servings);return q>0?<button key={mult} style={S.pill(recipeLogGrams===String(q))} onClick={()=>setRecipeLogGrams(String(q))}>{q}g</button>:null;})}</div>
               <div style={{fontSize:11,color:"#475569",marginTop:8}}>Based on raw ingredient weights</div>
             </>)}
-            <div style={{background:"#0a0f1a",borderRadius:10,padding:12,margin:"16px 0"}}><div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8,textTransform:"uppercase"}}>Preview</div><div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:6}}>{MACROS.map(k=>(<div key={k} style={{textAlign:"center"}}><div style={{fontSize:14,fontWeight:700,color:NUTRIENT_META[k].color}}>{k==="cal"?fmtE(previewNut[k]??0):n1(previewNut[k]??null)}</div><div style={{fontSize:10,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].label}</div></div>))}</div></div>
+            <div style={{background:"#0a0f1a",borderRadius:10,padding:12,margin:"16px 0"}}><div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8,textTransform:"uppercase"}}>Preview</div><div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:6}}>{["cal","pro","carb","fat","fib","alc"].map(k=>(<div key={k} style={{textAlign:"center"}}><div style={{fontSize:14,fontWeight:700,color:NUTRIENT_META[k].color}}>{k==="cal"?fmtE(previewNut[k]??0):n1(previewNut[k]??null)}</div><div style={{fontSize:10,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].label}</div></div>))}</div></div>
             <label style={S.label}>Meal</label>
             <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>{MEALS.map(m=><button key={m} style={S.pill(recipeLogMeal===m)} onClick={()=>setRecipeLogMeal(m)}>{m}</button>)}</div>
             <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:canLog?"#3b82f6":"#1e293b",color:canLog?"#fff":"#64748b",fontSize:15,fontWeight:700,cursor:"pointer"}} disabled={!canLog} onClick={logRecipe}>Add to {recipeLogMeal}</button>
@@ -2586,7 +2585,7 @@ export default function NutriTrack() {
             <label style={S.label}>Number of servings</label><input style={{...S.input,marginBottom:6}} type="number" inputMode="decimal" value={recipeInProgress.servings} onChange={e=>setRecipeInProgress(p=>({...p,servings:e.target.value}))}/>
             <div style={{display:"flex",gap:6,marginTop:6,flexWrap:"wrap"}}>{[1,2,3,4,6,8].map(n=><button key={n} style={S.pill(recipeInProgress.servings===String(n))} onClick={()=>setRecipeInProgress(p=>({...p,servings:String(n)}))}>{n}</button>)}</div>
           </div>
-          {previewNut&&(<div style={{...S.card,background:"#0a0f1a"}}><div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8,textTransform:"uppercase",letterSpacing:"0.05em"}}>Per serving preview</div><div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:6}}>{MACROS.map(k=>(<div key={k} style={{textAlign:"center"}}><div style={{fontSize:14,fontWeight:700,color:NUTRIENT_META[k].color}}>{k==="cal"?fmtE(previewNut[k]??0):n1(previewNut[k]??null)}</div><div style={{fontSize:10,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].label}</div></div>))}</div></div>)}
+          {previewNut&&(<div style={{...S.card,background:"#0a0f1a"}}><div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8,textTransform:"uppercase",letterSpacing:"0.05em"}}>Per serving preview</div><div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:6}}>{["cal","pro","carb","fat","fib","alc"].map(k=>(<div key={k} style={{textAlign:"center"}}><div style={{fontSize:14,fontWeight:700,color:NUTRIENT_META[k].color}}>{k==="cal"?fmtE(previewNut[k]??0):n1(previewNut[k]??null)}</div><div style={{fontSize:10,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].label}</div></div>))}</div></div>)}
           <div style={S.card}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}><div style={{fontSize:13,fontWeight:700,color:"#94a3b8",textTransform:"uppercase",letterSpacing:"0.05em"}}>Ingredients {recipeInProgress.ingredients.length>0?`(${recipeInProgress.ingredients.length})`:""}</div><button style={{background:"#1d4ed8",border:"none",color:"#fff",borderRadius:8,padding:"6px 12px",fontSize:12,fontWeight:600,cursor:"pointer"}} onClick={()=>{setRecipeIngSearch("");setRecipeIngSelected(null);setRecipeIngAmount("100");setView("recipeIngAdd");setTimeout(()=>recipeIngRef.current?.focus(),100);}}>+ Add</button></div>
             {recipeInProgress.ingredients.length===0?(<div style={{textAlign:"center",padding:"20px 0",color:"#475569",fontSize:13}}>No ingredients yet — tap + Add</div>):recipeInProgress.ingredients.map((ing,i)=>{const food=allFoods.find(f=>f.id===ing.foodId),ingCal=food?fmtE(food.cal*ing.amount_g/100):0;return(<div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 0",borderBottom:i<recipeInProgress.ingredients.length-1?"1px solid #1e293b":"none"}}><div style={{flex:1,minWidth:0}}><div style={{fontSize:13,color:"#e2e8f0",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{ing.foodName}</div><div style={{fontSize:11,color:"#64748b"}}>{ingCal} {energyLabel}</div></div><div style={{display:"flex",alignItems:"center",gap:6,flexShrink:0}}><input style={{...S.input,width:64,textAlign:"center",padding:"6px 8px",marginBottom:0}} type="number" inputMode="decimal" value={ing.amount_g} onFocus={e=>e.target.select()} onChange={e=>updateIngAmountInRecipe(i,e.target.value)}/><span style={{fontSize:12,color:"#64748b"}}>g</span><button style={{background:"none",border:"none",color:"#ef4444",fontSize:18,cursor:"pointer",padding:"4px 8px"}} onClick={()=>removeIngFromRecipe(i)}>×</button></div></div>);})}
@@ -3419,7 +3418,7 @@ export default function NutriTrack() {
   }
 
   if (view === "calDetail") {
-    const proK=totals.pro*4,carbK=totals.carb*4,fatK=totals.fat*9,totK=proK+carbK+fatK;
+    const proK=totals.pro*4,carbK=totals.carb*4,fatK=totals.fat*9,alcK=totals.alc*7,totK=proK+carbK+fatK+alcK;
     const calCont=dayLog.flatMap(e=>{if(e.type==="exercise")return[];if(e.type==="supplement"){const v=suppContrib(e,"cal");return v>0?[{name:`💊 ${e.stackName}`,label:"supplement",value:v,isSupp:true}]:[]; }if(e.type==="recipe"){const n=computeEntryNutrition(e.derivedIngredients||[],allFoods);return n.cal?[{name:`📖 ${e.recipeName}`,label:`${e.servings} srv`,value:n.cal}]:[];}const val=e.snapshot?(e.snapshot.cal??0)*e.amount/100:(allFoods.find(x=>x.id===e.foodId)?.cal??0)*e.amount/100;return val?[{name:e.foodName,label:`${e.amount}g`,value:val}]:[];}).sort((a,b)=>b.value-a.value);
     return (
       <div style={S.app}>
@@ -3427,8 +3426,8 @@ export default function NutriTrack() {
         <div style={S.section}>
           <div style={{...S.card,textAlign:"center"}}>{(()=>{const k="cal",goal=effectiveGoals[k]||1,nv=allFoodsForRender.map(f=>f[k]).filter(v=>v!=null&&v>0).sort((a,b)=>a-b),med=nv.length?nv[Math.floor(nv.length/2)]:null;let est=0;dayLog.forEach(e=>{if(e.type==="exercise"||e.type==="supplement")return;if(e.type==="recipe"){(e.derivedIngredients||[]).forEach(ing=>{const v=ing.snapshot?ing.snapshot[k]:(allFoodsForRender.find(f=>f.id===ing.foodId)?.[k]);if(v===null||v===undefined)est+=med!=null?(ing.amount_g/100)*med:0;});return;}const v=e.snapshot?e.snapshot[k]:(allFoodsForRender.find(f=>f.id===e.foodId)?.[k]);if(v===null||v===undefined)est+=med!=null?((e.amount||0)/100)*med:0;});const arc=Math.min(est/goal,1);return(<Ring value={totals.cal} max={effectiveGoals.cal} size={100} stroke={8} color={NUTRIENT_META.cal.color} nullArc={arc} simplified={displayMode==="simplified"}><text x="50%" y="45%" textAnchor="middle" fill="#e2e8f0" fontSize={18} fontWeight={700}>{Math.round(totals.cal)}</text><text x="50%" y="62%" textAnchor="middle" fill="#64748b" fontSize={10}>/ {fmtE(effectiveGoals.cal)} {energyLabel}</text></Ring>);})()}<div style={{marginTop:12,fontSize:14,color:pct("cal")>=100?"#10b981":pct("cal")>=60?"#f59e0b":"#ef4444"}}>{pct("cal")}% of daily goal</div></div>
           <div style={S.card}><div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:12,textTransform:"uppercase",letterSpacing:"0.05em"}}>Calorie Breakdown</div>
-            {totK>0?(<div style={{display:"flex",height:14,borderRadius:7,overflow:"hidden",marginBottom:16,gap:1}}><div style={{width:`${(proK/totK)*100}%`,background:NUTRIENT_META.pro.color}}/><div style={{width:`${(carbK/totK)*100}%`,background:NUTRIENT_META.carb.color}}/><div style={{width:`${(fatK/totK)*100}%`,background:NUTRIENT_META.fat.color}}/></div>):<div style={{height:14,borderRadius:7,background:"#1e293b",marginBottom:16}}/>}
-            {[{key:"pro",label:"Protein",kcal:proK,grams:totals.pro,mult:"×4"},{key:"carb",label:"Carbs",kcal:carbK,grams:totals.carb,mult:"×4"},{key:"fat",label:"Fat",kcal:fatK,grams:totals.fat,mult:"×9"}].map(({key,label,kcal,grams,mult},i)=>(<div key={key} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 0",borderBottom:i<2?"1px solid #1e293b":"none"}}><div style={{display:"flex",alignItems:"center",gap:10}}><div style={{width:12,height:12,borderRadius:3,background:NUTRIENT_META[key].color,flexShrink:0}}/><div><div style={{fontSize:14,color:"#e2e8f0",fontWeight:500}}>{label}</div><div style={{fontSize:11,color:"#64748b"}}>{n1(grams)}g {mult}</div></div></div><div style={{textAlign:"right"}}><div style={{fontSize:15,fontWeight:700,color:NUTRIENT_META[key].color}}>{fmtE(kcal)} {energyLabel}</div><div style={{fontSize:11,color:"#64748b"}}>{totK>0?Math.round((kcal/totK)*100):0}%</div></div></div>))}
+            {totK>0?(<div style={{display:"flex",height:14,borderRadius:7,overflow:"hidden",marginBottom:16,gap:1}}><div style={{width:`${(proK/totK)*100}%`,background:NUTRIENT_META.pro.color}}/><div style={{width:`${(carbK/totK)*100}%`,background:NUTRIENT_META.carb.color}}/><div style={{width:`${(fatK/totK)*100}%`,background:NUTRIENT_META.fat.color}}/><div style={{width:`${(alcK/totK)*100}%`,background:NUTRIENT_META.alc.color}}/></div>):<div style={{height:14,borderRadius:7,background:"#1e293b",marginBottom:16}}/>}
+            {[{key:"pro",label:"Protein",kcal:proK,grams:totals.pro,mult:"×4"},{key:"carb",label:"Carbs",kcal:carbK,grams:totals.carb,mult:"×4"},{key:"fat",label:"Fat",kcal:fatK,grams:totals.fat,mult:"×9"},{key:"alc",label:"Alcohol",kcal:alcK,grams:totals.alc,mult:"×7"}].map(({key,label,kcal,grams,mult},i)=>(<div key={key} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 0",borderBottom:i<3?"1px solid #1e293b":"none"}}><div style={{display:"flex",alignItems:"center",gap:10}}><div style={{width:12,height:12,borderRadius:3,background:NUTRIENT_META[key].color,flexShrink:0}}/><div><div style={{fontSize:14,color:"#e2e8f0",fontWeight:500}}>{label}</div><div style={{fontSize:11,color:"#64748b"}}>{n1(grams)}g {mult}</div></div></div><div style={{textAlign:"right"}}><div style={{fontSize:15,fontWeight:700,color:NUTRIENT_META[key].color}}>{fmtE(kcal)} {energyLabel}</div><div style={{fontSize:11,color:"#64748b"}}>{totK>0?Math.round((kcal/totK)*100):0}%</div></div></div>))}
           </div>
           {calCont.length>0&&(<div style={S.card}><div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:10,textTransform:"uppercase",letterSpacing:"0.05em"}}>Today's Sources</div>{calCont.map((c,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"7px 0",borderBottom:i<calCont.length-1?"1px solid #1e293b":"none",background:c.isSupp?"rgba(167,139,250,0.05)":"transparent",borderRadius:c.isSupp?6:0}}><div><div style={{fontSize:13,color:c.isSupp?"#c4b5fd":"#e2e8f0"}}>{c.name}</div><div style={{fontSize:11,color:"#64748b"}}>{c.label}</div></div><div style={{fontSize:13,fontWeight:600,color:NUTRIENT_META.cal.color}}>{fmtE(c.value)} {energyLabel}</div></div>))}</div>)}
         </div>

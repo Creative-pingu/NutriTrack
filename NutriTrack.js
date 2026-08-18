@@ -741,8 +741,6 @@ function computeGoals(profile) {
     sod: 2300,
     vitA: male ? 900 : 700,
     vitC: male ? 90 : 75,
-    alc: 10,
-    // Phase 11: alcohol (g) — keep-low guideline for endurance
     water: 2500 // Phase 11: water (ml) — endurance cycling hydration baseline
   };
 }
@@ -828,7 +826,7 @@ const EXERCISE_ACTIVITIES = [{
   intensity: "Hard",
   met: 12.0
 }];
-const MACROS = ["cal", "pro", "carb", "fat", "fib", "alc"];
+const MACROS = ["cal", "pro", "carb", "fat", "fib"];
 const MICROS = ["iron", "calc", "zinc", "b12", "vitD", "omega3", "iod", "sel", "mag", "pot", "fol", "sod", "vitA", "vitC"];
 const MEALS = ["Breakfast", "Lunch", "Dinner", "Snack"];
 
@@ -914,7 +912,6 @@ const WHO_GOALS = {
   carb: 260,
   fat: 70,
   fib: 25,
-  alc: 10,
   water: 2500,
   iron: 14,
   calc: 1000,
@@ -937,7 +934,6 @@ const OPTIMAL_GOALS = {
   carb: 400,
   fat: 85,
   fib: 38,
-  alc: 10,
   water: 3500,
   iron: 18,
   calc: 1200,
@@ -4747,7 +4743,7 @@ export default function NutriTrack() {
           gridTemplateColumns: "1fr 1fr 1fr",
           gap: 8
         }
-      }, MACROS.map(k => {
+      }, ["cal", "pro", "carb", "fat", "fib", "alc"].map(k => {
         const val = (selectedFood[k] ?? 0) * (parseFloat(amount) || 0) / 100;
         return /*#__PURE__*/React.createElement("div", {
           key: k,
@@ -6337,7 +6333,7 @@ export default function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+    }, ["cal", "pro", "carb", "fat", "fib", "alc"].map(k => /*#__PURE__*/React.createElement("div", {
       key: k,
       style: {
         textAlign: "center"
@@ -6763,7 +6759,7 @@ export default function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+    }, ["cal", "pro", "carb", "fat", "fib", "alc"].map(k => /*#__PURE__*/React.createElement("div", {
       key: k,
       style: {
         textAlign: "center"
@@ -10227,7 +10223,8 @@ export default function NutriTrack() {
     const proK = totals.pro * 4,
       carbK = totals.carb * 4,
       fatK = totals.fat * 9,
-      totK = proK + carbK + fatK;
+      alcK = totals.alc * 7,
+      totK = proK + carbK + fatK + alcK;
     const calCont = dayLog.flatMap(e => {
       if (e.type === "exercise") return [];
       if (e.type === "supplement") {
@@ -10365,6 +10362,11 @@ export default function NutriTrack() {
         width: `${fatK / totK * 100}%`,
         background: NUTRIENT_META.fat.color
       }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: `${alcK / totK * 100}%`,
+        background: NUTRIENT_META.alc.color
+      }
     })) : /*#__PURE__*/React.createElement("div", {
       style: {
         height: 14,
@@ -10390,6 +10392,12 @@ export default function NutriTrack() {
       kcal: fatK,
       grams: totals.fat,
       mult: "×9"
+    }, {
+      key: "alc",
+      label: "Alcohol",
+      kcal: alcK,
+      grams: totals.alc,
+      mult: "×7"
     }].map(({
       key,
       label,
@@ -10403,7 +10411,7 @@ export default function NutriTrack() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px 0",
-        borderBottom: i < 2 ? "1px solid #1e293b" : "none"
+        borderBottom: i < 3 ? "1px solid #1e293b" : "none"
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
