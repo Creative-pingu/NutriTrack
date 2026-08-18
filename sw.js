@@ -1,5 +1,5 @@
 // NutriTrack Service Worker
-const CACHE_VERSION = "nutritrack-v70";
+const CACHE_VERSION = "nutritrack-v71";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.js",

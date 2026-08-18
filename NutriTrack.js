@@ -1,32 +1,5 @@
-// NutriTrack.js - BUILD ARTIFACT (Phase 7b).
-// Generated from NutriTrack.jsx by Babel (preset-react classic runtime,
-// preset-env modules:false). Do not edit by hand; edit NutriTrack.jsx and
-// re-run the build. This file is loaded as a static <script> in index.html,
-// replacing the runtime fetch+dynamic-execution flow that caused the S2/R12 XSS risk.
-// Source: NutriTrack.jsx
-
-function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n7 = 0, F = function F() {}; return { s: F, n: function n() { return _n7 >= r.length ? { done: !0 } : { done: !1, value: r[_n7++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+// AUTO-GENERATED by Babel from NutriTrack.jsx. DO NOT EDIT BY HAND.
+// App version: v71 (must match sw.js CACHE_VERSION and index.html SHELL_APP_VERSION).
 // FOOD_DB is loaded asynchronously from /NutriTrack/foods.json at app start.
 // Use the foodDB state (and allFoods / allFoodsForRender derived values) inside
 // the NutriTrack component. Do not reference FOOD_DB anywhere directly.
@@ -34,13 +7,12 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 // Maps a foods.json v1 record (full names) to the internal abbreviation-keyed shape
 // the JSX uses throughout. All downstream code is unchanged.
 function mapFoodRecord(r) {
-  var _r$source, _r$fdc_id, _r$servings;
   return {
     id: r.id,
     name: r.name,
     cat: r.category,
-    source: (_r$source = r.source) !== null && _r$source !== void 0 ? _r$source : "usda",
-    fdc_id: (_r$fdc_id = r.fdc_id) !== null && _r$fdc_id !== void 0 ? _r$fdc_id : null,
+    source: r.source ?? "usda",
+    fdc_id: r.fdc_id ?? null,
     cal: r.calories,
     pro: r.protein,
     carb: r.carbohydrates,
@@ -74,56 +46,32 @@ function mapFoodRecord(r) {
     sod: r.sodium,
     vitA: r.vitamin_a,
     vitC: r.vitamin_c,
-    servings: (_r$servings = r.servings) !== null && _r$servings !== void 0 ? _r$servings : null // optional [{ label, grams }] for preset chips (W0)
+    servings: r.servings ?? null // optional [{ label, grams }] for preset chips (W0)
   };
 }
 
 // App version, exposed by index.html (window.APP_VERSION). Used by the
 // Settings > About panel for on-device diagnostics. Falls back if the
 // global isn't set (e.g. running outside the deployed shell).
-var APP_VERSION = typeof window !== "undefined" && window.APP_VERSION || "unknown";
+const APP_VERSION = typeof window !== "undefined" && window.APP_VERSION || "unknown";
 
 // Bump this string whenever you deploy a new foods.json to bust the ATHS cache.
-var FOODS_DB_VERSION = "3";
-function loadFoodDB() {
-  return _loadFoodDB.apply(this, arguments);
-} // ── WORKER CONFIG ─────────────────────────────────────────────────────────
-function _loadFoodDB() {
-  _loadFoodDB = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-    var resp, envelope;
-    return _regenerator().w(function (_context7) {
-      while (1) switch (_context7.n) {
-        case 0:
-          _context7.n = 1;
-          return fetch("/NutriTrack/foods.json?v=".concat(FOODS_DB_VERSION));
-        case 1:
-          resp = _context7.v;
-          if (resp.ok) {
-            _context7.n = 2;
-            break;
-          }
-          throw new Error("foods.json fetch failed: ".concat(resp.status));
-        case 2:
-          _context7.n = 3;
-          return resp.json();
-        case 3:
-          envelope = _context7.v;
-          if (!(!envelope.schema_version || envelope.schema_version !== 1)) {
-            _context7.n = 4;
-            break;
-          }
-          throw new Error("foods.json unexpected schema_version: ".concat(envelope.schema_version));
-        case 4:
-          return _context7.a(2, envelope.foods.map(mapFoodRecord));
-      }
-    }, _callee7);
-  }));
-  return _loadFoodDB.apply(this, arguments);
+const FOODS_DB_VERSION = "3";
+async function loadFoodDB() {
+  const resp = await fetch(`/NutriTrack/foods.json?v=${FOODS_DB_VERSION}`);
+  if (!resp.ok) throw new Error(`foods.json fetch failed: ${resp.status}`);
+  const envelope = await resp.json();
+  if (!envelope.schema_version || envelope.schema_version !== 1) {
+    throw new Error(`foods.json unexpected schema_version: ${envelope.schema_version}`);
+  }
+  return envelope.foods.map(mapFoodRecord);
 }
-var WORKER_URL = "https://nutritrack-proxy.nickkropf.workers.dev";
-var WORKER_FETCH_CONCURRENCY = 3;
-var SUPP_DOSE_UNITS = ["mcg", "mg", "g", "IU", "tablet", "capsule", "ml", "tsp", "tbsp"];
-var UNIT_TO_G = {
+
+// ── WORKER CONFIG ─────────────────────────────────────────────────────────
+const WORKER_URL = "https://nutritrack-proxy.nickkropf.workers.dev";
+const WORKER_FETCH_CONCURRENCY = 3;
+const SUPP_DOSE_UNITS = ["mcg", "mg", "g", "IU", "tablet", "capsule", "ml", "tsp", "tbsp"];
+const UNIT_TO_G = {
   g: 1,
   gram: 1,
   grams: 1,
@@ -157,11 +105,10 @@ var UNIT_TO_G = {
   pinch: 1
 };
 function toGrams(amount, unit) {
-  var _UNIT_TO_G$toLowerCas;
-  var f = (_UNIT_TO_G$toLowerCas = UNIT_TO_G[(unit || "g").toLowerCase()]) !== null && _UNIT_TO_G$toLowerCas !== void 0 ? _UNIT_TO_G$toLowerCas : 1;
+  const f = UNIT_TO_G[(unit || "g").toLowerCase()] ?? 1;
   return Math.round(amount * f * 10) / 10;
 }
-var TYPICAL_WEIGHT_G = {
+const TYPICAL_WEIGHT_G = {
   "onion": 110,
   "onion small": 70,
   "onion medium": 110,
@@ -203,49 +150,39 @@ var TYPICAL_WEIGHT_G = {
   "chili pepper": 5,
   "chilli pepper": 5
 };
-var COUNT_NOUNS = new Set(["clove", "cloves", "slice", "slices", "sprig", "sprigs", "piece", "pieces", "head", "heads", "stalk", "stalks", "stick", "sticks", "bunch", "bunches"]);
-var SIZE_ADJECTIVES = new Set(["small", "medium", "large"]);
-var LEADING_QUALIFIERS = /^(about|approximately|approx\.?|roughly|around|~)\s+/i;
-var PREP_MODIFIERS = new Set(["minced", "chopped", "diced", "sliced", "crushed", "grated", "shredded", "peeled", "cubed", "halved", "quartered", "julienned", "mashed", "ground", "fresh", "dried", "frozen", "raw", "cooked", "roasted", "toasted", "finely", "coarsely", "thinly", "thickly", "lightly", "freshly", "optional", "divided", "softened", "melted", "chilled", "cold", "warm", "hot"]);
-var FOOD_IDENTITY_MODIFIERS = new Set(["vinegar", "juice", "oil", "paste", "sauce", "powder", "extract", "syrup", "butter", "cream", "milk", "flour", "stock", "broth", "wine"]);
+const COUNT_NOUNS = new Set(["clove", "cloves", "slice", "slices", "sprig", "sprigs", "piece", "pieces", "head", "heads", "stalk", "stalks", "stick", "sticks", "bunch", "bunches"]);
+const SIZE_ADJECTIVES = new Set(["small", "medium", "large"]);
+const LEADING_QUALIFIERS = /^(about|approximately|approx\.?|roughly|around|~)\s+/i;
+const PREP_MODIFIERS = new Set(["minced", "chopped", "diced", "sliced", "crushed", "grated", "shredded", "peeled", "cubed", "halved", "quartered", "julienned", "mashed", "ground", "fresh", "dried", "frozen", "raw", "cooked", "roasted", "toasted", "finely", "coarsely", "thinly", "thickly", "lightly", "freshly", "optional", "divided", "softened", "melted", "chilled", "cold", "warm", "hot"]);
+const FOOD_IDENTITY_MODIFIERS = new Set(["vinegar", "juice", "oil", "paste", "sauce", "powder", "extract", "syrup", "butter", "cream", "milk", "flour", "stock", "broth", "wine"]);
 function isModifierMismatch(ingredientName, foodBaseName) {
-  var ingTokens = ingredientName.toLowerCase().split(/\s+/).filter(Boolean);
-  var foodTokens = foodBaseName.toLowerCase().split(/\s+/).filter(Boolean);
+  const ingTokens = ingredientName.toLowerCase().split(/\s+/).filter(Boolean);
+  const foodTokens = foodBaseName.toLowerCase().split(/\s+/).filter(Boolean);
   if (!ingTokens.length) return false;
-  var last = ingTokens[ingTokens.length - 1];
+  const last = ingTokens[ingTokens.length - 1];
   if (!FOOD_IDENTITY_MODIFIERS.has(last)) return false;
   return !foodTokens.includes(last);
 }
 function fuzzyMatchFood(name, allFoods) {
   if (!name) return null;
-  var n = name.toLowerCase().trim();
-  var m = allFoods.find(function (f) {
-    return f.name.toLowerCase() === n;
-  });
+  const n = name.toLowerCase().trim();
+  let m = allFoods.find(f => f.name.toLowerCase() === n);
   if (m) return m;
-  m = allFoods.find(function (f) {
-    return f.name.toLowerCase().startsWith(n) && n.length > 3;
-  });
+  m = allFoods.find(f => f.name.toLowerCase().startsWith(n) && n.length > 3);
   if (m) return m;
-  m = allFoods.find(function (f) {
-    var base = f.name.toLowerCase().split(" (")[0];
+  m = allFoods.find(f => {
+    const base = f.name.toLowerCase().split(" (")[0];
     if (base.length <= 3 || !n.includes(base) || isModifierMismatch(n, base)) return false;
     return true;
   });
   if (m) return m;
-  m = allFoods.find(function (f) {
-    return f.name.toLowerCase().includes(n) && n.length > 3;
-  });
+  m = allFoods.find(f => f.name.toLowerCase().includes(n) && n.length > 3);
   if (m) return m;
-  m = allFoods.find(function (f) {
-    var SKIP = new Set(["dry", "cooked", "raw", "ground", "firm", "plain", "canned", "rolled", "per", "100ml", "abv"]);
-    var words = f.name.toLowerCase().replace(/[()]/g, "").split(" ").filter(function (w) {
-      return w.length > 3 && !SKIP.has(w);
-    });
-    if (!words.length || !words.every(function (w) {
-      return n.includes(w);
-    })) return false;
-    var base = f.name.toLowerCase().split(" (")[0];
+  m = allFoods.find(f => {
+    const SKIP = new Set(["dry", "cooked", "raw", "ground", "firm", "plain", "canned", "rolled", "per", "100ml", "abv"]);
+    const words = f.name.toLowerCase().replace(/[()]/g, "").split(" ").filter(w => w.length > 3 && !SKIP.has(w));
+    if (!words.length || !words.every(w => n.includes(w))) return false;
+    const base = f.name.toLowerCase().split(" (")[0];
     return !isModifierMismatch(n, base);
   });
   return m || null;
@@ -255,198 +192,92 @@ function workerHeaders() {
     "Content-Type": "application/json"
   };
 }
-function workerFetch(_x, _x2) {
-  return _workerFetch.apply(this, arguments);
+async function workerFetch(path, init) {
+  let res;
+  try {
+    res = await fetch(`${WORKER_URL}${path}`, init);
+  } catch (e) {
+    throw new Error(`network: ${e.message || "fetch failed"}`);
+  }
+  let data = null;
+  try {
+    data = await res.json();
+  } catch {}
+  if (!res.ok) {
+    const r = data && (data.reason || data.error || data.detail) || `http_${res.status}`;
+    throw new Error(`worker_${res.status}: ${r}`);
+  }
+  return data;
 }
-function _workerFetch() {
-  _workerFetch = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(path, init) {
-    var res, data, r, _t0, _t1;
-    return _regenerator().w(function (_context8) {
-      while (1) switch (_context8.p = _context8.n) {
-        case 0:
-          _context8.p = 0;
-          _context8.n = 1;
-          return fetch("".concat(WORKER_URL).concat(path), init);
-        case 1:
-          res = _context8.v;
-          _context8.n = 3;
-          break;
-        case 2:
-          _context8.p = 2;
-          _t0 = _context8.v;
-          throw new Error("network: ".concat(_t0.message || "fetch failed"));
-        case 3:
-          data = null;
-          _context8.p = 4;
-          _context8.n = 5;
-          return res.json();
-        case 5:
-          data = _context8.v;
-          _context8.n = 7;
-          break;
-        case 6:
-          _context8.p = 6;
-          _t1 = _context8.v;
-        case 7:
-          if (res.ok) {
-            _context8.n = 8;
-            break;
-          }
-          r = data && (data.reason || data.error || data.detail) || "http_".concat(res.status);
-          throw new Error("worker_".concat(res.status, ": ").concat(r));
-        case 8:
-          return _context8.a(2, data);
+async function fetchHealth() {
+  return workerFetch("/health", {
+    method: "GET",
+    headers: workerHeaders()
+  });
+}
+async function fetchRecipesList(since) {
+  const body = since ? {
+    since
+  } : {};
+  return workerFetch("/recipes/list", {
+    method: "POST",
+    headers: workerHeaders(),
+    body: JSON.stringify(body)
+  });
+}
+async function fetchRecipePage(pageId) {
+  return workerFetch("/recipes/page", {
+    method: "POST",
+    headers: workerHeaders(),
+    body: JSON.stringify({
+      page_id: pageId
+    })
+  });
+}
+async function fetchRecipePagesWithProgress(recipes, onProgress) {
+  const results = new Array(recipes.length);
+  let cursor = 0,
+    completed = 0;
+  async function worker() {
+    while (true) {
+      const idx = cursor++;
+      if (idx >= recipes.length) return;
+      const r = recipes[idx];
+      try {
+        const d = await fetchRecipePage(r.id);
+        results[idx] = {
+          ...r,
+          ingredientLines: d.ingredientLines || [],
+          warning: d.warning || null
+        };
+      } catch (e) {
+        results[idx] = {
+          ...r,
+          ingredientLines: [],
+          error: e.message || "fetch failed"
+        };
       }
-    }, _callee8, null, [[4, 6], [0, 2]]);
-  }));
-  return _workerFetch.apply(this, arguments);
+      completed++;
+      if (onProgress) onProgress(completed);
+    }
+  }
+  const pool = Array.from({
+    length: Math.min(WORKER_FETCH_CONCURRENCY, recipes.length)
+  }, () => worker());
+  await Promise.all(pool);
+  return results;
 }
-function fetchHealth() {
-  return _fetchHealth.apply(this, arguments);
-}
-function _fetchHealth() {
-  _fetchHealth = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
-    return _regenerator().w(function (_context9) {
-      while (1) switch (_context9.n) {
-        case 0:
-          return _context9.a(2, workerFetch("/health", {
-            method: "GET",
-            headers: workerHeaders()
-          }));
-      }
-    }, _callee9);
-  }));
-  return _fetchHealth.apply(this, arguments);
-}
-function fetchRecipesList(_x3) {
-  return _fetchRecipesList.apply(this, arguments);
-}
-function _fetchRecipesList() {
-  _fetchRecipesList = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(since) {
-    var body;
-    return _regenerator().w(function (_context0) {
-      while (1) switch (_context0.n) {
-        case 0:
-          body = since ? {
-            since: since
-          } : {};
-          return _context0.a(2, workerFetch("/recipes/list", {
-            method: "POST",
-            headers: workerHeaders(),
-            body: JSON.stringify(body)
-          }));
-      }
-    }, _callee0);
-  }));
-  return _fetchRecipesList.apply(this, arguments);
-}
-function fetchRecipePage(_x4) {
-  return _fetchRecipePage.apply(this, arguments);
-}
-function _fetchRecipePage() {
-  _fetchRecipePage = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1(pageId) {
-    return _regenerator().w(function (_context1) {
-      while (1) switch (_context1.n) {
-        case 0:
-          return _context1.a(2, workerFetch("/recipes/page", {
-            method: "POST",
-            headers: workerHeaders(),
-            body: JSON.stringify({
-              page_id: pageId
-            })
-          }));
-      }
-    }, _callee1);
-  }));
-  return _fetchRecipePage.apply(this, arguments);
-}
-function fetchRecipePagesWithProgress(_x5, _x6) {
-  return _fetchRecipePagesWithProgress.apply(this, arguments);
-}
-function _fetchRecipePagesWithProgress() {
-  _fetchRecipePagesWithProgress = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee11(recipes, onProgress) {
-    var results, cursor, completed, worker, _worker, pool;
-    return _regenerator().w(function (_context11) {
-      while (1) switch (_context11.n) {
-        case 0:
-          _worker = function _worker3() {
-            _worker = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
-              var idx, r, d, _t10;
-              return _regenerator().w(function (_context10) {
-                while (1) switch (_context10.p = _context10.n) {
-                  case 0:
-                    if (!true) {
-                      _context10.n = 6;
-                      break;
-                    }
-                    idx = cursor++;
-                    if (!(idx >= recipes.length)) {
-                      _context10.n = 1;
-                      break;
-                    }
-                    return _context10.a(2);
-                  case 1:
-                    r = recipes[idx];
-                    _context10.p = 2;
-                    _context10.n = 3;
-                    return fetchRecipePage(r.id);
-                  case 3:
-                    d = _context10.v;
-                    results[idx] = _objectSpread(_objectSpread({}, r), {}, {
-                      ingredientLines: d.ingredientLines || [],
-                      warning: d.warning || null
-                    });
-                    _context10.n = 5;
-                    break;
-                  case 4:
-                    _context10.p = 4;
-                    _t10 = _context10.v;
-                    results[idx] = _objectSpread(_objectSpread({}, r), {}, {
-                      ingredientLines: [],
-                      error: _t10.message || "fetch failed"
-                    });
-                  case 5:
-                    completed++;
-                    if (onProgress) onProgress(completed);
-                    _context10.n = 0;
-                    break;
-                  case 6:
-                    return _context10.a(2);
-                }
-              }, _callee10, null, [[2, 4]]);
-            }));
-            return _worker.apply(this, arguments);
-          };
-          worker = function _worker2() {
-            return _worker.apply(this, arguments);
-          };
-          results = new Array(recipes.length);
-          cursor = 0, completed = 0;
-          pool = Array.from({
-            length: Math.min(WORKER_FETCH_CONCURRENCY, recipes.length)
-          }, function () {
-            return worker();
-          });
-          _context11.n = 1;
-          return Promise.all(pool);
-        case 1:
-          return _context11.a(2, results);
-      }
-    }, _callee11);
-  }));
-  return _fetchRecipePagesWithProgress.apply(this, arguments);
-}
-var UNICODE_FRACTIONS = {
-  "\xBC": 0.25,
-  "\xBD": 0.5,
-  "\xBE": 0.75,
+const UNICODE_FRACTIONS = {
+  "\u00BC": 0.25,
+  "\u00BD": 0.5,
+  "\u00BE": 0.75,
   "\u2153": 1 / 3,
   "\u2154": 2 / 3,
   "\u215B": 0.125
 };
-var KNOWN_UNITS = new Set(["g", "gram", "grams", "kg", "kilogram", "kilograms", "ml", "milliliter", "millilitre", "milliliters", "millilitres", "l", "liter", "litre", "liters", "litres", "tsp", "teaspoon", "teaspoons", "tbsp", "tablespoon", "tablespoons", "tbs", "cup", "cups", "oz", "ounce", "ounces", "lb", "lbs", "pound", "pounds", "pinch", "pinches", "dash", "dashes"]);
+const KNOWN_UNITS = new Set(["g", "gram", "grams", "kg", "kilogram", "kilograms", "ml", "milliliter", "millilitre", "milliliters", "millilitres", "l", "liter", "litre", "liters", "litres", "tsp", "teaspoon", "teaspoons", "tbsp", "tablespoon", "tablespoons", "tbs", "cup", "cups", "oz", "ounce", "ounces", "lb", "lbs", "pound", "pounds", "pinch", "pinches", "dash", "dashes"]);
 function normaliseUnit(token) {
-  var t = token.toLowerCase();
+  const t = token.toLowerCase();
   if (t === "gram" || t === "grams") return "g";
   if (t === "kilogram" || t === "kilograms") return "kg";
   if (t === "milliliter" || t === "millilitre" || t === "milliliters" || t === "millilitres") return "ml";
@@ -461,7 +292,7 @@ function normaliseUnit(token) {
   return t;
 }
 function stripPrepModifiers(tokens) {
-  var arr = tokens.slice(),
+  let arr = tokens.slice(),
     changed = true;
   while (changed && arr.length) {
     changed = false;
@@ -477,7 +308,7 @@ function stripPrepModifiers(tokens) {
   return arr;
 }
 function singulariseName(name) {
-  var n = name.trim();
+  const n = name.trim();
   if (n.length < 4) return n;
   if (n.endsWith("ss") || n.endsWith("us")) return n;
   if (n.endsWith("leaves")) return n.slice(0, -6) + "leaf";
@@ -487,16 +318,16 @@ function singulariseName(name) {
   return n;
 }
 function parseQuantity(s) {
-  var str = s.trim();
+  let str = s.trim();
   if (!str) return null;
-  var fc = str[0];
+  const fc = str[0];
   if (UNICODE_FRACTIONS[fc] !== undefined) return {
     amount: UNICODE_FRACTIONS[fc],
     rest: str.slice(1).trim()
   };
-  var ma = str.match(/^(\d+)\s+(\d+)\/(\d+)\b/);
+  const ma = str.match(/^(\d+)\s+(\d+)\/(\d+)\b/);
   if (ma) {
-    var w = parseInt(ma[1]),
+    const w = parseInt(ma[1]),
       n = parseInt(ma[2]),
       d = parseInt(ma[3]);
     if (d !== 0) return {
@@ -504,35 +335,35 @@ function parseQuantity(s) {
       rest: str.slice(ma[0].length).trim()
     };
   }
-  var mu = str.match(/^(\d+)\s+([\u00BC-\u00BE\u2153-\u215E])/);
+  const mu = str.match(/^(\d+)\s+([\u00BC-\u00BE\u2153-\u215E])/);
   if (mu) {
-    var _w = parseInt(mu[1]),
+    const w = parseInt(mu[1]),
       f = UNICODE_FRACTIONS[mu[2]];
     if (f !== undefined) return {
-      amount: _w + f,
+      amount: w + f,
       rest: str.slice(mu[0].length).trim()
     };
   }
-  var dr = str.match(/^(\d+(?:[.,]\d+)?)\s*[-\u2013\u2014]\s*\d+(?:[.,]\d+)?/);
+  const dr = str.match(/^(\d+(?:[.,]\d+)?)\s*[-\u2013\u2014]\s*\d+(?:[.,]\d+)?/);
   if (dr) return {
     amount: parseFloat(dr[1].replace(",", ".")),
     rest: str.slice(dr[0].length).trim()
   };
-  var wr = str.match(/^(\d+(?:[.,]\d+)?)\s+to\s+\d+(?:[.,]\d+)?/i);
+  const wr = str.match(/^(\d+(?:[.,]\d+)?)\s+to\s+\d+(?:[.,]\d+)?/i);
   if (wr) return {
     amount: parseFloat(wr[1].replace(",", ".")),
     rest: str.slice(wr[0].length).trim()
   };
-  var fr = str.match(/^(\d+)\/(\d+)\b/);
+  const fr = str.match(/^(\d+)\/(\d+)\b/);
   if (fr) {
-    var _n = parseInt(fr[1]),
-      _d = parseInt(fr[2]);
-    if (_d !== 0) return {
-      amount: _n / _d,
+    const n = parseInt(fr[1]),
+      d = parseInt(fr[2]);
+    if (d !== 0) return {
+      amount: n / d,
       rest: str.slice(fr[0].length).trim()
     };
   }
-  var nm = str.match(/^(\d+(?:[.,]\d+)?)/);
+  const nm = str.match(/^(\d+(?:[.,]\d+)?)/);
   if (nm) return {
     amount: parseFloat(nm[1].replace(",", ".")),
     rest: str.slice(nm[0].length).trim()
@@ -541,19 +372,19 @@ function parseQuantity(s) {
 }
 function parseIngredientLine(rawLine) {
   if (!rawLine || typeof rawLine !== "string") return null;
-  var line = rawLine.replace(/\s+/g, " ").trim();
+  let line = rawLine.replace(/\s+/g, " ").trim();
   if (!line) return null;
   line = line.replace(LEADING_QUALIFIERS, "").replace(/^~\s*/, "");
-  var lp = line.match(/^\(([^)]*)\)\s+/);
+  const lp = line.match(/^\(([^)]*)\)\s+/);
   if (lp) line = lp[1].trim() + " " + line.slice(lp[0].length).trim();
-  var parentheticalOverride = null;
-  var pm = line.match(/\s*\(([^)]*)\)\s*$/);
+  let parentheticalOverride = null;
+  const pm = line.match(/\s*\(([^)]*)\)\s*$/);
   if (pm) {
-    var inner = pm[1].trim(),
+    const inner = pm[1].trim(),
       iq = parseQuantity(inner);
     if (iq && iq.rest) {
-      var ut = iq.rest.split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, "");
-      var OU = new Set(["g", "gram", "grams", "kg", "ml", "l", "oz", "ounce", "ounces", "lb", "pound", "pounds"]);
+      const ut = iq.rest.split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, "");
+      const OU = new Set(["g", "gram", "grams", "kg", "ml", "l", "oz", "ounce", "ounces", "lb", "pound", "pounds"]);
       if (OU.has(ut)) parentheticalOverride = {
         amount: iq.amount,
         unit: normaliseUnit(ut)
@@ -561,18 +392,18 @@ function parseIngredientLine(rawLine) {
     }
     line = line.slice(0, pm.index).trim();
   }
-  var ac = line.match(/^(.+?[A-Za-z]),\s/);
+  const ac = line.match(/^(.+?[A-Za-z]),\s/);
   if (ac) line = ac[1].trim();
   if (!line) return null;
-  var amount,
+  let amount,
     rest,
     pcu = "";
-  var q = parseQuantity(line);
+  const q = parseQuantity(line);
   if (q) {
     amount = q.amount;
     rest = q.rest;
   } else {
-    var ft = line.split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, "");
+    const ft = line.split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, "");
     if (KNOWN_UNITS.has(ft)) {
       amount = 1;
       pcu = normaliseUnit(ft);
@@ -580,12 +411,12 @@ function parseIngredientLine(rawLine) {
     } else return null;
   }
   if (!rest) return null;
-  var tokens = rest.split(/\s+/);
+  const tokens = rest.split(/\s+/);
   if (!tokens.length) return null;
-  var unit = pcu,
+  let unit = pcu,
     nameTokens = tokens.slice();
   if (!unit) {
-    var fl = tokens[0].toLowerCase(),
+    const fl = tokens[0].toLowerCase(),
       fs = fl.replace(/[.,;:]+$/, "");
     if (KNOWN_UNITS.has(fs)) {
       unit = normaliseUnit(fs);
@@ -595,7 +426,7 @@ function parseIngredientLine(rawLine) {
   if (unit && nameTokens.length && nameTokens[0].toLowerCase() === "of") nameTokens = nameTokens.slice(1);
   if (!unit) {
     if (!nameTokens.length) return null;
-    var size = "";
+    let size = "";
     if (SIZE_ADJECTIVES.has(nameTokens[0].toLowerCase())) {
       size = nameTokens[0].toLowerCase();
       nameTokens = nameTokens.slice(1);
@@ -603,7 +434,7 @@ function parseIngredientLine(rawLine) {
     if (!nameTokens.length) return null;
     nameTokens = stripPrepModifiers(nameTokens);
     if (!nameTokens.length) return null;
-    var countNoun = "";
+    let countNoun = "";
     if (nameTokens.length >= 2 && COUNT_NOUNS.has(nameTokens[nameTokens.length - 1].toLowerCase())) {
       countNoun = nameTokens[nameTokens.length - 1].toLowerCase();
       nameTokens = nameTokens.slice(0, -1);
@@ -613,15 +444,15 @@ function parseIngredientLine(rawLine) {
       if (nameTokens.length && nameTokens[0].toLowerCase() === "of") nameTokens = nameTokens.slice(1);
     }
     if (!nameTokens.length) return null;
-    var rawName = nameTokens.join(" ").toLowerCase().trim(),
+    const rawName = nameTokens.join(" ").toLowerCase().trim(),
       singular = singulariseName(rawName);
     if (!singular) return null;
-    var weight;
+    let weight;
     if (countNoun) {
-      var lk = singulariseName(countNoun);
-      weight = TYPICAL_WEIGHT_G["".concat(singular, " ").concat(lk)] !== undefined ? TYPICAL_WEIGHT_G["".concat(singular, " ").concat(lk)] : TYPICAL_WEIGHT_G[singular];
+      const lk = singulariseName(countNoun);
+      weight = TYPICAL_WEIGHT_G[`${singular} ${lk}`] !== undefined ? TYPICAL_WEIGHT_G[`${singular} ${lk}`] : TYPICAL_WEIGHT_G[singular];
     } else if (size) {
-      weight = TYPICAL_WEIGHT_G["".concat(singular, " ").concat(size)] !== undefined ? TYPICAL_WEIGHT_G["".concat(singular, " ").concat(size)] : TYPICAL_WEIGHT_G[singular];
+      weight = TYPICAL_WEIGHT_G[`${singular} ${size}`] !== undefined ? TYPICAL_WEIGHT_G[`${singular} ${size}`] : TYPICAL_WEIGHT_G[singular];
     } else weight = TYPICAL_WEIGHT_G[singular];
     if (weight === undefined) weight = 100;
     if (parentheticalOverride) return {
@@ -636,214 +467,112 @@ function parseIngredientLine(rawLine) {
     };
   }
   nameTokens = stripPrepModifiers(nameTokens);
-  var name = nameTokens.join(" ").toLowerCase().trim();
+  const name = nameTokens.join(" ").toLowerCase().trim();
   if (!name) return null;
   if (parentheticalOverride) return {
-    name: name,
+    name,
     amount: parentheticalOverride.amount,
     unit: parentheticalOverride.unit
   };
   return {
-    name: name,
-    amount: amount,
-    unit: unit
+    name,
+    amount,
+    unit
   };
 }
-function parseIngredientsLocal(_x7) {
-  return _parseIngredientsLocal.apply(this, arguments);
+async function parseIngredientsLocal(ingredientLines) {
+  if (!ingredientLines || !ingredientLines.length) return [];
+  return ingredientLines.map(l => {
+    const p = parseIngredientLine(l);
+    return p || {
+      name: (l || "").trim().toLowerCase(),
+      amount: 0,
+      unit: ""
+    };
+  });
 }
-function _parseIngredientsLocal() {
-  _parseIngredientsLocal = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee12(ingredientLines) {
-    return _regenerator().w(function (_context12) {
-      while (1) switch (_context12.n) {
-        case 0:
-          if (!(!ingredientLines || !ingredientLines.length)) {
-            _context12.n = 1;
-            break;
-          }
-          return _context12.a(2, []);
-        case 1:
-          return _context12.a(2, ingredientLines.map(function (l) {
-            var p = parseIngredientLine(l);
-            return p || {
-              name: (l || "").trim().toLowerCase(),
-              amount: 0,
-              unit: ""
-            };
-          }));
-      }
-    }, _callee12);
-  }));
-  return _parseIngredientsLocal.apply(this, arguments);
+async function parseIngredients(ingredientLines) {
+  return parseIngredientsLocal(ingredientLines);
 }
-function parseIngredients(_x8) {
-  return _parseIngredients.apply(this, arguments);
-} // Phase 7a: local-only recipe splitter. No external calls; full privacy.
+// Phase 7a: local-only recipe splitter. No external calls; full privacy.
 // Splits pasted text into recipes on markdown headings (#/##/###) or lines
 // ending in a colon, then collects the non-blank lines that follow as
 // ingredient lines. Returns the same shape the Claude call returned:
 // [{ title, servings, source, ingredientLines }].
-function _parseIngredients() {
-  _parseIngredients = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(ingredientLines) {
-    return _regenerator().w(function (_context13) {
-      while (1) switch (_context13.n) {
-        case 0:
-          return _context13.a(2, parseIngredientsLocal(ingredientLines));
-      }
-    }, _callee13);
-  }));
-  return _parseIngredients.apply(this, arguments);
-}
 function parseServingsFromTitle(title) {
-  var m = title.match(/\((?:serves?|servings?)\s*([\d./]+)\)/i);
+  const m = title.match(/\((?:serves?|servings?)\s*([\d./]+)\)/i);
   if (m) {
-    var v = parseQuantity(m[1]);
+    const v = parseQuantity(m[1]);
     if (v && v.amount) return Math.max(1, Math.round(v.amount));
   }
-  var m2 = title.match(/(?:serves?|servings?)\s*([\d./]+)/i);
+  const m2 = title.match(/(?:serves?|servings?)\s*([\d./]+)/i);
   if (m2) {
-    var _v = parseQuantity(m2[1]);
-    if (_v && _v.amount) return Math.max(1, Math.round(_v.amount));
+    const v = parseQuantity(m2[1]);
+    if (v && v.amount) return Math.max(1, Math.round(v.amount));
   }
   return 4;
 }
-function parseRecipesFromPasteText(_x9) {
-  return _parseRecipesFromPasteText.apply(this, arguments);
-} // ── CONSTANTS ─────────────────────────────────────────────────────────────
-// AA_EAR replaced by computeAAGoals(weightKg) — per-kg spreadsheet values
-function _parseRecipesFromPasteText() {
-  _parseRecipesFromPasteText = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee14(text) {
-    var rawLines, recipes, current, isHeading, isIngredientLike, pushCurrent, _iterator5, _step5, _loop3, _ret2, lines, _t11;
-    return _regenerator().w(function (_context15) {
-      while (1) switch (_context15.p = _context15.n) {
-        case 0:
-          rawLines = (text || "").split(/\r?\n/);
-          recipes = [];
-          current = null;
-          isHeading = function isHeading(line) {
-            return /^(?:#{1,6}\s+|\s*\*\s+)/.test(line) || /:$/.test(line.trim());
-          };
-          isIngredientLike = function isIngredientLike(line) {
-            var q = parseQuantity(line.replace(/^[\u2022\-\u2013\u2014\*]\s*/, "").trim());
-            return !!q || KNOWN_UNITS.has(line.trim().split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, ""));
-          };
-          pushCurrent = function pushCurrent() {
-            if (current && current.ingredientLines.length) recipes.push(current);
-          };
-          _iterator5 = _createForOfIteratorHelper(rawLines);
-          _context15.p = 1;
-          _loop3 = /*#__PURE__*/_regenerator().m(function _loop3() {
-            var line, t, cleaned, title, sv;
-            return _regenerator().w(function (_context14) {
-              while (1) switch (_context14.n) {
-                case 0:
-                  line = _step5.value;
-                  t = line.trim();
-                  if (t) {
-                    _context14.n = 1;
-                    break;
-                  }
-                  return _context14.a(2, 0);
-                case 1:
-                  cleaned = t.replace(/^[\u2022\-\u2013\u2014\*#]\s*/, "").replace(/#+\s*$/, "").trim();
-                  if (!(isHeading(t) && (!isIngredientLike(t) || recipes.length === 0 && !(current && current.ingredientLines.length)))) {
-                    _context14.n = 3;
-                    break;
-                  }
-                  title = cleaned.replace(/:$/, "").trim();
-                  if (title) {
-                    _context14.n = 2;
-                    break;
-                  }
-                  return _context14.a(2, 0);
-                case 2:
-                  pushCurrent();
-                  current = {
-                    title: title,
-                    servings: parseServingsFromTitle(title),
-                    source: "pasted",
-                    ingredientLines: []
-                  };
-                  return _context14.a(2, 0);
-                case 3:
-                  // Standalone "serves/servings N" line before any ingredients -> servings count.
-                  sv = cleaned.match(/^(?:serves?|servings?)\s*([\d./]+)$/i);
-                  if (!(sv && current && !current.ingredientLines.length)) {
-                    _context14.n = 4;
-                    break;
-                  }
-                  current.servings = function () {
-                    var v = parseQuantity(sv[1]);
-                    return v && v.amount ? Math.max(1, Math.round(v.amount)) : current.servings;
-                  }();
-                  return _context14.a(2, 0);
-                case 4:
-                  if (!current) current = {
-                    title: "Pasted recipe",
-                    servings: 4,
-                    source: "pasted",
-                    ingredientLines: []
-                  };
-                  current.ingredientLines.push(cleaned);
-                case 5:
-                  return _context14.a(2);
-              }
-            }, _loop3);
-          });
-          _iterator5.s();
-        case 2:
-          if ((_step5 = _iterator5.n()).done) {
-            _context15.n = 5;
-            break;
-          }
-          return _context15.d(_regeneratorValues(_loop3()), 3);
-        case 3:
-          _ret2 = _context15.v;
-          if (!(_ret2 === 0)) {
-            _context15.n = 4;
-            break;
-          }
-          return _context15.a(3, 4);
-        case 4:
-          _context15.n = 2;
-          break;
-        case 5:
-          _context15.n = 7;
-          break;
-        case 6:
-          _context15.p = 6;
-          _t11 = _context15.v;
-          _iterator5.e(_t11);
-        case 7:
-          _context15.p = 7;
-          _iterator5.f();
-          return _context15.f(7);
-        case 8:
-          pushCurrent();
-          // Fallback: no recognisable structure -> treat the whole paste as one recipe.
-          if (!(!recipes.length && rawLines.some(function (l) {
-            return l && l.trim();
-          }))) {
-            _context15.n = 9;
-            break;
-          }
-          lines = rawLines.map(function (l) {
-            return l.trim();
-          }).filter(Boolean);
-          return _context15.a(2, [{
-            title: "Pasted recipe",
-            servings: 4,
-            source: "pasted",
-            ingredientLines: lines
-          }]);
-        case 9:
-          return _context15.a(2, recipes);
-      }
-    }, _callee14, null, [[1, 6, 7, 8]]);
-  }));
-  return _parseRecipesFromPasteText.apply(this, arguments);
+async function parseRecipesFromPasteText(text) {
+  const rawLines = (text || "").split(/\r?\n/);
+  const recipes = [];
+  let current = null;
+  const isHeading = line => /^(?:#{1,6}\s+|\s*\*\s+)/.test(line) || /:$/.test(line.trim());
+  const isIngredientLike = line => {
+    const q = parseQuantity(line.replace(/^[\u2022\-\u2013\u2014\*]\s*/, "").trim());
+    return !!q || KNOWN_UNITS.has(line.trim().split(/\s+/)[0].toLowerCase().replace(/[.,;:]+$/, ""));
+  };
+  const pushCurrent = () => {
+    if (current && current.ingredientLines.length) recipes.push(current);
+  };
+  for (let line of rawLines) {
+    const t = line.trim();
+    if (!t) continue;
+    const cleaned = t.replace(/^[\u2022\-\u2013\u2014\*#]\s*/, "").replace(/#+\s*$/, "").trim();
+    if (isHeading(t) && (!isIngredientLike(t) || recipes.length === 0 && !(current && current.ingredientLines.length))) {
+      const title = cleaned.replace(/:$/, "").trim();
+      if (!title) continue;
+      pushCurrent();
+      current = {
+        title,
+        servings: parseServingsFromTitle(title),
+        source: "pasted",
+        ingredientLines: []
+      };
+      continue;
+    }
+    // Standalone "serves/servings N" line before any ingredients -> servings count.
+    const sv = cleaned.match(/^(?:serves?|servings?)\s*([\d./]+)$/i);
+    if (sv && current && !current.ingredientLines.length) {
+      current.servings = (() => {
+        const v = parseQuantity(sv[1]);
+        return v && v.amount ? Math.max(1, Math.round(v.amount)) : current.servings;
+      })();
+      continue;
+    }
+    if (!current) current = {
+      title: "Pasted recipe",
+      servings: 4,
+      source: "pasted",
+      ingredientLines: []
+    };
+    current.ingredientLines.push(cleaned);
+  }
+  pushCurrent();
+  // Fallback: no recognisable structure -> treat the whole paste as one recipe.
+  if (!recipes.length && rawLines.some(l => l && l.trim())) {
+    const lines = rawLines.map(l => l.trim()).filter(Boolean);
+    return [{
+      title: "Pasted recipe",
+      servings: 4,
+      source: "pasted",
+      ingredientLines: lines
+    }];
+  }
+  return recipes;
 }
-var AA_LABELS = {
+// ── CONSTANTS ─────────────────────────────────────────────────────────────
+// AA_EAR replaced by computeAAGoals(weightKg) — per-kg spreadsheet values
+const AA_LABELS = {
   aaHis: "Histidine",
   aaIle: "Isoleucine",
   aaLeu: "Leucine",
@@ -854,8 +583,8 @@ var AA_LABELS = {
   aaTrp: "Tryptophan",
   aaVal: "Valine"
 };
-var AA_KEYS = ["aaHis", "aaIle", "aaLeu", "aaLys", "aaMet", "aaPhe", "aaThr", "aaTrp", "aaVal"];
-var NUTRIENT_META = {
+const AA_KEYS = ["aaHis", "aaIle", "aaLeu", "aaLys", "aaMet", "aaPhe", "aaThr", "aaTrp", "aaVal"];
+const NUTRIENT_META = {
   cal: {
     label: "Calories",
     unit: "kcal",
@@ -952,7 +681,7 @@ var NUTRIENT_META = {
     color: "#84CC16"
   }
 };
-var NUTRIENT_ALL_KEYS = ["cal", "pro", "carb", "fat", "fib", "iron", "calc", "zinc", "b12", "vitD", "omega3", "iod", "sel", "mag", "pot", "fol", "sod", "vitA", "vitC"];
+const NUTRIENT_ALL_KEYS = ["cal", "pro", "carb", "fat", "fib", "iron", "calc", "zinc", "b12", "vitD", "omega3", "iod", "sel", "mag", "pot", "fol", "sod", "vitA", "vitC"];
 
 // ── Goal computation (spreadsheet formulas, May 2026) ───────────────────
 // Source: Nutrient_Tracking_Logic_v1.xlsx
@@ -961,25 +690,25 @@ var NUTRIENT_ALL_KEYS = ["cal", "pro", "carb", "fat", "fib", "iron", "calc", "zi
 // Vegan iron: RDA × 1.8 (non-heme absorption). Vegan zinc: RDA × 1.5 (phytate inhibition).
 // Fibre: 14g per 1000 kcal TDEE.
 function computeGoals(profile) {
-  var wt = parseFloat(profile === null || profile === void 0 ? void 0 : profile.weightKg) || 70;
-  var ht = parseFloat(profile === null || profile === void 0 ? void 0 : profile.heightCm) || 170;
-  var age = parseFloat(profile === null || profile === void 0 ? void 0 : profile.age) || 30;
-  var male = ((profile === null || profile === void 0 ? void 0 : profile.sex) || "Male") !== "Female";
+  const wt = parseFloat(profile?.weightKg) || 70;
+  const ht = parseFloat(profile?.heightCm) || 170;
+  const age = parseFloat(profile?.age) || 30;
+  const male = (profile?.sex || "Male") !== "Female";
   // Mifflin-St Jeor BMR
-  var bmr = 10 * wt + 6.25 * ht - 5 * age + (male ? 5 : -161);
+  const bmr = 10 * wt + 6.25 * ht - 5 * age + (male ? 5 : -161);
   // TDEE: BMR × 1.1 (TEF/NEAT); Active_Kcal added dynamically via effectiveGoals
-  var tdee = Math.round(bmr * 1.1);
-  var pro = Math.round(wt * 1.0); // 1g/kg base
-  var fat = Math.round(tdee * 0.25 / 9); // 25% TDEE
-  var carb = Math.round((tdee - pro * 4 - fat * 9) / 4); // residual
-  var fib = Math.round(tdee / 1000 * 14); // 14g/1000kcal
+  const tdee = Math.round(bmr * 1.1);
+  const pro = Math.round(wt * 1.0); // 1g/kg base
+  const fat = Math.round(tdee * 0.25 / 9); // 25% TDEE
+  const carb = Math.round((tdee - pro * 4 - fat * 9) / 4); // residual
+  const fib = Math.round(tdee / 1000 * 14); // 14g/1000kcal
   return {
     cal: tdee,
-    pro: pro,
+    pro,
     carb: Math.max(carb, 50),
     // floor to avoid negative on high-fat profiles
-    fat: fat,
-    fib: fib,
+    fat,
+    fib,
     // Vegan-adjusted micros (spreadsheet values)
     iron: male ? 14.4 : 32.4,
     // 8mg/18mg × 1.8
@@ -1003,7 +732,7 @@ function computeGoals(profile) {
 // Per-kg AA targets from spreadsheet (mg/kg → g for consistency with food DB)
 // Met+Cys and Phe+Tyr are combined pools; mapped to aaMet and aaPhe keys respectively.
 function computeAAGoals(weightKg) {
-  var wt = parseFloat(weightKg) || 70;
+  const wt = parseFloat(weightKg) || 70;
   return {
     aaHis: 10 * wt / 1000,
     aaIle: 20 * wt / 1000,
@@ -1018,20 +747,20 @@ function computeAAGoals(weightKg) {
     aaVal: 26 * wt / 1000
   };
 }
-var DEFAULT_GOALS = computeGoals({});
-var DEFAULT_PROFILE = {
+const DEFAULT_GOALS = computeGoals({});
+const DEFAULT_PROFILE = {
   name: "",
   weightKg: "",
   heightCm: "",
   age: "",
   sex: ""
 };
-var DEFAULT_EX_RATIO = {
+const DEFAULT_EX_RATIO = {
   carb: 60,
   fat: 20,
   pro: 20
 };
-var DEFAULT_SUPPLEMENT_STACKS = [{
+const DEFAULT_SUPPLEMENT_STACKS = [{
   id: "stack_am",
   name: "AM",
   items: []
@@ -1040,7 +769,7 @@ var DEFAULT_SUPPLEMENT_STACKS = [{
   name: "PM",
   items: []
 }];
-var EXERCISE_ACTIVITIES = [{
+const EXERCISE_ACTIVITIES = [{
   id: "cycling_light",
   label: "Cycling",
   intensity: "Light",
@@ -1081,21 +810,136 @@ var EXERCISE_ACTIVITIES = [{
   intensity: "Hard",
   met: 12.0
 }];
-var MACROS = ["cal", "pro", "carb", "fat", "fib"];
-var MICROS = ["iron", "calc", "zinc", "b12", "vitD", "omega3", "iod", "sel", "mag", "pot", "fol", "sod", "vitA", "vitC"];
-var MEALS = ["Breakfast", "Lunch", "Dinner", "Snack"];
-var FIB_SOL_COLOR = "#8B5CF6";
-var FIB_INSOL_COLOR = "#94A3B8";
-var FAT_SAT_COLOR = "#EF4444";
-var FAT_MUFA_COLOR = "#F97316";
-var FAT_PUFA_COLOR = "#06B6D4";
-var dateKey = function dateKey(d) {
-  return d.toISOString().slice(0, 10);
+const MACROS = ["cal", "pro", "carb", "fat", "fib"];
+const MICROS = ["iron", "calc", "zinc", "b12", "vitD", "omega3", "iod", "sel", "mag", "pot", "fol", "sod", "vitA", "vitC"];
+const MEALS = ["Breakfast", "Lunch", "Dinner", "Snack"];
+
+// ── Phase 11a: Water & Alcohol tracking ────────────────────────────────
+// Alcohol calorie formula: volume_ml × ABV% × 7.89 kcal per g of alcohol.
+// Brief specifies volume × abv% × 7.89 treating ABV as a fraction; ABV is entered
+// as a percentage (e.g. 5) so we divide by 100 before applying the factor.
+const ALCOHOL_KCAL_FACTOR = 7.89;
+const alcoholCalories = (volumeMl, abvPercent) => {
+  const v = parseFloat(volumeMl) || 0;
+  const a = parseFloat(abvPercent) || 0;
+  return Math.round(v * (a / 100) * ALCOHOL_KCAL_FACTOR * 10) / 10;
 };
-var today = function today() {
-  return dateKey(new Date());
+// Drink categories with default ABV (brief 11a: beer 5%, wine 12%, spirits 40%).
+const ALCOHOL_CATEGORIES = [{
+  id: "beer",
+  label: "Beer",
+  abv: 5
+}, {
+  id: "wine",
+  label: "Wine",
+  abv: 12
+}, {
+  id: "spirits",
+  label: "Spirits",
+  abv: 40
+}, {
+  id: "cider",
+  label: "Cider",
+  abv: 5
+}, {
+  id: "cocktail",
+  label: "Cocktail",
+  abv: 15
+}];
+const WATER_UNITS = ["ml", "glass", "bottle"];
+const WATER_UNIT_TO_ML = {
+  ml: 1,
+  glass: 250,
+  bottle: 500
 };
-var STORAGE_KEYS = {
+const waterAmountMl = (amount, unit) => Math.round((parseFloat(amount) || 0) * (WATER_UNIT_TO_ML[unit || "ml"] ?? 1));
+
+// ── Phase 11b: Traffic-light system ───────────────────────────────
+// Green < 100% of target, Yellow 100–120%, Red > 120% (brief 11b).
+const TRAFFIC_GREEN_PCT = 100;
+const TRAFFIC_RED_PCT = 120;
+const TRAFFIC_COLORS = {
+  green: "#22c55e",
+  yellow: "#eab308",
+  red: "#ef4444"
+};
+const trafficLevel = pct => pct > TRAFFIC_RED_PCT ? "red" : pct >= TRAFFIC_GREEN_PCT ? "yellow" : "green";
+const trafficColor = pct => TRAFFIC_COLORS[trafficLevel(pct)];
+// Short explanation shown by the info button per nutrient (brief 11b).
+const NUTRIENT_EXPLANATIONS = {
+  cal: "Exceeding calorie targets regularly leads to unwanted weight gain. For endurance cycling, match intake to your ride intensity.",
+  pro: "Too little protein impairs recovery; excess is generally unused. Aim for the target range around long rides.",
+  carb: "Carbs fuel riding. Going under target limits endurance; going far over can displace other nutrients.",
+  fat: "Fat is essential but calorie-dense. High excess can slow recovery and shift the macro balance.",
+  fib: "Fibre supports gut health. Sudden large excesses during a ride can cause GI discomfort.",
+  iron: "Low iron reduces oxygen transport and endurance. Excess iron is hard to excrete and can be toxic.",
+  calc: "Calcium supports bone strength for riding. Chronic excess can impair other mineral absorption.",
+  zinc: "Zinc supports immunity and recovery. Excess can interfere with copper and iron absorption.",
+  b12: "B12 is critical for vegans and endurance. Very high intakes are usually harmless but unneeded.",
+  vitD: "Vitamin D supports bone and immune function. Excess over long periods can cause toxicity.",
+  omega3: "Omega-3 supports recovery and inflammation control. Very high doses can thin the blood.",
+  iod: "Iodine supports thyroid function central to metabolism. Both low and high intake disrupt it.",
+  sel: "Selenium is an antioxidant. Excess over time can cause selenosis (hair/nail changes).",
+  mag: "Magnesium supports muscle function and sleep. Large excess can cause GI upset.",
+  pot: "Potassium balances fluids and cramping. Very high intake can affect heart rhythm.",
+  fol: "Folate supports blood and cell repair. Excess is generally excreted but masks B12 deficiency signs.",
+  sod: "Sodium is lost in sweat during rides. Chronic excess raises blood pressure in sensitive people.",
+  vitA: "Vitamin A supports vision and immunity. Excess (retinol form) can be toxic over time.",
+  vitC: "Vitamin C supports immunity and iron absorption. Excess is excreted but can cause GI upset."
+};
+// ── Phase 11b: WHO Recommended and Optimal goal presets ────────
+// WHO base RDAs (population averages). Optimal scales RDAs for active endurance
+// athletes (higher protein, antioxidant vitamins, electrolytes).
+const WHO_GOALS = {
+  cal: 2000,
+  pro: 50,
+  carb: 260,
+  fat: 70,
+  fib: 25,
+  iron: 14,
+  calc: 1000,
+  zinc: 11,
+  b12: 2.4,
+  vitD: 15,
+  omega3: 1.6,
+  iod: 150,
+  sel: 55,
+  mag: 400,
+  pot: 3510,
+  fol: 400,
+  sod: 2000,
+  vitA: 900,
+  vitC: 90
+};
+const OPTIMAL_GOALS = {
+  cal: 2800,
+  pro: 90,
+  carb: 400,
+  fat: 85,
+  fib: 38,
+  iron: 18,
+  calc: 1200,
+  zinc: 15,
+  b12: 3.0,
+  vitD: 25,
+  omega3: 3.0,
+  iod: 200,
+  sel: 75,
+  mag: 500,
+  pot: 4000,
+  fol: 600,
+  sod: 2300,
+  vitA: 1000,
+  vitC: 120
+};
+const FIB_SOL_COLOR = "#8B5CF6";
+const FIB_INSOL_COLOR = "#94A3B8";
+const FAT_SAT_COLOR = "#EF4444";
+const FAT_MUFA_COLOR = "#F97316";
+const FAT_PUFA_COLOR = "#06B6D4";
+const dateKey = d => d.toISOString().slice(0, 10);
+const today = () => dateKey(new Date());
+const STORAGE_KEYS = {
   logs: "nt-logs",
   goals: "nt-goals",
   goalOverrides: "nt-goal-overrides",
@@ -1118,8 +962,8 @@ var STORAGE_KEYS = {
 
 // ── STORAGE HEALTH THRESHOLDS (Phase 6b) ──────────────────────────────────
 // Named constants so band adjustment is a one-line change.
-var STORAGE_WARN_PCT = 70; // yellow above this
-var STORAGE_CRIT_PCT = 90; // red above this
+const STORAGE_WARN_PCT = 70; // yellow above this
+const STORAGE_CRIT_PCT = 90; // red above this
 
 // ── CENTRALIZED ERROR HANDLING (Phase 8 / A2 / R8) ────────────────────────────
 // Translates technical error messages (worker_502: notion_unreachable,
@@ -1132,25 +976,25 @@ var STORAGE_CRIT_PCT = 90; // red above this
 // just the message string for inline use. Both also log the raw error to the
 // local-only nt-error-logs ring buffer (capped, never transmitted) for
 // post-mortem analysis. Debug messages (prefixed with [debug]) are NOT logged.
-var ERROR_LOG_CAP = 50;
+const ERROR_LOG_CAP = 50;
 function pushErrorLog(entry) {
   try {
-    var raw = localStorage.getItem(STORAGE_KEYS.errorLogs);
-    var arr = raw ? JSON.parse(raw) : [];
+    const raw = localStorage.getItem(STORAGE_KEYS.errorLogs);
+    const arr = raw ? JSON.parse(raw) : [];
     if (!Array.isArray(arr)) return;
     arr.push(entry);
     while (arr.length > ERROR_LOG_CAP) arr.shift();
     localStorage.setItem(STORAGE_KEYS.errorLogs, JSON.stringify(arr));
-  } catch (_unused) {/* logging must never throw into the UI */}
+  } catch {/* logging must never throw into the UI */}
 }
 function mapError(err, context) {
-  var raw = err && (err.message || String(err)) || "";
-  var ctx = context || "unknown";
-  var ts = new Date().toISOString();
+  const raw = err && (err.message || String(err)) || "";
+  const ctx = context || "unknown";
+  const ts = new Date().toISOString();
   // Don't log debug-injected entries (Phase 6b corruption tests).
-  var isDebug = /\[debug\]/i.test(raw);
-  var type = "unknown";
-  var message = "Something went wrong. Please try again.";
+  const isDebug = /\[debug\]/i.test(raw);
+  let type = "unknown";
+  let message = "Something went wrong. Please try again.";
 
   // fooddb is checked BEFORE network: "foods.json fetch failed: 404" contains
   // "fetch failed", which would otherwise mis-classify a DB load failure as a
@@ -1182,15 +1026,15 @@ function mapError(err, context) {
   }
   if (!isDebug) {
     pushErrorLog({
-      ts: ts,
+      ts,
       context: ctx,
-      type: type,
+      type,
       raw: raw.slice(0, 500)
     });
   }
   return {
-    type: type,
-    message: message
+    type,
+    message
   };
 }
 function friendlyError(err, context) {
@@ -1207,76 +1051,48 @@ function friendlyError(err, context) {
 // Phase 6b: loadData now returns { value, parseError: true } when a key exists
 // but contains invalid JSON, so the load useEffect can surface it to the
 // validation banner rather than silently swallowing it.
-var PARSE_ERROR = Symbol("PARSE_ERROR");
-function loadData(_x0, _x1) {
-  return _loadData.apply(this, arguments);
+const PARSE_ERROR = Symbol("PARSE_ERROR");
+async function loadData(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw === null) return fallback;
+    return JSON.parse(raw);
+  } catch {
+    console.warn("[NutriTrack] JSON parse failure on key:", key);
+    return PARSE_ERROR;
+  }
 }
-function _loadData() {
-  _loadData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15(key, fallback) {
-    var raw, _t12;
-    return _regenerator().w(function (_context16) {
-      while (1) switch (_context16.p = _context16.n) {
-        case 0:
-          _context16.p = 0;
-          raw = localStorage.getItem(key);
-          if (!(raw === null)) {
-            _context16.n = 1;
-            break;
-          }
-          return _context16.a(2, fallback);
-        case 1:
-          return _context16.a(2, JSON.parse(raw));
-        case 2:
-          _context16.p = 2;
-          _t12 = _context16.v;
-          console.warn("[NutriTrack] JSON parse failure on key:", key);
-          return _context16.a(2, PARSE_ERROR);
-      }
-    }, _callee15, null, [[0, 2]]);
-  }));
-  return _loadData.apply(this, arguments);
+async function saveData(key, val) {
+  try {
+    localStorage.setItem(key, JSON.stringify(val));
+  } catch (e) {
+    console.error("saveData failed:", key, e);
+  }
 }
-function saveData(_x10, _x11) {
-  return _saveData.apply(this, arguments);
-} // ── STORAGE VALIDATION (Phase 6b) ─────────────────────────────────────────
+
+// ── STORAGE VALIDATION (Phase 6b) ─────────────────────────────────────────
 // Shape-only; intentionally not deep. Returns array of failure strings (empty = ok).
-function _saveData() {
-  _saveData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16(key, val) {
-    return _regenerator().w(function (_context17) {
-      while (1) switch (_context17.n) {
-        case 0:
-          try {
-            localStorage.setItem(key, JSON.stringify(val));
-          } catch (e) {
-            console.error("saveData failed:", key, e);
-          }
-        case 1:
-          return _context17.a(2);
-      }
-    }, _callee16);
-  }));
-  return _saveData.apply(this, arguments);
-}
-function validateStorageShapes(_ref) {
-  var logs = _ref.logs,
-    recipes = _ref.recipes,
-    customFoods = _ref.customFoods,
-    profile = _ref.profile,
-    exRatio = _ref.exRatio,
-    supplementStacks = _ref.supplementStacks,
-    recents = _ref.recents;
-  var failures = [];
-  if (logs == null || _typeof(logs) !== "object" || Array.isArray(logs)) failures.push("logs: expected object");
-  if (!Array.isArray(recipes)) failures.push("recipes: expected array");else recipes.forEach(function (r, i) {
-    if (!r || !r.id || !r.name || !Array.isArray(r.ingredients)) failures.push("recipes[".concat(i, "]: missing id/name/ingredients"));
+function validateStorageShapes({
+  logs,
+  recipes,
+  customFoods,
+  profile,
+  exRatio,
+  supplementStacks,
+  recents
+}) {
+  const failures = [];
+  if (logs == null || typeof logs !== "object" || Array.isArray(logs)) failures.push("logs: expected object");
+  if (!Array.isArray(recipes)) failures.push("recipes: expected array");else recipes.forEach((r, i) => {
+    if (!r || !r.id || !r.name || !Array.isArray(r.ingredients)) failures.push(`recipes[${i}]: missing id/name/ingredients`);
   });
   if (!Array.isArray(customFoods)) failures.push("customFoods: expected array");
-  if (!profile || _typeof(profile) !== "object" || Array.isArray(profile)) failures.push("profile: expected object");
-  if (!exRatio || _typeof(exRatio) !== "object") {
+  if (!profile || typeof profile !== "object" || Array.isArray(profile)) failures.push("profile: expected object");
+  if (!exRatio || typeof exRatio !== "object") {
     failures.push("exRatio: expected object");
   } else {
-    var s = (Number(exRatio.carb) || 0) + (Number(exRatio.fat) || 0) + (Number(exRatio.pro) || 0);
-    if (Math.abs(s - 100) > 1) failures.push("exRatio: values sum to ".concat(s, ", expected 100"));
+    const s = (Number(exRatio.carb) || 0) + (Number(exRatio.fat) || 0) + (Number(exRatio.pro) || 0);
+    if (Math.abs(s - 100) > 1) failures.push(`exRatio: values sum to ${s}, expected 100`);
   }
   if (supplementStacks != null && !Array.isArray(supplementStacks)) failures.push("supplementStacks: expected array");
   if (recents != null && !Array.isArray(recents)) failures.push("recents: expected array");
@@ -1289,80 +1105,64 @@ function validateStorageShapes(_ref) {
 // all keys we own directly — accurate and synchronous.
 function measureLocalStorageBytes() {
   try {
-    var total = 0;
-    var ownKeys = Object.values(STORAGE_KEYS);
-    for (var _i = 0, _ownKeys = ownKeys; _i < _ownKeys.length; _i++) {
-      var key = _ownKeys[_i];
-      var val = localStorage.getItem(key);
+    let total = 0;
+    const ownKeys = Object.values(STORAGE_KEYS);
+    for (const key of ownKeys) {
+      const val = localStorage.getItem(key);
       if (val !== null) total += key.length + val.length; // UTF-16 chars ≈ bytes for ASCII JSON
     }
     return total; // bytes
-  } catch (_unused2) {
+  } catch {
     return null;
   }
 }
 function calcRecipeNutritionPerServing(ingredients, servings, allFoods) {
-  var t = {};
-  Object.keys(NUTRIENT_META).forEach(function (k) {
-    return t[k] = 0;
-  });
-  ingredients.forEach(function (ing) {
-    var food = allFoods.find(function (f) {
-      return f.id === ing.foodId;
-    });
+  const t = {};
+  Object.keys(NUTRIENT_META).forEach(k => t[k] = 0);
+  ingredients.forEach(ing => {
+    const food = allFoods.find(f => f.id === ing.foodId);
     if (!food) return;
-    var m = ing.amount_g / 100;
-    Object.keys(NUTRIENT_META).forEach(function (k) {
-      var _food$k;
-      t[k] += ((_food$k = food[k]) !== null && _food$k !== void 0 ? _food$k : 0) * m;
+    const m = ing.amount_g / 100;
+    Object.keys(NUTRIENT_META).forEach(k => {
+      t[k] += (food[k] ?? 0) * m;
     });
   });
-  var s = Math.max(parseFloat(servings) || 1, 0.1);
-  var ps = {};
-  Object.keys(t).forEach(function (k) {
-    return ps[k] = t[k] / s;
-  });
+  const s = Math.max(parseFloat(servings) || 1, 0.1);
+  const ps = {};
+  Object.keys(t).forEach(k => ps[k] = t[k] / s);
   return ps;
 }
 function computeEntryNutrition(derivedIngredients, allFoods) {
-  var t = {};
-  Object.keys(NUTRIENT_META).forEach(function (k) {
-    return t[k] = 0;
-  });
-  (derivedIngredients || []).forEach(function (ing) {
-    var m = ing.amount_g / 100;
+  const t = {};
+  Object.keys(NUTRIENT_META).forEach(k => t[k] = 0);
+  (derivedIngredients || []).forEach(ing => {
+    const m = ing.amount_g / 100;
     if (ing.snapshot) {
-      Object.keys(NUTRIENT_META).forEach(function (k) {
-        var _ing$snapshot$k;
-        t[k] += ((_ing$snapshot$k = ing.snapshot[k]) !== null && _ing$snapshot$k !== void 0 ? _ing$snapshot$k : 0) * m;
+      Object.keys(NUTRIENT_META).forEach(k => {
+        t[k] += (ing.snapshot[k] ?? 0) * m;
       });
     } else {
-      var food = allFoods.find(function (f) {
-        return f.id === ing.foodId;
-      });
+      const food = allFoods.find(f => f.id === ing.foodId);
       if (!food) return;
-      Object.keys(NUTRIENT_META).forEach(function (k) {
-        var _food$k2;
-        t[k] += ((_food$k2 = food[k]) !== null && _food$k2 !== void 0 ? _food$k2 : 0) * m;
+      Object.keys(NUTRIENT_META).forEach(k => {
+        t[k] += (food[k] ?? 0) * m;
       });
     }
   });
   return t;
 }
 // Phase 5.8 — nutrient-value snapshot helpers
-var FOOD_SUBTYPE_KEYS = ["fibSol", "fibInsol", "fatSat", "fatMufa", "fatPufa", "aaHis", "aaIle", "aaLeu", "aaLys", "aaMet", "aaPhe", "aaThr", "aaTrp", "aaVal"];
+const FOOD_SUBTYPE_KEYS = ["fibSol", "fibInsol", "fatSat", "fatMufa", "fatPufa", "aaHis", "aaIle", "aaLeu", "aaLys", "aaMet", "aaPhe", "aaThr", "aaTrp", "aaVal"];
 function buildFoodSnapshot(food) {
-  var snap = {};
-  [].concat(_toConsumableArray(Object.keys(NUTRIENT_META)), FOOD_SUBTYPE_KEYS).forEach(function (k) {
+  const snap = {};
+  [...Object.keys(NUTRIENT_META), ...FOOD_SUBTYPE_KEYS].forEach(k => {
     if (food[k] !== undefined) snap[k] = food[k];
   });
   return snap;
 }
 function suppItemSummary(items) {
   if (!items || !items.length) return "No items";
-  return items.slice(0, 3).map(function (i) {
-    return "".concat(i.name, " ").concat(i.dose_amount).concat(i.dose_unit);
-  }).join(", ") + (items.length > 3 ? " +".concat(items.length - 3, " more") : "");
+  return items.slice(0, 3).map(i => `${i.name} ${i.dose_amount}${i.dose_unit}`).join(", ") + (items.length > 3 ? ` +${items.length - 3} more` : "");
 }
 
 // ── Phase 9 (A8) — Custom food promotion to foods.json schema v1 ────────
@@ -1373,39 +1173,27 @@ function suppItemSummary(items) {
 // exported patch — missing values are explicitly `null`, never omitted, so the
 // patch merges cleanly without silent schema drift.
 // Order mirrors mapFoodRecord() / foods.json column order for readability.
-var CUSTOM_FOOD_TO_DB = [["cal", "calories"], ["pro", "protein"], ["carb", "carbohydrates"], ["fat", "fat"], ["fib", "fibre"], ["fibSol", "fibre_soluble"], ["fibInsol", "fibre_insoluble"], ["fatSat", "fat_saturated"], ["fatMufa", "fat_mufa"], ["fatPufa", "fat_pufa"], ["aaHis", "histidine"], ["aaIle", "isoleucine"], ["aaLeu", "leucine"], ["aaLys", "lysine"], ["aaMet", "methionine"], ["aaPhe", "phenylalanine"], ["aaThr", "threonine"], ["aaTrp", "tryptophan"], ["aaVal", "valine"], ["iron", "iron"], ["calc", "calcium"], ["zinc", "zinc"], ["b12", "b12"], ["vitD", "vitamin_d"], ["omega3", "omega3"], ["iod", "iodine"], ["sel", "selenium"], ["mag", "magnesium"], ["pot", "potassium"], ["fol", "folate"], ["sod", "sodium"], ["vitA", "vitamin_a"], ["vitC", "vitamin_c"]];
+const CUSTOM_FOOD_TO_DB = [["cal", "calories"], ["pro", "protein"], ["carb", "carbohydrates"], ["fat", "fat"], ["fib", "fibre"], ["fibSol", "fibre_soluble"], ["fibInsol", "fibre_insoluble"], ["fatSat", "fat_saturated"], ["fatMufa", "fat_mufa"], ["fatPufa", "fat_pufa"], ["aaHis", "histidine"], ["aaIle", "isoleucine"], ["aaLeu", "leucine"], ["aaLys", "lysine"], ["aaMet", "methionine"], ["aaPhe", "phenylalanine"], ["aaThr", "threonine"], ["aaTrp", "tryptophan"], ["aaVal", "valine"], ["iron", "iron"], ["calc", "calcium"], ["zinc", "zinc"], ["b12", "b12"], ["vitD", "vitamin_d"], ["omega3", "omega3"], ["iod", "iodine"], ["sel", "selenium"], ["mag", "magnesium"], ["pot", "potassium"], ["fol", "folate"], ["sod", "sodium"], ["vitA", "vitamin_a"], ["vitC", "vitamin_c"]];
 // Numeric nutrient keys: stored as numbers or null (unknown). Empty/missing
 // string inputs from the form are normalized to 0 at save time, but legacy
 // custom foods (pre-Phase-9) only carry the 19 NUTRIENT_META keys, so the
 // 14 subtype keys are absent and must be normalized to null on migration.
-var CUSTOM_NUMERIC_KEYS = [].concat(_toConsumableArray(Object.keys(NUTRIENT_META)), FOOD_SUBTYPE_KEYS);
+const CUSTOM_NUMERIC_KEYS = [...Object.keys(NUTRIENT_META), ...FOOD_SUBTYPE_KEYS];
 
 // Convert one internal custom food record to foods.json schema v1. All
 // nutrient fields are present (value or null). Non-nutrient metadata
 // (id/name/source/fdc_id/servings) is filled with sensible defaults.
 function customFoodToDbRecord(food) {
-  var _food$fdc_id;
-  var record = {
+  const record = {
     id: (food.id || "").replace(/^custom_/, "custom_"),
     name: food.name || "Unnamed custom food",
     category: food.cat || "Other",
     source: food.source || "user",
-    fdc_id: (_food$fdc_id = food.fdc_id) !== null && _food$fdc_id !== void 0 ? _food$fdc_id : null
+    fdc_id: food.fdc_id ?? null
   };
-  var _iterator = _createForOfIteratorHelper(CUSTOM_FOOD_TO_DB),
-    _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = _slicedToArray(_step.value, 2),
-        shortKey = _step$value[0],
-        longKey = _step$value[1];
-      var v = food[shortKey];
-      if (typeof v === "number" && !Number.isNaN(v)) record[longKey] = v;else record[longKey] = null;
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
+  for (const [shortKey, longKey] of CUSTOM_FOOD_TO_DB) {
+    const v = food[shortKey];
+    if (typeof v === "number" && !Number.isNaN(v)) record[longKey] = v;else record[longKey] = null;
   }
   record.servings = Array.isArray(food.servings) && food.servings.length ? food.servings : null;
   return record;
@@ -1417,14 +1205,12 @@ function customFoodToDbRecord(food) {
 // the maintainer makes first — it appends at the end of the foods array.
 // The envelope carries schema_version 1 to match the deployed foods.json.
 function buildCustomFoodPatch(foods /* internal custom-food records */) {
-  var ops = [];
-  var records = (foods || []).filter(function (f) {
-    return f && !f.deleted;
-  }).map(customFoodToDbRecord);
-  records.forEach(function (rec, i) {
+  const ops = [];
+  const records = (foods || []).filter(f => f && !f.deleted).map(customFoodToDbRecord);
+  records.forEach((rec, i) => {
     ops.push({
       op: "add",
-      path: "/foods/-",
+      path: `/foods/-`,
       value: rec
     });
   });
@@ -1445,60 +1231,50 @@ function migrateCustomFoods(rawFoods) {
     foods: [],
     changed: false
   };
-  var changed = false;
-  var foods = rawFoods.map(function (f) {
-    if (!f || _typeof(f) !== "object") {
+  let changed = false;
+  const foods = rawFoods.map(f => {
+    if (!f || typeof f !== "object") {
       changed = true;
       return null;
     }
-    var out = _objectSpread({}, f);
-    var _iterator2 = _createForOfIteratorHelper(CUSTOM_NUMERIC_KEYS),
-      _step2;
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var k = _step2.value;
-        if (out[k] === undefined) {
-          out[k] = null;
-          changed = true;
-        } else if (out[k] === "" || typeof out[k] === "string" && out[k].trim() === "") {
-          out[k] = null;
-          changed = true;
-        }
+    const out = {
+      ...f
+    };
+    for (const k of CUSTOM_NUMERIC_KEYS) {
+      if (out[k] === undefined) {
+        out[k] = null;
+        changed = true;
+      } else if (out[k] === "" || typeof out[k] === "string" && out[k].trim() === "") {
+        out[k] = null;
+        changed = true;
       }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
     }
     return out;
   }).filter(Boolean);
   return {
-    foods: foods,
-    changed: changed
+    foods,
+    changed
   };
 }
 // ── COMPONENTS ────────────────────────────────────────────────────────────
-function Ring(_ref2) {
-  var value = _ref2.value,
-    max = _ref2.max,
-    _ref2$size = _ref2.size,
-    size = _ref2$size === void 0 ? 52 : _ref2$size,
-    _ref2$stroke = _ref2.stroke,
-    stroke = _ref2$stroke === void 0 ? 5 : _ref2$stroke,
-    color = _ref2.color,
-    _ref2$nullArc = _ref2.nullArc,
-    nullArc = _ref2$nullArc === void 0 ? 0 : _ref2$nullArc,
-    _ref2$simplified = _ref2.simplified,
-    simplified = _ref2$simplified === void 0 ? false : _ref2$simplified,
-    children = _ref2.children;
-  var r = (size - stroke) / 2,
+function Ring({
+  value,
+  max,
+  size = 52,
+  stroke = 5,
+  color,
+  nullArc = 0,
+  simplified = false,
+  children
+}) {
+  const r = (size - stroke) / 2,
     circ = 2 * Math.PI * r,
     pct = Math.min(value / (max || 1), 1);
   // nullArc: fraction of the full circle representing estimated unknown contribution
   // Only rendered when: nullArc > 0, confirmed arc < 1 (not over goal), not simplified mode
-  var showNull = !simplified && nullArc > 0 && pct < 1;
-  var nullStart = pct; // null arc starts right where confirmed arc ends
-  var nullLen = Math.min(nullArc, 1 - pct); // clamp so it doesn't overshoot
+  const showNull = !simplified && nullArc > 0 && pct < 1;
+  const nullStart = pct; // null arc starts right where confirmed arc ends
+  const nullLen = Math.min(nullArc, 1 - pct); // clamp so it doesn't overshoot
   return /*#__PURE__*/React.createElement("svg", {
     width: size,
     height: size,
@@ -1522,7 +1298,7 @@ function Ring(_ref2) {
     strokeDasharray: circ,
     strokeDashoffset: circ * (1 - pct),
     strokeLinecap: "round",
-    transform: "rotate(-90 ".concat(size / 2, " ").concat(size / 2, ")"),
+    transform: `rotate(-90 ${size / 2} ${size / 2})`,
     style: {
       transition: "stroke-dashoffset 0.5s ease"
     }
@@ -1533,31 +1309,29 @@ function Ring(_ref2) {
     fill: "none",
     stroke: "#64748b",
     strokeWidth: stroke,
-    strokeDasharray: "".concat(circ * nullLen, " ").concat(circ * (1 - nullLen)),
+    strokeDasharray: `${circ * nullLen} ${circ * (1 - nullLen)}`,
     strokeDashoffset: circ * (1 - nullStart),
     strokeLinecap: "butt",
-    transform: "rotate(-90 ".concat(size / 2, " ").concat(size / 2, ")"),
+    transform: `rotate(-90 ${size / 2} ${size / 2})`,
     opacity: 0.6
   }), children);
 }
-function SwipeableEntry(_ref3) {
-  var children = _ref3.children,
-    onDelete = _ref3.onDelete;
-  var _useState = useState(0),
-    _useState2 = _slicedToArray(_useState, 2),
-    offsetX = _useState2[0],
-    setOffsetX = _useState2[1];
-  var startX = useRef(null);
-  var DEL = 60;
-  var onTouchStart = function onTouchStart(e) {
+function SwipeableEntry({
+  children,
+  onDelete
+}) {
+  const [offsetX, setOffsetX] = useState(0);
+  const startX = useRef(null);
+  const DEL = 60;
+  const onTouchStart = e => {
     startX.current = e.touches[0].clientX;
   };
-  var onTouchMove = function onTouchMove(e) {
+  const onTouchMove = e => {
     if (startX.current === null) return;
-    var dx = e.touches[0].clientX - startX.current;
+    const dx = e.touches[0].clientX - startX.current;
     if (dx < 0) setOffsetX(Math.max(dx, -DEL - 20));
   };
-  var onTouchEnd = function onTouchEnd() {
+  const onTouchEnd = () => {
     setOffsetX(offsetX < -DEL ? -DEL : 0);
     startX.current = null;
   };
@@ -1579,7 +1353,7 @@ function SwipeableEntry(_ref3) {
       justifyContent: "center",
       borderRadius: "0 8px 8px 0"
     },
-    onClick: function onClick() {
+    onClick: () => {
       setOffsetX(0);
       onDelete();
     }
@@ -1589,9 +1363,9 @@ function SwipeableEntry(_ref3) {
       fontSize: 18,
       fontWeight: 700
     }
-  }, "\uD83D\uDDD1")), /*#__PURE__*/React.createElement("div", {
+  }, "🗑")), /*#__PURE__*/React.createElement("div", {
     style: {
-      transform: "translateX(".concat(offsetX, "px)"),
+      transform: `translateX(${offsetX}px)`,
       transition: startX.current ? "none" : "transform 0.2s ease",
       background: "#0a0f1a",
       position: "relative",
@@ -1605,659 +1379,344 @@ function SwipeableEntry(_ref3) {
 // ── MAIN APP ──────────────────────────────────────────────────────────────
 function NutriTrack() {
   // ── FOOD DB (async-loaded from /NutriTrack/foods.json) ────────────────
-  var _useState3 = useState([]),
-    _useState4 = _slicedToArray(_useState3, 2),
-    foodDB = _useState4[0],
-    setFoodDB = _useState4[1]; // loaded array
-  var _useState5 = useState("loading"),
-    _useState6 = _slicedToArray(_useState5, 2),
-    foodDBStatus = _useState6[0],
-    setFoodDBStatus = _useState6[1]; // "loading" | "ready" | "error"
+  const [foodDB, setFoodDB] = useState([]); // loaded array
+  const [foodDBStatus, setFoodDBStatus] = useState("loading"); // "loading" | "ready" | "error"
 
-  var _useState7 = useState("log"),
-    _useState8 = _slicedToArray(_useState7, 2),
-    view = _useState8[0],
-    setView = _useState8[1];
-  var _useState9 = useState({}),
-    _useState0 = _slicedToArray(_useState9, 2),
-    logs = _useState0[0],
-    setLogs = _useState0[1];
-  var _useState1 = useState(DEFAULT_GOALS),
-    _useState10 = _slicedToArray(_useState1, 2),
-    goals = _useState10[0],
-    setGoals = _useState10[1];
-  var _useState11 = useState({}),
-    _useState12 = _slicedToArray(_useState11, 2),
-    goalOverrides = _useState12[0],
-    setGoalOverrides = _useState12[1];
-  var _useState13 = useState([]),
-    _useState14 = _slicedToArray(_useState13, 2),
-    customFoods = _useState14[0],
-    setCustomFoods = _useState14[1];
-  var _useState15 = useState(DEFAULT_PROFILE),
-    _useState16 = _slicedToArray(_useState15, 2),
-    profile = _useState16[0],
-    setProfile = _useState16[1];
-  var _useState17 = useState(DEFAULT_EX_RATIO),
-    _useState18 = _slicedToArray(_useState17, 2),
-    exRatio = _useState18[0],
-    setExRatio = _useState18[1];
-  var _useState19 = useState([]),
-    _useState20 = _slicedToArray(_useState19, 2),
-    recipes = _useState20[0],
-    setRecipes = _useState20[1];
-  var _useState21 = useState(DEFAULT_SUPPLEMENT_STACKS),
-    _useState22 = _slicedToArray(_useState21, 2),
-    supplementStacks = _useState22[0],
-    setSupplementStacks = _useState22[1];
-  var _useState23 = useState(today()),
-    _useState24 = _slicedToArray(_useState23, 2),
-    currentDate = _useState24[0],
-    setCurrentDate = _useState24[1];
-  var _useState25 = useState(false),
-    _useState26 = _slicedToArray(_useState25, 2),
-    loaded = _useState26[0],
-    setLoaded = _useState26[1];
+  const [view, setView] = useState("log");
+  const [logs, setLogs] = useState({});
+  const [goals, setGoals] = useState(DEFAULT_GOALS);
+  const [goalOverrides, setGoalOverrides] = useState({});
+  const [customFoods, setCustomFoods] = useState([]);
+  const [profile, setProfile] = useState(DEFAULT_PROFILE);
+  const [exRatio, setExRatio] = useState(DEFAULT_EX_RATIO);
+  const [recipes, setRecipes] = useState([]);
+  const [supplementStacks, setSupplementStacks] = useState(DEFAULT_SUPPLEMENT_STACKS);
+  const [currentDate, setCurrentDate] = useState(today());
+  const [loaded, setLoaded] = useState(false);
 
   // Export
-  var _useState27 = useState(null),
-    _useState28 = _slicedToArray(_useState27, 2),
-    lastExportedAt = _useState28[0],
-    setLastExportedAt = _useState28[1];
-  var _useState29 = useState(null),
-    _useState30 = _slicedToArray(_useState29, 2),
-    exportConfirm = _useState30[0],
-    setExportConfirm = _useState30[1]; // null or { csvRows, jsonEntries, dateRange }
+  const [lastExportedAt, setLastExportedAt] = useState(null);
+  const [exportConfirm, setExportConfirm] = useState(null); // null or { csvRows, jsonEntries, dateRange }
 
   // Recents (W1)
-  var _useState31 = useState([]),
-    _useState32 = _slicedToArray(_useState31, 2),
-    recents = _useState32[0],
-    setRecents = _useState32[1]; // [{ foodId, foodName, lastAmount, lastMeal, loggedAt }]
+  const [recents, setRecents] = useState([]); // [{ foodId, foodName, lastAmount, lastMeal, loggedAt }]
 
   // Storage health (Phase 6b)
-  var _useState33 = useState(null),
-    _useState34 = _slicedToArray(_useState33, 2),
-    storageEstimate = _useState34[0],
-    setStorageEstimate = _useState34[1]; // null | { usageBytes, quotaBytes }
-  var _useState35 = useState(false),
-    _useState36 = _slicedToArray(_useState35, 2),
-    validationWarning = _useState36[0],
-    setValidationWarning = _useState36[1]; // show banner?
-  var _useState37 = useState(false),
-    _useState38 = _slicedToArray(_useState37, 2),
-    validationDismissed = _useState38[0],
-    setValidationDismissed = _useState38[1]; // session-only dismiss
-  var _useState39 = useState(false),
-    _useState40 = _slicedToArray(_useState39, 2),
-    dbgCorruptUsed = _useState40[0],
-    setDbgCorruptUsed = _useState40[1]; // one-use-per-session
-  var _useState41 = useState(false),
-    _useState42 = _slicedToArray(_useState41, 2),
-    dbgShapeUsed = _useState42[0],
-    setDbgShapeUsed = _useState42[1];
+  const [storageEstimate, setStorageEstimate] = useState(null); // null | { usageBytes, quotaBytes }
+  const [validationWarning, setValidationWarning] = useState(false); // show banner?
+  const [validationDismissed, setValidationDismissed] = useState(false); // session-only dismiss
+  const [dbgCorruptUsed, setDbgCorruptUsed] = useState(false); // one-use-per-session
+  const [dbgShapeUsed, setDbgShapeUsed] = useState(false);
 
   // Phase 6d — PWA / offline
-  var _useState43 = useState(typeof navigator !== "undefined" ? navigator.onLine : true),
-    _useState44 = _slicedToArray(_useState43, 2),
-    isOnline = _useState44[0],
-    setIsOnline = _useState44[1];
-  var _useState45 = useState(false),
-    _useState46 = _slicedToArray(_useState45, 2),
-    swUpdateReady = _useState46[0],
-    setSwUpdateReady = _useState46[1];
-  var swRegRef = useRef(null);
+  const [isOnline, setIsOnline] = useState(typeof navigator !== "undefined" ? navigator.onLine : true);
+  const [swUpdateReady, setSwUpdateReady] = useState(false);
+  const swRegRef = useRef(null);
 
   // Notion sync
-  var _useState47 = useState(null),
-    _useState48 = _slicedToArray(_useState47, 2),
-    lastSyncedAt = _useState48[0],
-    setLastSyncedAt = _useState48[1];
-  var _useState49 = useState([]),
-    _useState50 = _slicedToArray(_useState49, 2),
-    syncQueue = _useState50[0],
-    setSyncQueue = _useState50[1];
-  var _useState51 = useState(null),
-    _useState52 = _slicedToArray(_useState51, 2),
-    notionSyncMsg = _useState52[0],
-    setNotionSyncMsg = _useState52[1];
-  var _useState53 = useState(false),
-    _useState54 = _slicedToArray(_useState53, 2),
-    syncInProgress = _useState54[0],
-    setSyncInProgress = _useState54[1];
-  var _useState55 = useState(null),
-    _useState56 = _slicedToArray(_useState55, 2),
-    syncProgress = _useState56[0],
-    setSyncProgress = _useState56[1];
-  var _useState57 = useState([]),
-    _useState58 = _slicedToArray(_useState57, 2),
-    syncReviewData = _useState58[0],
-    setSyncReviewData = _useState58[1];
-  var _useState59 = useState(""),
-    _useState60 = _slicedToArray(_useState59, 2),
-    pasteText = _useState60[0],
-    setPasteText = _useState60[1];
-  var _useState61 = useState(""),
-    _useState62 = _slicedToArray(_useState61, 2),
-    parserTestText = _useState62[0],
-    setParserTestText = _useState62[1];
-  var _useState63 = useState(0),
-    _useState64 = _slicedToArray(_useState63, 2),
-    errorLogsVersion = _useState64[0],
-    setErrorLogsVersion = _useState64[1]; // bump to force Error logs viewer re-render after clear/inject
-  var _useState65 = useState(null),
-    _useState66 = _slicedToArray(_useState65, 2),
-    notionIngPick = _useState66[0],
-    setNotionIngPick = _useState66[1];
-  var _useState67 = useState(""),
-    _useState68 = _slicedToArray(_useState67, 2),
-    notionIngSearch = _useState68[0],
-    setNotionIngSearch = _useState68[1];
+  const [lastSyncedAt, setLastSyncedAt] = useState(null);
+  const [syncQueue, setSyncQueue] = useState([]);
+  const [notionSyncMsg, setNotionSyncMsg] = useState(null);
+  const [syncInProgress, setSyncInProgress] = useState(false);
+  const [syncProgress, setSyncProgress] = useState(null);
+  const [syncReviewData, setSyncReviewData] = useState([]);
+  const [pasteText, setPasteText] = useState("");
+  const [parserTestText, setParserTestText] = useState("");
+  const [errorLogsVersion, setErrorLogsVersion] = useState(0); // bump to force Error logs viewer re-render after clear/inject
+  const [notionIngPick, setNotionIngPick] = useState(null);
+  const [notionIngSearch, setNotionIngSearch] = useState("");
 
   // Food add/edit
-  var _useState69 = useState("food"),
-    _useState70 = _slicedToArray(_useState69, 2),
-    addMode = _useState70[0],
-    setAddMode = _useState70[1];
-  var _useState71 = useState(""),
-    _useState72 = _slicedToArray(_useState71, 2),
-    searchTerm = _useState72[0],
-    setSearchTerm = _useState72[1];
-  var _useState73 = useState(""),
-    _useState74 = _slicedToArray(_useState73, 2),
-    debouncedSearchTerm = _useState74[0],
-    setDebouncedSearchTerm = _useState74[1];
-  var searchDebounceRef = useRef(null);
-  var _useState75 = useState(null),
-    _useState76 = _slicedToArray(_useState75, 2),
-    selectedFood = _useState76[0],
-    setSelectedFood = _useState76[1];
-  var _useState77 = useState("100"),
-    _useState78 = _slicedToArray(_useState77, 2),
-    amount = _useState78[0],
-    setAmount = _useState78[1];
-  var _useState79 = useState(null),
-    _useState80 = _slicedToArray(_useState79, 2),
-    servingUnit = _useState80[0],
-    setServingUnit = _useState80[1]; // index into food.servings, or null
-  var _useState81 = useState("1"),
-    _useState82 = _slicedToArray(_useState81, 2),
-    servingQty = _useState82[0],
-    setServingQty = _useState82[1]; // multiplier string
-  var _useState83 = useState("Breakfast"),
-    _useState84 = _slicedToArray(_useState83, 2),
-    meal = _useState84[0],
-    setMeal = _useState84[1];
-  var _useState85 = useState(null),
-    _useState86 = _slicedToArray(_useState85, 2),
-    editingEntryId = _useState86[0],
-    setEditingEntryId = _useState86[1];
-  var _useState87 = useState(null),
-    _useState88 = _slicedToArray(_useState87, 2),
-    detailNutrient = _useState88[0],
-    setDetailNutrient = _useState88[1];
+  const [addMode, setAddMode] = useState("food");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+  const searchDebounceRef = useRef(null);
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [amount, setAmount] = useState("100");
+  const [servingUnit, setServingUnit] = useState(null); // index into food.servings, or null
+  const [servingQty, setServingQty] = useState("1"); // multiplier string
+  const [meal, setMeal] = useState("Breakfast");
+  const [editingEntryId, setEditingEntryId] = useState(null);
+  const [detailNutrient, setDetailNutrient] = useState(null);
 
   // Phase 6n — multi-select batch logging (session-only, no persistence; see brief §2.5/§6)
-  var _useState89 = useState(false),
-    _useState90 = _slicedToArray(_useState89, 2),
-    multiSelect = _useState90[0],
-    setMultiSelect = _useState90[1]; // toggle on food search screen
-  var _useState91 = useState([]),
-    _useState92 = _slicedToArray(_useState91, 2),
-    batch = _useState92[0],
-    setBatch = _useState92[1]; // [{ food, amount }]  amount is a string
+  const [multiSelect, setMultiSelect] = useState(false); // toggle on food search screen
+  const [batch, setBatch] = useState([]); // [{ food, amount }]  amount is a string
 
   // Logged-entry editing (Phase 5.7)
-  var _useState93 = useState(null),
-    _useState94 = _slicedToArray(_useState93, 2),
-    editingLogEntry = _useState94[0],
-    setEditingLogEntry = _useState94[1]; // full entry object
-  var _useState95 = useState("1"),
-    _useState96 = _slicedToArray(_useState95, 2),
-    editLogServings = _useState96[0],
-    setEditLogServings = _useState96[1];
-  var _useState97 = useState("Breakfast"),
-    _useState98 = _slicedToArray(_useState97, 2),
-    editLogMeal = _useState98[0],
-    setEditLogMeal = _useState98[1];
-  var _useState99 = useState("60"),
-    _useState100 = _slicedToArray(_useState99, 2),
-    editLogDuration = _useState100[0],
-    setEditLogDuration = _useState100[1];
-  var _useState101 = useState(""),
-    _useState102 = _slicedToArray(_useState101, 2),
-    editLogBurn = _useState102[0],
-    setEditLogBurn = _useState102[1];
-  var _useState103 = useState([]),
-    _useState104 = _slicedToArray(_useState103, 2),
-    editLogSuppItems = _useState104[0],
-    setEditLogSuppItems = _useState104[1];
-  var _useState105 = useState(false),
-    _useState106 = _slicedToArray(_useState105, 2),
-    showDeletedFoods = _useState106[0],
-    setShowDeletedFoods = _useState106[1];
+  const [editingLogEntry, setEditingLogEntry] = useState(null); // full entry object
+  const [editLogServings, setEditLogServings] = useState("1");
+  const [editLogMeal, setEditLogMeal] = useState("Breakfast");
+  const [editLogDuration, setEditLogDuration] = useState("60");
+  const [editLogBurn, setEditLogBurn] = useState("");
+  const [editLogSuppItems, setEditLogSuppItems] = useState([]);
+  const [showDeletedFoods, setShowDeletedFoods] = useState(false);
   // W5 — Simplified/Advanced display toggle
-  var _useState107 = useState("advanced"),
-    _useState108 = _slicedToArray(_useState107, 2),
-    displayMode = _useState108[0],
-    setDisplayMode = _useState108[1]; // "advanced" | "simplified"
+  const [displayMode, setDisplayMode] = useState("advanced"); // "advanced" | "simplified"
   // W4 — kcal / kJ energy unit toggle
-  var _useState109 = useState("kcal"),
-    _useState110 = _slicedToArray(_useState109, 2),
-    energyUnit = _useState110[0],
-    setEnergyUnit = _useState110[1]; // "kcal" | "kJ"
+  const [energyUnit, setEnergyUnit] = useState("kcal"); // "kcal" | "kJ"
   // W3 — exercise edit: activity ID being edited
-  var _useState111 = useState(EXERCISE_ACTIVITIES[0].id),
-    _useState112 = _slicedToArray(_useState111, 2),
-    editLogActivityId = _useState112[0],
-    setEditLogActivityId = _useState112[1];
+  const [editLogActivityId, setEditLogActivityId] = useState(EXERCISE_ACTIVITIES[0].id);
   // W2 — null arc tap explanation panel
-  var _useState113 = useState(null),
-    _useState114 = _slicedToArray(_useState113, 2),
-    nullPanelKey = _useState114[0],
-    setNullPanelKey = _useState114[1]; // nutrient key | null
+  const [nullPanelKey, setNullPanelKey] = useState(null); // nutrient key | null
 
   // Exercise
-  var _useState115 = useState(EXERCISE_ACTIVITIES[0].id),
-    _useState116 = _slicedToArray(_useState115, 2),
-    exActivity = _useState116[0],
-    setExActivity = _useState116[1];
-  var _useState117 = useState("60"),
-    _useState118 = _slicedToArray(_useState117, 2),
-    exDuration = _useState118[0],
-    setExDuration = _useState118[1];
-  var _useState119 = useState(""),
-    _useState120 = _slicedToArray(_useState119, 2),
-    exBurnEdit = _useState120[0],
-    setExBurnEdit = _useState120[1];
+  const [exActivity, setExActivity] = useState(EXERCISE_ACTIVITIES[0].id);
+  const [exDuration, setExDuration] = useState("60");
+  const [exBurnEdit, setExBurnEdit] = useState("");
 
   // Custom food
-  var _useState121 = useState({
-      name: "",
-      cat: "Other",
-      cal: "",
-      pro: "",
-      carb: "",
-      fat: "",
-      fib: "",
-      iron: "",
-      calc: "",
-      zinc: "",
-      b12: "",
-      vitD: "",
-      omega3: "",
-      iod: "",
-      sel: "",
-      mag: "",
-      pot: "",
-      fol: "",
-      sod: "",
-      vitA: "",
-      vitC: ""
-    }),
-    _useState122 = _slicedToArray(_useState121, 2),
-    cf = _useState122[0],
-    setCf = _useState122[1];
-  var _useState123 = useState(null),
-    _useState124 = _slicedToArray(_useState123, 2),
-    customFoodExportMsg = _useState124[0],
-    setCustomFoodExportMsg = _useState124[1];
+  const [cf, setCf] = useState({
+    name: "",
+    cat: "Other",
+    cal: "",
+    pro: "",
+    carb: "",
+    fat: "",
+    fib: "",
+    iron: "",
+    calc: "",
+    zinc: "",
+    b12: "",
+    vitD: "",
+    omega3: "",
+    iod: "",
+    sel: "",
+    mag: "",
+    pot: "",
+    fol: "",
+    sod: "",
+    vitA: "",
+    vitC: ""
+  });
+  const [customFoodExportMsg, setCustomFoodExportMsg] = useState(null);
   // Phase 9: editing an existing custom food (null = creating a new one);
   // simple/advanced input mode for the custom-food form (simple = the 6
   // values typically printed on a food package; advanced = all 19 fields).
-  var _useState125 = useState(null),
-    _useState126 = _slicedToArray(_useState125, 2),
-    editingCustomFoodId = _useState126[0],
-    setEditingCustomFoodId = _useState126[1];
-  var _useState127 = useState("simple"),
-    _useState128 = _slicedToArray(_useState127, 2),
-    cfMode = _useState128[0],
-    setCfMode = _useState128[1];
+  const [editingCustomFoodId, setEditingCustomFoodId] = useState(null);
+  const [cfMode, setCfMode] = useState("simple");
 
   // Recipe creation
-  var _useState129 = useState({
-      name: "",
-      source: "",
-      servings: "4",
-      ingredients: []
-    }),
-    _useState130 = _slicedToArray(_useState129, 2),
-    recipeInProgress = _useState130[0],
-    setRecipeInProgress = _useState130[1];
-  var _useState131 = useState(null),
-    _useState132 = _slicedToArray(_useState131, 2),
-    editingRecipeId = _useState132[0],
-    setEditingRecipeId = _useState132[1];
-  var _useState133 = useState(""),
-    _useState134 = _slicedToArray(_useState133, 2),
-    recipeIngSearch = _useState134[0],
-    setRecipeIngSearch = _useState134[1];
-  var _useState135 = useState(null),
-    _useState136 = _slicedToArray(_useState135, 2),
-    recipeIngSelected = _useState136[0],
-    setRecipeIngSelected = _useState136[1];
-  var _useState137 = useState("100"),
-    _useState138 = _slicedToArray(_useState137, 2),
-    recipeIngAmount = _useState138[0],
-    setRecipeIngAmount = _useState138[1];
-  var _useState139 = useState(null),
-    _useState140 = _slicedToArray(_useState139, 2),
-    recipeIngServingUnit = _useState140[0],
-    setRecipeIngServingUnit = _useState140[1]; // index into food.servings
-  var _useState141 = useState("1"),
-    _useState142 = _slicedToArray(_useState141, 2),
-    recipeIngServingQty = _useState142[0],
-    setRecipeIngServingQty = _useState142[1];
+  const [recipeInProgress, setRecipeInProgress] = useState({
+    name: "",
+    source: "",
+    servings: "4",
+    ingredients: []
+  });
+  const [editingRecipeId, setEditingRecipeId] = useState(null);
+  const [recipeIngSearch, setRecipeIngSearch] = useState("");
+  const [recipeIngSelected, setRecipeIngSelected] = useState(null);
+  const [recipeIngAmount, setRecipeIngAmount] = useState("100");
+  const [recipeIngServingUnit, setRecipeIngServingUnit] = useState(null); // index into food.servings
+  const [recipeIngServingQty, setRecipeIngServingQty] = useState("1");
 
   // Recipe log
-  var _useState143 = useState(null),
-    _useState144 = _slicedToArray(_useState143, 2),
-    selectedRecipe = _useState144[0],
-    setSelectedRecipe = _useState144[1];
-  var _useState145 = useState("servings"),
-    _useState146 = _slicedToArray(_useState145, 2),
-    recipeLogMode = _useState146[0],
-    setRecipeLogMode = _useState146[1];
-  var _useState147 = useState("1"),
-    _useState148 = _slicedToArray(_useState147, 2),
-    recipeLogServings = _useState148[0],
-    setRecipeLogServings = _useState148[1];
-  var _useState149 = useState(""),
-    _useState150 = _slicedToArray(_useState149, 2),
-    recipeLogGrams = _useState150[0],
-    setRecipeLogGrams = _useState150[1];
-  var _useState151 = useState("Breakfast"),
-    _useState152 = _slicedToArray(_useState151, 2),
-    recipeLogMeal = _useState152[0],
-    setRecipeLogMeal = _useState152[1];
-  var _useState153 = useState("recipeDetail"),
-    _useState154 = _slicedToArray(_useState153, 2),
-    recipeLogReturn = _useState154[0],
-    setRecipeLogReturn = _useState154[1];
-  var _useState155 = useState([]),
-    _useState156 = _slicedToArray(_useState155, 2),
-    recipeLogReviewIngredients = _useState156[0],
-    setRecipeLogReviewIngredients = _useState156[1];
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [recipeLogMode, setRecipeLogMode] = useState("servings");
+  const [recipeLogServings, setRecipeLogServings] = useState("1");
+  const [recipeLogGrams, setRecipeLogGrams] = useState("");
+  const [recipeLogMeal, setRecipeLogMeal] = useState("Breakfast");
+  const [recipeLogReturn, setRecipeLogReturn] = useState("recipeDetail");
+  const [recipeLogReviewIngredients, setRecipeLogReviewIngredients] = useState([]);
   // Phase 10: add ingredients directly on the recipe log review page.
-  var _useState157 = useState(false),
-    _useState158 = _slicedToArray(_useState157, 2),
-    reviewAddOpen = _useState158[0],
-    setReviewAddOpen = _useState158[1];
-  var _useState159 = useState("100"),
-    _useState160 = _slicedToArray(_useState159, 2),
-    reviewAddAmount = _useState160[0],
-    setReviewAddAmount = _useState160[1];
+  const [reviewAddOpen, setReviewAddOpen] = useState(false);
+  const [reviewAddAmount, setReviewAddAmount] = useState("100");
 
   // Supplement stack editor
-  var _useState161 = useState(null),
-    _useState162 = _slicedToArray(_useState161, 2),
-    editingStackId = _useState162[0],
-    setEditingStackId = _useState162[1];
-  var _useState163 = useState(""),
-    _useState164 = _slicedToArray(_useState163, 2),
-    stackEditorName = _useState164[0],
-    setStackEditorName = _useState164[1];
-  var _useState165 = useState([]),
-    _useState166 = _slicedToArray(_useState165, 2),
-    stackEditorItems = _useState166[0],
-    setStackEditorItems = _useState166[1];
+  const [editingStackId, setEditingStackId] = useState(null);
+  const [stackEditorName, setStackEditorName] = useState("");
+  const [stackEditorItems, setStackEditorItems] = useState([]);
 
   // Supplement item editor
-  var _useState167 = useState(null),
-    _useState168 = _slicedToArray(_useState167, 2),
-    editingItemIdx = _useState168[0],
-    setEditingItemIdx = _useState168[1];
-  var _useState169 = useState({
-      name: "",
-      dose_amount: "",
-      dose_unit: "mcg",
-      nutrients: {}
-    }),
-    _useState170 = _slicedToArray(_useState169, 2),
-    itemEditorData = _useState170[0],
-    setItemEditorData = _useState170[1];
-  var _useState171 = useState("b12"),
-    _useState172 = _slicedToArray(_useState171, 2),
-    itemNutKey = _useState172[0],
-    setItemNutKey = _useState172[1];
-  var _useState173 = useState(""),
-    _useState174 = _slicedToArray(_useState173, 2),
-    itemNutVal = _useState174[0],
-    setItemNutVal = _useState174[1];
+  const [editingItemIdx, setEditingItemIdx] = useState(null);
+  const [itemEditorData, setItemEditorData] = useState({
+    name: "",
+    dose_amount: "",
+    dose_unit: "mcg",
+    nutrients: {}
+  });
+  const [itemNutKey, setItemNutKey] = useState("b12");
+  const [itemNutVal, setItemNutVal] = useState("");
 
   // Supplement log confirmation
-  var _useState175 = useState(null),
-    _useState176 = _slicedToArray(_useState175, 2),
-    suppLogStack = _useState176[0],
-    setSuppLogStack = _useState176[1];
-  var _useState177 = useState([]),
-    _useState178 = _slicedToArray(_useState177, 2),
-    suppLogItems = _useState178[0],
-    setSuppLogItems = _useState178[1];
+  const [suppLogStack, setSuppLogStack] = useState(null);
+  const [suppLogItems, setSuppLogItems] = useState([]);
 
   // One-off supplement
-  var _useState179 = useState({
-      name: "",
-      dose_amount: "",
-      dose_unit: "mcg",
-      nutrients: {}
-    }),
-    _useState180 = _slicedToArray(_useState179, 2),
-    oneOffData = _useState180[0],
-    setOneOffData = _useState180[1];
-  var _useState181 = useState("b12"),
-    _useState182 = _slicedToArray(_useState181, 2),
-    oneOffNutKey = _useState182[0],
-    setOneOffNutKey = _useState182[1];
-  var _useState183 = useState(""),
-    _useState184 = _slicedToArray(_useState183, 2),
-    oneOffNutVal = _useState184[0],
-    setOneOffNutVal = _useState184[1];
-  var searchRef = useRef(null);
-  var recipeIngRef = useRef(null);
-  var corruptedKeys = useRef(new Set()); // Phase 6b: keys that failed JSON.parse — never overwrite
+  // Phase 11a: Water & Alcohol entry form state
+  const [waterAmount, setWaterAmount] = useState("250");
+  const [waterUnit, setWaterUnit] = useState("ml");
+  const [alcCategory, setAlcCategory] = useState(ALCOHOL_CATEGORIES[0].id);
+  const [alcVolume, setAlcVolume] = useState("");
+  const [alcAbv, setAlcAbv] = useState(String(ALCOHOL_CATEGORIES[0].abv));
+  // Phase 11b: traffic-light info tooltip state (nutrient key or null)
+  const [trafficInfoKey, setTrafficInfoKey] = useState(null);
+  const [oneOffData, setOneOffData] = useState({
+    name: "",
+    dose_amount: "",
+    dose_unit: "mcg",
+    nutrients: {}
+  });
+  const [oneOffNutKey, setOneOffNutKey] = useState("b12");
+  const [oneOffNutVal, setOneOffNutVal] = useState("");
+  const searchRef = useRef(null);
+  const recipeIngRef = useRef(null);
+  const corruptedKeys = useRef(new Set()); // Phase 6b: keys that failed JSON.parse — never overwrite
 
   // ── LOAD ─────────────────────────────────────────────────────────────
-  useEffect(function () {
-    _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var l, g, go, c, p, er, rc, ns, sq, ss, le, dm, eu, re, parseErrors, resolve, safeL, safeC, migratedCustom, safeCf, safeP, safeEr, safeRc, safeSs, computedOnLoad, safeG, safeGo, safeNs, safeSq, safeLe, safeDm, safeEu, safeRe, shapeFailures, allFailures;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.n) {
-          case 0:
-            _context.n = 1;
-            return loadData(STORAGE_KEYS.logs, {});
-          case 1:
-            l = _context.v;
-            _context.n = 2;
-            return loadData(STORAGE_KEYS.goals, DEFAULT_GOALS);
-          case 2:
-            g = _context.v;
-            _context.n = 3;
-            return loadData(STORAGE_KEYS.goalOverrides, {});
-          case 3:
-            go = _context.v;
-            _context.n = 4;
-            return loadData(STORAGE_KEYS.customFoods, []);
-          case 4:
-            c = _context.v;
-            _context.n = 5;
-            return loadData(STORAGE_KEYS.profile, DEFAULT_PROFILE);
-          case 5:
-            p = _context.v;
-            _context.n = 6;
-            return loadData(STORAGE_KEYS.exRatio, DEFAULT_EX_RATIO);
-          case 6:
-            er = _context.v;
-            _context.n = 7;
-            return loadData(STORAGE_KEYS.recipes, []);
-          case 7:
-            rc = _context.v;
-            _context.n = 8;
-            return loadData(STORAGE_KEYS.notionStatus, {
-              lastSyncedAt: null
-            });
-          case 8:
-            ns = _context.v;
-            _context.n = 9;
-            return loadData(STORAGE_KEYS.syncQueue, []);
-          case 9:
-            sq = _context.v;
-            _context.n = 10;
-            return loadData(STORAGE_KEYS.supplementStacks, DEFAULT_SUPPLEMENT_STACKS);
-          case 10:
-            ss = _context.v;
-            _context.n = 11;
-            return loadData(STORAGE_KEYS.lastExportedAt, null);
-          case 11:
-            le = _context.v;
-            _context.n = 12;
-            return loadData(STORAGE_KEYS.displayMode, "advanced");
-          case 12:
-            dm = _context.v;
-            _context.n = 13;
-            return loadData(STORAGE_KEYS.energyUnit, "kcal");
-          case 13:
-            eu = _context.v;
-            _context.n = 14;
-            return loadData(STORAGE_KEYS.recents, []);
-          case 14:
-            re = _context.v;
-            // W1
-            // Recompute goals from stored profile so they're always fresh on load
-            // Phase 6b — detect parse errors or shape failures
-            // Keys that returned PARSE_ERROR are replaced with their fallback for
-            // the rest of the load, but the banner is shown unconditionally.
-            parseErrors = [];
-            resolve = function resolve(val, fallback, name, storageKey) {
-              if (val === PARSE_ERROR) {
-                parseErrors.push("".concat(name, ": invalid JSON (corrupted value)"));
-                corruptedKeys.current.add(storageKey); // never overwrite this key
-                return fallback;
-              }
-              return val;
-            };
-            safeL = resolve(l, {}, "logs", STORAGE_KEYS.logs);
-            safeC = resolve(c, [], "customFoods", STORAGE_KEYS.customFoods); // Phase 9 (A8) — one-time migration: backfill all numeric nutrient
-            // keys (incl. fibre/fat subtypes + amino acids) as null on legacy
-            // custom-food records so export + buildFoodSnapshot stay consistent.
-            migratedCustom = migrateCustomFoods(safeC);
-            safeCf = migratedCustom.foods;
-            if (migratedCustom.changed && !corruptedKeys.current.has(STORAGE_KEYS.customFoods)) {
-              saveData(STORAGE_KEYS.customFoods, safeCf);
-            }
-            safeP = resolve(p, DEFAULT_PROFILE, "profile", STORAGE_KEYS.profile);
-            safeEr = resolve(er, DEFAULT_EX_RATIO, "exRatio", STORAGE_KEYS.exRatio);
-            safeRc = resolve(rc, [], "recipes", STORAGE_KEYS.recipes);
-            safeSs = resolve(ss, DEFAULT_SUPPLEMENT_STACKS, "supplementStacks", STORAGE_KEYS.supplementStacks);
-            computedOnLoad = computeGoals(safeP);
-            safeG = resolve(g, DEFAULT_GOALS, "goals", STORAGE_KEYS.goals);
-            safeGo = resolve(go, {}, "goalOverrides", STORAGE_KEYS.goalOverrides);
-            safeNs = resolve(ns, {
-              lastSyncedAt: null
-            }, "notionStatus", STORAGE_KEYS.notionStatus);
-            safeSq = resolve(sq, [], "syncQueue", STORAGE_KEYS.syncQueue);
-            safeLe = resolve(le, null, "lastExportedAt", STORAGE_KEYS.lastExportedAt);
-            safeDm = resolve(dm, "advanced", "displayMode", STORAGE_KEYS.displayMode);
-            safeEu = resolve(eu, "kcal", "energyUnit", STORAGE_KEYS.energyUnit); // W4
-            safeRe = resolve(re, [], "recents", STORAGE_KEYS.recents); // W1
-            setLogs(safeL);
-            setGoals(_objectSpread(_objectSpread(_objectSpread({}, computedOnLoad), safeG), computedOnLoad));
-            setGoalOverrides(safeGo);
-            setCustomFoods(safeCf);
-            setProfile(safeP);
-            setExRatio(safeEr);
-            setRecipes(safeRc);
-            setLastSyncedAt(safeNs.lastSyncedAt);
-            setSyncQueue(safeSq);
-            setSupplementStacks(safeSs);
-            setLastExportedAt(safeLe);
-            setDisplayMode(safeDm === "simplified" ? "simplified" : "advanced");
-            setEnergyUnit(safeEu === "kJ" ? "kJ" : "kcal"); // W4
-            setRecents(Array.isArray(safeRe) ? safeRe : []); // W1
-
-            // Shape validation (runs on the resolved safe values)
-            shapeFailures = validateStorageShapes({
-              logs: safeL,
-              recipes: safeRc,
-              customFoods: safeCf,
-              profile: safeP,
-              exRatio: safeEr,
-              supplementStacks: safeSs,
-              recents: safeRe
-            });
-            allFailures = [].concat(parseErrors, _toConsumableArray(shapeFailures));
-            if (allFailures.length > 0) {
-              allFailures.forEach(function (f) {
-                return console.warn("[NutriTrack] Storage validation failure:", f);
-              });
-              setValidationWarning(true);
-            }
-            saveData(STORAGE_KEYS.lastValidatedAt, new Date().toISOString());
-
-            // Phase 6b — storage byte count (direct localStorage measure, iOS-safe)
-            setStorageEstimate(measureLocalStorageBytes());
-            setLoaded(true);
-          case 15:
-            return _context.a(2);
+  useEffect(() => {
+    (async () => {
+      const l = await loadData(STORAGE_KEYS.logs, {});
+      const g = await loadData(STORAGE_KEYS.goals, DEFAULT_GOALS);
+      const go = await loadData(STORAGE_KEYS.goalOverrides, {});
+      const c = await loadData(STORAGE_KEYS.customFoods, []);
+      const p = await loadData(STORAGE_KEYS.profile, DEFAULT_PROFILE);
+      const er = await loadData(STORAGE_KEYS.exRatio, DEFAULT_EX_RATIO);
+      const rc = await loadData(STORAGE_KEYS.recipes, []);
+      const ns = await loadData(STORAGE_KEYS.notionStatus, {
+        lastSyncedAt: null
+      });
+      const sq = await loadData(STORAGE_KEYS.syncQueue, []);
+      const ss = await loadData(STORAGE_KEYS.supplementStacks, DEFAULT_SUPPLEMENT_STACKS);
+      const le = await loadData(STORAGE_KEYS.lastExportedAt, null);
+      const dm = await loadData(STORAGE_KEYS.displayMode, "advanced");
+      const eu = await loadData(STORAGE_KEYS.energyUnit, "kcal"); // W4
+      const re = await loadData(STORAGE_KEYS.recents, []); // W1
+      // Recompute goals from stored profile so they're always fresh on load
+      // Phase 6b — detect parse errors or shape failures
+      // Keys that returned PARSE_ERROR are replaced with their fallback for
+      // the rest of the load, but the banner is shown unconditionally.
+      const parseErrors = [];
+      const resolve = (val, fallback, name, storageKey) => {
+        if (val === PARSE_ERROR) {
+          parseErrors.push(`${name}: invalid JSON (corrupted value)`);
+          corruptedKeys.current.add(storageKey); // never overwrite this key
+          return fallback;
         }
-      }, _callee);
-    }))();
+        return val;
+      };
+      const safeL = resolve(l, {}, "logs", STORAGE_KEYS.logs);
+      const safeC = resolve(c, [], "customFoods", STORAGE_KEYS.customFoods);
+      // Phase 9 (A8) — one-time migration: backfill all numeric nutrient
+      // keys (incl. fibre/fat subtypes + amino acids) as null on legacy
+      // custom-food records so export + buildFoodSnapshot stay consistent.
+      const migratedCustom = migrateCustomFoods(safeC);
+      const safeCf = migratedCustom.foods;
+      if (migratedCustom.changed && !corruptedKeys.current.has(STORAGE_KEYS.customFoods)) {
+        saveData(STORAGE_KEYS.customFoods, safeCf);
+      }
+      const safeP = resolve(p, DEFAULT_PROFILE, "profile", STORAGE_KEYS.profile);
+      const safeEr = resolve(er, DEFAULT_EX_RATIO, "exRatio", STORAGE_KEYS.exRatio);
+      const safeRc = resolve(rc, [], "recipes", STORAGE_KEYS.recipes);
+      const safeSs = resolve(ss, DEFAULT_SUPPLEMENT_STACKS, "supplementStacks", STORAGE_KEYS.supplementStacks);
+      const computedOnLoad = computeGoals(safeP);
+      const safeG = resolve(g, DEFAULT_GOALS, "goals", STORAGE_KEYS.goals);
+      const safeGo = resolve(go, {}, "goalOverrides", STORAGE_KEYS.goalOverrides);
+      const safeNs = resolve(ns, {
+        lastSyncedAt: null
+      }, "notionStatus", STORAGE_KEYS.notionStatus);
+      const safeSq = resolve(sq, [], "syncQueue", STORAGE_KEYS.syncQueue);
+      const safeLe = resolve(le, null, "lastExportedAt", STORAGE_KEYS.lastExportedAt);
+      const safeDm = resolve(dm, "advanced", "displayMode", STORAGE_KEYS.displayMode);
+      const safeEu = resolve(eu, "kcal", "energyUnit", STORAGE_KEYS.energyUnit); // W4
+      const safeRe = resolve(re, [], "recents", STORAGE_KEYS.recents); // W1
+
+      setLogs(safeL);
+      setGoals({
+        ...computedOnLoad,
+        ...safeG,
+        ...computedOnLoad
+      });
+      setGoalOverrides(safeGo);
+      setCustomFoods(safeCf);
+      setProfile(safeP);
+      setExRatio(safeEr);
+      setRecipes(safeRc);
+      setLastSyncedAt(safeNs.lastSyncedAt);
+      setSyncQueue(safeSq);
+      setSupplementStacks(safeSs);
+      setLastExportedAt(safeLe);
+      setDisplayMode(safeDm === "simplified" ? "simplified" : "advanced");
+      setEnergyUnit(safeEu === "kJ" ? "kJ" : "kcal"); // W4
+      setRecents(Array.isArray(safeRe) ? safeRe : []); // W1
+
+      // Shape validation (runs on the resolved safe values)
+      const shapeFailures = validateStorageShapes({
+        logs: safeL,
+        recipes: safeRc,
+        customFoods: safeCf,
+        profile: safeP,
+        exRatio: safeEr,
+        supplementStacks: safeSs,
+        recents: safeRe
+      });
+      const allFailures = [...parseErrors, ...shapeFailures];
+      if (allFailures.length > 0) {
+        allFailures.forEach(f => console.warn("[NutriTrack] Storage validation failure:", f));
+        setValidationWarning(true);
+      }
+      saveData(STORAGE_KEYS.lastValidatedAt, new Date().toISOString());
+
+      // Phase 6b — storage byte count (direct localStorage measure, iOS-safe)
+      setStorageEstimate(measureLocalStorageBytes());
+      setLoaded(true);
+    })();
   }, []);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.logs)) saveData(STORAGE_KEYS.logs, logs);
   }, [logs, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.goals)) saveData(STORAGE_KEYS.goals, goals);
   }, [goals, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.goalOverrides)) saveData(STORAGE_KEYS.goalOverrides, goalOverrides);
   }, [goalOverrides, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.customFoods)) saveData(STORAGE_KEYS.customFoods, customFoods);
   }, [customFoods, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (!loaded || corruptedKeys.current.has(STORAGE_KEYS.profile)) return;
     saveData(STORAGE_KEYS.profile, profile);
     // Recompute base goals whenever profile fields change
     setGoals(computeGoals(profile));
   }, [profile, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.exRatio)) saveData(STORAGE_KEYS.exRatio, exRatio);
   }, [exRatio, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.recipes)) saveData(STORAGE_KEYS.recipes, recipes);
   }, [recipes, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.syncQueue)) saveData(STORAGE_KEYS.syncQueue, syncQueue);
   }, [syncQueue, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.supplementStacks)) saveData(STORAGE_KEYS.supplementStacks, supplementStacks);
   }, [supplementStacks, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.lastExportedAt) && lastExportedAt !== null) saveData(STORAGE_KEYS.lastExportedAt, lastExportedAt);
   }, [lastExportedAt, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.displayMode)) saveData(STORAGE_KEYS.displayMode, displayMode);
   }, [displayMode, loaded]);
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.energyUnit)) saveData(STORAGE_KEYS.energyUnit, energyUnit);
   }, [energyUnit, loaded]); // W4
-  useEffect(function () {
+  useEffect(() => {
     if (loaded && !corruptedKeys.current.has(STORAGE_KEYS.recents)) saveData(STORAGE_KEYS.recents, recents);
   }, [recents, loaded]); // W1
 
   // Phase 6f — load food DB from external JSON asset
-  useEffect(function () {
-    var cancelled = false;
-    loadFoodDB().then(function (data) {
+  useEffect(() => {
+    let cancelled = false;
+    loadFoodDB().then(data => {
       if (!cancelled) {
         setFoodDB(data);
         setFoodDBStatus("ready");
       }
-    })["catch"](function () {
+    }).catch(() => {
       if (!cancelled) setFoodDBStatus("error");
     });
-    return function () {
+    return () => {
       cancelled = true;
     };
   }, []);
@@ -2266,9 +1725,9 @@ function NutriTrack() {
   // focus, select its full value so edits start from the end (easy
   // delete/replace) instead of the caret landing at the left edge.
   // Uses focusin (bubbles) so dynamically rendered inputs are covered.
-  useEffect(function () {
-    var onSelectFocus = function onSelectFocus(e) {
-      var t = e.target;
+  useEffect(() => {
+    const onSelectFocus = e => {
+      const t = e.target;
       if (t && t.tagName === "INPUT" && typeof t.select === "function" && (t.type === "number" || t.type === "text" || t.type === "search" || t.type === "")) {
         try {
           t.select();
@@ -2276,13 +1735,11 @@ function NutriTrack() {
       }
     };
     document.addEventListener("focusin", onSelectFocus);
-    return function () {
-      return document.removeEventListener("focusin", onSelectFocus);
-    };
+    return () => document.removeEventListener("focusin", onSelectFocus);
   }, []);
 
   // Phase 6b — refresh storage byte count when Settings page is opened (not on every save)
-  useEffect(function () {
+  useEffect(() => {
     if (view === "settings") setStorageEstimate(measureLocalStorageBytes());
   }, [view]);
 
@@ -2300,33 +1757,33 @@ function NutriTrack() {
   //   4. If navigator explicitly reports offline, trust it immediately.
   // The last-known state is cached in localStorage so a cold start resolves
   // instantly before the first probe completes.
-  useEffect(function () {
-    var LAST_ONLINE_KEY = "nt-last-online";
-    var PROBE_TIMEOUT_MS = 1000; // A1: 4000ms -> 1000ms
+  useEffect(() => {
+    const LAST_ONLINE_KEY = "nt-last-online";
+    const PROBE_TIMEOUT_MS = 1000; // A1: 4000ms -> 1000ms
 
-    var readCached = function readCached() {
+    const readCached = () => {
       try {
-        var raw = localStorage.getItem(LAST_ONLINE_KEY);
+        const raw = localStorage.getItem(LAST_ONLINE_KEY);
         if (raw === null) return null;
-        var v = JSON.parse(raw);
-        return _typeof(v) === "object" && v ? Boolean(v.online) : null;
-      } catch (_unused3) {
+        const v = JSON.parse(raw);
+        return typeof v === "object" && v ? Boolean(v.online) : null;
+      } catch {
         return null;
       }
     };
-    var writeCached = function writeCached(online) {
+    const writeCached = online => {
       try {
         localStorage.setItem(LAST_ONLINE_KEY, JSON.stringify({
-          online: online,
+          online,
           ts: Date.now()
         }));
-      } catch (_unused4) {/* cache write must never throw */}
+      } catch {/* cache write must never throw */}
     };
 
     // A 502/503 from the Worker means the Worker itself is up but its upstream
     // (Notion) is unreachable — that is a sync outage, NOT a connectivity
     // outage, so we keep reporting online and let the sync UI surface the error.
-    var probe = function probe() {
+    const probe = () => {
       // Step 1: navigator.onLine fast gate.
       if (typeof navigator !== "undefined" && navigator.onLine === false) {
         setIsOnline(false);
@@ -2334,27 +1791,27 @@ function NutriTrack() {
         return Promise.resolve(false);
       }
       // Step 2: confirm with a real /health fetch.
-      return new Promise(function (resolve) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "".concat(WORKER_URL, "/health"), true);
+      return new Promise(resolve => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `${WORKER_URL}/health`, true);
         xhr.timeout = PROBE_TIMEOUT_MS;
-        xhr.onload = function () {
-          var ok = xhr.status >= 200 && xhr.status < 500;
+        xhr.onload = () => {
+          const ok = xhr.status >= 200 && xhr.status < 500;
           // Step 3: on a transient failure, fall back to last-known state
           // rather than forcing offline (genuine outage confirmed on next poll).
-          var next = ok ? true : readCached() === true;
+          const next = ok ? true : readCached() === true;
           setIsOnline(next);
           writeCached(next);
           resolve(next);
         };
-        xhr.onerror = function () {
-          var next = readCached() === true;
+        xhr.onerror = () => {
+          const next = readCached() === true;
           setIsOnline(next);
           writeCached(next);
           resolve(next);
         };
-        xhr.ontimeout = function () {
-          var next = readCached() === true;
+        xhr.ontimeout = () => {
+          const next = readCached() === true;
           setIsOnline(next);
           writeCached(next);
           resolve(next);
@@ -2362,12 +1819,12 @@ function NutriTrack() {
         xhr.send();
       });
     };
-    var onOnline = function onOnline() {
+    const onOnline = () => {
       setIsOnline(true);
       writeCached(true);
       probe();
     };
-    var onOffline = function onOffline() {
+    const onOffline = () => {
       setIsOnline(false);
       writeCached(false);
     };
@@ -2376,8 +1833,8 @@ function NutriTrack() {
     // Probe on mount so initial state is accurate (within ~1s).
     probe();
     // Poll every 5s to catch transitions iOS misses.
-    var interval = setInterval(probe, 5000);
-    return function () {
+    const interval = setInterval(probe, 5000);
+    return () => {
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
       clearInterval(interval);
@@ -2385,16 +1842,16 @@ function NutriTrack() {
   }, []);
 
   // Phase 6d — SW update detection
-  useEffect(function () {
+  useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    (window._swReady || navigator.serviceWorker.getRegistration()).then(function (reg) {
+    (window._swReady || navigator.serviceWorker.getRegistration()).then(reg => {
       if (!reg) return;
       swRegRef.current = reg;
       if (reg.waiting) setSwUpdateReady(true);
-      reg.addEventListener("updatefound", function () {
-        var sw = reg.installing;
+      reg.addEventListener("updatefound", () => {
+        const sw = reg.installing;
         if (!sw) return;
-        sw.addEventListener("statechange", function () {
+        sw.addEventListener("statechange", () => {
           if (sw.state === "installed" && navigator.serviceWorker.controller) {
             swRegRef.current = reg;
             setSwUpdateReady(true);
@@ -2402,111 +1859,94 @@ function NutriTrack() {
         });
       });
     });
-    navigator.serviceWorker.addEventListener("controllerchange", function () {
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
       window.location.reload();
     });
   }, []);
 
   // allFoodsForRender: includes soft-deleted custom foods so historical log entries still resolve
-  var allFoodsForRender = useMemo(function () {
-    return [].concat(_toConsumableArray(foodDB), _toConsumableArray(customFoods));
-  }, [foodDB, customFoods]);
+  const allFoodsForRender = useMemo(() => [...foodDB, ...customFoods], [foodDB, customFoods]);
   // allFoods: excludes soft-deleted custom foods — used for search, recipe creation, matching
-  var allFoods = useMemo(function () {
-    return [].concat(_toConsumableArray(foodDB), _toConsumableArray(customFoods.filter(function (f) {
-      return !f.deleted;
-    })));
-  }, [foodDB, customFoods]);
-  var dayLog = logs[currentDate] || [];
+  const allFoods = useMemo(() => [...foodDB, ...customFoods.filter(f => !f.deleted)], [foodDB, customFoods]);
+  const dayLog = logs[currentDate] || [];
 
   // ── DAILY TOTALS ─────────────────────────────────────────────────────
-  var totals = useMemo(function () {
-    var t = {};
-    Object.keys(NUTRIENT_META).forEach(function (k) {
-      return t[k] = 0;
-    });
-    dayLog.forEach(function (e) {
+  const totals = useMemo(() => {
+    const t = {};
+    Object.keys(NUTRIENT_META).forEach(k => t[k] = 0);
+    dayLog.forEach(e => {
       if (e.type === "exercise") return;
+      // Phase 11a: water contributes no calories/nutrients; alcohol adds calories only.
+      if (e.type === "water") return;
+      if (e.type === "alcohol") {
+        t.cal += e.calories ?? 0;
+        return;
+      }
       if (e.type === "supplement") {
-        (e.items || []).forEach(function (item) {
-          Object.keys(item.nutrients || {}).forEach(function (k) {
-            var _item$nutrients$k;
-            if (NUTRIENT_META[k]) t[k] += (_item$nutrients$k = item.nutrients[k]) !== null && _item$nutrients$k !== void 0 ? _item$nutrients$k : 0;
+        (e.items || []).forEach(item => {
+          Object.keys(item.nutrients || {}).forEach(k => {
+            if (NUTRIENT_META[k]) t[k] += item.nutrients[k] ?? 0;
           });
         });
         return;
       }
       if (e.type === "recipe") {
-        (e.derivedIngredients || []).forEach(function (ing) {
-          var m = ing.amount_g / 100;
+        (e.derivedIngredients || []).forEach(ing => {
+          const m = ing.amount_g / 100;
           if (ing.snapshot) {
-            Object.keys(NUTRIENT_META).forEach(function (k) {
-              var _ing$snapshot$k2;
-              t[k] += ((_ing$snapshot$k2 = ing.snapshot[k]) !== null && _ing$snapshot$k2 !== void 0 ? _ing$snapshot$k2 : 0) * m;
+            Object.keys(NUTRIENT_META).forEach(k => {
+              t[k] += (ing.snapshot[k] ?? 0) * m;
             });
           } else {
-            var food = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            });
+            const food = allFoodsForRender.find(f => f.id === ing.foodId);
             if (!food) return;
-            Object.keys(NUTRIENT_META).forEach(function (k) {
-              var _food$k3;
-              t[k] += ((_food$k3 = food[k]) !== null && _food$k3 !== void 0 ? _food$k3 : 0) * m;
+            Object.keys(NUTRIENT_META).forEach(k => {
+              t[k] += (food[k] ?? 0) * m;
             });
           }
         });
         return;
       }
-      var m = e.amount / 100;
+      const m = e.amount / 100;
       if (e.snapshot) {
-        Object.keys(NUTRIENT_META).forEach(function (k) {
-          var _e$snapshot$k;
-          t[k] += ((_e$snapshot$k = e.snapshot[k]) !== null && _e$snapshot$k !== void 0 ? _e$snapshot$k : 0) * m;
+        Object.keys(NUTRIENT_META).forEach(k => {
+          t[k] += (e.snapshot[k] ?? 0) * m;
         });
       } else {
-        var food = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        });
+        const food = allFoodsForRender.find(f => f.id === e.foodId);
         if (!food) return;
-        Object.keys(NUTRIENT_META).forEach(function (k) {
-          var _food$k4;
-          t[k] += ((_food$k4 = food[k]) !== null && _food$k4 !== void 0 ? _food$k4 : 0) * m;
+        Object.keys(NUTRIENT_META).forEach(k => {
+          t[k] += (food[k] ?? 0) * m;
         });
       }
     });
     return t;
   }, [dayLog, allFoodsForRender]);
-  var exerciseBurn = dayLog.filter(function (e) {
-    return e.type === "exercise";
-  }).reduce(function (s, e) {
-    return s + (e.calories_burned || 0);
-  }, 0);
-  var ratioSum = exRatio.carb + exRatio.fat + exRatio.pro || 100;
+  const exerciseBurn = dayLog.filter(e => e.type === "exercise").reduce((s, e) => s + (e.calories_burned || 0), 0);
+  const ratioSum = exRatio.carb + exRatio.fat + exRatio.pro || 100;
 
   // Merge: computed goals < stored goals < manual overrides
-  var resolvedGoals = useMemo(function () {
-    return _objectSpread(_objectSpread({}, goals), goalOverrides);
-  }, [goals, goalOverrides]);
+  const resolvedGoals = useMemo(() => ({
+    ...goals,
+    ...goalOverrides
+  }), [goals, goalOverrides]);
 
   // Dynamic protein multiplier: scales 1.0× (no exercise) → 2.0× (burn ≈ TDEE)
   // Clamped to [1.0, 2.0]. Formula: 1 + (burn / TDEE).
-  var tdeeBase = resolvedGoals.cal || 2000;
-  var proMultiplier = Math.min(2.0, 1.0 + exerciseBurn / tdeeBase);
-  var proBase = goals.pro || 70; // computed base before overrides so multiplier applies to formula value
+  const tdeeBase = resolvedGoals.cal || 2000;
+  const proMultiplier = Math.min(2.0, 1.0 + exerciseBurn / tdeeBase);
+  const proBase = goals.pro || 70; // computed base before overrides so multiplier applies to formula value
 
-  var effectiveGoals = useMemo(function () {
-    return exerciseBurn > 0 ? _objectSpread(_objectSpread({}, resolvedGoals), {}, {
-      cal: resolvedGoals.cal + exerciseBurn,
-      carb: resolvedGoals.carb + Math.round(exerciseBurn * (exRatio.carb / ratioSum) / 4),
-      fat: resolvedGoals.fat + Math.round(exerciseBurn * (exRatio.fat / ratioSum) / 9),
-      pro: goalOverrides.pro != null ? resolvedGoals.pro // user has manually set protein — don't scale
-      : Math.round(proBase * proMultiplier)
-    }) : resolvedGoals;
-  }, [resolvedGoals, exerciseBurn, exRatio, ratioSum, goalOverrides, proBase, proMultiplier]);
-  var pct = function pct(k) {
-    return Math.round(totals[k] / (effectiveGoals[k] || 1) * 100);
-  };
-  var handleMacroTap = function handleMacroTap(k) {
+  const effectiveGoals = useMemo(() => exerciseBurn > 0 ? {
+    ...resolvedGoals,
+    cal: resolvedGoals.cal + exerciseBurn,
+    carb: resolvedGoals.carb + Math.round(exerciseBurn * (exRatio.carb / ratioSum) / 4),
+    fat: resolvedGoals.fat + Math.round(exerciseBurn * (exRatio.fat / ratioSum) / 9),
+    pro: goalOverrides.pro != null ? resolvedGoals.pro // user has manually set protein — don't scale
+    : Math.round(proBase * proMultiplier)
+  } : resolvedGoals, [resolvedGoals, exerciseBurn, exRatio, ratioSum, goalOverrides, proBase, proMultiplier]);
+  const pct = k => Math.round(totals[k] / (effectiveGoals[k] || 1) * 100);
+  const handleMacroTap = k => {
     if (k === "cal") setView("calDetail");
     if (k === "fib") setView("fibDetail");
     if (k === "fat") setView("fatDetail");
@@ -2515,41 +1955,25 @@ function NutriTrack() {
 
   // W2 — memoized null arc computation. Runs only when dayLog or DB changes, not on every render.
   // null = genuine data gap (post-W0); 0.0 = confirmed absent. Only null triggers indicator.
-  var nullData = useMemo(function () {
-    var ALL_KEYS = [].concat(MACROS, MICROS);
-    var foodsByKey = {};
-    var arcByKey = {};
-    ALL_KEYS.forEach(function (k) {
-      var goal = effectiveGoals[k] || 1;
-      var nonNullVals = allFoodsForRender.map(function (f) {
-        return f[k];
-      }).filter(function (v) {
-        return v != null && v > 0;
-      });
-      nonNullVals.sort(function (a, b) {
-        return a - b;
-      });
-      var median = nonNullVals.length > 0 ? nonNullVals[Math.floor(nonNullVals.length / 2)] : null;
-      var totalWeight = dayLog.filter(function (e) {
-        return e.type === "food" || e.type === "recipe";
-      }).reduce(function (s, e) {
-        return e.type === "recipe" ? s + (e.derivedIngredients || []).reduce(function (a, i) {
-          return a + i.amount_g;
-        }, 0) : s + (e.amount || 0);
-      }, 0);
-      var nullFoods = [];
-      var estTotal = 0;
-      dayLog.forEach(function (e) {
-        var _allFoodsForRender$fi2;
+  const nullData = useMemo(() => {
+    const ALL_KEYS = [...MACROS, ...MICROS];
+    const foodsByKey = {};
+    const arcByKey = {};
+    ALL_KEYS.forEach(k => {
+      const goal = effectiveGoals[k] || 1;
+      const nonNullVals = allFoodsForRender.map(f => f[k]).filter(v => v != null && v > 0);
+      nonNullVals.sort((a, b) => a - b);
+      const median = nonNullVals.length > 0 ? nonNullVals[Math.floor(nonNullVals.length / 2)] : null;
+      const totalWeight = dayLog.filter(e => e.type === "food" || e.type === "recipe").reduce((s, e) => e.type === "recipe" ? s + (e.derivedIngredients || []).reduce((a, i) => a + i.amount_g, 0) : s + (e.amount || 0), 0);
+      const nullFoods = [];
+      let estTotal = 0;
+      dayLog.forEach(e => {
         if (e.type === "exercise" || e.type === "supplement") return;
         if (e.type === "recipe") {
-          (e.derivedIngredients || []).forEach(function (ing) {
-            var _allFoodsForRender$fi;
-            var val = ing.snapshot ? ing.snapshot[k] : (_allFoodsForRender$fi = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            })) === null || _allFoodsForRender$fi === void 0 ? void 0 : _allFoodsForRender$fi[k];
+          (e.derivedIngredients || []).forEach(ing => {
+            const val = ing.snapshot ? ing.snapshot[k] : allFoodsForRender.find(f => f.id === ing.foodId)?.[k];
             if (val === null) {
-              var est = median != null ? ing.amount_g / 100 * median : totalWeight > 0 ? ing.amount_g / totalWeight * goal * 0.1 : 0;
+              const est = median != null ? ing.amount_g / 100 * median : totalWeight > 0 ? ing.amount_g / totalWeight * goal * 0.1 : 0;
               if (est / goal >= 0.05) {
                 nullFoods.push(ing.foodName);
                 estTotal += est;
@@ -2558,11 +1982,9 @@ function NutriTrack() {
           });
           return;
         }
-        var val = e.snapshot ? e.snapshot[k] : (_allFoodsForRender$fi2 = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        })) === null || _allFoodsForRender$fi2 === void 0 ? void 0 : _allFoodsForRender$fi2[k];
+        const val = e.snapshot ? e.snapshot[k] : allFoodsForRender.find(f => f.id === e.foodId)?.[k];
         if (val === null) {
-          var est = median != null ? (e.amount || 0) / 100 * median : totalWeight > 0 ? (e.amount || 0) / totalWeight * goal * 0.1 : 0;
+          const est = median != null ? (e.amount || 0) / 100 * median : totalWeight > 0 ? (e.amount || 0) / totalWeight * goal * 0.1 : 0;
           if (est / goal >= 0.05) {
             nullFoods.push(e.foodName || "Unknown");
             estTotal += est;
@@ -2570,75 +1992,74 @@ function NutriTrack() {
         }
       });
       if (nullFoods.length) {
-        foodsByKey[k] = _toConsumableArray(new Set(nullFoods));
+        foodsByKey[k] = [...new Set(nullFoods)];
         arcByKey[k] = Math.min(estTotal / goal, 1);
       }
     });
     return {
-      foodsByKey: foodsByKey,
-      arcByKey: arcByKey
+      foodsByKey,
+      arcByKey
     };
   }, [dayLog, allFoodsForRender, effectiveGoals]);
 
   // ── FOOD ACTIONS ──────────────────────────────────────────────────────
   // Reset serving unit/qty picker whenever a new food is selected
-  useEffect(function () {
+  useEffect(() => {
     setServingUnit(null);
     setServingQty("1");
   }, [selectedFood]);
   // Phase 6n: leaving the food add-mode abandons any half-built batch (brief §5.5)
-  useEffect(function () {
+  useEffect(() => {
     if (addMode !== "food" && (multiSelect || batch.length)) {
       setMultiSelect(false);
       setBatch([]);
     }
   }, [addMode]);
-  useEffect(function () {
+  useEffect(() => {
     setRecipeIngServingUnit(null);
     setRecipeIngServingQty("1");
   }, [recipeIngSelected]);
   // Called after any food log commit. Upserts foodId at top, caps at 10.
-  var upsertRecent = function upsertRecent(foodId, foodName, amount, mealUsed) {
-    setRecents(function (prev) {
-      var filtered = prev.filter(function (r) {
-        return r.foodId !== foodId;
-      });
-      var entry = {
-        foodId: foodId,
-        foodName: foodName,
+  const upsertRecent = (foodId, foodName, amount, mealUsed) => {
+    setRecents(prev => {
+      const filtered = prev.filter(r => r.foodId !== foodId);
+      const entry = {
+        foodId,
+        foodName,
         lastAmount: amount,
         lastMeal: mealUsed,
         loggedAt: new Date().toISOString()
       };
-      return [entry].concat(_toConsumableArray(filtered)).slice(0, 10);
+      return [entry, ...filtered].slice(0, 10);
     });
   };
-  var addEntry = function addEntry() {
+  const addEntry = () => {
     if (!selectedFood || !amount) return;
     if (editingEntryId) {
-      setLogs(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, (prev[currentDate] || []).map(function (e) {
-          return e.id === editingEntryId ? _objectSpread(_objectSpread({}, e), {}, {
-            foodId: selectedFood.id,
-            foodName: selectedFood.name,
-            amount: parseFloat(amount),
-            meal: meal
-          }) : e;
-        })));
-      });
+      setLogs(prev => ({
+        ...prev,
+        [currentDate]: (prev[currentDate] || []).map(e => e.id === editingEntryId ? {
+          ...e,
+          foodId: selectedFood.id,
+          foodName: selectedFood.name,
+          amount: parseFloat(amount),
+          meal
+        } : e)
+      }));
       setEditingEntryId(null);
     } else {
-      setLogs(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), [{
+      setLogs(prev => ({
+        ...prev,
+        [currentDate]: [...(prev[currentDate] || []), {
           id: Date.now().toString(),
           foodId: selectedFood.id,
           foodName: selectedFood.name,
           amount: parseFloat(amount),
-          meal: meal,
+          meal,
           time: new Date().toISOString(),
           snapshot: buildFoodSnapshot(selectedFood)
-        }])));
-      });
+        }]
+      }));
       upsertRecent(selectedFood.id, selectedFood.name, parseFloat(amount), meal);
     }
     setSelectedFood(null);
@@ -2647,15 +2068,61 @@ function NutriTrack() {
     setView("log");
   };
 
+  // Phase 11a: log a water entry. type:"water", amount stored in ml for totals.
+  const logWater = () => {
+    const ml = waterAmountMl(waterAmount, waterUnit);
+    if (!ml) return;
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
+        id: Date.now().toString(),
+        type: "water",
+        amount: ml,
+        unit: "ml",
+        meal,
+        time: new Date().toISOString()
+      }]
+    }));
+    setWaterAmount("250");
+    setWaterUnit("ml");
+    setView("log");
+  };
+  // Phase 11a: log an alcohol entry. Calories contribute to the daily total.
+  const logAlcohol = () => {
+    const vol = parseFloat(alcVolume) || 0;
+    const abv = parseFloat(alcAbv) || 0;
+    if (!vol || !abv) return;
+    const cals = alcoholCalories(vol, abv);
+    const cat = ALCOHOL_CATEGORIES.find(c => c.id === alcCategory) || ALCOHOL_CATEGORIES[0];
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
+        id: Date.now().toString(),
+        type: "alcohol",
+        category: cat.id,
+        categoryLabel: cat.label,
+        volume: vol,
+        abv,
+        calories: cals,
+        meal,
+        time: new Date().toISOString(),
+        snapshot: {
+          cal: cals
+        }
+      }]
+    }));
+    setAlcVolume("");
+    setView("log");
+  };
+
   // Quick-log a recent food at its lastAmount/lastMeal without opening the amount screen
-  var quickLogRecent = function quickLogRecent(recent) {
-    var food = allFoods.find(function (f) {
-      return f.id === recent.foodId;
-    });
+  const quickLogRecent = recent => {
+    const food = allFoods.find(f => f.id === recent.foodId);
     if (!food) return;
-    var mealToUse = recent.lastMeal || meal;
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), [{
+    const mealToUse = recent.lastMeal || meal;
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
         id: Date.now().toString(),
         foodId: food.id,
         foodName: food.name,
@@ -2663,21 +2130,16 @@ function NutriTrack() {
         meal: mealToUse,
         time: new Date().toISOString(),
         snapshot: buildFoodSnapshot(food)
-      }])));
-    });
+      }]
+    }));
     upsertRecent(food.id, food.name, recent.lastAmount, mealToUse);
   };
-  var removeEntry = function removeEntry(id) {
-    return setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, (prev[currentDate] || []).filter(function (e) {
-        return e.id !== id;
-      })));
-    });
-  };
-  var startEditEntry = function startEditEntry(entry) {
-    var food = allFoods.find(function (f) {
-      return f.id === entry.foodId;
-    });
+  const removeEntry = id => setLogs(prev => ({
+    ...prev,
+    [currentDate]: (prev[currentDate] || []).filter(e => e.id !== id)
+  }));
+  const startEditEntry = entry => {
+    const food = allFoods.find(f => f.id === entry.foodId);
     if (!food) return;
     setSelectedFood(food);
     setAmount(String(entry.amount));
@@ -2690,39 +2152,22 @@ function NutriTrack() {
   // ── PHASE 6n: MULTI-SELECT BATCH ──────────────────────────────────────────
   // Add a food to the in-progress batch. Pre-fill amount from last-logged
   // recent (brief §4); fall back to "100" (matches single-select default).
-  var addFoodToBatch = function addFoodToBatch(food) {
-    var last = recents.find(function (r) {
-      return r.foodId === food.id;
-    });
-    var initialAmount = last ? String(last.lastAmount) : "100";
-    setBatch(function (prev) {
-      return prev.some(function (b) {
-        return b.food.id === food.id;
-      }) ? prev : [].concat(_toConsumableArray(prev), [{
-        food: food,
-        amount: initialAmount
-      }]);
-    });
+  const addFoodToBatch = food => {
+    const last = recents.find(r => r.foodId === food.id);
+    const initialAmount = last ? String(last.lastAmount) : "100";
+    setBatch(prev => prev.some(b => b.food.id === food.id) ? prev : [...prev, {
+      food,
+      amount: initialAmount
+    }]);
   };
-  var removeFoodFromBatch = function removeFoodFromBatch(idx) {
-    return setBatch(function (prev) {
-      return prev.filter(function (_, i) {
-        return i !== idx;
-      });
-    });
-  };
-  var setBatchAmount = function setBatchAmount(idx, amount) {
-    return setBatch(function (prev) {
-      return prev.map(function (b, i) {
-        return i === idx ? _objectSpread(_objectSpread({}, b), {}, {
-          amount: amount
-        }) : b;
-      });
-    });
-  };
+  const removeFoodFromBatch = idx => setBatch(prev => prev.filter((_, i) => i !== idx));
+  const setBatchAmount = (idx, amount) => setBatch(prev => prev.map((b, i) => i === idx ? {
+    ...b,
+    amount
+  } : b));
 
   // Toggle multi-select off must clear the cart (brief §5.5 / scenario 5).
-  var toggleMultiSelect = function toggleMultiSelect() {
+  const toggleMultiSelect = () => {
     if (multiSelect) {
       setMultiSelect(false);
       setBatch([]);
@@ -2735,26 +2180,23 @@ function NutriTrack() {
   // distinct indexed id to avoid Date.now() collisions in a tight loop (§5.1).
   // Snapshot is captured at commit time per food (§5.2). One upsertRecent per
   // food AFTER the setLogs call, preserving last-added-at-top order (§5.4).
-  var commitBatch = function commitBatch() {
+  const commitBatch = () => {
     if (!batch.length) return;
-    var committedAt = new Date().toISOString();
-    var entries = batch.map(function (b, i) {
-      return {
-        id: "".concat(Date.now(), "-").concat(i),
-        foodId: b.food.id,
-        foodName: b.food.name,
-        amount: parseFloat(b.amount) || 0,
-        meal: meal,
-        time: committedAt,
-        snapshot: buildFoodSnapshot(b.food)
-      };
-    });
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), _toConsumableArray(entries))));
-    });
-    batch.forEach(function (b) {
-      return upsertRecent(b.food.id, b.food.name, parseFloat(b.amount) || 0, meal);
-    });
+    const committedAt = new Date().toISOString();
+    const entries = batch.map((b, i) => ({
+      id: `${Date.now()}-${i}`,
+      foodId: b.food.id,
+      foodName: b.food.name,
+      amount: parseFloat(b.amount) || 0,
+      meal,
+      time: committedAt,
+      snapshot: buildFoodSnapshot(b.food)
+    }));
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), ...entries]
+    }));
+    batch.forEach(b => upsertRecent(b.food.id, b.food.name, parseFloat(b.amount) || 0, meal));
     setBatch([]);
     setMultiSelect(false);
     setSearchTerm("");
@@ -2762,24 +2204,23 @@ function NutriTrack() {
   };
 
   // ── EXERCISE ──────────────────────────────────────────────────────────
-  var addExercise = function addExercise(burnOverride) {
-    var act = EXERCISE_ACTIVITIES.find(function (a) {
-      return a.id === exActivity;
-    });
-    var wt = parseFloat(profile.weightKg) || 70,
+  const addExercise = burnOverride => {
+    const act = EXERCISE_ACTIVITIES.find(a => a.id === exActivity);
+    const wt = parseFloat(profile.weightKg) || 70,
       dur = parseFloat(exDuration) || 0;
-    var auto = Math.round(act.met * wt * (dur / 60));
-    var burn = burnOverride !== undefined ? burnOverride : auto;
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), [{
+    const auto = Math.round(act.met * wt * (dur / 60));
+    const burn = burnOverride !== undefined ? burnOverride : auto;
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
         id: Date.now().toString(),
         type: "exercise",
         activity: act.label + " - " + act.intensity,
         duration_min: dur,
         calories_burned: burn,
         time: new Date().toISOString()
-      }])));
-    });
+      }]
+    }));
     setExActivity(EXERCISE_ACTIVITIES[0].id);
     setExDuration("60");
     setExBurnEdit("");
@@ -2787,7 +2228,7 @@ function NutriTrack() {
   };
 
   // ── RECIPE ACTIONS ────────────────────────────────────────────────────
-  var startNewRecipe = function startNewRecipe() {
+  const startNewRecipe = () => {
     setRecipeInProgress({
       name: "",
       source: "",
@@ -2797,136 +2238,118 @@ function NutriTrack() {
     setEditingRecipeId(null);
     setView("recipeCreate");
   };
-  var startEditRecipe = function startEditRecipe(r) {
+  const startEditRecipe = r => {
     setRecipeInProgress({
       name: r.name,
       source: r.source || "",
       servings: String(r.servings),
-      ingredients: _toConsumableArray(r.ingredients)
+      ingredients: [...r.ingredients]
     });
     setEditingRecipeId(r.id);
     setView("recipeCreate");
   };
-  var saveRecipe = function saveRecipe() {
+  const saveRecipe = () => {
     if (!recipeInProgress.name.trim() || !recipeInProgress.ingredients.length) return;
-    var s = parseFloat(recipeInProgress.servings) || 1,
+    const s = parseFloat(recipeInProgress.servings) || 1,
       n = calcRecipeNutritionPerServing(recipeInProgress.ingredients, s, allFoods);
-    var rec = {
+    const rec = {
       name: recipeInProgress.name.trim(),
       source: recipeInProgress.source.trim(),
       servings: s,
       ingredients: recipeInProgress.ingredients,
       nutrition_per_serving: n
     };
-    if (editingRecipeId) setRecipes(function (prev) {
-      return prev.map(function (r) {
-        return r.id === editingRecipeId ? _objectSpread(_objectSpread({}, r), rec) : r;
-      });
-    });else setRecipes(function (prev) {
-      return [].concat(_toConsumableArray(prev), [_objectSpread({
-        id: "recipe_".concat(Date.now())
-      }, rec)]);
-    });
+    if (editingRecipeId) setRecipes(prev => prev.map(r => r.id === editingRecipeId ? {
+      ...r,
+      ...rec
+    } : r));else setRecipes(prev => [...prev, {
+      id: `recipe_${Date.now()}`,
+      ...rec
+    }]);
     setEditingRecipeId(null);
     setView("recipes");
   };
-  var deleteRecipe = function deleteRecipe(id) {
-    setRecipes(function (prev) {
-      return prev.filter(function (r) {
-        return r.id !== id;
-      });
-    });
+  const deleteRecipe = id => {
+    setRecipes(prev => prev.filter(r => r.id !== id));
     setView("recipes");
   };
-  var addIngredientToRecipe = function addIngredientToRecipe() {
+  const addIngredientToRecipe = () => {
     if (!recipeIngSelected || !recipeIngAmount) return;
-    setRecipeInProgress(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        ingredients: [].concat(_toConsumableArray(prev.ingredients), [{
-          foodId: recipeIngSelected.id,
-          foodName: recipeIngSelected.name,
-          amount_g: parseFloat(recipeIngAmount) || 100
-        }])
-      });
-    });
+    setRecipeInProgress(prev => ({
+      ...prev,
+      ingredients: [...prev.ingredients, {
+        foodId: recipeIngSelected.id,
+        foodName: recipeIngSelected.name,
+        amount_g: parseFloat(recipeIngAmount) || 100
+      }]
+    }));
     setRecipeIngSelected(null);
     setRecipeIngSearch("");
     setRecipeIngAmount("100");
     setView("recipeCreate");
   };
-  var removeIngFromRecipe = function removeIngFromRecipe(idx) {
-    return setRecipeInProgress(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        ingredients: prev.ingredients.filter(function (_, i) {
-          return i !== idx;
-        })
-      });
-    });
-  };
+  const removeIngFromRecipe = idx => setRecipeInProgress(prev => ({
+    ...prev,
+    ingredients: prev.ingredients.filter((_, i) => i !== idx)
+  }));
   // Phase 10 (V4): edit an existing ingredient's amount in place, without
   // having to remove and re-add it. Floors at 1g so a stray edit can't zero
   // the ingredient out.
-  var updateIngAmountInRecipe = function updateIngAmountInRecipe(idx, raw) {
-    var g = parseFloat(raw);
-    var amt = !isNaN(g) && g > 0 ? Math.round(g * 10) / 10 : 1;
-    setRecipeInProgress(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        ingredients: prev.ingredients.map(function (ing, i) {
-          return i === idx ? _objectSpread(_objectSpread({}, ing), {}, {
-            amount_g: amt
-          }) : ing;
-        })
-      });
-    });
+  const updateIngAmountInRecipe = (idx, raw) => {
+    const g = parseFloat(raw);
+    const amt = !isNaN(g) && g > 0 ? Math.round(g * 10) / 10 : 1;
+    setRecipeInProgress(prev => ({
+      ...prev,
+      ingredients: prev.ingredients.map((ing, i) => i === idx ? {
+        ...ing,
+        amount_g: amt
+      } : ing)
+    }));
   };
-  var logRecipe = function logRecipe() {
+  const logRecipe = () => {
     if (!selectedRecipe) return;
-    var rs = Math.max(Number(selectedRecipe.servings) || 1, 0.01),
-      tw = (selectedRecipe.ingredients || []).reduce(function (s, i) {
-        return s + (Number(i.amount_g) || 0);
-      }, 0);
-    var frac, sl;
+    const rs = Math.max(Number(selectedRecipe.servings) || 1, 0.01),
+      tw = (selectedRecipe.ingredients || []).reduce((s, i) => s + (Number(i.amount_g) || 0), 0);
+    let frac, sl;
     if (recipeLogMode === "servings") {
       sl = parseFloat(recipeLogServings) || 1;
       frac = sl / rs;
     } else {
-      var g = parseFloat(recipeLogGrams) || 0;
+      const g = parseFloat(recipeLogGrams) || 0;
       frac = tw > 0 ? g / tw : 0;
       sl = Math.round(frac * rs * 10) / 10;
     }
     if (frac <= 0) return;
-    var di = (selectedRecipe.ingredients || []).map(function (ing) {
-      var food = allFoods.find(function (f) {
-        return f.id === ing.foodId;
-      });
-      var rawAmt = (Number(ing.amount_g) || 0) * frac;
-      var amt = rawAmt > 0 ? Math.max(Math.round(rawAmt * 10) / 10, 0.1) : 0.1; // floor at 0.1g — never 0
-      return _objectSpread({
+    const di = (selectedRecipe.ingredients || []).map(ing => {
+      const food = allFoods.find(f => f.id === ing.foodId);
+      const rawAmt = (Number(ing.amount_g) || 0) * frac;
+      const amt = rawAmt > 0 ? Math.max(Math.round(rawAmt * 10) / 10, 0.1) : 0.1; // floor at 0.1g — never 0
+      return {
         foodId: ing.foodId,
         foodName: ing.foodName,
-        amount_g: amt
-      }, food ? {
-        snapshot: buildFoodSnapshot(food)
-      } : {});
+        amount_g: amt,
+        ...(food ? {
+          snapshot: buildFoodSnapshot(food)
+        } : {})
+      };
     });
     setRecipeLogReviewIngredients(di);
     setView("recipeLogReview");
   };
-  var commitLogRecipe = function commitLogRecipe(finalDI) {
+  const commitLogRecipe = finalDI => {
     if (!selectedRecipe || !finalDI.length) return;
-    var rs = Math.max(Number(selectedRecipe.servings) || 1, 0.01);
-    var sl;
+    const rs = Math.max(Number(selectedRecipe.servings) || 1, 0.01);
+    let sl;
     if (recipeLogMode === "servings") {
       sl = parseFloat(recipeLogServings) || 1;
     } else {
-      var tw = selectedRecipe.ingredients.reduce(function (s, i) {
-        return s + i.amount_g;
-      }, 0);
-      var g = parseFloat(recipeLogGrams) || 0;
+      const tw = selectedRecipe.ingredients.reduce((s, i) => s + i.amount_g, 0);
+      const g = parseFloat(recipeLogGrams) || 0;
       sl = Math.round((tw > 0 ? g / tw : 0) * rs * 10) / 10;
     }
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), [{
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
         id: Date.now().toString(),
         type: "recipe",
         recipeId: selectedRecipe.id,
@@ -2935,8 +2358,8 @@ function NutriTrack() {
         meal: recipeLogMeal,
         time: new Date().toISOString(),
         derivedIngredients: finalDI
-      }])));
-    });
+      }]
+    }));
     setView("log");
     setRecipeLogServings("1");
     setRecipeLogGrams("");
@@ -2947,33 +2370,32 @@ function NutriTrack() {
   };
   // Phase 10: add an extra ingredient while reviewing a recipe log.
   // Pushes into the review list only — the saved recipe is never touched.
-  var addIngredientToReview = function addIngredientToReview(food) {
-    var g = parseFloat(reviewAddAmount);
-    var amt = !isNaN(g) && g > 0 ? Math.round(g * 10) / 10 : 100;
-    var snap = buildFoodSnapshot(food);
-    setRecipeLogReviewIngredients(function (prev) {
-      return [].concat(_toConsumableArray(prev), [{
-        foodId: food.id,
-        foodName: food.name,
-        amount_g: amt,
-        snapshot: snap
-      }]);
-    });
+  const addIngredientToReview = food => {
+    const g = parseFloat(reviewAddAmount);
+    const amt = !isNaN(g) && g > 0 ? Math.round(g * 10) / 10 : 100;
+    const snap = buildFoodSnapshot(food);
+    setRecipeLogReviewIngredients(prev => [...prev, {
+      foodId: food.id,
+      foodName: food.name,
+      amount_g: amt,
+      snapshot: snap
+    }]);
     setReviewAddAmount("100");
     setRecipeIngSearch("");
     setReviewAddOpen(false);
   };
 
   // ── SUPPLEMENT ACTIONS ────────────────────────────────────────────────
-  var openStackEditor = function openStackEditor(stack) {
+  const openStackEditor = stack => {
     if (stack) {
       setEditingStackId(stack.id);
       setStackEditorName(stack.name);
-      setStackEditorItems(stack.items.map(function (i) {
-        return _objectSpread(_objectSpread({}, i), {}, {
-          nutrients: _objectSpread({}, i.nutrients)
-        });
-      }));
+      setStackEditorItems(stack.items.map(i => ({
+        ...i,
+        nutrients: {
+          ...i.nutrients
+        }
+      })));
     } else {
       setEditingStackId(null);
       setStackEditorName("");
@@ -2981,39 +2403,31 @@ function NutriTrack() {
     }
     setView("stackEditor");
   };
-  var saveStack = function saveStack() {
+  const saveStack = () => {
     if (!stackEditorName.trim()) return;
-    var stack = {
-      id: editingStackId || "stack_".concat(Date.now()),
+    const stack = {
+      id: editingStackId || `stack_${Date.now()}`,
       name: stackEditorName.trim(),
       items: stackEditorItems
     };
-    if (editingStackId) setSupplementStacks(function (prev) {
-      return prev.map(function (s) {
-        return s.id === editingStackId ? stack : s;
-      });
-    });else setSupplementStacks(function (prev) {
-      return [].concat(_toConsumableArray(prev), [stack]);
-    });
+    if (editingStackId) setSupplementStacks(prev => prev.map(s => s.id === editingStackId ? stack : s));else setSupplementStacks(prev => [...prev, stack]);
     setView("settings");
   };
-  var deleteStack = function deleteStack(id) {
-    setSupplementStacks(function (prev) {
-      return prev.filter(function (s) {
-        return s.id !== id;
-      });
-    });
+  const deleteStack = id => {
+    setSupplementStacks(prev => prev.filter(s => s.id !== id));
     setView("settings");
   };
-  var openItemEditor = function openItemEditor(idx) {
+  const openItemEditor = idx => {
     if (idx !== null && idx !== undefined) {
-      var item = stackEditorItems[idx];
+      const item = stackEditorItems[idx];
       setEditingItemIdx(idx);
       setItemEditorData({
         name: item.name,
         dose_amount: String(item.dose_amount),
         dose_unit: item.dose_unit,
-        nutrients: _objectSpread({}, item.nutrients)
+        nutrients: {
+          ...item.nutrients
+        }
       });
     } else {
       setEditingItemIdx(null);
@@ -3028,128 +2442,130 @@ function NutriTrack() {
     setItemNutVal("");
     setView("itemEditor");
   };
-  var saveItem = function saveItem() {
-    var item = {
+  const saveItem = () => {
+    const item = {
       name: itemEditorData.name.trim(),
       dose_amount: parseFloat(itemEditorData.dose_amount) || 0,
       dose_unit: itemEditorData.dose_unit,
-      nutrients: _objectSpread({}, itemEditorData.nutrients)
+      nutrients: {
+        ...itemEditorData.nutrients
+      }
     };
     if (!item.name) return;
-    if (editingItemIdx !== null && editingItemIdx !== undefined) setStackEditorItems(function (prev) {
-      return prev.map(function (x, i) {
-        return i === editingItemIdx ? item : x;
-      });
-    });else setStackEditorItems(function (prev) {
-      return [].concat(_toConsumableArray(prev), [item]);
-    });
+    if (editingItemIdx !== null && editingItemIdx !== undefined) setStackEditorItems(prev => prev.map((x, i) => i === editingItemIdx ? item : x));else setStackEditorItems(prev => [...prev, item]);
     setView("stackEditor");
   };
-  var removeItemFromStack = function removeItemFromStack(idx) {
-    return setStackEditorItems(function (prev) {
-      return prev.filter(function (_, i) {
-        return i !== idx;
-      });
-    });
-  };
-  var addNutrientToItem = function addNutrientToItem() {
-    var val = parseFloat(itemNutVal);
+  const removeItemFromStack = idx => setStackEditorItems(prev => prev.filter((_, i) => i !== idx));
+  const addNutrientToItem = () => {
+    const val = parseFloat(itemNutVal);
     if (!itemNutKey || isNaN(val)) return;
-    setItemEditorData(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        nutrients: _objectSpread(_objectSpread({}, prev.nutrients), {}, _defineProperty({}, itemNutKey, val))
-      });
-    });
+    setItemEditorData(prev => ({
+      ...prev,
+      nutrients: {
+        ...prev.nutrients,
+        [itemNutKey]: val
+      }
+    }));
     setItemNutVal("");
   };
-  var removeNutrientFromItem = function removeNutrientFromItem(key) {
-    setItemEditorData(function (prev) {
-      var n = _objectSpread({}, prev.nutrients);
+  const removeNutrientFromItem = key => {
+    setItemEditorData(prev => {
+      const n = {
+        ...prev.nutrients
+      };
       delete n[key];
-      return _objectSpread(_objectSpread({}, prev), {}, {
+      return {
+        ...prev,
         nutrients: n
-      });
+      };
     });
   };
-  var openSuppLogConfirm = function openSuppLogConfirm(stack) {
+  const openSuppLogConfirm = stack => {
     setSuppLogStack(stack);
-    setSuppLogItems(stack.items.map(function (item) {
-      return _objectSpread(_objectSpread({}, item), {}, {
-        checked: true,
-        doseOverride: ""
-      });
-    }));
+    setSuppLogItems(stack.items.map(item => ({
+      ...item,
+      checked: true,
+      doseOverride: ""
+    })));
     setView("suppLogConfirm");
   };
-  var logSuppStack = function logSuppStack() {
+  const logSuppStack = () => {
     if (!suppLogStack) return;
-    var items = suppLogItems.filter(function (i) {
-      return i.checked;
-    }).map(function (i) {
-      var d = parseFloat(i.doseOverride);
+    const items = suppLogItems.filter(i => i.checked).map(i => {
+      const d = parseFloat(i.doseOverride);
       return {
         name: i.name,
         dose_amount: !isNaN(d) && i.doseOverride.trim() != "" ? d : i.dose_amount,
         dose_unit: i.dose_unit,
-        nutrients: _objectSpread({}, i.nutrients)
+        nutrients: {
+          ...i.nutrients
+        }
       };
     });
     if (!items.length) {
       setView("add");
       return;
     }
-    var suppSnapshot = {};
-    items.forEach(function (item) {
-      Object.keys(item.nutrients || {}).forEach(function (k) {
-        var _suppSnapshot$k, _item$nutrients$k2;
-        suppSnapshot[k] = ((_suppSnapshot$k = suppSnapshot[k]) !== null && _suppSnapshot$k !== void 0 ? _suppSnapshot$k : 0) + ((_item$nutrients$k2 = item.nutrients[k]) !== null && _item$nutrients$k2 !== void 0 ? _item$nutrients$k2 : 0);
+    const suppSnapshot = {};
+    items.forEach(item => {
+      Object.keys(item.nutrients || {}).forEach(k => {
+        suppSnapshot[k] = (suppSnapshot[k] ?? 0) + (item.nutrients[k] ?? 0);
       });
     });
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), [{
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
         id: Date.now().toString(),
         type: "supplement",
         stackId: suppLogStack.id,
         stackName: suppLogStack.name,
-        items: items,
+        items,
         time: new Date().toISOString(),
         meal: "",
         snapshot: suppSnapshot
-      }])));
-    });
+      }]
+    }));
     setSuppLogStack(null);
     setSuppLogItems([]);
     setView("log");
   };
-  var addNutrientToOneOff = function addNutrientToOneOff() {
-    var val = parseFloat(oneOffNutVal);
+  const addNutrientToOneOff = () => {
+    const val = parseFloat(oneOffNutVal);
     if (!oneOffNutKey || isNaN(val)) return;
-    setOneOffData(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        nutrients: _objectSpread(_objectSpread({}, prev.nutrients), {}, _defineProperty({}, oneOffNutKey, val))
-      });
-    });
+    setOneOffData(prev => ({
+      ...prev,
+      nutrients: {
+        ...prev.nutrients,
+        [oneOffNutKey]: val
+      }
+    }));
     setOneOffNutVal("");
   };
-  var removeNutrientFromOneOff = function removeNutrientFromOneOff(key) {
-    setOneOffData(function (prev) {
-      var n = _objectSpread({}, prev.nutrients);
+  const removeNutrientFromOneOff = key => {
+    setOneOffData(prev => {
+      const n = {
+        ...prev.nutrients
+      };
       delete n[key];
-      return _objectSpread(_objectSpread({}, prev), {}, {
+      return {
+        ...prev,
         nutrients: n
-      });
+      };
     });
   };
-  var logOneOff = function logOneOff() {
+  const logOneOff = () => {
     if (!oneOffData.name.trim()) return;
-    var item = {
+    const item = {
       name: oneOffData.name.trim(),
       dose_amount: parseFloat(oneOffData.dose_amount) || 0,
       dose_unit: oneOffData.dose_unit,
-      nutrients: _objectSpread({}, oneOffData.nutrients)
+      nutrients: {
+        ...oneOffData.nutrients
+      }
     };
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, [].concat(_toConsumableArray(prev[currentDate] || []), [{
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: [...(prev[currentDate] || []), {
         id: Date.now().toString(),
         type: "supplement",
         stackId: null,
@@ -3157,9 +2573,11 @@ function NutriTrack() {
         items: [item],
         time: new Date().toISOString(),
         meal: "",
-        snapshot: _objectSpread({}, item.nutrients)
-      }])));
-    });
+        snapshot: {
+          ...item.nutrients
+        }
+      }]
+    }));
     setOneOffData({
       name: "",
       dose_amount: "",
@@ -3170,12 +2588,12 @@ function NutriTrack() {
     setOneOffNutVal("");
     setView("log");
   };
-  var changeDate = function changeDate(delta) {
-    var d = new Date(currentDate);
+  const changeDate = delta => {
+    const d = new Date(currentDate);
     d.setDate(d.getDate() + delta);
     setCurrentDate(dateKey(d));
   };
-  var resetCfForm = function resetCfForm() {
+  const resetCfForm = () => {
     setCf({
       name: "",
       cat: "Other",
@@ -3202,228 +2620,193 @@ function NutriTrack() {
     setEditingCustomFoodId(null);
     setCfMode("simple");
   };
-  var openEditCustomFood = function openEditCustomFood(food) {
+  const openEditCustomFood = food => {
     // Load an existing custom food into the form for editing. Preserve any
     // saved subtype values so they round-trip; the form only edits the 19
     // NUTRIENT_META keys; subtypes stay as stored (or null).
-    var vals = {};
-    Object.keys(NUTRIENT_META).forEach(function (k) {
+    const vals = {};
+    Object.keys(NUTRIENT_META).forEach(k => {
       vals[k] = food[k] === null || food[k] === undefined ? "" : String(food[k]);
     });
-    setCf(_objectSpread({
+    setCf({
       name: food.name || "",
-      cat: food.cat || "Other"
-    }, vals));
+      cat: food.cat || "Other",
+      ...vals
+    });
     setEditingCustomFoodId(food.id);
     setCfMode("advanced"); // editing surfaces all fields
     setView("customAdd");
   };
-  var saveCustomFood = function saveCustomFood() {
+  const saveCustomFood = () => {
     if (!cf.name.trim() || !cf.cal) return;
     // Phase 9 (A8): custom foods are schema-complete — all NUTRIENT_META
     // keys are captured from the form, and the 14 subtype keys (fibre/fat
     // subtypes + amino acids) the form does not collect are set to null
     // (unknown), matching foods.json convention. When editing, preserve
     // any previously-saved subtype values rather than blanking them.
-    var id = editingCustomFoodId || "custom_".concat(Date.now());
-    var existing = editingCustomFoodId ? customFoods.find(function (f) {
-      return f.id === editingCustomFoodId;
-    }) : null;
-    var subtypes = Object.fromEntries(FOOD_SUBTYPE_KEYS.map(function (k) {
-      var _existing$k;
-      return [k, existing ? (_existing$k = existing[k]) !== null && _existing$k !== void 0 ? _existing$k : null : null];
-    }));
-    var savedFood = _objectSpread(_objectSpread(_objectSpread({}, existing), {}, {
+    const id = editingCustomFoodId || `custom_${Date.now()}`;
+    const existing = editingCustomFoodId ? customFoods.find(f => f.id === editingCustomFoodId) : null;
+    const subtypes = Object.fromEntries(FOOD_SUBTYPE_KEYS.map(k => [k, existing ? existing[k] ?? null : null]));
+    const savedFood = {
+      ...existing,
       // preserve deleted flag, servings, etc. when editing
-      id: id,
+      id,
       name: cf.name.trim(),
-      cat: cf.cat || "Other"
-    }, Object.fromEntries(Object.keys(NUTRIENT_META).map(function (k) {
-      return [k, parseFloat(cf[k]) || 0];
-    }))), subtypes);
+      cat: cf.cat || "Other",
+      ...Object.fromEntries(Object.keys(NUTRIENT_META).map(k => [k, parseFloat(cf[k]) || 0])),
+      ...subtypes
+    };
     if (editingCustomFoodId) {
-      setCustomFoods(function (prev) {
-        return prev.map(function (f) {
-          return f.id === editingCustomFoodId ? savedFood : f;
-        });
-      });
+      setCustomFoods(prev => prev.map(f => f.id === editingCustomFoodId ? savedFood : f));
     } else {
-      setCustomFoods(function (prev) {
-        return [].concat(_toConsumableArray(prev), [savedFood]);
-      });
+      setCustomFoods(prev => [...prev, savedFood]);
     }
     resetCfForm();
     setView("manageCustomFoods");
   };
-  var softDeleteCustomFood = function softDeleteCustomFood(id) {
-    return setCustomFoods(function (prev) {
-      return prev.map(function (f) {
-        return f.id === id ? _objectSpread(_objectSpread({}, f), {}, {
-          deleted: true
-        }) : f;
-      });
-    });
-  };
-  var restoreCustomFood = function restoreCustomFood(id) {
-    return setCustomFoods(function (prev) {
-      return prev.map(function (f) {
-        return f.id === id ? _objectSpread(_objectSpread({}, f), {}, {
-          deleted: false
-        }) : f;
-      });
-    });
-  };
+  const softDeleteCustomFood = id => setCustomFoods(prev => prev.map(f => f.id === id ? {
+    ...f,
+    deleted: true
+  } : f));
+  const restoreCustomFood = id => setCustomFoods(prev => prev.map(f => f.id === id ? {
+    ...f,
+    deleted: false
+  } : f));
 
   // Open edit views for logged entries
-  var openEditRecipeEntry = function openEditRecipeEntry(entry) {
+  const openEditRecipeEntry = entry => {
     setEditingLogEntry(entry);
     setEditLogServings(String(entry.servings));
     setEditLogMeal(entry.meal || "Breakfast");
     setView("editLoggedRecipe");
   };
-  var openEditExerciseEntry = function openEditExerciseEntry(entry) {
+  const openEditExerciseEntry = entry => {
     setEditingLogEntry(entry);
     setEditLogDuration(String(entry.duration_min));
     setEditLogBurn("");
-    var matched = EXERCISE_ACTIVITIES.find(function (a) {
-      return a.label + " - " + a.intensity === entry.activity;
-    });
+    const matched = EXERCISE_ACTIVITIES.find(a => a.label + " - " + a.intensity === entry.activity);
     setEditLogActivityId(matched ? matched.id : EXERCISE_ACTIVITIES[0].id);
     setView("editLoggedExercise");
   };
-  var openEditSuppEntry = function openEditSuppEntry(entry) {
+  const openEditSuppEntry = entry => {
     setEditingLogEntry(entry);
-    setEditLogSuppItems((entry.items || []).map(function (i) {
-      return _objectSpread(_objectSpread({}, i), {}, {
-        doseOverride: ""
-      });
-    }));
+    setEditLogSuppItems((entry.items || []).map(i => ({
+      ...i,
+      doseOverride: ""
+    })));
     setView("editLoggedSupp");
   };
 
   // Save edits back to log
-  var saveEditedRecipeEntry = function saveEditedRecipeEntry() {
+  const saveEditedRecipeEntry = () => {
     if (!editingLogEntry) return;
-    var recipe = recipes.find(function (r) {
-      return r.id === editingLogEntry.recipeId;
-    });
-    var servings = parseFloat(editLogServings) || 1;
-    var di = editingLogEntry.derivedIngredients;
-    var origServings = editingLogEntry.servings || 1;
+    const recipe = recipes.find(r => r.id === editingLogEntry.recipeId);
+    const servings = parseFloat(editLogServings) || 1;
+    let di = editingLogEntry.derivedIngredients;
+    const origServings = editingLogEntry.servings || 1;
     if (di && di.length > 0) {
       // Scale the logged derivedIngredients proportionally — preserves any log-time removals
       if (servings !== origServings) {
-        var scale = servings / origServings;
-        di = di.map(function (ing) {
-          return _objectSpread(_objectSpread({}, ing), {}, {
-            amount_g: Math.round(ing.amount_g * scale * 10) / 10
-          });
-        });
+        const scale = servings / origServings;
+        di = di.map(ing => ({
+          ...ing,
+          amount_g: Math.round(ing.amount_g * scale * 10) / 10
+        }));
       }
     } else if (recipe) {
       // Fallback for old log entries that predate W1 (no derivedIngredients saved)
-      var rs = Math.max(Number(recipe.servings) || 1, 0.01);
-      var frac = servings / rs;
-      di = recipe.ingredients.map(function (ing) {
-        var origIng = (editingLogEntry.derivedIngredients || []).find(function (d) {
-          return d.foodId === ing.foodId;
-        });
-        return _objectSpread({
+      const rs = Math.max(Number(recipe.servings) || 1, 0.01);
+      const frac = servings / rs;
+      di = recipe.ingredients.map(ing => {
+        const origIng = (editingLogEntry.derivedIngredients || []).find(d => d.foodId === ing.foodId);
+        return {
           foodId: ing.foodId,
           foodName: ing.foodName,
-          amount_g: Math.round(ing.amount_g * frac * 10) / 10
-        }, origIng !== null && origIng !== void 0 && origIng.snapshot ? {
-          snapshot: origIng.snapshot
-        } : {});
+          amount_g: Math.round(ing.amount_g * frac * 10) / 10,
+          ...(origIng?.snapshot ? {
+            snapshot: origIng.snapshot
+          } : {})
+        };
       });
     }
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, (prev[currentDate] || []).map(function (e) {
-        return e.id === editingLogEntry.id ? _objectSpread(_objectSpread({}, e), {}, {
-          servings: Math.round(servings * 10) / 10,
-          meal: editLogMeal,
-          derivedIngredients: di
-        }) : e;
-      })));
-    });
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: (prev[currentDate] || []).map(e => e.id === editingLogEntry.id ? {
+        ...e,
+        servings: Math.round(servings * 10) / 10,
+        meal: editLogMeal,
+        derivedIngredients: di
+      } : e)
+    }));
     setEditingLogEntry(null);
     setView("log");
   };
-  var saveEditedExerciseEntry = function saveEditedExerciseEntry() {
+  const saveEditedExerciseEntry = () => {
     if (!editingLogEntry) return;
-    var dur = parseFloat(editLogDuration) || 0;
-    var act = EXERCISE_ACTIVITIES.find(function (a) {
-      return a.id === editLogActivityId;
-    }) || EXERCISE_ACTIVITIES[0];
-    var wt = parseFloat(profile === null || profile === void 0 ? void 0 : profile.weightKg) || 70;
-    var burn = editLogBurn !== "" ? parseInt(editLogBurn) || 0 : Math.round(act.met * wt * (dur / 60));
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, (prev[currentDate] || []).map(function (e) {
-        return e.id === editingLogEntry.id ? _objectSpread(_objectSpread({}, e), {}, {
-          activity: act.label + " - " + act.intensity,
-          duration_min: dur,
-          calories_burned: burn
-        }) : e;
-      })));
-    });
+    const dur = parseFloat(editLogDuration) || 0;
+    const act = EXERCISE_ACTIVITIES.find(a => a.id === editLogActivityId) || EXERCISE_ACTIVITIES[0];
+    const wt = parseFloat(profile?.weightKg) || 70;
+    const burn = editLogBurn !== "" ? parseInt(editLogBurn) || 0 : Math.round(act.met * wt * (dur / 60));
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: (prev[currentDate] || []).map(e => e.id === editingLogEntry.id ? {
+        ...e,
+        activity: act.label + " - " + act.intensity,
+        duration_min: dur,
+        calories_burned: burn
+      } : e)
+    }));
     setEditingLogEntry(null);
     setView("log");
   };
-  var saveEditedSuppEntry = function saveEditedSuppEntry() {
+  const saveEditedSuppEntry = () => {
     if (!editingLogEntry) return;
-    var items = editLogSuppItems.map(function (i) {
-      var newDose = parseFloat(i.doseOverride);
-      var hasOverride = !isNaN(newDose) && i.doseOverride.trim() !== "";
-      var finalDose = hasOverride ? newDose : i.dose_amount;
+    const items = editLogSuppItems.map(i => {
+      const newDose = parseFloat(i.doseOverride);
+      const hasOverride = !isNaN(newDose) && i.doseOverride.trim() !== "";
+      const finalDose = hasOverride ? newDose : i.dose_amount;
       // Rescale nutrients proportionally to dose change
-      var scaleFactor = i.dose_amount > 0 && hasOverride ? newDose / i.dose_amount : 1;
-      var nutrients = Object.fromEntries(Object.entries(i.nutrients || {}).map(function (_ref5) {
-        var _ref6 = _slicedToArray(_ref5, 2),
-          k = _ref6[0],
-          v = _ref6[1];
-        return [k, Math.round(v * scaleFactor * 1000) / 1000];
-      }));
+      const scaleFactor = i.dose_amount > 0 && hasOverride ? newDose / i.dose_amount : 1;
+      const nutrients = Object.fromEntries(Object.entries(i.nutrients || {}).map(([k, v]) => [k, Math.round(v * scaleFactor * 1000) / 1000]));
       return {
         name: i.name,
         dose_amount: finalDose,
         dose_unit: i.dose_unit,
-        nutrients: nutrients
+        nutrients
       };
     });
-    setLogs(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, currentDate, (prev[currentDate] || []).map(function (e) {
-        return e.id === editingLogEntry.id ? _objectSpread(_objectSpread({}, e), {}, {
-          items: items
-        }) : e;
-      })));
-    });
+    setLogs(prev => ({
+      ...prev,
+      [currentDate]: (prev[currentDate] || []).map(e => e.id === editingLogEntry.id ? {
+        ...e,
+        items
+      } : e)
+    }));
     setEditingLogEntry(null);
     setView("log");
   };
   // ── NOTION SYNC ───────────────────────────────────────────────────────
-  var buildReviewData = function buildReviewData(parsedRecipes) {
-    var review = parsedRecipes.map(function (r) {
-      var existing = recipes.find(function (rec) {
-        return rec.name.toLowerCase().trim() === (r.title || "").toLowerCase().trim();
-      });
+  const buildReviewData = parsedRecipes => {
+    const review = parsedRecipes.map(r => {
+      const existing = recipes.find(rec => rec.name.toLowerCase().trim() === (r.title || "").toLowerCase().trim());
       return {
         title: r.title || "Untitled",
         servings: r.servings || 4,
         source: r.source || "",
-        ingredients: (r.ingredients || []).map(function (ing) {
-          var match = fuzzyMatchFood(ing.name, allFoods);
+        ingredients: (r.ingredients || []).map(ing => {
+          const match = fuzzyMatchFood(ing.name, allFoods);
           return {
-            raw: "".concat(ing.amount, " ").concat(ing.unit, " ").concat(ing.name),
+            raw: `${ing.amount} ${ing.unit} ${ing.name}`,
             name: ing.name,
             amount: ing.amount,
             unit: ing.unit,
             amount_g: toGrams(ing.amount, ing.unit),
-            match: match,
+            match,
             skipped: !match
           };
         }),
         duplicateAction: existing ? null : "import",
-        existingId: (existing === null || existing === void 0 ? void 0 : existing.id) || null,
+        existingId: existing?.id || null,
         imported: false
       };
     });
@@ -3432,50 +2815,27 @@ function NutriTrack() {
     setSyncInProgress(false);
     setView("notionReview");
   };
-  var handleTestConnection = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
-      var data, _t;
-      return _regenerator().w(function (_context2) {
-        while (1) switch (_context2.p = _context2.n) {
-          case 0:
-            setNotionSyncMsg({
-              type: "info",
-              text: "Testing connection…"
-            });
-            _context2.p = 1;
-            _context2.n = 2;
-            return fetchHealth();
-          case 2:
-            data = _context2.v;
-            setNotionSyncMsg({
-              type: "info",
-              text: "\u2713 Connected to Worker (v".concat(data.version || "?", ")")
-            });
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 4000);
-            _context2.n = 4;
-            break;
-          case 3:
-            _context2.p = 3;
-            _t = _context2.v;
-            setNotionSyncMsg({
-              type: "error",
-              text: friendlyError(_t, "testConnection")
-            });
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 8000);
-          case 4:
-            return _context2.a(2);
-        }
-      }, _callee2, null, [[1, 3]]);
-    }));
-    return function handleTestConnection() {
-      return _ref7.apply(this, arguments);
-    };
-  }();
-  var handleResetSyncHistory = function handleResetSyncHistory() {
+  const handleTestConnection = async () => {
+    setNotionSyncMsg({
+      type: "info",
+      text: "Testing connection…"
+    });
+    try {
+      const data = await fetchHealth();
+      setNotionSyncMsg({
+        type: "info",
+        text: `✓ Connected to Worker (v${data.version || "?"})`
+      });
+      setTimeout(() => setNotionSyncMsg(null), 4000);
+    } catch (err) {
+      setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(err, "testConnection")
+      });
+      setTimeout(() => setNotionSyncMsg(null), 8000);
+    }
+  };
+  const handleResetSyncHistory = () => {
     setLastSyncedAt(null);
     saveData(STORAGE_KEYS.notionStatus, {
       lastSyncedAt: null
@@ -3484,353 +2844,202 @@ function NutriTrack() {
       type: "info",
       text: "Sync history cleared."
     });
-    setTimeout(function () {
-      return setNotionSyncMsg(null);
-    }, 4000);
+    setTimeout(() => setNotionSyncMsg(null), 4000);
   };
-  var handleWorkerSync = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-      var lr, rl, fa, enriched, usable, skipped, parsed, i, r, ing, _t2, _t3;
-      return _regenerator().w(function (_context3) {
-        while (1) switch (_context3.p = _context3.n) {
-          case 0:
-            if (navigator.onLine) {
-              _context3.n = 1;
-              break;
-            }
-            setSyncQueue(function (prev) {
-              return [].concat(_toConsumableArray(prev), [{
-                id: Date.now().toString(),
-                captured_time: new Date().toISOString(),
-                status: "pending"
-              }]);
-            });
-            setNotionSyncMsg({
-              type: "info",
-              text: "Offline. Sync queued."
-            });
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 4000);
-            return _context3.a(2);
-          case 1:
-            setSyncInProgress(true);
-            setSyncProgress({
-              phase: "connecting",
-              current: 0,
-              total: 0
-            });
-            setNotionSyncMsg(null);
-            _context3.p = 2;
-            setSyncProgress({
-              phase: "listing",
-              current: 0,
-              total: 0
-            });
-            _context3.n = 3;
-            return fetchRecipesList(lastSyncedAt);
-          case 3:
-            lr = _context3.v;
-            rl = lr.recipes || [], fa = lr.fetched_at || new Date().toISOString();
-            if (rl.length) {
-              _context3.n = 4;
-              break;
-            }
-            setLastSyncedAt(fa);
-            saveData(STORAGE_KEYS.notionStatus, {
-              lastSyncedAt: fa
-            });
-            setSyncInProgress(false);
-            setSyncProgress(null);
-            setNotionSyncMsg({
-              type: "info",
-              text: lastSyncedAt ? "No new recipes since last sync." : "No recipes found."
-            });
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 5000);
-            return _context3.a(2);
-          case 4:
-            setSyncProgress({
-              phase: "fetching",
-              current: 0,
-              total: rl.length
-            });
-            _context3.n = 5;
-            return fetchRecipePagesWithProgress(rl, function (c) {
-              return setSyncProgress({
-                phase: "fetching",
-                current: c,
-                total: rl.length
-              });
-            });
-          case 5:
-            enriched = _context3.v;
-            usable = enriched.filter(function (r) {
-              return r.ingredientLines && r.ingredientLines.length;
-            }), skipped = enriched.length - usable.length;
-            if (usable.length) {
-              _context3.n = 6;
-              break;
-            }
-            setSyncInProgress(false);
-            setSyncProgress(null);
-            setNotionSyncMsg({
-              type: "error",
-              text: "No parseable ingredient tables found."
-            });
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 6000);
-            return _context3.a(2);
-          case 6:
-            setSyncProgress({
-              phase: "parsing",
-              current: 0,
-              total: usable.length
-            });
-            parsed = [];
-            i = 0;
-          case 7:
-            if (!(i < usable.length)) {
-              _context3.n = 13;
-              break;
-            }
-            r = usable[i];
-            _context3.p = 8;
-            _context3.n = 9;
-            return parseIngredients(r.ingredientLines);
-          case 9:
-            ing = _context3.v;
-            parsed.push(_objectSpread(_objectSpread({}, r), {}, {
-              ingredients: ing
-            }));
-            _context3.n = 11;
-            break;
-          case 10:
-            _context3.p = 10;
-            _t2 = _context3.v;
-            parsed.push(_objectSpread(_objectSpread({}, r), {}, {
-              ingredients: []
-            }));
-          case 11:
-            setSyncProgress({
-              phase: "parsing",
-              current: i + 1,
-              total: usable.length
-            });
-          case 12:
-            i++;
-            _context3.n = 7;
-            break;
-          case 13:
-            buildReviewData(parsed);
-            setLastSyncedAt(fa);
-            saveData(STORAGE_KEYS.notionStatus, {
-              lastSyncedAt: fa
-            });
-            if (skipped > 0) setNotionSyncMsg({
-              type: "info",
-              text: "".concat(parsed.length, " recipe").concat(parsed.length === 1 ? "" : "s", " for review. ").concat(skipped, " skipped.")
-            });
-            setSyncProgress(null);
-            _context3.n = 15;
-            break;
-          case 14:
-            _context3.p = 14;
-            _t3 = _context3.v;
-            setNotionSyncMsg({
-              type: "error",
-              text: friendlyError(_t3, "workerSync")
-            });
-            setSyncInProgress(false);
-            setSyncProgress(null);
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 8000);
-          case 15:
-            return _context3.a(2);
-        }
-      }, _callee3, null, [[8, 10], [2, 14]]);
-    }));
-    return function handleWorkerSync() {
-      return _ref8.apply(this, arguments);
-    };
-  }();
-  var handlePasteSync = /*#__PURE__*/function () {
-    var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
-      var rr, parsed, _t8;
-      return _regenerator().w(function (_context5) {
-        while (1) switch (_context5.p = _context5.n) {
-          case 0:
-            if (pasteText.trim()) {
-              _context5.n = 1;
-              break;
-            }
-            return _context5.a(2);
-          case 1:
-            setSyncInProgress(true);
-            setNotionSyncMsg({
-              type: "info",
-              text: "Parsing pasted content…"
-            });
-            _context5.p = 2;
-            _context5.n = 3;
-            return parseRecipesFromPasteText(pasteText);
-          case 3:
-            rr = _context5.v;
-            if (rr.length) {
-              _context5.n = 4;
-              break;
-            }
-            setNotionSyncMsg({
-              type: "error",
-              text: "No recipes found."
-            });
-            setSyncInProgress(false);
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 5000);
-            return _context5.a(2);
-          case 4:
-            _context5.n = 5;
-            return Promise.all(rr.map(/*#__PURE__*/function () {
-              var _ref0 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(r) {
-                var _t4, _t5, _t6, _t7;
-                return _regenerator().w(function (_context4) {
-                  while (1) switch (_context4.n) {
-                    case 0:
-                      _t4 = _objectSpread;
-                      _t5 = _objectSpread({}, r);
-                      _t6 = {};
-                      _context4.n = 1;
-                      return parseIngredients(r.ingredientLines);
-                    case 1:
-                      _t7 = _context4.v;
-                      return _context4.a(2, _t4(_t5, _t6, {
-                        ingredients: _t7
-                      }));
-                  }
-                }, _callee4);
-              }));
-              return function (_x12) {
-                return _ref0.apply(this, arguments);
-              };
-            }()));
-          case 5:
-            parsed = _context5.v;
-            buildReviewData(parsed);
-            _context5.n = 7;
-            break;
-          case 6:
-            _context5.p = 6;
-            _t8 = _context5.v;
-            setNotionSyncMsg({
-              type: "error",
-              text: friendlyError(_t8, "pasteSync")
-            });
-            setSyncInProgress(false);
-            setTimeout(function () {
-              return setNotionSyncMsg(null);
-            }, 4000);
-          case 7:
-            return _context5.a(2);
-        }
-      }, _callee5, null, [[2, 6]]);
-    }));
-    return function handlePasteSync() {
-      return _ref9.apply(this, arguments);
-    };
-  }();
-  var handleParserTest = /*#__PURE__*/function () {
-    var _ref1 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
-      var lines, ing, _t9;
-      return _regenerator().w(function (_context6) {
-        while (1) switch (_context6.p = _context6.n) {
-          case 0:
-            if (parserTestText.trim()) {
-              _context6.n = 1;
-              break;
-            }
-            return _context6.a(2);
-          case 1:
-            setSyncInProgress(true);
-            _context6.p = 2;
-            lines = parserTestText.split(/\r?\n/).map(function (l) {
-              return l.trim();
-            }).filter(Boolean);
-            _context6.n = 3;
-            return parseIngredients(lines);
-          case 3:
-            ing = _context6.v;
-            buildReviewData([{
-              title: "Parser Test",
-              servings: 1,
-              source: "regex parser test",
-              ingredientLines: lines,
-              ingredients: ing
-            }]);
-            _context6.n = 5;
-            break;
-          case 4:
-            _context6.p = 4;
-            _t9 = _context6.v;
-            setNotionSyncMsg({
-              type: "error",
-              text: friendlyError(_t9, "parserTest")
-            });
-            setSyncInProgress(false);
-          case 5:
-            return _context6.a(2);
-        }
-      }, _callee6, null, [[2, 4]]);
-    }));
-    return function handleParserTest() {
-      return _ref1.apply(this, arguments);
-    };
-  }();
-  var importRecipe = function importRecipe(idx) {
-    var r = syncReviewData[idx];
-    if (r.duplicateAction === "skip" || r.imported) return;
-    var ingredients = r.ingredients.filter(function (i) {
-      return i.match && !i.skipped;
-    }).map(function (i) {
-      return {
-        foodId: i.match.id,
-        foodName: i.match.name,
-        amount_g: i.amount_g
-      };
+  const handleWorkerSync = async () => {
+    if (!navigator.onLine) {
+      setSyncQueue(prev => [...prev, {
+        id: Date.now().toString(),
+        captured_time: new Date().toISOString(),
+        status: "pending"
+      }]);
+      setNotionSyncMsg({
+        type: "info",
+        text: "Offline. Sync queued."
+      });
+      setTimeout(() => setNotionSyncMsg(null), 4000);
+      return;
+    }
+    setSyncInProgress(true);
+    setSyncProgress({
+      phase: "connecting",
+      current: 0,
+      total: 0
     });
+    setNotionSyncMsg(null);
+    try {
+      setSyncProgress({
+        phase: "listing",
+        current: 0,
+        total: 0
+      });
+      const lr = await fetchRecipesList(lastSyncedAt);
+      const rl = lr.recipes || [],
+        fa = lr.fetched_at || new Date().toISOString();
+      if (!rl.length) {
+        setLastSyncedAt(fa);
+        saveData(STORAGE_KEYS.notionStatus, {
+          lastSyncedAt: fa
+        });
+        setSyncInProgress(false);
+        setSyncProgress(null);
+        setNotionSyncMsg({
+          type: "info",
+          text: lastSyncedAt ? "No new recipes since last sync." : "No recipes found."
+        });
+        setTimeout(() => setNotionSyncMsg(null), 5000);
+        return;
+      }
+      setSyncProgress({
+        phase: "fetching",
+        current: 0,
+        total: rl.length
+      });
+      const enriched = await fetchRecipePagesWithProgress(rl, c => setSyncProgress({
+        phase: "fetching",
+        current: c,
+        total: rl.length
+      }));
+      const usable = enriched.filter(r => r.ingredientLines && r.ingredientLines.length),
+        skipped = enriched.length - usable.length;
+      if (!usable.length) {
+        setSyncInProgress(false);
+        setSyncProgress(null);
+        setNotionSyncMsg({
+          type: "error",
+          text: "No parseable ingredient tables found."
+        });
+        setTimeout(() => setNotionSyncMsg(null), 6000);
+        return;
+      }
+      setSyncProgress({
+        phase: "parsing",
+        current: 0,
+        total: usable.length
+      });
+      const parsed = [];
+      for (let i = 0; i < usable.length; i++) {
+        const r = usable[i];
+        try {
+          const ing = await parseIngredients(r.ingredientLines);
+          parsed.push({
+            ...r,
+            ingredients: ing
+          });
+        } catch {
+          parsed.push({
+            ...r,
+            ingredients: []
+          });
+        }
+        setSyncProgress({
+          phase: "parsing",
+          current: i + 1,
+          total: usable.length
+        });
+      }
+      buildReviewData(parsed);
+      setLastSyncedAt(fa);
+      saveData(STORAGE_KEYS.notionStatus, {
+        lastSyncedAt: fa
+      });
+      if (skipped > 0) setNotionSyncMsg({
+        type: "info",
+        text: `${parsed.length} recipe${parsed.length === 1 ? "" : "s"} for review. ${skipped} skipped.`
+      });
+      setSyncProgress(null);
+    } catch (err) {
+      setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(err, "workerSync")
+      });
+      setSyncInProgress(false);
+      setSyncProgress(null);
+      setTimeout(() => setNotionSyncMsg(null), 8000);
+    }
+  };
+  const handlePasteSync = async () => {
+    if (!pasteText.trim()) return;
+    setSyncInProgress(true);
+    setNotionSyncMsg({
+      type: "info",
+      text: "Parsing pasted content…"
+    });
+    try {
+      const rr = await parseRecipesFromPasteText(pasteText);
+      if (!rr.length) {
+        setNotionSyncMsg({
+          type: "error",
+          text: "No recipes found."
+        });
+        setSyncInProgress(false);
+        setTimeout(() => setNotionSyncMsg(null), 5000);
+        return;
+      }
+      const parsed = await Promise.all(rr.map(async r => ({
+        ...r,
+        ingredients: await parseIngredients(r.ingredientLines)
+      })));
+      buildReviewData(parsed);
+    } catch (err) {
+      setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(err, "pasteSync")
+      });
+      setSyncInProgress(false);
+      setTimeout(() => setNotionSyncMsg(null), 4000);
+    }
+  };
+  const handleParserTest = async () => {
+    if (!parserTestText.trim()) return;
+    setSyncInProgress(true);
+    try {
+      const lines = parserTestText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const ing = await parseIngredients(lines);
+      buildReviewData([{
+        title: "Parser Test",
+        servings: 1,
+        source: "regex parser test",
+        ingredientLines: lines,
+        ingredients: ing
+      }]);
+    } catch (err) {
+      setNotionSyncMsg({
+        type: "error",
+        text: friendlyError(err, "parserTest")
+      });
+      setSyncInProgress(false);
+    }
+  };
+  const importRecipe = idx => {
+    const r = syncReviewData[idx];
+    if (r.duplicateAction === "skip" || r.imported) return;
+    const ingredients = r.ingredients.filter(i => i.match && !i.skipped).map(i => ({
+      foodId: i.match.id,
+      foodName: i.match.name,
+      amount_g: i.amount_g
+    }));
     if (!ingredients.length) return;
-    var s = Math.max(r.servings || 1, 0.1),
+    const s = Math.max(r.servings || 1, 0.1),
       nutrition = calcRecipeNutritionPerServing(ingredients, s, allFoods);
-    var name = r.duplicateAction === "copy" ? "".concat(r.title, " (imported)") : r.title;
-    var newRec = {
-      id: r.duplicateAction === "overwrite" && r.existingId ? r.existingId : "recipe_".concat(Date.now(), "_").concat(idx),
-      name: name,
+    const name = r.duplicateAction === "copy" ? `${r.title} (imported)` : r.title;
+    const newRec = {
+      id: r.duplicateAction === "overwrite" && r.existingId ? r.existingId : `recipe_${Date.now()}_${idx}`,
+      name,
       source: r.source,
       servings: s,
-      ingredients: ingredients,
+      ingredients,
       nutrition_per_serving: nutrition
     };
-    if (r.duplicateAction === "overwrite" && r.existingId) setRecipes(function (prev) {
-      return prev.map(function (rec) {
-        return rec.id === r.existingId ? newRec : rec;
-      });
-    });else setRecipes(function (prev) {
-      return [].concat(_toConsumableArray(prev), [newRec]);
-    });
-    setSyncReviewData(function (prev) {
-      return prev.map(function (item, i) {
-        return i === idx ? _objectSpread(_objectSpread({}, item), {}, {
-          imported: true
-        }) : item;
-      });
-    });
+    if (r.duplicateAction === "overwrite" && r.existingId) setRecipes(prev => prev.map(rec => rec.id === r.existingId ? newRec : rec));else setRecipes(prev => [...prev, newRec]);
+    setSyncReviewData(prev => prev.map((item, i) => i === idx ? {
+      ...item,
+      imported: true
+    } : item));
   };
-  var importAllReady = function importAllReady() {
-    syncReviewData.forEach(function (_, idx) {
-      var r = syncReviewData[idx];
+  const importAllReady = () => {
+    syncReviewData.forEach((_, idx) => {
+      const r = syncReviewData[idx];
       if (!r.imported && r.duplicateAction !== null && r.duplicateAction !== "skip") importRecipe(idx);
     });
     setSyncQueue([]);
@@ -3840,38 +3049,30 @@ function NutriTrack() {
       type: "info",
       text: "Import complete ✓"
     });
-    setTimeout(function () {
-      return setNotionSyncMsg(null);
-    }, 3000);
+    setTimeout(() => setNotionSyncMsg(null), 3000);
   };
-  var clearSyncQueue = function clearSyncQueue() {
+  const clearSyncQueue = () => {
     setSyncQueue([]);
     setNotionSyncMsg({
       type: "info",
       text: "Queue cleared."
     });
-    setTimeout(function () {
-      return setNotionSyncMsg(null);
-    }, 3000);
+    setTimeout(() => setNotionSyncMsg(null), 3000);
   };
-  var filteredFoods = debouncedSearchTerm.length > 0 ? allFoods.filter(function (f) {
-    return f.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
-  }) : allFoods;
-  var groupedByCategory = filteredFoods.reduce(function (acc, f) {
+  const filteredFoods = debouncedSearchTerm.length > 0 ? allFoods.filter(f => f.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) : allFoods;
+  const groupedByCategory = filteredFoods.reduce((acc, f) => {
     if (!acc[f.cat]) acc[f.cat] = [];
     acc[f.cat].push(f);
     return acc;
   }, {});
-  var filteredIngFoods = recipeIngSearch.length > 0 ? allFoods.filter(function (f) {
-    return f.name.toLowerCase().includes(recipeIngSearch.toLowerCase());
-  }) : allFoods;
-  var groupedIngByCategory = filteredIngFoods.reduce(function (acc, f) {
+  const filteredIngFoods = recipeIngSearch.length > 0 ? allFoods.filter(f => f.name.toLowerCase().includes(recipeIngSearch.toLowerCase())) : allFoods;
+  const groupedIngByCategory = filteredIngFoods.reduce((acc, f) => {
     if (!acc[f.cat]) acc[f.cat] = [];
     acc[f.cat].push(f);
     return acc;
   }, {});
-  var formatDate = function formatDate(ds) {
-    var d = new Date(ds + "T12:00:00");
+  const formatDate = ds => {
+    const d = new Date(ds + "T12:00:00");
     return d.toLocaleDateString("en-GB", {
       weekday: "short",
       month: "short",
@@ -3903,9 +3104,9 @@ function NutriTrack() {
       color: "#64748b",
       marginTop: 6
     }
-  }, "Loading\u2026")));
+  }, "Loading…")));
   // ── STYLES ────────────────────────────────────────────────────────────
-  var S = {
+  const S = {
     app: {
       background: "#0a0f1a",
       color: "#e2e8f0",
@@ -4020,21 +3221,19 @@ function NutriTrack() {
       paddingBottom: "calc(8px + env(safe-area-inset-bottom, 0px))",
       zIndex: 100
     },
-    navBtn: function navBtn(a) {
-      return {
-        background: "none",
-        border: "none",
-        color: a ? "#3b82f6" : "#64748b",
-        fontSize: 11,
-        fontWeight: 600,
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 2,
-        padding: "4px 10px"
-      };
-    },
+    navBtn: a => ({
+      background: "none",
+      border: "none",
+      color: a ? "#3b82f6" : "#64748b",
+      fontSize: 11,
+      fontWeight: 600,
+      cursor: "pointer",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 2,
+      padding: "4px 10px"
+    }),
     input: {
       width: "100%",
       background: "#1e293b",
@@ -4051,17 +3250,15 @@ function NutriTrack() {
       borderBottom: "1px solid #1e293b",
       cursor: "pointer"
     },
-    pill: function pill(a) {
-      return {
-        padding: "6px 14px",
-        borderRadius: 20,
-        border: a ? "1px solid #3b82f6" : "1px solid #334155",
-        background: a ? "#1d4ed8" : "transparent",
-        color: a ? "#fff" : "#94a3b8",
-        fontSize: 13,
-        cursor: "pointer"
-      };
-    },
+    pill: a => ({
+      padding: "6px 14px",
+      borderRadius: 20,
+      border: a ? "1px solid #3b82f6" : "1px solid #334155",
+      background: a ? "#1d4ed8" : "transparent",
+      color: a ? "#fff" : "#94a3b8",
+      fontSize: 13,
+      cursor: "pointer"
+    }),
     microRow: {
       display: "flex",
       justifyContent: "space-between",
@@ -4099,19 +3296,17 @@ function NutriTrack() {
       padding: 4,
       marginBottom: 16
     },
-    modeTab: function modeTab(a) {
-      return {
-        flex: 1,
-        padding: "8px 0",
-        borderRadius: 8,
-        border: "none",
-        cursor: "pointer",
-        fontSize: 13,
-        fontWeight: 600,
-        background: a ? "#1d4ed8" : "transparent",
-        color: a ? "#fff" : "#64748b"
-      };
-    },
+    modeTab: a => ({
+      flex: 1,
+      padding: "8px 0",
+      borderRadius: 8,
+      border: "none",
+      cursor: "pointer",
+      fontSize: 13,
+      fontWeight: 600,
+      background: a ? "#1d4ed8" : "transparent",
+      color: a ? "#fff" : "#64748b"
+    }),
     suppRow: {
       display: "flex",
       justifyContent: "space-between",
@@ -4120,77 +3315,54 @@ function NutriTrack() {
       borderBottom: "1px solid #1e293b"
     }
   };
-  var RECIPE_VIEWS = ["recipes", "recipeCreate", "recipeIngAdd", "recipeDetail", "recipeLog", "recipeLogReview"];
+  const RECIPE_VIEWS = ["recipes", "recipeCreate", "recipeIngAdd", "recipeDetail", "recipeLog", "recipeLogReview"];
 
   // ── DISPLAY HELPERS ───────────────────────────────────────────────────
   // W0: 1 dp for all non-cal nutrient values; null → "–" (no crash)
-  var n1 = function n1(v) {
-    return v == null ? "–" : Number(v).toFixed(1);
-  };
+  const n1 = v => v == null ? "–" : Number(v).toFixed(1);
   // W4: energy formatting — kcal stays integer (Math.round), kJ uses toFixed(1)
-  var energyLabel = energyUnit === "kJ" ? "kJ" : "kcal";
-  var fmtE = function fmtE(kcal) {
-    return energyUnit === "kJ" ? (kcal * 4.184).toFixed(1) : String(Math.round(kcal));
-  };
-  var BottomNav = function BottomNav() {
-    return /*#__PURE__*/React.createElement("div", {
-      style: S.nav
-    }, /*#__PURE__*/React.createElement("button", {
-      style: S.navBtn(view === "log"),
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "     ", /*#__PURE__*/React.createElement("span", {
-      style: {
-        fontSize: 18
-      }
-    }, "\uD83D\uDCCB"), "Log     "), /*#__PURE__*/React.createElement("button", {
-      style: S.navBtn(view === "goals"),
-      onClick: function onClick() {
-        return setView("goals");
-      }
-    }, "   ", /*#__PURE__*/React.createElement("span", {
-      style: {
-        fontSize: 18
-      }
-    }, "\uD83C\uDFAF"), "Goals   "), /*#__PURE__*/React.createElement("button", {
-      style: S.navBtn(RECIPE_VIEWS.includes(view)),
-      onClick: function onClick() {
-        return setView("recipes");
-      }
-    }, " ", /*#__PURE__*/React.createElement("span", {
-      style: {
-        fontSize: 18
-      }
-    }, "\uD83D\uDCD6"), "Recipes "), /*#__PURE__*/React.createElement("button", {
-      style: S.navBtn(view === "settings"),
-      onClick: function onClick() {
-        return setView("settings");
-      }
-    }, /*#__PURE__*/React.createElement("span", {
-      style: {
-        fontSize: 18
-      }
-    }, "\u2699\uFE0F"), "Settings"));
-  };
+  const energyLabel = energyUnit === "kJ" ? "kJ" : "kcal";
+  const fmtE = kcal => energyUnit === "kJ" ? (kcal * 4.184).toFixed(1) : String(Math.round(kcal));
+  const BottomNav = () => /*#__PURE__*/React.createElement("div", {
+    style: S.nav
+  }, /*#__PURE__*/React.createElement("button", {
+    style: S.navBtn(view === "log"),
+    onClick: () => setView("log")
+  }, "     ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 18
+    }
+  }, "📋"), "Log     "), /*#__PURE__*/React.createElement("button", {
+    style: S.navBtn(view === "goals"),
+    onClick: () => setView("goals")
+  }, "   ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 18
+    }
+  }, "🎯"), "Goals   "), /*#__PURE__*/React.createElement("button", {
+    style: S.navBtn(RECIPE_VIEWS.includes(view)),
+    onClick: () => setView("recipes")
+  }, " ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 18
+    }
+  }, "📖"), "Recipes "), /*#__PURE__*/React.createElement("button", {
+    style: S.navBtn(view === "settings"),
+    onClick: () => setView("settings")
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 18
+    }
+  }, "⚙️"), "Settings"));
 
   // Helper: supplement contribution to one nutrient key for detail views
-  var suppContrib = function suppContrib(entry, k) {
-    return (entry.items || []).reduce(function (s, item) {
-      var _k;
-      return s + ((_k = (item.nutrients || {})[k]) !== null && _k !== void 0 ? _k : 0);
-    }, 0);
-  };
-  var recipeSubtotal = function recipeSubtotal(e, field) {
-    return (e.derivedIngredients || []).reduce(function (s, ing) {
-      if (ing.snapshot && ing.snapshot[field] !== undefined) return s + (ing.snapshot[field] || 0) * ing.amount_g / 100;
-      var f = allFoodsForRender.find(function (x) {
-        return x.id === ing.foodId;
-      });
-      return s + (f ? (f[field] || 0) * ing.amount_g / 100 : 0);
-    }, 0);
-  };
-  var globalBanners = ReactDOM.createPortal(/*#__PURE__*/React.createElement(React.Fragment, null, swUpdateReady && /*#__PURE__*/React.createElement("div", {
+  const suppContrib = (entry, k) => (entry.items || []).reduce((s, item) => s + ((item.nutrients || {})[k] ?? 0), 0);
+  const recipeSubtotal = (e, field) => (e.derivedIngredients || []).reduce((s, ing) => {
+    if (ing.snapshot && ing.snapshot[field] !== undefined) return s + (ing.snapshot[field] || 0) * ing.amount_g / 100;
+    const f = allFoodsForRender.find(x => x.id === ing.foodId);
+    return s + (f ? (f[field] || 0) * ing.amount_g / 100 : 0);
+  }, 0);
+  const globalBanners = ReactDOM.createPortal(/*#__PURE__*/React.createElement(React.Fragment, null, swUpdateReady && /*#__PURE__*/React.createElement("div", {
     style: {
       background: "#1e3a5f",
       borderBottom: "1px solid #3b82f6",
@@ -4209,7 +3381,7 @@ function NutriTrack() {
       lineHeight: 1.5,
       flex: 1
     }
-  }, "Update available \u2014 close and reopen the app to update."), /*#__PURE__*/React.createElement("button", {
+  }, "Update available — close and reopen the app to update."), /*#__PURE__*/React.createElement("button", {
     style: {
       background: "#3b82f6",
       border: "none",
@@ -4221,14 +3393,14 @@ function NutriTrack() {
       padding: "6px 12px",
       flexShrink: 0
     },
-    onClick: function onClick() {
+    onClick: () => {
       // Phase 9 (R4/R10) — apply the SW update with a graceful
       // fallback. Ask the waiting SW to skip waiting; if the new
       // controller never takes over (activation failure / no waiting
       // worker / SW disabled), fall back to a hard reload so the
       // banner never strands the user on a stale build.
-      var reg = swRegRef.current;
-      var applyViaController = function applyViaController() {
+      const reg = swRegRef.current;
+      const applyViaController = () => {
         if (reg && reg.waiting) reg.waiting.postMessage({
           type: "SKIP_WAITING"
         });
@@ -4237,22 +3409,22 @@ function NutriTrack() {
         window.location.reload();
         return;
       }
-      var reloaded = false;
-      var fallback = setTimeout(function () {
+      let reloaded = false;
+      const fallback = setTimeout(() => {
         if (!reloaded) {
           reloaded = true;
           window.location.reload();
         }
       }, 4000);
-      var _onControllerChange = function onControllerChange() {
+      const onControllerChange = () => {
         clearTimeout(fallback);
-        navigator.serviceWorker.removeEventListener("controllerchange", _onControllerChange);
+        navigator.serviceWorker.removeEventListener("controllerchange", onControllerChange);
         if (!reloaded) {
           reloaded = true;
           window.location.reload();
         }
       };
-      navigator.serviceWorker.addEventListener("controllerchange", _onControllerChange);
+      navigator.serviceWorker.addEventListener("controllerchange", onControllerChange);
       applyViaController();
     }
   }, "OK")), !isOnline && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -4270,7 +3442,7 @@ function NutriTrack() {
       zIndex: 200,
       boxShadow: "0 2px 8px rgba(0,0,0,0.3)"
     }
-  }, "Offline \u2014 Notion sync unavailable."), /*#__PURE__*/React.createElement("div", {
+  }, "Offline — Notion sync unavailable."), /*#__PURE__*/React.createElement("div", {
     style: {
       height: "calc(40px + env(safe-area-inset-top, 0px))",
       flexShrink: 0
@@ -4278,18 +3450,18 @@ function NutriTrack() {
   }))), document.body);
   // ── LOG VIEW ──────────────────────────────────────────────────────────
   if (view === "log") {
-    var grouped = {};
-    MEALS.forEach(function (m) {
-      return grouped[m] = [];
-    });
-    dayLog.forEach(function (e) {
-      if (e.type === "exercise" || e.type === "supplement") return;
+    const grouped = {};
+    MEALS.forEach(m => grouped[m] = []);
+    dayLog.forEach(e => {
+      if (e.type === "exercise" || e.type === "supplement" || e.type === "water" || e.type === "alcohol") return;
       if (!grouped[e.meal]) grouped[e.meal] = [];
       grouped[e.meal].push(e);
     });
-    var suppEntries = dayLog.filter(function (e) {
-      return e.type === "supplement";
-    });
+    const suppEntries = dayLog.filter(e => e.type === "supplement");
+    const waterEntries = dayLog.filter(e => e.type === "water");
+    const alcEntries = dayLog.filter(e => e.type === "alcohol");
+    const waterTotalMl = waterEntries.reduce((s, e) => s + (e.amount || 0), 0);
+    const alcTotalCals = alcEntries.reduce((s, e) => s + (e.calories || 0), 0);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, globalBanners, validationWarning && !validationDismissed && /*#__PURE__*/React.createElement("div", {
@@ -4310,7 +3482,7 @@ function NutriTrack() {
         lineHeight: 1.5,
         flex: 1
       }
-    }, "\u26A0\uFE0F Some data didn't load as expected. We recommend exporting your current data before continuing \u2014 open Settings \u2192 Export Data."), /*#__PURE__*/React.createElement("button", {
+    }, "⚠️ Some data didn't load as expected. We recommend exporting your current data before continuing — open Settings → Export Data."), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "none",
         border: "none",
@@ -4321,10 +3493,8 @@ function NutriTrack() {
         lineHeight: 1,
         flexShrink: 0
       },
-      onClick: function onClick() {
-        return setValidationDismissed(true);
-      }
-    }, "\xD7")), /*#__PURE__*/React.createElement("div", {
+      onClick: () => setValidationDismissed(true)
+    }, "×")), /*#__PURE__*/React.createElement("div", {
       style: S.header
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -4337,14 +3507,17 @@ function NutriTrack() {
         background: "none",
         border: "none",
         color: "#94a3b8",
-        fontSize: 20,
-        padding: "4px 8px",
+        fontSize: 24,
+        minWidth: 44,
+        minHeight: 44,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "4px 10px",
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return changeDate(-1);
-      }
-    }, "\u2039"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => changeDate(-1)
+    }, "‹"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 600,
@@ -4363,22 +3536,25 @@ function NutriTrack() {
         background: "none",
         border: "none",
         color: "#94a3b8",
-        fontSize: 20,
-        padding: "4px 8px",
+        fontSize: 24,
+        minWidth: 44,
+        minHeight: 44,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "4px 10px",
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return changeDate(1);
-      }
-    }, "\u203A"))), /*#__PURE__*/React.createElement("div", {
+      onClick: () => changeDate(1)
+    }, "›"))), /*#__PURE__*/React.createElement("div", {
       style: S.macroGrid
-    }, MACROS.map(function (k) {
-      var arc = nullData.arcByKey[k] || 0;
-      var hasNull = !!nullData.foodsByKey[k];
+    }, MACROS.map(k => {
+      const arc = nullData.arcByKey[k] || 0;
+      const hasNull = !!nullData.foodsByKey[k];
       return /*#__PURE__*/React.createElement("div", {
         key: k,
         style: S.macroItem,
-        onClick: function onClick() {
+        onClick: () => {
           if (hasNull) {
             setNullPanelKey(nullPanelKey === k ? null : k);
           } else {
@@ -4398,7 +3574,7 @@ function NutriTrack() {
         y: "50%",
         textAnchor: "middle",
         dy: "0.35em",
-        fill: NUTRIENT_META[k].color,
+        fill: trafficColor(pct(k)),
         fontSize: 10,
         fontWeight: 700
       }, pct(k), "%")), /*#__PURE__*/React.createElement("div", {
@@ -4453,12 +3629,12 @@ function NutriTrack() {
         padding: 0,
         textDecoration: "underline"
       },
-      onClick: function onClick(e) {
+      onClick: e => {
         e.stopPropagation();
         setNullPanelKey(null);
         handleMacroTap(nullPanelKey);
       }
-    }, "View full detail \u2192")), exerciseBurn > 0 && /*#__PURE__*/React.createElement("div", {
+    }, "View full detail →")), exerciseBurn > 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         margin: "0 20px 8px",
         background: "#0f2d1a",
@@ -4474,7 +3650,7 @@ function NutriTrack() {
         fontSize: 13,
         color: "#4ade80"
       }
-    }, "\uD83C\uDFC3 ", fmtE(exerciseBurn), " ", energyLabel, " burned today"), /*#__PURE__*/React.createElement("span", {
+    }, "🏃 ", fmtE(exerciseBurn), " ", energyLabel, " burned today"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 11,
         color: "#166534"
@@ -4485,25 +3661,95 @@ function NutriTrack() {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
         fontSize: 13,
         fontWeight: 700,
         color: "#94a3b8",
-        marginBottom: 8,
         letterSpacing: "0.05em",
         textTransform: "uppercase"
       }
-    }, "Micronutrients"), MICROS.map(function (k) {
-      var p = pct(k),
+    }, "Micronutrients"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "none",
+        color: "#64748b",
+        fontSize: 16,
+        cursor: "pointer",
+        padding: "0 4px",
+        lineHeight: 1
+      },
+      onClick: () => setTrafficInfoKey(trafficInfoKey === "__info" ? null : "__info")
+    }, info)), trafficInfoKey === "__info" && /*#__PURE__*/React.createElement("div", {
+      style: {
+        margin: "0 0 10px",
+        background: "#0a0f1a",
+        border: "1px solid #334155",
+        borderRadius: 8,
+        padding: "10px 12px",
+        fontSize: 11,
+        color: "#94a3b8",
+        lineHeight: 1.6
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 10,
+        alignItems: "center",
+        marginBottom: 4
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: TRAFFIC_COLORS.green,
+        fontWeight: 700
+      }
+    }, "Green"), /*#__PURE__*/React.createElement("span", null, "< 100% target"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: TRAFFIC_COLORS.yellow,
+        fontWeight: 700,
+        marginLeft: 8
+      }
+    }, "Yellow"), /*#__PURE__*/React.createElement("span", null, "100–120%"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: TRAFFIC_COLORS.red,
+        fontWeight: 700,
+        marginLeft: 8
+      }
+    }, "Red"), /*#__PURE__*/React.createElement("span", null, "> 120%")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        color: "#64748b"
+      }
+    }, "Tap any nutrient name for detail. Tap ", info, " on a row for why exceeding the limit matters."), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "none",
+        color: "#60a5fa",
+        fontSize: 11,
+        cursor: "pointer",
+        padding: "4px 0 0",
+        textDecoration: "underline"
+      },
+      onClick: e => {
+        e.stopPropagation();
+        setTrafficInfoKey(null);
+      }
+    }, "Close")), MICROS.map(k => {
+      const p = pct(k),
         meta = NUTRIENT_META[k],
         hasNull = !!nullData.foodsByKey[k];
-      var arc = nullData.arcByKey[k] || 0;
-      var confirmedPct = Math.min(p, 100);
-      var nullWidth = Math.min(arc * 100, 100 - confirmedPct);
+      const arc = nullData.arcByKey[k] || 0;
+      const confirmedPct = Math.min(p, 100);
+      const nullWidth = Math.min(arc * 100, 100 - confirmedPct);
       return /*#__PURE__*/React.createElement("div", {
         key: k
       }, /*#__PURE__*/React.createElement("div", {
         style: S.microRow,
-        onClick: function onClick() {
+        onClick: () => {
           if (hasNull) {
             setNullPanelKey(nullPanelKey === k ? null : k);
           } else {
@@ -4518,7 +3764,22 @@ function NutriTrack() {
           width: 80,
           fontWeight: 500
         }
-      }, meta.label), /*#__PURE__*/React.createElement("div", {
+      }, meta.label), /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "none",
+          border: "none",
+          color: trafficInfoKey === k ? "#60a5fa" : "#475569",
+          fontSize: 13,
+          cursor: "pointer",
+          padding: "0 6px 0 0",
+          lineHeight: 1,
+          flexShrink: 0
+        },
+        onClick: e => {
+          e.stopPropagation();
+          setTrafficInfoKey(trafficInfoKey === k ? null : k);
+        }
+      }, info), /*#__PURE__*/React.createElement("div", {
         style: S.microBar
       }, /*#__PURE__*/React.createElement("div", {
         style: {
@@ -4526,18 +3787,18 @@ function NutriTrack() {
           left: 0,
           top: 0,
           height: "100%",
-          width: "".concat(confirmedPct, "%"),
-          background: meta.color,
+          width: `${confirmedPct}%`,
+          background: trafficColor(p),
           borderRadius: 2,
           transition: "width 0.5s ease"
         }
       }), hasNull && displayMode === "advanced" && nullWidth > 0 && /*#__PURE__*/React.createElement("div", {
         style: {
           position: "absolute",
-          left: "".concat(confirmedPct, "%"),
+          left: `${confirmedPct}%`,
           top: 0,
           height: "100%",
-          width: "".concat(nullWidth, "%"),
+          width: `${nullWidth}%`,
           background: "repeating-linear-gradient(90deg,#475569 0px,#475569 3px,transparent 3px,transparent 6px)",
           borderRadius: 2,
           opacity: 0.7
@@ -4545,7 +3806,7 @@ function NutriTrack() {
       })), /*#__PURE__*/React.createElement("span", {
         style: {
           fontSize: 11,
-          color: p >= 100 ? "#10b981" : p >= 60 ? "#f59e0b" : "#ef4444",
+          color: trafficColor(p),
           width: 32,
           textAlign: "right"
         }
@@ -4591,27 +3852,60 @@ function NutriTrack() {
           padding: 0,
           textDecoration: "underline"
         },
-        onClick: function onClick(e) {
+        onClick: e => {
           e.stopPropagation();
           setNullPanelKey(null);
           setDetailNutrient(k);
           setView("detail");
         }
-      }, "View full detail \u2192")));
+      }, "View full detail →")), trafficInfoKey === k && /*#__PURE__*/React.createElement("div", {
+        style: {
+          background: "#0a0f1a",
+          border: "1px solid #334155",
+          borderRadius: 8,
+          padding: "8px 10px",
+          margin: "2px 0 6px",
+          fontSize: 11,
+          color: "#94a3b8",
+          lineHeight: 1.5
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontWeight: 700,
+          marginBottom: 4,
+          color: "#cbd5e1"
+        }
+      }, meta.label, " · ", trafficLevel(p)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          color: "#64748b"
+        }
+      }, NUTRIENT_EXPLANATIONS[k] || "No info available."), /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "none",
+          border: "none",
+          color: "#60a5fa",
+          fontSize: 11,
+          cursor: "pointer",
+          padding: "4px 0 0",
+          textDecoration: "underline"
+        },
+        onClick: e => {
+          e.stopPropagation();
+          setTrafficInfoKey(null);
+        }
+      }, "Close")));
     }))), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.section), {}, {
+      style: {
+        ...S.section,
         paddingBottom: 240
-      })
-    }, MEALS.map(function (m) {
-      var entries = grouped[m];
+      }
+    }, MEALS.map(m => {
+      const entries = grouped[m];
       if (!entries.length) return null;
-      var mealCals = entries.reduce(function (sum, e) {
-        var _e$snapshot$cal;
+      const mealCals = entries.reduce((sum, e) => {
         if (e.type === "recipe") return sum + computeEntryNutrition(e.derivedIngredients || [], allFoodsForRender).cal;
-        if (e.snapshot) return sum + ((_e$snapshot$cal = e.snapshot.cal) !== null && _e$snapshot$cal !== void 0 ? _e$snapshot$cal : 0) * e.amount / 100;
-        var f = allFoodsForRender.find(function (x) {
-          return x.id === e.foodId;
-        });
+        if (e.snapshot) return sum + (e.snapshot.cal ?? 0) * e.amount / 100;
+        const f = allFoodsForRender.find(x => x.id === e.foodId);
         return sum + (f ? f.cal * e.amount / 100 : 0);
       }, 0);
       return /*#__PURE__*/React.createElement("div", {
@@ -4631,31 +3925,27 @@ function NutriTrack() {
           color: "#f59e0b",
           fontWeight: 600
         }
-      }, fmtE(mealCals), " ", energyLabel)), entries.map(function (e) {
-        var _e$snapshot$cal2;
+      }, fmtE(mealCals), " ", energyLabel)), entries.map(e => {
         if (e.type === "recipe") {
-          var nut = computeEntryNutrition(e.derivedIngredients || [], allFoodsForRender);
+          const nut = computeEntryNutrition(e.derivedIngredients || [], allFoodsForRender);
           return /*#__PURE__*/React.createElement(SwipeableEntry, {
             key: e.id,
-            onDelete: function onDelete() {
-              return removeEntry(e.id);
-            }
+            onDelete: () => removeEntry(e.id)
           }, /*#__PURE__*/React.createElement("div", {
             style: S.entry,
-            onClick: function onClick() {
-              return openEditRecipeEntry(e);
-            }
+            onClick: () => openEditRecipeEntry(e)
           }, /*#__PURE__*/React.createElement("div", {
             style: {
               flex: 1
             }
           }, /*#__PURE__*/React.createElement("div", {
-            style: _objectSpread(_objectSpread({}, S.entryName), {}, {
+            style: {
+              ...S.entryName,
               color: "#a78bfa"
-            })
-          }, "\uD83D\uDCD6 ", e.recipeName), /*#__PURE__*/React.createElement("div", {
+            }
+          }, "📖 ", e.recipeName), /*#__PURE__*/React.createElement("div", {
             style: S.entryDet
-          }, e.servings, " ", e.servings === 1 ? "serving" : "servings", " \xB7 tap to edit")), /*#__PURE__*/React.createElement("div", {
+          }, e.servings, " ", e.servings === 1 ? "serving" : "servings", " · tap to edit")), /*#__PURE__*/React.createElement("div", {
             style: {
               display: "flex",
               alignItems: "center"
@@ -4664,20 +3954,16 @@ function NutriTrack() {
             style: S.entryCal
           }, fmtE(nut.cal), " ", energyLabel), /*#__PURE__*/React.createElement("button", {
             style: S.delBtn,
-            onClick: function onClick(ev) {
+            onClick: ev => {
               ev.stopPropagation();
               removeEntry(e.id);
             }
-          }, "\xD7"))));
+          }, "×"))));
         }
-        var f = allFoodsForRender.find(function (x) {
-          return x.id === e.foodId;
-        });
+        const f = allFoodsForRender.find(x => x.id === e.foodId);
         return /*#__PURE__*/React.createElement(SwipeableEntry, {
           key: e.id,
-          onDelete: function onDelete() {
-            return removeEntry(e.id);
-          }
+          onDelete: () => removeEntry(e.id)
         }, /*#__PURE__*/React.createElement("div", {
           style: S.entry
         }, /*#__PURE__*/React.createElement("div", {
@@ -4685,30 +3971,24 @@ function NutriTrack() {
             flex: 1,
             cursor: "pointer"
           },
-          onClick: function onClick() {
-            return startEditEntry(e);
-          }
+          onClick: () => startEditEntry(e)
         }, /*#__PURE__*/React.createElement("div", {
           style: S.entryName
         }, e.foodName), /*#__PURE__*/React.createElement("div", {
           style: S.entryDet
-        }, e.amount, "g \xB7 tap to edit")), /*#__PURE__*/React.createElement("div", {
+        }, e.amount, "g · tap to edit")), /*#__PURE__*/React.createElement("div", {
           style: {
             display: "flex",
             alignItems: "center"
           }
         }, /*#__PURE__*/React.createElement("span", {
           style: S.entryCal
-        }, e.snapshot ? fmtE(((_e$snapshot$cal2 = e.snapshot.cal) !== null && _e$snapshot$cal2 !== void 0 ? _e$snapshot$cal2 : 0) * e.amount / 100) : f ? fmtE(f.cal * e.amount / 100) : "-", " ", e.snapshot || f ? energyLabel : ""), /*#__PURE__*/React.createElement("button", {
+        }, e.snapshot ? fmtE((e.snapshot.cal ?? 0) * e.amount / 100) : f ? fmtE(f.cal * e.amount / 100) : "-", " ", e.snapshot || f ? energyLabel : ""), /*#__PURE__*/React.createElement("button", {
           style: S.delBtn,
-          onClick: function onClick() {
-            return removeEntry(e.id);
-          }
-        }, "\xD7"))));
+          onClick: () => removeEntry(e.id)
+        }, "×"))));
       }));
-    }), dayLog.filter(function (e) {
-      return e.type !== "exercise" && e.type !== "supplement";
-    }).length === 0 && !suppEntries.length && /*#__PURE__*/React.createElement("div", {
+    }), dayLog.filter(e => e.type !== "exercise" && e.type !== "supplement" && e.type !== "water" && e.type !== "alcohol").length === 0 && !suppEntries.length && !waterEntries.length && !alcEntries.length && /*#__PURE__*/React.createElement("div", {
       style: {
         textAlign: "center",
         padding: "40px 0",
@@ -4719,7 +3999,7 @@ function NutriTrack() {
         fontSize: 32,
         marginBottom: 8
       }
-    }, "\uD83E\uDD57"), /*#__PURE__*/React.createElement("div", {
+    }, "🥗"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 14
       }
@@ -4728,7 +4008,7 @@ function NutriTrack() {
         fontSize: 12,
         color: "#64748b"
       }
-    }, "Tap + to add your first meal")), suppEntries.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    }, "Tap + to add your first meal")), waterEntries.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         justifyContent: "space-between",
@@ -4737,58 +4017,165 @@ function NutriTrack() {
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: S.mealHdr
-    }, "Supplements")), suppEntries.map(function (e) {
-      return /*#__PURE__*/React.createElement(SwipeableEntry, {
-        key: e.id,
-        onDelete: function onDelete() {
-          return removeEntry(e.id);
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: _objectSpread(_objectSpread({}, S.entry), {}, {
-          background: "#0f0a1e"
-        }),
-        onClick: function onClick() {
-          return openEditSuppEntry(e);
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#c4b5fd"
-        }
-      }, "\uD83D\uDC8A ", e.stackName), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b"
-        }
-      }, suppItemSummary(e.items), " \xB7 tap to edit")), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 12,
-          color: "#64748b",
-          marginRight: 4
-        }
-      }, new Date(e.time).toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit"
-      })), /*#__PURE__*/React.createElement("button", {
-        style: S.delBtn,
-        onClick: function onClick(ev) {
-          ev.stopPropagation();
-          removeEntry(e.id);
-        }
-      }, "\xD7"))));
-    })), dayLog.filter(function (e) {
-      return e.type === "exercise";
-    }).length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    }, "Water"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#38bdf8",
+        fontWeight: 600
+      }
+    }, "💧 ", fmtE(waterTotalMl), " ml")), waterEntries.map(e => /*#__PURE__*/React.createElement(SwipeableEntry, {
+      key: e.id,
+      onDelete: () => removeEntry(e.id)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.entry,
+        background: "#08151f"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#7dd3fc"
+      }
+    }, "💧 Water"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, e.amount, " ml · ", e.meal || "Snack")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#64748b",
+        marginRight: 4
+      }
+    }, new Date(e.time).toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit"
+    })), /*#__PURE__*/React.createElement("button", {
+      style: S.delBtn,
+      onClick: ev => {
+        ev.stopPropagation();
+        removeEntry(e.id);
+      }
+    }, "×")))))), alcEntries.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "12px 0 4px"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: S.mealHdr
+    }, "Alcohol"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#fbbf24",
+        fontWeight: 600
+      }
+    }, fmtE(alcTotalCals), " ", energyLabel)), alcEntries.map(e => /*#__PURE__*/React.createElement(SwipeableEntry, {
+      key: e.id,
+      onDelete: () => removeEntry(e.id)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.entry,
+        background: "#1f1208"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#fcd34d"
+      }
+    }, "🍾 ", e.categoryLabel || e.category), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, e.volume, " ml · ", e.abv, "% ABV · ", e.meal || "Snack")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#f59e0b",
+        marginRight: 4,
+        fontWeight: 600
+      }
+    }, fmtE(e.calories), " ", energyLabel), /*#__PURE__*/React.createElement("button", {
+      style: S.delBtn,
+      onClick: ev => {
+        ev.stopPropagation();
+        removeEntry(e.id);
+      }
+    }, "×")))))), suppEntries.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "12px 0 4px"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: S.mealHdr
+    }, "Supplements")), suppEntries.map(e => /*#__PURE__*/React.createElement(SwipeableEntry, {
+      key: e.id,
+      onDelete: () => removeEntry(e.id)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.entry,
+        background: "#0f0a1e"
+      },
+      onClick: () => openEditSuppEntry(e)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#c4b5fd"
+      }
+    }, "💊 ", e.stackName), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, suppItemSummary(e.items), " · tap to edit")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#64748b",
+        marginRight: 4
+      }
+    }, new Date(e.time).toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit"
+    })), /*#__PURE__*/React.createElement("button", {
+      style: S.delBtn,
+      onClick: ev => {
+        ev.stopPropagation();
+        removeEntry(e.id);
+      }
+    }, "×")))))), dayLog.filter(e => e.type === "exercise").length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         justifyContent: "space-between",
@@ -4803,57 +4190,50 @@ function NutriTrack() {
         color: "#4ade80",
         fontWeight: 600
       }
-    }, "\u2212", fmtE(exerciseBurn), " ", energyLabel)), dayLog.filter(function (e) {
-      return e.type === "exercise";
-    }).map(function (e) {
-      return /*#__PURE__*/React.createElement(SwipeableEntry, {
-        key: e.id,
-        onDelete: function onDelete() {
-          return removeEntry(e.id);
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: _objectSpread(_objectSpread({}, S.entry), {}, {
-          background: "#0a0f1a"
-        }),
-        onClick: function onClick() {
-          return openEditExerciseEntry(e);
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#4ade80"
-        }
-      }, e.activity), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b"
-        }
-      }, e.duration_min, " min \xB7 tap to edit")), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: "#4ade80"
-        }
-      }, "\u2212", fmtE(e.calories_burned), " ", energyLabel), /*#__PURE__*/React.createElement("button", {
-        style: S.delBtn,
-        onClick: function onClick(ev) {
-          ev.stopPropagation();
-          removeEntry(e.id);
-        }
-      }, "\xD7"))));
-    }))), /*#__PURE__*/React.createElement("button", {
+    }, "−", fmtE(exerciseBurn), " ", energyLabel)), dayLog.filter(e => e.type === "exercise").map(e => /*#__PURE__*/React.createElement(SwipeableEntry, {
+      key: e.id,
+      onDelete: () => removeEntry(e.id)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.entry,
+        background: "#0a0f1a"
+      },
+      onClick: () => openEditExerciseEntry(e)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#4ade80"
+      }
+    }, e.activity), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, e.duration_min, " min · tap to edit")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: "#4ade80"
+      }
+    }, "−", fmtE(e.calories_burned), " ", energyLabel), /*#__PURE__*/React.createElement("button", {
+      style: S.delBtn,
+      onClick: ev => {
+        ev.stopPropagation();
+        removeEntry(e.id);
+      }
+    }, "×"))))))), /*#__PURE__*/React.createElement("button", {
       style: S.fab,
-      onClick: function onClick() {
+      onClick: () => {
         setEditingEntryId(null);
         setAddMode("food");
         if (multiSelect) {
@@ -4861,42 +4241,31 @@ function NutriTrack() {
           setBatch([]);
         }
         setView("add");
-        setTimeout(function () {
-          var _searchRef$current;
-          return (_searchRef$current = searchRef.current) === null || _searchRef$current === void 0 ? void 0 : _searchRef$current.focus();
-        }, 100);
+        setTimeout(() => searchRef.current?.focus(), 100);
       }
     }, "+"), /*#__PURE__*/React.createElement("button", {
-      style: _objectSpread(_objectSpread({}, S.fab), {}, {
+      style: {
+        ...S.fab,
         right: "calc(84px + env(safe-area-inset-right, 0px))",
         background: "#16a34a",
         fontSize: 22
-      }),
-      onClick: function onClick() {
-        return setView("exercise");
-      }
-    }, "\uD83C\uDFC3"), /*#__PURE__*/React.createElement(BottomNav, null));
+      },
+      onClick: () => setView("exercise")
+    }, "🏃"), /*#__PURE__*/React.createElement(BottomNav, null));
   }
   // ── ADD SCREEN (Food / Recipe / Supplement) ───────────────────────────
   if (view === "add") {
-    var ModePicker = function ModePicker() {
-      return /*#__PURE__*/React.createElement("div", {
-        style: S.modePicker
-      }, [["food", "🍎 Food"], ["recipe", "📖 Recipe"], ["supplement", "💊 Supps"]].map(function (_ref10) {
-        var _ref11 = _slicedToArray(_ref10, 2),
-          m = _ref11[0],
-          label = _ref11[1];
-        return /*#__PURE__*/React.createElement("button", {
-          key: m,
-          style: S.modeTab(addMode === m),
-          onClick: function onClick() {
-            setAddMode(m);
-            setSelectedFood(null);
-            setSearchTerm("");
-          }
-        }, label);
-      }));
-    };
+    const ModePicker = () => /*#__PURE__*/React.createElement("div", {
+      style: S.modePicker
+    }, [["food", "🍎 Food"], ["recipe", "📖 Recipe"], ["supplement", "💊 Supps"], ["hydrate", "💧 Water/Alc"]].map(([m, label]) => /*#__PURE__*/React.createElement("button", {
+      key: m,
+      style: S.modeTab(addMode === m),
+      onClick: () => {
+        setAddMode(m);
+        setSelectedFood(null);
+        setSearchTerm("");
+      }
+    }, label)));
     if (addMode === "food") {
       return /*#__PURE__*/React.createElement("div", {
         style: S.app
@@ -4910,7 +4279,7 @@ function NutriTrack() {
           fontSize: 15,
           cursor: "pointer"
         },
-        onClick: function onClick() {
+        onClick: () => {
           setView("log");
           setSelectedFood(null);
           setSearchTerm("");
@@ -4920,7 +4289,7 @@ function NutriTrack() {
             setBatch([]);
           }
         }
-      }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      }, "← Back"), /*#__PURE__*/React.createElement("span", {
         style: {
           fontSize: 15,
           fontWeight: 700
@@ -4934,7 +4303,7 @@ function NutriTrack() {
           cursor: "pointer",
           fontWeight: 600
         },
-        onClick: function onClick() {
+        onClick: () => {
           resetCfForm();
           setView("customAdd");
         }
@@ -4947,15 +4316,13 @@ function NutriTrack() {
       }, !selectedFood && /*#__PURE__*/React.createElement(ModePicker, null), !selectedFood ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
         ref: searchRef,
         style: S.input,
-        placeholder: "Search foods\u2026",
+        placeholder: "Search foods…",
         value: searchTerm,
-        onChange: function onChange(e) {
-          var v = e.target.value;
+        onChange: e => {
+          const v = e.target.value;
           setSearchTerm(v);
           clearTimeout(searchDebounceRef.current);
-          searchDebounceRef.current = setTimeout(function () {
-            return setDebouncedSearchTerm(v);
-          }, 300);
+          searchDebounceRef.current = setTimeout(() => setDebouncedSearchTerm(v), 300);
         },
         autoFocus: true
       }), customFoods.length > 0 && /*#__PURE__*/React.createElement("div", {
@@ -4973,9 +4340,7 @@ function NutriTrack() {
           cursor: "pointer",
           textDecoration: "underline"
         },
-        onClick: function onClick() {
-          return setView("manageCustomFoods");
-        }
+        onClick: () => setView("manageCustomFoods")
       }, "Manage custom foods")), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
@@ -5031,10 +4396,8 @@ function NutriTrack() {
           padding: "6px 12px",
           cursor: "pointer"
         },
-        onClick: function onClick() {
-          return setView("batchReview");
-        }
-      }, "Review batch (", batch.length, ") \u2192")), multiSelect && /*#__PURE__*/React.createElement("div", {
+        onClick: () => setView("batchReview")
+      }, "Review batch (", batch.length, ") →")), multiSelect && /*#__PURE__*/React.createElement("div", {
         style: {
           fontSize: 11,
           color: "#64748b",
@@ -5053,20 +4416,16 @@ function NutriTrack() {
           color: "#64748b",
           fontSize: 13
         }
-      }, "Loading food database\u2026"), foodDBStatus === "error" && /*#__PURE__*/React.createElement("div", {
+      }, "Loading food database…"), foodDBStatus === "error" && /*#__PURE__*/React.createElement("div", {
         style: {
           padding: "24px 12px",
           textAlign: "center",
           color: "#ef4444",
           fontSize: 13
         }
-      }, "The food database could not be loaded. Please reload the app."), foodDBStatus === "ready" && function () {
+      }, "The food database could not be loaded. Please reload the app."), foodDBStatus === "ready" && (() => {
         // W1 — Recents section (only when search box is empty)
-        var visibleRecents = debouncedSearchTerm.length === 0 ? recents.filter(function (r) {
-          return allFoods.some(function (f) {
-            return f.id === r.foodId;
-          });
-        }) : [];
+        const visibleRecents = debouncedSearchTerm.length === 0 ? recents.filter(r => allFoods.some(f => f.id === r.foodId)) : [];
         return visibleRecents.length > 0 ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
           style: {
             fontSize: 11,
@@ -5076,21 +4435,18 @@ function NutriTrack() {
             letterSpacing: "0.05em",
             textTransform: "uppercase"
           }
-        }, "Recent"), visibleRecents.map(function (r) {
-          var food = allFoods.find(function (f) {
-            return f.id === r.foodId;
-          });
+        }, "Recent"), visibleRecents.map(r => {
+          const food = allFoods.find(f => f.id === r.foodId);
           if (!food) return null;
           return /*#__PURE__*/React.createElement("div", {
             key: r.foodId,
-            style: _objectSpread(_objectSpread({}, S.srchItem), {}, {
+            style: {
+              ...S.srchItem,
               display: "flex",
               alignItems: "center",
               gap: 8
-            }),
-            onClick: function onClick() {
-              return multiSelect ? addFoodToBatch(food) : (setSelectedFood(food), setAmount(String(r.lastAmount)), setMeal(r.lastMeal || meal));
-            }
+            },
+            onClick: () => multiSelect ? addFoodToBatch(food) : (setSelectedFood(food), setAmount(String(r.lastAmount)), setMeal(r.lastMeal || meal))
           }, /*#__PURE__*/React.createElement("div", {
             style: {
               flex: 1,
@@ -5110,7 +4466,7 @@ function NutriTrack() {
               fontSize: 11,
               color: "#64748b"
             }
-          }, r.lastAmount, "g \xB7 ", r.lastMeal)), !multiSelect && /*#__PURE__*/React.createElement("button", {
+          }, r.lastAmount, "g · ", r.lastMeal)), !multiSelect && /*#__PURE__*/React.createElement("button", {
             style: {
               background: "#1d4ed8",
               border: "none",
@@ -5123,16 +4479,14 @@ function NutriTrack() {
               flexShrink: 0,
               whiteSpace: "nowrap"
             },
-            onClick: function onClick(e) {
+            onClick: e => {
               e.stopPropagation();
               quickLogRecent(r);
             }
-          }, "\u26A1 Log"));
+          }, "⚡ Log"));
         })) : null;
-      }(), foodDBStatus === "ready" && function () {
-        var mr = debouncedSearchTerm.length > 0 ? recipes.filter(function (r) {
-          return r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
-        }) : recipes;
+      })(), foodDBStatus === "ready" && (() => {
+        const mr = debouncedSearchTerm.length > 0 ? recipes.filter(r => r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) : recipes;
         if (!mr.length) return null;
         return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
           style: {
@@ -5143,15 +4497,15 @@ function NutriTrack() {
             letterSpacing: "0.05em",
             textTransform: "uppercase"
           }
-        }, "Recipes"), mr.map(function (r) {
-          var _n$cal;
-          var n = r.nutrition_per_serving || {};
+        }, "Recipes"), mr.map(r => {
+          const n = r.nutrition_per_serving || {};
           return /*#__PURE__*/React.createElement("div", {
             key: r.id,
-            style: _objectSpread(_objectSpread({}, S.srchItem), {}, {
+            style: {
+              ...S.srchItem,
               paddingBottom: 10
-            }),
-            onClick: function onClick() {
+            },
+            onClick: () => {
               setSelectedRecipe(r);
               setRecipeLogReturn("add");
               setRecipeLogServings("1");
@@ -5164,96 +4518,87 @@ function NutriTrack() {
             style: {
               fontSize: 12,
               color: "#a78bfa",
-              "float": "right"
+              float: "right"
             }
-          }, fmtE((_n$cal = n.cal) !== null && _n$cal !== void 0 ? _n$cal : 0), " ", energyLabel, "/srv"), /*#__PURE__*/React.createElement("div", {
+          }, fmtE(n.cal ?? 0), " ", energyLabel, "/srv"), /*#__PURE__*/React.createElement("div", {
             style: {
               fontSize: 14,
               fontWeight: 500,
               color: "#a78bfa"
             }
-          }, "\uD83D\uDCD6 ", r.name), /*#__PURE__*/React.createElement("div", {
+          }, "📖 ", r.name), /*#__PURE__*/React.createElement("div", {
             style: {
               fontSize: 11,
               color: "#475569"
             }
-          }, r.servings, " ", r.servings === 1 ? "serving" : "servings", " \xB7 ", r.ingredients.length, " ingredients"));
+          }, r.servings, " ", r.servings === 1 ? "serving" : "servings", " · ", r.ingredients.length, " ingredients"));
         }));
-      }(), Object.entries(groupedByCategory).map(function (_ref12) {
-        var _ref13 = _slicedToArray(_ref12, 2),
-          cat = _ref13[0],
-          foods = _ref13[1];
+      })(), Object.entries(groupedByCategory).map(([cat, foods]) => /*#__PURE__*/React.createElement("div", {
+        key: cat
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          fontWeight: 700,
+          color: "#475569",
+          padding: "10px 0 4px",
+          letterSpacing: "0.05em",
+          textTransform: "uppercase"
+        }
+      }, cat), foods.map(f => {
+        const inBatch = multiSelect && batch.some(b => b.food.id === f.id);
         return /*#__PURE__*/React.createElement("div", {
-          key: cat
-        }, /*#__PURE__*/React.createElement("div", {
+          key: f.id,
           style: {
-            fontSize: 11,
-            fontWeight: 700,
-            color: "#475569",
-            padding: "10px 0 4px",
-            letterSpacing: "0.05em",
-            textTransform: "uppercase"
-          }
-        }, cat), foods.map(function (f) {
-          var inBatch = multiSelect && batch.some(function (b) {
-            return b.food.id === f.id;
-          });
-          return /*#__PURE__*/React.createElement("div", {
-            key: f.id,
-            style: _objectSpread(_objectSpread({}, S.srchItem), {}, {
-              contentVisibility: "auto",
-              containIntrinsicSize: "0 48px"
-            }, multiSelect ? {
+            ...S.srchItem,
+            contentVisibility: "auto",
+            containIntrinsicSize: "0 48px",
+            ...(multiSelect ? {
               display: "flex",
               alignItems: "center",
               gap: 8
-            } : {}),
-            onClick: function onClick() {
-              return multiSelect ? addFoodToBatch(f) : setSelectedFood(f);
-            }
-          }, multiSelect && /*#__PURE__*/React.createElement("span", {
-            style: {
-              width: 20,
-              height: 20,
-              borderRadius: 6,
-              border: "1px solid ".concat(inBatch ? "#16a34a" : "#334155"),
-              background: inBatch ? "#16a34a" : "transparent",
-              color: "#fff",
-              fontSize: 13,
-              fontWeight: 700,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0
-            }
-          }, inBatch ? "✓" : ""), /*#__PURE__*/React.createElement("div", {
-            style: {
-              flex: 1,
-              minWidth: 0
-            }
-          }, /*#__PURE__*/React.createElement("span", {
-            style: {
-              fontSize: 12,
-              color: "#f59e0b",
-              "float": "right"
-            }
-          }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
-            style: {
-              fontSize: 14,
-              fontWeight: 500,
-              color: inBatch ? "#86efac" : "#e2e8f0"
-            }
-          }, f.name), f.source && f.source !== "usda" && /*#__PURE__*/React.createElement("div", {
-            style: {
-              fontSize: 11,
-              color: "#475569",
-              marginTop: 1
-            }
-          }, "Source: ", f.source.toUpperCase())));
-        }));
-      }), filteredFoods.length === 0 && recipes.filter(function (r) {
-        return r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
-      }).length === 0 && debouncedSearchTerm.length > 0 && /*#__PURE__*/React.createElement("div", {
+            } : {})
+          },
+          onClick: () => multiSelect ? addFoodToBatch(f) : setSelectedFood(f)
+        }, multiSelect && /*#__PURE__*/React.createElement("span", {
+          style: {
+            width: 20,
+            height: 20,
+            borderRadius: 6,
+            border: `1px solid ${inBatch ? "#16a34a" : "#334155"}`,
+            background: inBatch ? "#16a34a" : "transparent",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 700,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0
+          }
+        }, inBatch ? "✓" : ""), /*#__PURE__*/React.createElement("div", {
+          style: {
+            flex: 1,
+            minWidth: 0
+          }
+        }, /*#__PURE__*/React.createElement("span", {
+          style: {
+            fontSize: 12,
+            color: "#f59e0b",
+            float: "right"
+          }
+        }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 14,
+            fontWeight: 500,
+            color: inBatch ? "#86efac" : "#e2e8f0"
+          }
+        }, f.name), f.source && f.source !== "usda" && /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 11,
+            color: "#475569",
+            marginTop: 1
+          }
+        }, "Source: ", f.source.toUpperCase())));
+      }))), filteredFoods.length === 0 && recipes.filter(r => r.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())).length === 0 && debouncedSearchTerm.length > 0 && /*#__PURE__*/React.createElement("div", {
         style: {
           padding: 20,
           textAlign: "center",
@@ -5280,14 +4625,14 @@ function NutriTrack() {
         style: S.input,
         type: "number",
         value: amount,
-        onChange: function onChange(e) {
+        onChange: e => {
           setAmount(e.target.value);
           setServingUnit(null);
         },
         inputMode: "numeric"
-      }), selectedFood.servings && selectedFood.servings.length > 0 && function () {
-        var su = servingUnit;
-        var qty = parseInt(servingQty, 10) || 1;
+      }), selectedFood.servings && selectedFood.servings.length > 0 && (() => {
+        const su = servingUnit;
+        const qty = parseInt(servingQty, 10) || 1;
         return /*#__PURE__*/React.createElement("div", {
           style: {
             marginTop: 8,
@@ -5309,17 +4654,15 @@ function NutriTrack() {
             flexWrap: "wrap",
             marginBottom: su != null ? 10 : 0
           }
-        }, selectedFood.servings.map(function (s, i) {
-          return /*#__PURE__*/React.createElement("button", {
-            key: s.label,
-            style: S.pill(su === i),
-            onClick: function onClick() {
-              var newIdx = su === i ? null : i;
-              setServingUnit(newIdx);
-              if (newIdx != null) setAmount(String(Math.round((parseInt(servingQty, 10) || 1) * s.grams)));
-            }
-          }, s.label);
-        })), su != null && /*#__PURE__*/React.createElement("div", {
+        }, selectedFood.servings.map((s, i) => /*#__PURE__*/React.createElement("button", {
+          key: s.label,
+          style: S.pill(su === i),
+          onClick: () => {
+            const newIdx = su === i ? null : i;
+            setServingUnit(newIdx);
+            if (newIdx != null) setAmount(String(Math.round((parseInt(servingQty, 10) || 1) * s.grams)));
+          }
+        }, s.label))), su != null && /*#__PURE__*/React.createElement("div", {
           style: {
             display: "flex",
             alignItems: "center",
@@ -5339,26 +4682,27 @@ function NutriTrack() {
             cursor: "pointer",
             flexShrink: 0
           },
-          onClick: function onClick() {
-            var next = Math.max(1, qty - 1);
+          onClick: () => {
+            const next = Math.max(1, qty - 1);
             setServingQty(String(next));
             setAmount(String(Math.round(next * selectedFood.servings[su].grams)));
           }
-        }, "\u2212"), /*#__PURE__*/React.createElement("input", {
+        }, "−"), /*#__PURE__*/React.createElement("input", {
           type: "number",
           inputMode: "numeric",
           value: servingQty,
-          onChange: function onChange(e) {
+          onChange: e => {
             setServingQty(e.target.value);
-            var n = parseInt(e.target.value, 10);
+            const n = parseInt(e.target.value, 10);
             if (n > 0) setAmount(String(Math.round(n * selectedFood.servings[su].grams)));
           },
-          style: _objectSpread(_objectSpread({}, S.input), {}, {
+          style: {
+            ...S.input,
             width: 60,
             textAlign: "center",
             marginBottom: 0,
             padding: "6px 8px"
-          })
+          }
         }), /*#__PURE__*/React.createElement("button", {
           style: {
             width: 34,
@@ -5372,8 +4716,8 @@ function NutriTrack() {
             cursor: "pointer",
             flexShrink: 0
           },
-          onClick: function onClick() {
-            var next = qty + 1;
+          onClick: () => {
+            const next = qty + 1;
             setServingQty(String(next));
             setAmount(String(Math.round(next * selectedFood.servings[su].grams)));
           }
@@ -5383,12 +4727,12 @@ function NutriTrack() {
             color: "#64748b",
             marginLeft: 2
           }
-        }, "\xD7 ", selectedFood.servings[su].grams, "g = ", /*#__PURE__*/React.createElement("b", {
+        }, "× ", selectedFood.servings[su].grams, "g = ", /*#__PURE__*/React.createElement("b", {
           style: {
             color: "#e2e8f0"
           }
         }, Math.round(qty * selectedFood.servings[su].grams), "g"))));
-      }(), /*#__PURE__*/React.createElement("div", {
+      })(), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 6,
@@ -5396,16 +4740,14 @@ function NutriTrack() {
           flexWrap: "wrap",
           marginBottom: 16
         }
-      }, [25, 50, 100, 150, 200, 250].map(function (q) {
-        return /*#__PURE__*/React.createElement("button", {
-          key: q,
-          style: S.pill(amount === String(q) && servingUnit == null),
-          onClick: function onClick() {
-            setAmount(String(q));
-            setServingUnit(null);
-          }
-        }, q);
-      })), /*#__PURE__*/React.createElement("label", {
+      }, [25, 50, 100, 150, 200, 250].map(q => /*#__PURE__*/React.createElement("button", {
+        key: q,
+        style: S.pill(amount === String(q) && servingUnit == null),
+        onClick: () => {
+          setAmount(String(q));
+          setServingUnit(null);
+        }
+      }, q))), /*#__PURE__*/React.createElement("label", {
         style: S.label
       }, "Meal"), /*#__PURE__*/React.createElement("div", {
         style: {
@@ -5414,15 +4756,11 @@ function NutriTrack() {
           flexWrap: "wrap",
           marginBottom: 12
         }
-      }, MEALS.map(function (m) {
-        return /*#__PURE__*/React.createElement("button", {
-          key: m,
-          style: S.pill(meal === m),
-          onClick: function onClick() {
-            return setMeal(m);
-          }
-        }, m);
-      })), /*#__PURE__*/React.createElement("div", {
+      }, MEALS.map(m => /*#__PURE__*/React.createElement("button", {
+        key: m,
+        style: S.pill(meal === m),
+        onClick: () => setMeal(m)
+      }, m))), /*#__PURE__*/React.createElement("div", {
         style: {
           background: "#0a0f1a",
           borderRadius: 10,
@@ -5443,9 +4781,8 @@ function NutriTrack() {
           gridTemplateColumns: "1fr 1fr 1fr",
           gap: 8
         }
-      }, MACROS.map(function (k) {
-        var _selectedFood$k;
-        var val = ((_selectedFood$k = selectedFood[k]) !== null && _selectedFood$k !== void 0 ? _selectedFood$k : 0) * (parseFloat(amount) || 0) / 100;
+      }, MACROS.map(k => {
+        const val = (selectedFood[k] ?? 0) * (parseFloat(amount) || 0) / 100;
         return /*#__PURE__*/React.createElement("div", {
           key: k,
           style: {
@@ -5463,9 +4800,7 @@ function NutriTrack() {
             color: "#64748b"
           }
         }, k === "cal" ? energyLabel : NUTRIENT_META[k].label));
-      })), MICROS.some(function (k) {
-        return selectedFood[k] != null;
-      }) && /*#__PURE__*/React.createElement("div", {
+      })), MICROS.some(k => selectedFood[k] != null) && /*#__PURE__*/React.createElement("div", {
         style: {
           marginTop: 10,
           borderTop: "1px solid #1e293b",
@@ -5485,10 +4820,10 @@ function NutriTrack() {
           gridTemplateColumns: "1fr 1fr",
           gap: "4px 12px"
         }
-      }, MICROS.map(function (k) {
-        var base = selectedFood[k];
+      }, MICROS.map(k => {
+        const base = selectedFood[k];
         if (base == null) return null;
-        var sv = base * (parseFloat(amount) || 0) / 100;
+        const sv = base * (parseFloat(amount) || 0) / 100;
         return /*#__PURE__*/React.createElement("div", {
           key: k,
           style: {
@@ -5538,11 +4873,11 @@ function NutriTrack() {
           fontSize: 15,
           cursor: "pointer"
         },
-        onClick: function onClick() {
+        onClick: () => {
           setView("log");
           setSearchTerm("");
         }
-      }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      }, "← Back"), /*#__PURE__*/React.createElement("span", {
         style: {
           fontSize: 15,
           fontWeight: 700
@@ -5564,7 +4899,7 @@ function NutriTrack() {
           fontSize: 32,
           marginBottom: 8
         }
-      }, "\uD83D\uDCD6"), /*#__PURE__*/React.createElement("div", {
+      }, "📖"), /*#__PURE__*/React.createElement("div", {
         style: {
           fontSize: 14,
           color: "#64748b"
@@ -5574,16 +4909,16 @@ function NutriTrack() {
           fontSize: 12,
           marginTop: 4
         }
-      }, "Go to Recipes tab to create one")) : /*#__PURE__*/React.createElement("div", null, recipes.map(function (r) {
-        var _n$cal2;
-        var n = r.nutrition_per_serving || {};
+      }, "Go to Recipes tab to create one")) : /*#__PURE__*/React.createElement("div", null, recipes.map(r => {
+        const n = r.nutrition_per_serving || {};
         return /*#__PURE__*/React.createElement("div", {
           key: r.id,
-          style: _objectSpread(_objectSpread({}, S.card), {}, {
+          style: {
+            ...S.card,
             cursor: "pointer",
             marginBottom: 8
-          }),
-          onClick: function onClick() {
+          },
+          onClick: () => {
             setSelectedRecipe(r);
             setRecipeLogReturn("add");
             setRecipeLogServings("1");
@@ -5609,12 +4944,12 @@ function NutriTrack() {
             color: "#a78bfa",
             marginBottom: 2
           }
-        }, "\uD83D\uDCD6 ", r.name), /*#__PURE__*/React.createElement("div", {
+        }, "📖 ", r.name), /*#__PURE__*/React.createElement("div", {
           style: {
             fontSize: 12,
             color: "#475569"
           }
-        }, r.servings, " ", r.servings === 1 ? "serving" : "servings", " \xB7 ", r.ingredients.length, " ingredients")), /*#__PURE__*/React.createElement("div", {
+        }, r.servings, " ", r.servings === 1 ? "serving" : "servings", " · ", r.ingredients.length, " ingredients")), /*#__PURE__*/React.createElement("div", {
           style: {
             textAlign: "right"
           }
@@ -5624,7 +4959,7 @@ function NutriTrack() {
             fontWeight: 700,
             color: NUTRIENT_META.cal.color
           }
-        }, fmtE((_n$cal2 = n.cal) !== null && _n$cal2 !== void 0 ? _n$cal2 : 0)), /*#__PURE__*/React.createElement("div", {
+        }, fmtE(n.cal ?? 0)), /*#__PURE__*/React.createElement("div", {
           style: {
             fontSize: 10,
             color: "#64748b"
@@ -5645,10 +4980,8 @@ function NutriTrack() {
           fontSize: 15,
           cursor: "pointer"
         },
-        onClick: function onClick() {
-          return setView("log");
-        }
-      }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+        onClick: () => setView("log")
+      }, "← Back"), /*#__PURE__*/React.createElement("span", {
         style: {
           fontSize: 15,
           fontWeight: 700
@@ -5658,9 +4991,10 @@ function NutriTrack() {
           width: 64
         }
       })), /*#__PURE__*/React.createElement("div", {
-        style: _objectSpread(_objectSpread({}, S.section), {}, {
+        style: {
+          ...S.section,
           paddingBottom: 40
-        })
+        }
       }, /*#__PURE__*/React.createElement(ModePicker, null), !supplementStacks.length ? /*#__PURE__*/React.createElement("div", {
         style: {
           textAlign: "center",
@@ -5672,7 +5006,7 @@ function NutriTrack() {
           fontSize: 32,
           marginBottom: 8
         }
-      }, "\uD83D\uDC8A"), /*#__PURE__*/React.createElement("div", {
+      }, "💊"), /*#__PURE__*/React.createElement("div", {
         style: {
           fontSize: 14,
           color: "#64748b"
@@ -5682,48 +5016,45 @@ function NutriTrack() {
           fontSize: 12,
           marginTop: 4
         }
-      }, "Go to Settings \u2192 Supplements to create one")) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      }, "Go to Settings → Supplements to create one")) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
         style: {
           fontSize: 12,
           color: "#64748b",
           marginBottom: 10
         }
-      }, "Tap a stack to log it"), supplementStacks.map(function (stack) {
-        return /*#__PURE__*/React.createElement("div", {
-          key: stack.id,
-          style: _objectSpread(_objectSpread({}, S.card), {}, {
-            cursor: "pointer",
-            marginBottom: 8
-          }),
-          onClick: function onClick() {
-            return openSuppLogConfirm(stack);
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
-          }
-        }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 15,
-            fontWeight: 700,
-            color: "#c4b5fd"
-          }
-        }, "\uD83D\uDC8A ", stack.name), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 12,
-            color: "#64748b",
-            marginTop: 2
-          }
-        }, stack.items.length === 0 ? "No items" : "".concat(stack.items.length, " item").concat(stack.items.length === 1 ? "" : "s", ": ").concat(suppItemSummary(stack.items)))), /*#__PURE__*/React.createElement("div", {
-          style: {
-            color: "#475569",
-            fontSize: 18,
-            paddingLeft: 8
-          }
-        }, "\u203A")));
-      })), /*#__PURE__*/React.createElement("div", {
+      }, "Tap a stack to log it"), supplementStacks.map(stack => /*#__PURE__*/React.createElement("div", {
+        key: stack.id,
+        style: {
+          ...S.card,
+          cursor: "pointer",
+          marginBottom: 8
+        },
+        onClick: () => openSuppLogConfirm(stack)
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }
+      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 15,
+          fontWeight: 700,
+          color: "#c4b5fd"
+        }
+      }, "💊 ", stack.name), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 12,
+          color: "#64748b",
+          marginTop: 2
+        }
+      }, stack.items.length === 0 ? "No items" : `${stack.items.length} item${stack.items.length === 1 ? "" : "s"}: ${suppItemSummary(stack.items)}`)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          color: "#475569",
+          fontSize: 18,
+          paddingLeft: 8
+        }
+      }, "›"))))), /*#__PURE__*/React.createElement("div", {
         style: {
           marginTop: 16
         }
@@ -5741,18 +5072,16 @@ function NutriTrack() {
       }, /*#__PURE__*/React.createElement("label", {
         style: S.label
       }, "Supplement name"), /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        style: {
+          ...S.input,
           marginBottom: 12
-        }),
+        },
         placeholder: "e.g. Creatine",
         value: oneOffData.name,
-        onChange: function onChange(e) {
-          return setOneOffData(function (p) {
-            return _objectSpread(_objectSpread({}, p), {}, {
-              name: e.target.value
-            });
-          });
-        }
+        onChange: e => setOneOffData(p => ({
+          ...p,
+          name: e.target.value
+        }))
       }), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
@@ -5771,13 +5100,10 @@ function NutriTrack() {
         inputMode: "decimal",
         placeholder: "e.g. 5",
         value: oneOffData.dose_amount,
-        onChange: function onChange(e) {
-          return setOneOffData(function (p) {
-            return _objectSpread(_objectSpread({}, p), {}, {
-              dose_amount: e.target.value
-            });
-          });
-        }
+        onChange: e => setOneOffData(p => ({
+          ...p,
+          dose_amount: e.target.value
+        }))
       })), /*#__PURE__*/React.createElement("div", {
         style: {
           width: 90
@@ -5785,103 +5111,87 @@ function NutriTrack() {
       }, /*#__PURE__*/React.createElement("label", {
         style: S.label
       }, "Unit"), /*#__PURE__*/React.createElement("select", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        style: {
+          ...S.input,
           padding: "11px 8px"
-        }),
+        },
         value: oneOffData.dose_unit,
-        onChange: function onChange(e) {
-          return setOneOffData(function (p) {
-            return _objectSpread(_objectSpread({}, p), {}, {
-              dose_unit: e.target.value
-            });
-          });
-        }
-      }, SUPP_DOSE_UNITS.map(function (u) {
-        return /*#__PURE__*/React.createElement("option", {
-          key: u
-        }, u);
-      })))), Object.keys(oneOffData.nutrients).length > 0 && /*#__PURE__*/React.createElement("div", {
+        onChange: e => setOneOffData(p => ({
+          ...p,
+          dose_unit: e.target.value
+        }))
+      }, SUPP_DOSE_UNITS.map(u => /*#__PURE__*/React.createElement("option", {
+        key: u
+      }, u))))), Object.keys(oneOffData.nutrients).length > 0 && /*#__PURE__*/React.createElement("div", {
         style: {
           marginBottom: 12
         }
-      }, Object.entries(oneOffData.nutrients).map(function (_ref14) {
-        var _NUTRIENT_META$k, _NUTRIENT_META$k2;
-        var _ref15 = _slicedToArray(_ref14, 2),
-          k = _ref15[0],
-          v = _ref15[1];
-        return /*#__PURE__*/React.createElement("div", {
-          key: k,
-          style: {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "4px 0",
-            borderBottom: "1px solid #1e293b"
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 13,
-            color: "#e2e8f0"
-          }
-        }, ((_NUTRIENT_META$k = NUTRIENT_META[k]) === null || _NUTRIENT_META$k === void 0 ? void 0 : _NUTRIENT_META$k.label) || k), /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 8
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 13,
-            color: "#a78bfa",
-            fontWeight: 600
-          }
-        }, v, " ", ((_NUTRIENT_META$k2 = NUTRIENT_META[k]) === null || _NUTRIENT_META$k2 === void 0 ? void 0 : _NUTRIENT_META$k2.unit) || ""), /*#__PURE__*/React.createElement("button", {
-          style: {
-            background: "none",
-            border: "none",
-            color: "#ef4444",
-            fontSize: 14,
-            cursor: "pointer",
-            padding: "0 4px"
-          },
-          onClick: function onClick() {
-            return removeNutrientFromOneOff(k);
-          }
-        }, "\xD7")));
-      })), /*#__PURE__*/React.createElement("div", {
+      }, Object.entries(oneOffData.nutrients).map(([k, v]) => /*#__PURE__*/React.createElement("div", {
+        key: k,
+        style: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "4px 0",
+          borderBottom: "1px solid #1e293b"
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: "#e2e8f0"
+        }
+      }, NUTRIENT_META[k]?.label || k), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: 8
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: "#a78bfa",
+          fontWeight: 600
+        }
+      }, v, " ", NUTRIENT_META[k]?.unit || ""), /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "none",
+          border: "none",
+          color: "#ef4444",
+          fontSize: 14,
+          cursor: "pointer",
+          padding: "0 4px"
+        },
+        onClick: () => removeNutrientFromOneOff(k)
+      }, "×"))))), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 6,
           marginBottom: 12
         }
       }, /*#__PURE__*/React.createElement("select", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        style: {
+          ...S.input,
           flex: 1,
           padding: "8px 10px",
           fontSize: 13
-        }),
+        },
         value: oneOffNutKey,
-        onChange: function onChange(e) {
-          return setOneOffNutKey(e.target.value);
-        }
-      }, NUTRIENT_ALL_KEYS.map(function (k) {
-        return /*#__PURE__*/React.createElement("option", {
-          key: k,
-          value: k
-        }, NUTRIENT_META[k].label, " (", NUTRIENT_META[k].unit, ")");
-      })), /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        onChange: e => setOneOffNutKey(e.target.value)
+      }, NUTRIENT_ALL_KEYS.map(k => /*#__PURE__*/React.createElement("option", {
+        key: k,
+        value: k
+      }, NUTRIENT_META[k].label, " (", NUTRIENT_META[k].unit, ")"))), /*#__PURE__*/React.createElement("input", {
+        style: {
+          ...S.input,
           width: 80,
           padding: "8px 10px",
           fontSize: 13
-        }),
+        },
         type: "number",
         inputMode: "decimal",
         placeholder: "0",
         value: oneOffNutVal,
-        onChange: function onChange(e) {
-          return setOneOffNutVal(e.target.value);
-        }
+        onChange: e => setOneOffNutVal(e.target.value)
       }), /*#__PURE__*/React.createElement("button", {
         style: {
           background: "#1d4ed8",
@@ -5911,13 +5221,249 @@ function NutriTrack() {
         onClick: logOneOff
       }, "Log one-off")))));
     }
+
+    // Phase 11a: Water & Alcohol entry
+    if (addMode === "hydrate") {
+      const alcCals = alcoholCalories(alcVolume, alcAbv);
+      return /*#__PURE__*/React.createElement("div", {
+        style: S.app
+      }, /*#__PURE__*/React.createElement("div", {
+        style: S.header
+      }, /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "none",
+          border: "none",
+          color: "#94a3b8",
+          fontSize: 15,
+          cursor: "pointer"
+        },
+        onClick: () => setView("log")
+      }, "← Back"), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 15,
+          fontWeight: 700
+        }
+      }, water, " Water / Alcohol"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          width: 64
+        }
+      })), /*#__PURE__*/React.createElement("div", {
+        style: S.section
+      }, /*#__PURE__*/React.createElement(ModePicker, null), /*#__PURE__*/React.createElement("div", {
+        style: S.card
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          fontWeight: 700,
+          color: "#94a3b8",
+          marginBottom: 10,
+          textTransform: "uppercase",
+          letterSpacing: "0.05em"
+        }
+      }, water, " Water"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 8,
+          marginBottom: 12
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          flex: 1
+        }
+      }, /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "Amount"), /*#__PURE__*/React.createElement("input", {
+        style: S.input,
+        type: "number",
+        inputMode: "numeric",
+        value: waterAmount,
+        onChange: e => setWaterAmount(e.target.value),
+        placeholder: "250"
+      })), /*#__PURE__*/React.createElement("div", {
+        style: {
+          width: 110
+        }
+      }, /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "Unit"), /*#__PURE__*/React.createElement("select", {
+        style: {
+          ...S.input,
+          padding: "11px 8px"
+        },
+        value: waterUnit,
+        onChange: e => setWaterUnit(e.target.value)
+      }, WATER_UNITS.map(u => /*#__PURE__*/React.createElement("option", {
+        key: u,
+        value: u
+      }, u, u !== "ml" ? " (" + WATER_UNIT_TO_ML[u] + "ml)" : ""))))), /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "Meal"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 6,
+          flexWrap: "wrap",
+          marginBottom: 12
+        }
+      }, MEALS.map(m => /*#__PURE__*/React.createElement("button", {
+        key: m,
+        style: S.pill(meal === m),
+        onClick: () => setMeal(m)
+      }, m))), /*#__PURE__*/React.createElement("div", {
+        style: {
+          background: "#08151f",
+          borderRadius: 10,
+          padding: "10px 12px",
+          marginBottom: 12,
+          display: "flex",
+          justifyContent: "space-between"
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: "#7dd3fc"
+        }
+      }, "Total"), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: "#38bdf8",
+          fontWeight: 700
+        }
+      }, fmtE(waterAmountMl(waterAmount, waterUnit)), " ml")), /*#__PURE__*/React.createElement("button", {
+        style: {
+          width: "100%",
+          padding: 14,
+          borderRadius: 12,
+          border: "none",
+          background: waterAmountMl(waterAmount, waterUnit) > 0 ? "#0ea5e9" : "#1e293b",
+          color: "#fff",
+          fontSize: 15,
+          fontWeight: 700,
+          cursor: waterAmountMl(waterAmount, waterUnit) > 0 ? "pointer" : "default"
+        },
+        disabled: !(waterAmountMl(waterAmount, waterUnit) > 0),
+        onClick: logWater
+      }, "Add water to ", meal)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          ...S.card,
+          marginTop: 12
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          fontWeight: 700,
+          color: "#94a3b8",
+          marginBottom: 10,
+          textTransform: "uppercase",
+          letterSpacing: "0.05em"
+        }
+      }, beer, " Alcohol"), /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "Drink category"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 6,
+          flexWrap: "wrap",
+          marginBottom: 12
+        }
+      }, ALCOHOL_CATEGORIES.map(c => /*#__PURE__*/React.createElement("button", {
+        key: c.id,
+        style: S.pill(alcCategory === c.id),
+        onClick: () => {
+          setAlcCategory(c.id);
+          setAlcAbv(String(c.abv));
+        }
+      }, c.label))), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 8,
+          marginBottom: 12
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          flex: 1
+        }
+      }, /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "Volume (ml)"), /*#__PURE__*/React.createElement("input", {
+        style: S.input,
+        type: "number",
+        inputMode: "decimal",
+        value: alcVolume,
+        onChange: e => setAlcVolume(e.target.value),
+        placeholder: "e.g. 330"
+      })), /*#__PURE__*/React.createElement("div", {
+        style: {
+          width: 100
+        }
+      }, /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "ABV (%)"), /*#__PURE__*/React.createElement("input", {
+        style: S.input,
+        type: "number",
+        inputMode: "decimal",
+        value: alcAbv,
+        onChange: e => setAlcAbv(e.target.value),
+        placeholder: "5"
+      }))), /*#__PURE__*/React.createElement("label", {
+        style: S.label
+      }, "Meal"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 6,
+          flexWrap: "wrap",
+          marginBottom: 12
+        }
+      }, MEALS.map(m => /*#__PURE__*/React.createElement("button", {
+        key: m,
+        style: S.pill(meal === m),
+        onClick: () => setMeal(m)
+      }, m))), /*#__PURE__*/React.createElement("div", {
+        style: {
+          background: "#1f1208",
+          borderRadius: 10,
+          padding: "10px 12px",
+          marginBottom: 12,
+          display: "flex",
+          justifyContent: "space-between"
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: "#fcd34d"
+        }
+      }, "Calories"), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: "#fbbf24",
+          fontWeight: 700
+        }
+      }, fmtE(alcCals), " ", energyLabel)), /*#__PURE__*/React.createElement("button", {
+        style: {
+          width: "100%",
+          padding: 14,
+          borderRadius: 12,
+          border: "none",
+          background: parseFloat(alcVolume) > 0 && parseFloat(alcAbv) > 0 ? "#d97706" : "#1e293b",
+          color: "#fff",
+          fontSize: 15,
+          fontWeight: 700,
+          cursor: parseFloat(alcVolume) > 0 && parseFloat(alcAbv) > 0 ? "pointer" : "default"
+        },
+        disabled: !(parseFloat(alcVolume) > 0 && parseFloat(alcAbv) > 0),
+        onClick: logAlcohol
+      }, "Add drink to ", meal), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          color: "#64748b",
+          marginTop: 8,
+          lineHeight: 1.5
+        }
+      }, "Calories = volume × ABV% × 7.89. Alcohol calories count toward your daily total."))), /*#__PURE__*/React.createElement(BottomNav, null));
+    }
   }
   // ── PHASE 6n: BATCH REVIEW (multi-select commit screen) ──────────────────
   if (view === "batchReview") {
-    var totalCal = batch.reduce(function (sum, b) {
-      var _b$food$cal;
-      return sum + ((_b$food$cal = b.food.cal) !== null && _b$food$cal !== void 0 ? _b$food$cal : 0) * (parseFloat(b.amount) || 0) / 100;
-    }, 0);
+    const totalCal = batch.reduce((sum, b) => sum + (b.food.cal ?? 0) * (parseFloat(b.amount) || 0) / 100, 0);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -5930,21 +5476,18 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setBatch([]);
         setMultiSelect(false);
         setView("add");
-        setTimeout(function () {
-          var _searchRef$current2;
-          return (_searchRef$current2 = searchRef.current) === null || _searchRef$current2 === void 0 ? void 0 : _searchRef$current2.focus();
-        }, 100);
+        setTimeout(() => searchRef.current?.focus(), 100);
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
       }
-    }, "Batch \xB7 ", batch.length, " ", batch.length === 1 ? "food" : "foods"), /*#__PURE__*/React.createElement("button", {
+    }, "Batch · ", batch.length, " ", batch.length === 1 ? "food" : "foods"), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "none",
         border: "none",
@@ -5953,14 +5496,11 @@ function NutriTrack() {
         cursor: "pointer",
         fontWeight: 600
       },
-      onClick: function onClick() {
+      onClick: () => {
         setBatch([]);
         setMultiSelect(false);
         setView("add");
-        setTimeout(function () {
-          var _searchRef$current3;
-          return (_searchRef$current3 = searchRef.current) === null || _searchRef$current3 === void 0 ? void 0 : _searchRef$current3.focus();
-        }, 100);
+        setTimeout(() => searchRef.current?.focus(), 100);
       }
     }, "+ Add")), /*#__PURE__*/React.createElement("div", {
       style: S.section
@@ -5981,15 +5521,15 @@ function NutriTrack() {
       style: {
         marginBottom: 12
       }
-    }, batch.map(function (b, idx) {
-      var _b$food$cal2;
-      var cal = ((_b$food$cal2 = b.food.cal) !== null && _b$food$cal2 !== void 0 ? _b$food$cal2 : 0) * (parseFloat(b.amount) || 0) / 100;
+    }, batch.map((b, idx) => {
+      const cal = (b.food.cal ?? 0) * (parseFloat(b.amount) || 0) / 100;
       return /*#__PURE__*/React.createElement("div", {
         key: b.food.id,
-        style: _objectSpread(_objectSpread({}, S.card), {}, {
+        style: {
+          ...S.card,
           marginBottom: 8,
           padding: "10px 12px"
-        })
+        }
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
@@ -6015,7 +5555,7 @@ function NutriTrack() {
           fontSize: 11,
           color: "#64748b"
         }
-      }, b.food.cat, " \xB7 ", fmtE(cal), " ", energyLabel)), /*#__PURE__*/React.createElement("button", {
+      }, b.food.cat, " · ", fmtE(cal), " ", energyLabel)), /*#__PURE__*/React.createElement("button", {
         style: {
           background: "none",
           border: "none",
@@ -6025,11 +5565,9 @@ function NutriTrack() {
           flexShrink: 0,
           padding: "0 4px"
         },
-        onClick: function onClick() {
-          return removeFoodFromBatch(idx);
-        },
+        onClick: () => removeFoodFromBatch(idx),
         "aria-label": "Remove from batch"
-      }, "\xD7")), /*#__PURE__*/React.createElement("div", {
+      }, "×")), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           alignItems: "center",
@@ -6040,15 +5578,14 @@ function NutriTrack() {
         type: "number",
         inputMode: "numeric",
         value: b.amount,
-        onChange: function onChange(e) {
-          return setBatchAmount(idx, e.target.value);
-        },
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        onChange: e => setBatchAmount(idx, e.target.value),
+        style: {
+          ...S.input,
           width: 90,
           textAlign: "center",
           marginBottom: 0,
           padding: "8px 10px"
-        })
+        }
       }), /*#__PURE__*/React.createElement("span", {
         style: {
           fontSize: 13,
@@ -6066,15 +5603,11 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 12
       }
-    }, MEALS.map(function (m) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: m,
-        style: S.pill(meal === m),
-        onClick: function onClick() {
-          return setMeal(m);
-        }
-      }, m);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, MEALS.map(m => /*#__PURE__*/React.createElement("button", {
+      key: m,
+      style: S.pill(meal === m),
+      onClick: () => setMeal(m)
+    }, m))), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0a0f1a",
         borderRadius: 10,
@@ -6113,9 +5646,7 @@ function NutriTrack() {
   }
   // ── SUPPLEMENT LOG CONFIRMATION ─────────────────────────────────────
   if (view === "suppLogConfirm" && suppLogStack) {
-    var checkedCount = suppLogItems.filter(function (i) {
-      return i.checked;
-    }).length;
+    const checkedCount = suppLogItems.filter(i => i.checked).length;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -6128,12 +5659,12 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setSuppLogStack(null);
         setSuppLogItems([]);
         setView("add");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -6159,86 +5690,76 @@ function NutriTrack() {
         color: "#475569",
         fontSize: 13
       }
-    }, "This stack has no items. Edit it in Settings \u2192 Supplements.") : suppLogItems.map(function (item, idx) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: idx,
-        style: _objectSpread(_objectSpread({}, S.suppRow), {}, {
-          opacity: item.checked ? 1 : 0.4
-        })
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          flex: 1
-        }
-      }, /*#__PURE__*/React.createElement("input", {
-        type: "checkbox",
-        checked: item.checked,
-        onChange: function onChange(e) {
-          return setSuppLogItems(function (prev) {
-            return prev.map(function (x, i) {
-              return i === idx ? _objectSpread(_objectSpread({}, x), {}, {
-                checked: e.target.checked
-              }) : x;
-            });
-          });
-        },
-        style: {
-          width: 18,
-          height: 18,
-          accentColor: "#7c3aed",
-          cursor: "pointer"
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#e2e8f0"
-        }
-      }, item.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b",
-          marginTop: 2
-        }
-      }, "Default: ", item.dose_amount, item.dose_unit))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 90
-        }
-      }, /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
-          width: "100%",
-          padding: "6px 8px",
-          fontSize: 13,
-          textAlign: "right"
-        }),
-        type: "number",
-        inputMode: "decimal",
-        placeholder: String(item.dose_amount),
-        value: item.doseOverride,
-        onChange: function onChange(e) {
-          return setSuppLogItems(function (prev) {
-            return prev.map(function (x, i) {
-              return i === idx ? _objectSpread(_objectSpread({}, x), {}, {
-                doseOverride: e.target.value
-              }) : x;
-            });
-          });
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#475569",
-          textAlign: "right",
-          marginTop: 2
-        }
-      }, item.dose_unit)));
-    })), /*#__PURE__*/React.createElement("button", {
+    }, "This stack has no items. Edit it in Settings → Supplements.") : suppLogItems.map((item, idx) => /*#__PURE__*/React.createElement("div", {
+      key: idx,
+      style: {
+        ...S.suppRow,
+        opacity: item.checked ? 1 : 0.4
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "checkbox",
+      checked: item.checked,
+      onChange: e => setSuppLogItems(prev => prev.map((x, i) => i === idx ? {
+        ...x,
+        checked: e.target.checked
+      } : x)),
+      style: {
+        width: 18,
+        height: 18,
+        accentColor: "#7c3aed",
+        cursor: "pointer"
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, item.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b",
+        marginTop: 2
+      }
+    }, "Default: ", item.dose_amount, item.dose_unit))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 90
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      style: {
+        ...S.input,
+        width: "100%",
+        padding: "6px 8px",
+        fontSize: 13,
+        textAlign: "right"
+      },
+      type: "number",
+      inputMode: "decimal",
+      placeholder: String(item.dose_amount),
+      value: item.doseOverride,
+      onChange: e => setSuppLogItems(prev => prev.map((x, i) => i === idx ? {
+        ...x,
+        doseOverride: e.target.value
+      } : x))
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#475569",
+        textAlign: "right",
+        marginTop: 2
+      }
+    }, item.dose_unit))))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
@@ -6253,12 +5774,12 @@ function NutriTrack() {
       },
       disabled: checkedCount === 0,
       onClick: logSuppStack
-    }, "Log ", checkedCount, " item", checkedCount === 1 ? "" : "s", " \u2014 ", suppLogStack.name)));
+    }, "Log ", checkedCount, " item", checkedCount === 1 ? "" : "s", " — ", suppLogStack.name)));
   }
 
   // ── STACK EDITOR ──────────────────────────────────────────────────────
   if (view === "stackEditor") {
-    var canSave = stackEditorName.trim().length > 0;
+    const canSave = stackEditorName.trim().length > 0;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -6271,10 +5792,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("settings");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("settings")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -6297,29 +5816,24 @@ function NutriTrack() {
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Stack name"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 8
-      }),
+      },
       placeholder: "e.g. AM, PM, Pre-ride",
       value: stackEditorName,
-      onChange: function onChange(e) {
-        return setStackEditorName(e.target.value);
-      }
+      onChange: e => setStackEditorName(e.target.value)
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         gap: 6,
         flexWrap: "wrap"
       }
-    }, ["AM", "PM", "Pre-ride", "Post-ride", "Evening"].map(function (n) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: n,
-        style: S.pill(stackEditorName === n),
-        onClick: function onClick() {
-          return setStackEditorName(n);
-        }
-      }, n);
-    }))), /*#__PURE__*/React.createElement("div", {
+    }, ["AM", "PM", "Pre-ride", "Post-ride", "Evening"].map(n => /*#__PURE__*/React.createElement("button", {
+      key: n,
+      style: S.pill(stackEditorName === n),
+      onClick: () => setStackEditorName(n)
+    }, n)))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -6336,7 +5850,7 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Items ", stackEditorItems.length > 0 ? "(".concat(stackEditorItems.length, ")") : ""), /*#__PURE__*/React.createElement("button", {
+    }, "Items ", stackEditorItems.length > 0 ? `(${stackEditorItems.length})` : ""), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "#1d4ed8",
         border: "none",
@@ -6347,9 +5861,7 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return openItemEditor(null);
-      }
+      onClick: () => openItemEditor(null)
     }, "+ Add item")), stackEditorItems.length === 0 ? /*#__PURE__*/React.createElement("div", {
       style: {
         textAlign: "center",
@@ -6357,54 +5869,48 @@ function NutriTrack() {
         color: "#475569",
         fontSize: 13
       }
-    }, "No items yet \u2014 tap + Add item") : stackEditorItems.map(function (item, idx) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: idx,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px 0",
-          borderBottom: idx < stackEditorItems.length - 1 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1,
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return openItemEditor(idx);
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#e2e8f0"
-        }
-      }, item.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b"
-        }
-      }, item.dose_amount, item.dose_unit, Object.keys(item.nutrients).length > 0 && /*#__PURE__*/React.createElement("span", {
-        style: {
-          color: "#a78bfa",
-          marginLeft: 6
-        }
-      }, "\xB7 ", Object.keys(item.nutrients).length, " nutrient", Object.keys(item.nutrients).length === 1 ? "" : "s"))), /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "none",
-          color: "#ef4444",
-          fontSize: 18,
-          cursor: "pointer",
-          padding: "4px 8px"
-        },
-        onClick: function onClick() {
-          return removeItemFromStack(idx);
-        }
-      }, "\xD7"));
-    })), editingStackId && /*#__PURE__*/React.createElement("button", {
+    }, "No items yet — tap + Add item") : stackEditorItems.map((item, idx) => /*#__PURE__*/React.createElement("div", {
+      key: idx,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 0",
+        borderBottom: idx < stackEditorItems.length - 1 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        cursor: "pointer"
+      },
+      onClick: () => openItemEditor(idx)
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, item.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, item.dose_amount, item.dose_unit, Object.keys(item.nutrients).length > 0 && /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: "#a78bfa",
+        marginLeft: 6
+      }
+    }, "· ", Object.keys(item.nutrients).length, " nutrient", Object.keys(item.nutrients).length === 1 ? "" : "s"))), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "none",
+        color: "#ef4444",
+        fontSize: 18,
+        cursor: "pointer",
+        padding: "4px 8px"
+      },
+      onClick: () => removeItemFromStack(idx)
+    }, "×")))), editingStackId && /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
@@ -6417,15 +5923,13 @@ function NutriTrack() {
         cursor: "pointer",
         marginBottom: 20
       },
-      onClick: function onClick() {
-        return deleteStack(editingStackId);
-      }
+      onClick: () => deleteStack(editingStackId)
     }, "Delete Stack")));
   }
 
   // ── ITEM EDITOR ───────────────────────────────────────────────────────
   if (view === "itemEditor") {
-    var _canSave = itemEditorData.name.trim().length > 0;
+    const canSave = itemEditorData.name.trim().length > 0;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -6438,10 +5942,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("stackEditor");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("stackEditor")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -6452,11 +5954,11 @@ function NutriTrack() {
         border: "none",
         fontSize: 13,
         fontWeight: 700,
-        cursor: _canSave ? "pointer" : "default",
-        color: _canSave ? "#3b82f6" : "#334155"
+        cursor: canSave ? "pointer" : "default",
+        color: canSave ? "#3b82f6" : "#334155"
       },
       onClick: saveItem,
-      disabled: !_canSave
+      disabled: !canSave
     }, "Save")), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
@@ -6464,18 +5966,16 @@ function NutriTrack() {
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Supplement name"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 12
-      }),
+      },
       placeholder: "e.g. Vitamin B12",
       value: itemEditorData.name,
-      onChange: function onChange(e) {
-        return setItemEditorData(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            name: e.target.value
-          });
-        });
-      }
+      onChange: e => setItemEditorData(p => ({
+        ...p,
+        name: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
@@ -6494,13 +5994,10 @@ function NutriTrack() {
       inputMode: "decimal",
       placeholder: "e.g. 1000",
       value: itemEditorData.dose_amount,
-      onChange: function onChange(e) {
-        return setItemEditorData(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            dose_amount: e.target.value
-          });
-        });
-      }
+      onChange: e => setItemEditorData(p => ({
+        ...p,
+        dose_amount: e.target.value
+      }))
     })), /*#__PURE__*/React.createElement("div", {
       style: {
         width: 100
@@ -6508,22 +6005,18 @@ function NutriTrack() {
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Unit"), /*#__PURE__*/React.createElement("select", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         padding: "11px 8px"
-      }),
+      },
       value: itemEditorData.dose_unit,
-      onChange: function onChange(e) {
-        return setItemEditorData(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            dose_unit: e.target.value
-          });
-        });
-      }
-    }, SUPP_DOSE_UNITS.map(function (u) {
-      return /*#__PURE__*/React.createElement("option", {
-        key: u
-      }, u);
-    }))))), /*#__PURE__*/React.createElement("div", {
+      onChange: e => setItemEditorData(p => ({
+        ...p,
+        dose_unit: e.target.value
+      }))
+    }, SUPP_DOSE_UNITS.map(u => /*#__PURE__*/React.createElement("option", {
+      key: u
+    }, u)))))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -6544,84 +6037,72 @@ function NutriTrack() {
       style: {
         marginBottom: 12
       }
-    }, Object.entries(itemEditorData.nutrients).map(function (_ref16) {
-      var _NUTRIENT_META$k3, _NUTRIENT_META$k4;
-      var _ref17 = _slicedToArray(_ref16, 2),
-        k = _ref17[0],
-        v = _ref17[1];
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "6px 0",
-          borderBottom: "1px solid #1e293b"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, ((_NUTRIENT_META$k3 = NUTRIENT_META[k]) === null || _NUTRIENT_META$k3 === void 0 ? void 0 : _NUTRIENT_META$k3.label) || k), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 8
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: "#a78bfa",
-          fontWeight: 600
-        }
-      }, v, " ", ((_NUTRIENT_META$k4 = NUTRIENT_META[k]) === null || _NUTRIENT_META$k4 === void 0 ? void 0 : _NUTRIENT_META$k4.unit) || ""), /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "none",
-          color: "#ef4444",
-          fontSize: 14,
-          cursor: "pointer",
-          padding: "0 4px"
-        },
-        onClick: function onClick() {
-          return removeNutrientFromItem(k);
-        }
-      }, "\xD7")));
-    })), /*#__PURE__*/React.createElement("div", {
+    }, Object.entries(itemEditorData.nutrients).map(([k, v]) => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "6px 0",
+        borderBottom: "1px solid #1e293b"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, NUTRIENT_META[k]?.label || k), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        color: "#a78bfa",
+        fontWeight: 600
+      }
+    }, v, " ", NUTRIENT_META[k]?.unit || ""), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "none",
+        color: "#ef4444",
+        fontSize: 14,
+        cursor: "pointer",
+        padding: "0 4px"
+      },
+      onClick: () => removeNutrientFromItem(k)
+    }, "×"))))), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         gap: 6,
         marginBottom: 4
       }
     }, /*#__PURE__*/React.createElement("select", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         flex: 1,
         padding: "8px 10px",
         fontSize: 13
-      }),
+      },
       value: itemNutKey,
-      onChange: function onChange(e) {
-        return setItemNutKey(e.target.value);
-      }
-    }, NUTRIENT_ALL_KEYS.map(function (k) {
-      return /*#__PURE__*/React.createElement("option", {
-        key: k,
-        value: k
-      }, NUTRIENT_META[k].label, " (", NUTRIENT_META[k].unit, ")");
-    })), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      onChange: e => setItemNutKey(e.target.value)
+    }, NUTRIENT_ALL_KEYS.map(k => /*#__PURE__*/React.createElement("option", {
+      key: k,
+      value: k
+    }, NUTRIENT_META[k].label, " (", NUTRIENT_META[k].unit, ")"))), /*#__PURE__*/React.createElement("input", {
+      style: {
+        ...S.input,
         width: 80,
         padding: "8px 10px",
         fontSize: 13
-      }),
+      },
       type: "number",
       inputMode: "decimal",
       placeholder: "0",
       value: itemNutVal,
-      onChange: function onChange(e) {
-        return setItemNutVal(e.target.value);
-      }
+      onChange: e => setItemNutVal(e.target.value)
     }), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "#1d4ed8",
@@ -6667,9 +6148,10 @@ function NutriTrack() {
       },
       onClick: startNewRecipe
     }, "+ New")), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.section), {}, {
+      style: {
+        ...S.section,
         paddingBottom: 20
-      })
+      }
     }, recipes.length === 0 ? /*#__PURE__*/React.createElement("div", {
       style: {
         textAlign: "center",
@@ -6681,7 +6163,7 @@ function NutriTrack() {
         fontSize: 40,
         marginBottom: 12
       }
-    }, "\uD83D\uDCD6"), /*#__PURE__*/React.createElement("div", {
+    }, "📖"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 15,
         fontWeight: 600,
@@ -6696,14 +6178,15 @@ function NutriTrack() {
       style: {
         marginTop: 8
       }
-    }, recipes.map(function (r) {
-      var n = r.nutrition_per_serving || {};
+    }, recipes.map(r => {
+      const n = r.nutrition_per_serving || {};
       return /*#__PURE__*/React.createElement("div", {
         key: r.id,
-        style: _objectSpread(_objectSpread({}, S.card), {}, {
+        style: {
+          ...S.card,
           cursor: "pointer"
-        }),
-        onClick: function onClick() {
+        },
+        onClick: () => {
           setSelectedRecipe(r);
           setView("recipeDetail");
         }
@@ -6730,7 +6213,7 @@ function NutriTrack() {
           color: "#475569",
           marginBottom: 8
         }
-      }, r.servings, " ", r.servings === 1 ? "serving" : "servings", r.source ? " \xB7 ".concat(r.source) : "", " \xB7 ", r.ingredients.length, " ingredients"), /*#__PURE__*/React.createElement("div", {
+      }, r.servings, " ", r.servings === 1 ? "serving" : "servings", r.source ? ` · ${r.source}` : "", " · ", r.ingredients.length, " ingredients"), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 12
@@ -6747,40 +6230,38 @@ function NutriTrack() {
       }, {
         k: "fat",
         l: "fat"
-      }].map(function (_ref18) {
-        var _n$k, _n$k2;
-        var k = _ref18.k,
-          l = _ref18.l;
-        return /*#__PURE__*/React.createElement("div", {
-          key: k,
-          style: {
-            textAlign: "center"
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 13,
-            fontWeight: 700,
-            color: NUTRIENT_META[k].color
-          }
-        }, k === "cal" ? fmtE((_n$k = n[k]) !== null && _n$k !== void 0 ? _n$k : 0) : n1((_n$k2 = n[k]) !== null && _n$k2 !== void 0 ? _n$k2 : 0)), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 10,
-            color: "#64748b"
-          }
-        }, l, "/srv"));
-      }))), /*#__PURE__*/React.createElement("div", {
+      }].map(({
+        k,
+        l
+      }) => /*#__PURE__*/React.createElement("div", {
+        key: k,
+        style: {
+          textAlign: "center"
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          fontWeight: 700,
+          color: NUTRIENT_META[k].color
+        }
+      }, k === "cal" ? fmtE(n[k] ?? 0) : n1(n[k] ?? 0)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 10,
+          color: "#64748b"
+        }
+      }, l, "/srv"))))), /*#__PURE__*/React.createElement("div", {
         style: {
           color: "#475569",
           fontSize: 18,
           paddingLeft: 8
         }
-      }, "\u203A")));
+      }, "›")));
     }))), /*#__PURE__*/React.createElement(BottomNav, null));
   }
 
   // ── RECIPE DETAIL ─────────────────────────────────────────────────────
   if (view === "recipeDetail" && selectedRecipe) {
-    var r = selectedRecipe,
+    const r = selectedRecipe,
       n = r.nutrition_per_serving || {};
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
@@ -6794,10 +6275,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("recipes");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("recipes")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700,
@@ -6814,9 +6293,7 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return startEditRecipe(r);
-      }
+      onClick: () => startEditRecipe(r)
     }, "Edit")), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, r.source ? /*#__PURE__*/React.createElement("div", {
@@ -6844,26 +6321,23 @@ function NutriTrack() {
         gap: 8,
         marginBottom: 12
       }
-    }, MACROS.map(function (k) {
-      var _n$k3, _n$k4;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          textAlign: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 15,
-          fontWeight: 700,
-          color: NUTRIENT_META[k].color
-        }
-      }, k === "cal" ? fmtE((_n$k3 = n[k]) !== null && _n$k3 !== void 0 ? _n$k3 : 0) : n1((_n$k4 = n[k]) !== null && _n$k4 !== void 0 ? _n$k4 : 0)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, k === "cal" ? energyLabel : NUTRIENT_META[k].label));
-    })), /*#__PURE__*/React.createElement("div", {
+    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 15,
+        fontWeight: 700,
+        color: NUTRIENT_META[k].color
+      }
+    }, k === "cal" ? fmtE(n[k] ?? 0) : n1(n[k] ?? 0)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, k === "cal" ? energyLabel : NUTRIENT_META[k].label)))), /*#__PURE__*/React.createElement("div", {
       style: {
         borderTop: "1px solid #1e293b",
         paddingTop: 10
@@ -6883,26 +6357,23 @@ function NutriTrack() {
         gridTemplateColumns: "1fr 1fr",
         gap: "4px 16px"
       }
-    }, ["iron", "calc", "zinc", "b12", "omega3", "fol"].map(function (k) {
-      var _n$k5;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          fontSize: 12
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          color: "#94a3b8"
-        }
-      }, NUTRIENT_META[k].label), /*#__PURE__*/React.createElement("span", {
-        style: {
-          color: NUTRIENT_META[k].color,
-          fontWeight: 600
-        }
-      }, n1((_n$k5 = n[k]) !== null && _n$k5 !== void 0 ? _n$k5 : null), NUTRIENT_META[k].unit));
-    })))), /*#__PURE__*/React.createElement("div", {
+    }, ["iron", "calc", "zinc", "b12", "omega3", "fol"].map(k => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        fontSize: 12
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: "#94a3b8"
+      }
+    }, NUTRIENT_META[k].label), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: NUTRIENT_META[k].color,
+        fontWeight: 600
+      }
+    }, n1(n[k] ?? null), NUTRIENT_META[k].unit)))))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -6913,10 +6384,8 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Ingredients (", r.ingredients.length, ")"), r.ingredients.map(function (ing, i) {
-      var food = allFoods.find(function (f) {
-          return f.id === ing.foodId;
-        }),
+    }, "Ingredients (", r.ingredients.length, ")"), r.ingredients.map((ing, i) => {
+      const food = allFoods.find(f => f.id === ing.foodId),
         ingCal = food ? fmtE(food.cal * ing.amount_g / 100) : "?";
       return /*#__PURE__*/React.createElement("div", {
         key: i,
@@ -6957,7 +6426,7 @@ function NutriTrack() {
         cursor: "pointer",
         marginBottom: 10
       },
-      onClick: function onClick() {
+      onClick: () => {
         setRecipeLogServings("1");
         setRecipeLogGrams("");
         setRecipeLogMode("servings");
@@ -6977,56 +6446,41 @@ function NutriTrack() {
         cursor: "pointer",
         marginBottom: 20
       },
-      onClick: function onClick() {
-        return deleteRecipe(r.id);
-      }
+      onClick: () => deleteRecipe(r.id)
     }, "Delete Recipe")), /*#__PURE__*/React.createElement(BottomNav, null));
   }
 
   // ── RECIPE LOG ────────────────────────────────────────────────────────
   if (view === "recipeLog" && selectedRecipe) {
-    var _perServingNut$cal;
-    var _r = selectedRecipe,
-      rs = Math.max(Number(_r.servings) || 1, 0.01),
-      tw = (_r.ingredients || []).reduce(function (s, i) {
-        return s + (Number(i.amount_g) || 0);
-      }, 0);
-    var frac = 0;
+    const r = selectedRecipe,
+      rs = Math.max(Number(r.servings) || 1, 0.01),
+      tw = (r.ingredients || []).reduce((s, i) => s + (Number(i.amount_g) || 0), 0);
+    let frac = 0;
     if (recipeLogMode === "servings") frac = (parseFloat(recipeLogServings) || 0) / rs;else {
-      var g = parseFloat(recipeLogGrams) || 0;
+      const g = parseFloat(recipeLogGrams) || 0;
       frac = tw > 0 ? g / tw : 0;
     }
-    var previewNut = {};
-    Object.keys(NUTRIENT_META).forEach(function (k) {
-      return previewNut[k] = 0;
-    });
-    _r.ingredients.forEach(function (ing) {
-      var food = allFoods.find(function (f) {
-        return f.id === ing.foodId;
-      });
+    const previewNut = {};
+    Object.keys(NUTRIENT_META).forEach(k => previewNut[k] = 0);
+    r.ingredients.forEach(ing => {
+      const food = allFoods.find(f => f.id === ing.foodId);
       if (!food) return;
-      var m = ing.amount_g * frac / 100;
-      Object.keys(NUTRIENT_META).forEach(function (k) {
-        var _food$k5;
-        previewNut[k] += ((_food$k5 = food[k]) !== null && _food$k5 !== void 0 ? _food$k5 : 0) * m;
+      const m = ing.amount_g * frac / 100;
+      Object.keys(NUTRIENT_META).forEach(k => {
+        previewNut[k] += (food[k] ?? 0) * m;
       });
     });
-    var perServingNut = {};
-    Object.keys(NUTRIENT_META).forEach(function (k) {
-      return perServingNut[k] = 0;
-    });
-    _r.ingredients.forEach(function (ing) {
-      var food = allFoods.find(function (f) {
-        return f.id === ing.foodId;
-      });
+    const perServingNut = {};
+    Object.keys(NUTRIENT_META).forEach(k => perServingNut[k] = 0);
+    r.ingredients.forEach(ing => {
+      const food = allFoods.find(f => f.id === ing.foodId);
       if (!food) return;
-      var m = ing.amount_g / rs / 100;
-      Object.keys(NUTRIENT_META).forEach(function (k) {
-        var _food$k6;
-        perServingNut[k] += ((_food$k6 = food[k]) !== null && _food$k6 !== void 0 ? _food$k6 : 0) * m;
+      const m = ing.amount_g / rs / 100;
+      Object.keys(NUTRIENT_META).forEach(k => {
+        perServingNut[k] += (food[k] ?? 0) * m;
       });
     });
-    var canLog = frac > 0;
+    const canLog = frac > 0;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -7039,10 +6493,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView(recipeLogReturn);
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView(recipeLogReturn)
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -7052,9 +6504,10 @@ function NutriTrack() {
         width: 48
       }
     })), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.section), {}, {
+      style: {
+        ...S.section,
         paddingBottom: 80
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
@@ -7065,43 +6518,34 @@ function NutriTrack() {
         padding: 4,
         marginBottom: 16
       }
-    }, [["servings", "By Servings"], ["grams", "By Weight"]].map(function (_ref19) {
-      var _ref20 = _slicedToArray(_ref19, 2),
-        mode = _ref20[0],
-        label = _ref20[1];
-      return /*#__PURE__*/React.createElement("button", {
-        key: mode,
-        style: {
-          flex: 1,
-          padding: "8px 0",
-          borderRadius: 8,
-          border: "none",
-          cursor: "pointer",
-          fontSize: 13,
-          fontWeight: 600,
-          background: recipeLogMode === mode ? "#1d4ed8" : "transparent",
-          color: recipeLogMode === mode ? "#fff" : "#64748b"
-        },
-        onClick: function onClick() {
-          return setRecipeLogMode(mode);
-        }
-      }, label);
-    })), recipeLogMode === "servings" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+    }, [["servings", "By Servings"], ["grams", "By Weight"]].map(([mode, label]) => /*#__PURE__*/React.createElement("button", {
+      key: mode,
+      style: {
+        flex: 1,
+        padding: "8px 0",
+        borderRadius: 8,
+        border: "none",
+        cursor: "pointer",
+        fontSize: 13,
+        fontWeight: 600,
+        background: recipeLogMode === mode ? "#1d4ed8" : "transparent",
+        color: recipeLogMode === mode ? "#fff" : "#64748b"
+      },
+      onClick: () => setRecipeLogMode(mode)
+    }, label))), recipeLogMode === "servings" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Servings to log \u2014 1 serving = ", fmtE((_perServingNut$cal = perServingNut.cal) !== null && _perServingNut$cal !== void 0 ? _perServingNut$cal : 0), " ", energyLabel), /*#__PURE__*/React.createElement("div", {
+    }, "Servings to log — 1 serving = ", fmtE(perServingNut.cal ?? 0), " ", energyLabel), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#475569",
         marginBottom: 8
       }
-    }, "Recipe has ", _r.servings, " ", _r.servings === 1 ? "serving" : "servings", " total"), /*#__PURE__*/React.createElement("input", {
+    }, "Recipe has ", r.servings, " ", r.servings === 1 ? "serving" : "servings", " total"), /*#__PURE__*/React.createElement("input", {
       style: S.input,
       type: "number",
       inputMode: "decimal",
       value: recipeLogServings,
-      onChange: function onChange(e) {
-        return setRecipeLogServings(e.target.value);
-      }
+      onChange: e => setRecipeLogServings(e.target.value)
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
@@ -7109,29 +6553,21 @@ function NutriTrack() {
         marginTop: 8,
         flexWrap: "wrap"
       }
-    }, _toConsumableArray(new Set([0.5].concat(_toConsumableArray(Array.from({
-      length: _r.servings
-    }, function (_, i) {
-      return i + 1;
-    }))))).map(function (q) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: q,
-        style: S.pill(recipeLogServings === String(q)),
-        onClick: function onClick() {
-          return setRecipeLogServings(String(q));
-        }
-      }, q === 0.5 ? "½" : q);
-    }))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+    }, [...new Set([0.5, ...Array.from({
+      length: r.servings
+    }, (_, i) => i + 1)])].map(q => /*#__PURE__*/React.createElement("button", {
+      key: q,
+      style: S.pill(recipeLogServings === String(q)),
+      onClick: () => setRecipeLogServings(String(q))
+    }, q === 0.5 ? "½" : q)))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Weight (g) \u2014 recipe ingredients total ", tw, "g"), /*#__PURE__*/React.createElement("input", {
+    }, "Weight (g) — recipe ingredients total ", tw, "g"), /*#__PURE__*/React.createElement("input", {
       style: S.input,
       type: "number",
       inputMode: "numeric",
       value: recipeLogGrams,
-      onChange: function onChange(e) {
-        return setRecipeLogGrams(e.target.value);
-      },
-      placeholder: "e.g. ".concat(Math.round(tw / _r.servings))
+      onChange: e => setRecipeLogGrams(e.target.value),
+      placeholder: `e.g. ${Math.round(tw / r.servings)}`
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
@@ -7139,14 +6575,12 @@ function NutriTrack() {
         marginTop: 8,
         flexWrap: "wrap"
       }
-    }, [0.5, 1, 1.5].map(function (mult) {
-      var q = Math.round(tw * mult / _r.servings);
+    }, [0.5, 1, 1.5].map(mult => {
+      const q = Math.round(tw * mult / r.servings);
       return q > 0 ? /*#__PURE__*/React.createElement("button", {
         key: mult,
         style: S.pill(recipeLogGrams === String(q)),
-        onClick: function onClick() {
-          return setRecipeLogGrams(String(q));
-        }
+        onClick: () => setRecipeLogGrams(String(q))
       }, q, "g") : null;
     })), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7175,26 +6609,23 @@ function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(function (k) {
-      var _previewNut$k, _previewNut$k2;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          textAlign: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 700,
-          color: NUTRIENT_META[k].color
-        }
-      }, k === "cal" ? fmtE((_previewNut$k = previewNut[k]) !== null && _previewNut$k !== void 0 ? _previewNut$k : 0) : n1((_previewNut$k2 = previewNut[k]) !== null && _previewNut$k2 !== void 0 ? _previewNut$k2 : null)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, k === "cal" ? energyLabel : NUTRIENT_META[k].label));
-    }))), /*#__PURE__*/React.createElement("label", {
+    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 700,
+        color: NUTRIENT_META[k].color
+      }
+    }, k === "cal" ? fmtE(previewNut[k] ?? 0) : n1(previewNut[k] ?? null)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, k === "cal" ? energyLabel : NUTRIENT_META[k].label))))), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Meal"), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7203,15 +6634,11 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 12
       }
-    }, MEALS.map(function (m) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: m,
-        style: S.pill(recipeLogMeal === m),
-        onClick: function onClick() {
-          return setRecipeLogMeal(m);
-        }
-      }, m);
-    })), /*#__PURE__*/React.createElement("button", {
+    }, MEALS.map(m => /*#__PURE__*/React.createElement("button", {
+      key: m,
+      style: S.pill(recipeLogMeal === m),
+      onClick: () => setRecipeLogMeal(m)
+    }, m))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
@@ -7232,10 +6659,8 @@ function NutriTrack() {
   // Shown after quantity picker; user adjusts ingredients before committing.
   // The saved recipe definition is never touched here.
   if (view === "recipeLogReview" && selectedRecipe) {
-    var hasAny = recipeLogReviewIngredients.some(function (ing) {
-      return ing.amount_g > 0;
-    });
-    var nut = computeEntryNutrition(recipeLogReviewIngredients, allFoodsForRender);
+    const hasAny = recipeLogReviewIngredients.some(ing => ing.amount_g > 0);
+    const nut = computeEntryNutrition(recipeLogReviewIngredients, allFoodsForRender);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -7248,10 +6673,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("recipeLog");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("recipeLog")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -7261,9 +6684,10 @@ function NutriTrack() {
         width: 48
       }
     })), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.section), {}, {
+      style: {
+        ...S.section,
         paddingBottom: 80
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#1a0a2e",
@@ -7274,7 +6698,7 @@ function NutriTrack() {
         fontSize: 12,
         color: "#a78bfa"
       }
-    }, "Step 2 of 2 \u2014 ", recipeLogReviewIngredients.length, " ingredient", recipeLogReviewIngredients.length === 1 ? "" : "s", " \xB7 adjust or tap Add to confirm"), /*#__PURE__*/React.createElement("div", {
+    }, "Step 2 of 2 — ", recipeLogReviewIngredients.length, " ingredient", recipeLogReviewIngredients.length === 1 ? "" : "s", " · adjust or tap Add to confirm"), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, recipeLogReviewIngredients.length === 0 ? /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7283,11 +6707,9 @@ function NutriTrack() {
         color: "#ef4444",
         fontSize: 13
       }
-    }, "All ingredients removed \u2014 restore at least one.") : recipeLogReviewIngredients.map(function (ing, idx) {
-      var food = allFoodsForRender.find(function (f) {
-        return f.id === ing.foodId;
-      });
-      var ingCal = food ? fmtE(food.cal * ing.amount_g / 100) : "?";
+    }, "All ingredients removed — restore at least one.") : recipeLogReviewIngredients.map((ing, idx) => {
+      const food = allFoodsForRender.find(f => f.id === ing.foodId);
+      const ingCal = food ? fmtE(food.cal * ing.amount_g / 100) : "?";
       return /*#__PURE__*/React.createElement("div", {
         key: idx,
         style: {
@@ -7317,25 +6739,23 @@ function NutriTrack() {
           color: "#64748b"
         }
       }, ingCal, " ", energyLabel)), /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        style: {
+          ...S.input,
           width: 72,
           padding: "6px 8px",
           fontSize: 13,
           textAlign: "right",
           flexShrink: 0
-        }),
+        },
         type: "number",
         inputMode: "decimal",
         value: String(ing.amount_g),
-        onChange: function onChange(e) {
-          var v = Math.max(0, parseFloat(e.target.value) || 0);
-          setRecipeLogReviewIngredients(function (prev) {
-            return prev.map(function (x, i) {
-              return i === idx ? _objectSpread(_objectSpread({}, x), {}, {
-                amount_g: v
-              }) : x;
-            });
-          });
+        onChange: e => {
+          const v = Math.max(0, parseFloat(e.target.value) || 0);
+          setRecipeLogReviewIngredients(prev => prev.map((x, i) => i === idx ? {
+            ...x,
+            amount_g: v
+          } : x));
         }
       }), /*#__PURE__*/React.createElement("span", {
         style: {
@@ -7354,14 +6774,8 @@ function NutriTrack() {
           flexShrink: 0,
           lineHeight: 1
         },
-        onClick: function onClick() {
-          return setRecipeLogReviewIngredients(function (prev) {
-            return prev.filter(function (_, i) {
-              return i !== idx;
-            });
-          });
-        }
-      }, "\xD7"));
+        onClick: () => setRecipeLogReviewIngredients(prev => prev.filter((_, i) => i !== idx))
+      }, "×"));
     })), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
@@ -7375,24 +6789,21 @@ function NutriTrack() {
         cursor: "pointer",
         marginBottom: 8
       },
-      onClick: function onClick() {
-        setReviewAddOpen(function (o) {
-          return !o;
-        });
+      onClick: () => {
+        setReviewAddOpen(o => !o);
         setRecipeIngSearch("");
         setReviewAddAmount("100");
       }
     }, "+ Add ingredient"), reviewAddOpen && /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         marginBottom: 12
-      })
+      }
     }, /*#__PURE__*/React.createElement("input", {
       style: S.input,
-      placeholder: "Search foods\u2026",
+      placeholder: "Search foods…",
       value: recipeIngSearch,
-      onChange: function onChange(e) {
-        return setRecipeIngSearch(e.target.value);
-      },
+      onChange: e => setRecipeIngSearch(e.target.value),
       autoFocus: true
     }), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7402,16 +6813,15 @@ function NutriTrack() {
         gap: 8
       }
     }, /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         width: 100,
         marginBottom: 0
-      }),
+      },
       type: "number",
       inputMode: "decimal",
       value: reviewAddAmount,
-      onChange: function onChange(e) {
-        return setReviewAddAmount(e.target.value);
-      }
+      onChange: e => setReviewAddAmount(e.target.value)
     }), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 12,
@@ -7423,46 +6833,38 @@ function NutriTrack() {
         maxHeight: 260,
         overflowY: "auto"
       }
-    }, Object.entries(groupedIngByCategory).map(function (_ref21) {
-      var _ref22 = _slicedToArray(_ref21, 2),
-        cat = _ref22[0],
-        foods = _ref22[1];
-      return /*#__PURE__*/React.createElement("div", {
-        key: cat
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          fontWeight: 700,
-          color: "#475569",
-          padding: "8px 0 4px",
-          letterSpacing: "0.05em",
-          textTransform: "uppercase"
-        }
-      }, cat), foods.map(function (f) {
-        return /*#__PURE__*/React.createElement("div", {
-          key: f.id,
-          style: _objectSpread(_objectSpread({}, S.srchItem), {}, {
-            contentVisibility: "auto",
-            containIntrinsicSize: "0 44px"
-          }),
-          onClick: function onClick() {
-            return addIngredientToReview(f);
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 12,
-            color: "#f59e0b",
-            "float": "right"
-          }
-        }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 14,
-            fontWeight: 500,
-            color: "#e2e8f0"
-          }
-        }, f.name));
-      }));
-    }), filteredIngFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
+    }, Object.entries(groupedIngByCategory).map(([cat, foods]) => /*#__PURE__*/React.createElement("div", {
+      key: cat
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: "#475569",
+        padding: "8px 0 4px",
+        letterSpacing: "0.05em",
+        textTransform: "uppercase"
+      }
+    }, cat), foods.map(f => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        ...S.srchItem,
+        contentVisibility: "auto",
+        containIntrinsicSize: "0 44px"
+      },
+      onClick: () => addIngredientToReview(f)
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#f59e0b",
+        float: "right"
+      }
+    }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, f.name))))), filteredIngFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         padding: 16,
         textAlign: "center",
@@ -7490,33 +6892,30 @@ function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(function (k) {
-      var _nut$k, _nut$k2;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          textAlign: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 700,
-          color: NUTRIENT_META[k].color
-        }
-      }, k === "cal" ? fmtE((_nut$k = nut[k]) !== null && _nut$k !== void 0 ? _nut$k : 0) : n1((_nut$k2 = nut[k]) !== null && _nut$k2 !== void 0 ? _nut$k2 : null)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, k === "cal" ? energyLabel : NUTRIENT_META[k].label));
-    }))), !hasAny && recipeLogReviewIngredients.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 700,
+        color: NUTRIENT_META[k].color
+      }
+    }, k === "cal" ? fmtE(nut[k] ?? 0) : n1(nut[k] ?? null)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, k === "cal" ? energyLabel : NUTRIENT_META[k].label))))), !hasAny && recipeLogReviewIngredients.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
         color: "#ef4444",
         textAlign: "center",
         marginBottom: 8
       }
-    }, "All quantities are zero \u2014 set at least one above 0."), /*#__PURE__*/React.createElement("button", {
+    }, "All quantities are zero — set at least one above 0."), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
@@ -7530,19 +6929,15 @@ function NutriTrack() {
         marginBottom: 20
       },
       disabled: !hasAny,
-      onClick: function onClick() {
-        return commitLogRecipe(recipeLogReviewIngredients.filter(function (ing) {
-          return ing.amount_g > 0;
-        }));
-      }
+      onClick: () => commitLogRecipe(recipeLogReviewIngredients.filter(ing => ing.amount_g > 0))
     }, "Add to ", recipeLogMeal)), /*#__PURE__*/React.createElement(BottomNav, null));
   }
 
   // ── RECIPE CREATE / EDIT ──────────────────────────────────────────────
   if (view === "recipeCreate") {
-    var curServings = parseFloat(recipeInProgress.servings) || 1;
-    var _previewNut = recipeInProgress.ingredients.length > 0 ? calcRecipeNutritionPerServing(recipeInProgress.ingredients, curServings, allFoods) : null;
-    var _canSave2 = recipeInProgress.name.trim().length > 0 && recipeInProgress.ingredients.length > 0;
+    const curServings = parseFloat(recipeInProgress.servings) || 1;
+    const previewNut = recipeInProgress.ingredients.length > 0 ? calcRecipeNutritionPerServing(recipeInProgress.ingredients, curServings, allFoods) : null;
+    const canSave = recipeInProgress.name.trim().length > 0 && recipeInProgress.ingredients.length > 0;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -7555,11 +6950,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setEditingRecipeId(null);
         setView("recipes");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -7571,10 +6966,10 @@ function NutriTrack() {
         fontSize: 13,
         fontWeight: 700,
         cursor: "pointer",
-        color: _canSave2 ? "#3b82f6" : "#334155"
+        color: canSave ? "#3b82f6" : "#334155"
       },
       onClick: saveRecipe,
-      disabled: !_canSave2
+      disabled: !canSave
     }, "Save")), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
@@ -7582,49 +6977,30 @@ function NutriTrack() {
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Recipe name *"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 12
-      }),
+      },
       placeholder: "e.g. Red Lentil Dal",
       value: recipeInProgress.name,
-      onChange: function onChange(e) {
-        return setRecipeInProgress(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            name: e.target.value
-          });
-        });
-      }
-    }), /*#__PURE__*/React.createElement("label", {
-      style: S.label
-    }, "Source (optional)"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
-        marginBottom: 12
-      }),
-      placeholder: "e.g. Mum's recipe",
-      value: recipeInProgress.source,
-      onChange: function onChange(e) {
-        return setRecipeInProgress(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            source: e.target.value
-          });
-        });
-      }
+      onChange: e => setRecipeInProgress(p => ({
+        ...p,
+        name: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Number of servings"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 6
-      }),
+      },
       type: "number",
       inputMode: "decimal",
       value: recipeInProgress.servings,
-      onChange: function onChange(e) {
-        return setRecipeInProgress(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            servings: e.target.value
-          });
-        });
-      }
+      onChange: e => setRecipeInProgress(p => ({
+        ...p,
+        servings: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
@@ -7632,22 +7008,18 @@ function NutriTrack() {
         marginTop: 6,
         flexWrap: "wrap"
       }
-    }, [1, 2, 3, 4, 6, 8].map(function (n) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: n,
-        style: S.pill(recipeInProgress.servings === String(n)),
-        onClick: function onClick() {
-          return setRecipeInProgress(function (p) {
-            return _objectSpread(_objectSpread({}, p), {}, {
-              servings: String(n)
-            });
-          });
-        }
-      }, n);
-    }))), _previewNut && /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+    }, [1, 2, 3, 4, 6, 8].map(n => /*#__PURE__*/React.createElement("button", {
+      key: n,
+      style: S.pill(recipeInProgress.servings === String(n)),
+      onClick: () => setRecipeInProgress(p => ({
+        ...p,
+        servings: String(n)
+      }))
+    }, n)))), previewNut && /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.card,
         background: "#0a0f1a"
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
@@ -7663,26 +7035,23 @@ function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(function (k) {
-      var _previewNut$k3, _previewNut$k4;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          textAlign: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 700,
-          color: NUTRIENT_META[k].color
-        }
-      }, k === "cal" ? fmtE((_previewNut$k3 = _previewNut[k]) !== null && _previewNut$k3 !== void 0 ? _previewNut$k3 : 0) : n1((_previewNut$k4 = _previewNut[k]) !== null && _previewNut$k4 !== void 0 ? _previewNut$k4 : null)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, k === "cal" ? energyLabel : NUTRIENT_META[k].label));
-    }))), /*#__PURE__*/React.createElement("div", {
+    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 700,
+        color: NUTRIENT_META[k].color
+      }
+    }, k === "cal" ? fmtE(previewNut[k] ?? 0) : n1(previewNut[k] ?? null)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, k === "cal" ? energyLabel : NUTRIENT_META[k].label))))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7699,7 +7068,7 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Ingredients ", recipeInProgress.ingredients.length > 0 ? "(".concat(recipeInProgress.ingredients.length, ")") : ""), /*#__PURE__*/React.createElement("button", {
+    }, "Ingredients ", recipeInProgress.ingredients.length > 0 ? `(${recipeInProgress.ingredients.length})` : ""), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "#1d4ed8",
         border: "none",
@@ -7710,15 +7079,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setRecipeIngSearch("");
         setRecipeIngSelected(null);
         setRecipeIngAmount("100");
         setView("recipeIngAdd");
-        setTimeout(function () {
-          var _recipeIngRef$current;
-          return (_recipeIngRef$current = recipeIngRef.current) === null || _recipeIngRef$current === void 0 ? void 0 : _recipeIngRef$current.focus();
-        }, 100);
+        setTimeout(() => recipeIngRef.current?.focus(), 100);
       }
     }, "+ Add")), recipeInProgress.ingredients.length === 0 ? /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7727,10 +7093,8 @@ function NutriTrack() {
         color: "#475569",
         fontSize: 13
       }
-    }, "No ingredients yet \u2014 tap + Add") : recipeInProgress.ingredients.map(function (ing, i) {
-      var food = allFoods.find(function (f) {
-          return f.id === ing.foodId;
-        }),
+    }, "No ingredients yet — tap + Add") : recipeInProgress.ingredients.map((ing, i) => {
+      const food = allFoods.find(f => f.id === ing.foodId),
         ingCal = food ? fmtE(food.cal * ing.amount_g / 100) : 0;
       return /*#__PURE__*/React.createElement("div", {
         key: i,
@@ -7767,21 +7131,18 @@ function NutriTrack() {
           flexShrink: 0
         }
       }, /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        style: {
+          ...S.input,
           width: 64,
           textAlign: "center",
           padding: "6px 8px",
           marginBottom: 0
-        }),
+        },
         type: "number",
         inputMode: "decimal",
         value: ing.amount_g,
-        onFocus: function onFocus(e) {
-          return e.target.select();
-        },
-        onChange: function onChange(e) {
-          return updateIngAmountInRecipe(i, e.target.value);
-        }
+        onFocus: e => e.target.select(),
+        onChange: e => updateIngAmountInRecipe(i, e.target.value)
       }), /*#__PURE__*/React.createElement("span", {
         style: {
           fontSize: 12,
@@ -7796,11 +7157,9 @@ function NutriTrack() {
           cursor: "pointer",
           padding: "4px 8px"
         },
-        onClick: function onClick() {
-          return removeIngFromRecipe(i);
-        }
-      }, "\xD7")));
-    })), !_canSave2 && /*#__PURE__*/React.createElement("div", {
+        onClick: () => removeIngFromRecipe(i)
+      }, "×")));
+    })), !canSave && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
         color: "#475569",
@@ -7824,12 +7183,12 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setRecipeIngSelected(null);
         setRecipeIngSearch("");
         setView("recipeCreate");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -7843,7 +7202,7 @@ function NutriTrack() {
         cursor: "pointer",
         fontWeight: 600
       },
-      onClick: function onClick() {
+      onClick: () => {
         resetCfForm();
         setView("customAdd");
       }
@@ -7856,11 +7215,9 @@ function NutriTrack() {
     }, /*#__PURE__*/React.createElement("input", {
       ref: recipeIngRef,
       style: S.input,
-      placeholder: "Search foods\u2026",
+      placeholder: "Search foods…",
       value: recipeIngSearch,
-      onChange: function onChange(e) {
-        return setRecipeIngSearch(e.target.value);
-      },
+      onChange: e => setRecipeIngSearch(e.target.value),
       autoFocus: true
     }), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -7868,52 +7225,44 @@ function NutriTrack() {
         maxHeight: "calc(100vh - 160px)",
         overflowY: "auto"
       }
-    }, Object.entries(groupedIngByCategory).map(function (_ref23) {
-      var _ref24 = _slicedToArray(_ref23, 2),
-        cat = _ref24[0],
-        foods = _ref24[1];
-      return /*#__PURE__*/React.createElement("div", {
-        key: cat
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          fontWeight: 700,
-          color: "#475569",
-          padding: "10px 0 4px",
-          letterSpacing: "0.05em",
-          textTransform: "uppercase"
-        }
-      }, cat), foods.map(function (f) {
-        return /*#__PURE__*/React.createElement("div", {
-          key: f.id,
-          style: _objectSpread(_objectSpread({}, S.srchItem), {}, {
-            contentVisibility: "auto",
-            containIntrinsicSize: "0 48px"
-          }),
-          onClick: function onClick() {
-            return setRecipeIngSelected(f);
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 12,
-            color: "#f59e0b",
-            "float": "right"
-          }
-        }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 14,
-            fontWeight: 500,
-            color: "#e2e8f0"
-          }
-        }, f.name), f.source && f.source !== "usda" && /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 11,
-            color: "#475569",
-            marginTop: 1
-          }
-        }, "Source: ", f.source.toUpperCase()));
-      }));
-    }), filteredIngFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
+    }, Object.entries(groupedIngByCategory).map(([cat, foods]) => /*#__PURE__*/React.createElement("div", {
+      key: cat
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: "#475569",
+        padding: "10px 0 4px",
+        letterSpacing: "0.05em",
+        textTransform: "uppercase"
+      }
+    }, cat), foods.map(f => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        ...S.srchItem,
+        contentVisibility: "auto",
+        containIntrinsicSize: "0 48px"
+      },
+      onClick: () => setRecipeIngSelected(f)
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#f59e0b",
+        float: "right"
+      }
+    }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, f.name), f.source && f.source !== "usda" && /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        marginTop: 1
+      }
+    }, "Source: ", f.source.toUpperCase()))))), filteredIngFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         padding: 20,
         textAlign: "center",
@@ -7943,13 +7292,13 @@ function NutriTrack() {
       type: "number",
       inputMode: "numeric",
       value: recipeIngAmount,
-      onChange: function onChange(e) {
+      onChange: e => {
         setRecipeIngAmount(e.target.value);
         setRecipeIngServingUnit(null);
       }
-    }), recipeIngSelected.servings && recipeIngSelected.servings.length > 0 && function () {
-      var su = recipeIngServingUnit;
-      var qty = parseInt(recipeIngServingQty, 10) || 1;
+    }), recipeIngSelected.servings && recipeIngSelected.servings.length > 0 && (() => {
+      const su = recipeIngServingUnit;
+      const qty = parseInt(recipeIngServingQty, 10) || 1;
       return /*#__PURE__*/React.createElement("div", {
         style: {
           marginTop: 8,
@@ -7971,17 +7320,15 @@ function NutriTrack() {
           flexWrap: "wrap",
           marginBottom: su != null ? 10 : 0
         }
-      }, recipeIngSelected.servings.map(function (s, i) {
-        return /*#__PURE__*/React.createElement("button", {
-          key: s.label,
-          style: S.pill(su === i),
-          onClick: function onClick() {
-            var newIdx = su === i ? null : i;
-            setRecipeIngServingUnit(newIdx);
-            if (newIdx != null) setRecipeIngAmount(String(Math.round((parseInt(recipeIngServingQty, 10) || 1) * s.grams)));
-          }
-        }, s.label);
-      })), su != null && /*#__PURE__*/React.createElement("div", {
+      }, recipeIngSelected.servings.map((s, i) => /*#__PURE__*/React.createElement("button", {
+        key: s.label,
+        style: S.pill(su === i),
+        onClick: () => {
+          const newIdx = su === i ? null : i;
+          setRecipeIngServingUnit(newIdx);
+          if (newIdx != null) setRecipeIngAmount(String(Math.round((parseInt(recipeIngServingQty, 10) || 1) * s.grams)));
+        }
+      }, s.label))), su != null && /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           alignItems: "center",
@@ -8001,26 +7348,27 @@ function NutriTrack() {
           cursor: "pointer",
           flexShrink: 0
         },
-        onClick: function onClick() {
-          var next = Math.max(1, qty - 1);
+        onClick: () => {
+          const next = Math.max(1, qty - 1);
           setRecipeIngServingQty(String(next));
           setRecipeIngAmount(String(Math.round(next * recipeIngSelected.servings[su].grams)));
         }
-      }, "\u2212"), /*#__PURE__*/React.createElement("input", {
+      }, "−"), /*#__PURE__*/React.createElement("input", {
         type: "number",
         inputMode: "numeric",
         value: recipeIngServingQty,
-        onChange: function onChange(e) {
+        onChange: e => {
           setRecipeIngServingQty(e.target.value);
-          var n = parseInt(e.target.value, 10);
+          const n = parseInt(e.target.value, 10);
           if (n > 0) setRecipeIngAmount(String(Math.round(n * recipeIngSelected.servings[su].grams)));
         },
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
+        style: {
+          ...S.input,
           width: 60,
           textAlign: "center",
           marginBottom: 0,
           padding: "6px 8px"
-        })
+        }
       }), /*#__PURE__*/React.createElement("button", {
         style: {
           width: 34,
@@ -8034,8 +7382,8 @@ function NutriTrack() {
           cursor: "pointer",
           flexShrink: 0
         },
-        onClick: function onClick() {
-          var next = qty + 1;
+        onClick: () => {
+          const next = qty + 1;
           setRecipeIngServingQty(String(next));
           setRecipeIngAmount(String(Math.round(next * recipeIngSelected.servings[su].grams)));
         }
@@ -8045,12 +7393,12 @@ function NutriTrack() {
           color: "#64748b",
           marginLeft: 2
         }
-      }, "\xD7 ", recipeIngSelected.servings[su].grams, "g = ", /*#__PURE__*/React.createElement("b", {
+      }, "× ", recipeIngSelected.servings[su].grams, "g = ", /*#__PURE__*/React.createElement("b", {
         style: {
           color: "#e2e8f0"
         }
       }, Math.round(qty * recipeIngSelected.servings[su].grams), "g"))));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         gap: 6,
@@ -8058,16 +7406,14 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 16
       }
-    }, [25, 50, 100, 150, 200, 250, 300, 400, 500].map(function (q) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: q,
-        style: S.pill(recipeIngAmount === String(q) && recipeIngServingUnit == null),
-        onClick: function onClick() {
-          setRecipeIngAmount(String(q));
-          setRecipeIngServingUnit(null);
-        }
-      }, q);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, [25, 50, 100, 150, 200, 250, 300, 400, 500].map(q => /*#__PURE__*/React.createElement("button", {
+      key: q,
+      style: S.pill(recipeIngAmount === String(q) && recipeIngServingUnit == null),
+      onClick: () => {
+        setRecipeIngAmount(String(q));
+        setRecipeIngServingUnit(null);
+      }
+    }, q))), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0a0f1a",
         borderRadius: 10,
@@ -8088,9 +7434,8 @@ function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(function (k) {
-      var _recipeIngSelected$k;
-      var val = ((_recipeIngSelected$k = recipeIngSelected[k]) !== null && _recipeIngSelected$k !== void 0 ? _recipeIngSelected$k : 0) * (parseFloat(recipeIngAmount) || 0) / 100;
+    }, MACROS.map(k => {
+      const val = (recipeIngSelected[k] ?? 0) * (parseFloat(recipeIngAmount) || 0) / 100;
       return /*#__PURE__*/React.createElement("div", {
         key: k,
         style: {
@@ -8126,14 +7471,12 @@ function NutriTrack() {
   }
   // ── EXERCISE ──────────────────────────────────────────────────────────
   if (view === "exercise") {
-    var wt = parseFloat(profile.weightKg) || 70,
-      act = EXERCISE_ACTIVITIES.find(function (a) {
-        return a.id === exActivity;
-      });
-    var dur = parseFloat(exDuration) || 0,
+    const wt = parseFloat(profile.weightKg) || 70,
+      act = EXERCISE_ACTIVITIES.find(a => a.id === exActivity);
+    const dur = parseFloat(exDuration) || 0,
       autoBurn = Math.round(act.met * wt * (dur / 60));
-    var burn = exBurnEdit !== "" ? parseInt(exBurnEdit) || 0 : autoBurn;
-    var actGroups = EXERCISE_ACTIVITIES.reduce(function (acc, a) {
+    const burn = exBurnEdit !== "" ? parseInt(exBurnEdit) || 0 : autoBurn;
+    const actGroups = EXERCISE_ACTIVITIES.reduce((acc, a) => {
       if (!acc[a.label]) acc[a.label] = [];
       acc[a.label].push(a);
       return acc;
@@ -8150,10 +7493,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("log")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -8174,54 +7515,48 @@ function NutriTrack() {
         fontSize: 12,
         color: "#f59e0b"
       }
-    }, "No weight set in Settings \u2014 using 70kg default"), /*#__PURE__*/React.createElement("div", {
+    }, "No weight set in Settings — using 70kg default"), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Activity"), Object.entries(actGroups).map(function (_ref25) {
-      var _ref26 = _slicedToArray(_ref25, 2),
-        grp = _ref26[0],
-        acts = _ref26[1];
-      return /*#__PURE__*/React.createElement("div", {
-        key: grp,
-        style: {
-          marginBottom: 10
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#475569",
-          fontWeight: 700,
-          textTransform: "uppercase",
-          letterSpacing: "0.05em",
-          marginBottom: 6
-        }
-      }, grp), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          gap: 6,
-          flexWrap: "wrap"
-        }
-      }, acts.map(function (a) {
-        return /*#__PURE__*/React.createElement("button", {
-          key: a.id,
-          style: S.pill(exActivity === a.id),
-          onClick: function onClick() {
-            setExActivity(a.id);
-            setExBurnEdit("");
-          }
-        }, a.intensity);
-      })));
-    }), /*#__PURE__*/React.createElement("label", {
-      style: _objectSpread(_objectSpread({}, S.label), {}, {
+    }, "Activity"), Object.entries(actGroups).map(([grp, acts]) => /*#__PURE__*/React.createElement("div", {
+      key: grp,
+      style: {
+        marginBottom: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        fontWeight: 700,
+        textTransform: "uppercase",
+        letterSpacing: "0.05em",
+        marginBottom: 6
+      }
+    }, grp), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        flexWrap: "wrap"
+      }
+    }, acts.map(a => /*#__PURE__*/React.createElement("button", {
+      key: a.id,
+      style: S.pill(exActivity === a.id),
+      onClick: () => {
+        setExActivity(a.id);
+        setExBurnEdit("");
+      }
+    }, a.intensity))))), /*#__PURE__*/React.createElement("label", {
+      style: {
+        ...S.label,
         marginTop: 8
-      })
+      }
     }, "Duration (minutes)"), /*#__PURE__*/React.createElement("input", {
       style: S.input,
       type: "number",
       inputMode: "numeric",
       value: exDuration,
-      onChange: function onChange(e) {
+      onChange: e => {
         setExDuration(e.target.value);
         setExBurnEdit("");
       }
@@ -8233,16 +7568,14 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 16
       }
-    }, [30, 45, 60, 90, 120, 180].map(function (d) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: d,
-        style: S.pill(exDuration === String(d) && exBurnEdit === ""),
-        onClick: function onClick() {
-          setExDuration(String(d));
-          setExBurnEdit("");
-        }
-      }, d);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, [30, 45, 60, 90, 120, 180].map(d => /*#__PURE__*/React.createElement("button", {
+      key: d,
+      style: S.pill(exDuration === String(d) && exBurnEdit === ""),
+      onClick: () => {
+        setExDuration(String(d));
+        setExBurnEdit("");
+      }
+    }, d))), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0a0f1a",
         borderRadius: 10,
@@ -8274,7 +7607,7 @@ function NutriTrack() {
         fontSize: 12,
         color: "#64748b"
       }
-    }, energyLabel, /*#__PURE__*/React.createElement("br", null), act.label, " \xB7 ", act.intensity, /*#__PURE__*/React.createElement("br", null), dur, " min @ MET ", act.met)), /*#__PURE__*/React.createElement("div", {
+    }, energyLabel, /*#__PURE__*/React.createElement("br", null), act.label, " · ", act.intensity, /*#__PURE__*/React.createElement("br", null), dur, " min @ MET ", act.met)), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12
       }
@@ -8286,9 +7619,7 @@ function NutriTrack() {
       inputMode: "numeric",
       placeholder: "Auto: " + autoBurn + " " + energyLabel,
       value: exBurnEdit,
-      onChange: function onChange(e) {
-        return setExBurnEdit(e.target.value);
-      }
+      onChange: e => setExBurnEdit(e.target.value)
     }))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
@@ -8302,9 +7633,7 @@ function NutriTrack() {
         cursor: "pointer"
       },
       disabled: dur <= 0,
-      onClick: function onClick() {
-        return addExercise(exBurnEdit !== "" ? parseInt(exBurnEdit) || autoBurn : undefined);
-      }
+      onClick: () => addExercise(exBurnEdit !== "" ? parseInt(exBurnEdit) || autoBurn : undefined)
     }, "Log Exercise"))));
   }
 
@@ -8313,7 +7642,7 @@ function NutriTrack() {
     // Phase 9: simple mode shows the 6 values typically printed on a food
     // package; advanced mode shows all 19 NUTRIENT_META fields. The 14
     // subtype keys are never edited in the form (saved as null / preserved).
-    var simpleFields = [{
+    const simpleFields = [{
       k: "cal",
       l: "Calories (kcal)"
     }, {
@@ -8332,7 +7661,7 @@ function NutriTrack() {
       k: "sod",
       l: "Sodium (mg)"
     }];
-    var advancedFields = [{
+    const advancedFields = [{
       k: "cal",
       l: "Calories (kcal)"
     }, {
@@ -8390,8 +7719,8 @@ function NutriTrack() {
       k: "vitC",
       l: "Vitamin C (mg)"
     }];
-    var fields = cfMode === "simple" ? simpleFields : advancedFields;
-    var isEditing = !!editingCustomFoodId;
+    const fields = cfMode === "simple" ? simpleFields : advancedFields;
+    const isEditing = !!editingCustomFoodId;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -8404,11 +7733,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         resetCfForm();
         setView("manageCustomFoods");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -8430,80 +7759,70 @@ function NutriTrack() {
     }, "All values per 100g or 100ml. Missing values are saved as 0; subtypes the form does not collect are saved as null (unknown) and can be added later via promotion to foods.json."), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Food name *"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 12
-      }),
+      },
       placeholder: "e.g. Alpro Oat Yogurt",
       value: cf.name,
-      onChange: function onChange(e) {
-        return setCf(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            name: e.target.value
-          });
-        });
-      }
+      onChange: e => setCf(p => ({
+        ...p,
+        name: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         gap: 8,
         marginBottom: 12
       }
-    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(function (_ref27) {
-      var _ref28 = _slicedToArray(_ref27, 2),
-        val = _ref28[0],
-        label = _ref28[1];
-      return /*#__PURE__*/React.createElement("button", {
-        key: val,
-        style: {
-          flex: 1,
-          padding: "8px 0",
-          borderRadius: 8,
-          border: "none",
-          background: cfMode === val ? "#3b82f6" : "#1e293b",
-          color: cfMode === val ? "#fff" : "#64748b",
-          fontSize: 12,
-          fontWeight: 700,
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return setCfMode(val);
-        }
-      }, label);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, [["simple", "Simple"], ["advanced", "Advanced"]].map(([val, label]) => /*#__PURE__*/React.createElement("button", {
+      key: val,
+      style: {
+        flex: 1,
+        padding: "8px 0",
+        borderRadius: 8,
+        border: "none",
+        background: cfMode === val ? "#3b82f6" : "#1e293b",
+        color: cfMode === val ? "#fff" : "#64748b",
+        fontSize: 12,
+        fontWeight: 700,
+        cursor: "pointer"
+      },
+      onClick: () => setCfMode(val)
+    }, label))), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#475569",
         marginBottom: 8
       }
-    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(function (_ref29) {
-      var k = _ref29.k,
-        l = _ref29.l;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: S.cfRow
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0",
-          width: 160
-        }
-      }, l), /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
-          width: 90,
-          textAlign: "right",
-          padding: "8px 12px"
-        }),
-        type: "number",
-        inputMode: "decimal",
-        placeholder: "0",
-        value: cf[k],
-        onChange: function onChange(e) {
-          return setCf(function (p) {
-            return _objectSpread(_objectSpread({}, p), {}, _defineProperty({}, k, e.target.value));
-          });
-        }
-      }));
-    }), /*#__PURE__*/React.createElement("button", {
+    }, cfMode === "simple" ? "Standard values found on a food package." : "All 19 nutrient fields."), fields.map(({
+      k,
+      l
+    }) => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: S.cfRow
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0",
+        width: 160
+      }
+    }, l), /*#__PURE__*/React.createElement("input", {
+      style: {
+        ...S.input,
+        width: 90,
+        textAlign: "right",
+        padding: "8px 12px"
+      },
+      type: "number",
+      inputMode: "decimal",
+      placeholder: "0",
+      value: cf[k],
+      onChange: e => setCf(p => ({
+        ...p,
+        [k]: e.target.value
+      }))
+    }))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         marginTop: 16,
@@ -8523,11 +7842,11 @@ function NutriTrack() {
 
   // ── GOALS ─────────────────────────────────────────────────────────────
   if (view === "goals") {
-    var _wt = parseFloat(profile.weightKg) || 70;
-    var ht = parseFloat(profile.heightCm) || 170;
-    var hasProfile = !!(profile.weightKg && profile.heightCm && profile.age && profile.sex);
-    var proMultiplierDisplay = Math.min(2.0, 1.0 + exerciseBurn / (resolvedGoals.cal || 2000));
-    var sections = [{
+    const wt = parseFloat(profile.weightKg) || 70;
+    const ht = parseFloat(profile.heightCm) || 170;
+    const hasProfile = !!(profile.weightKg && profile.heightCm && profile.age && profile.sex);
+    const proMultiplierDisplay = Math.min(2.0, 1.0 + exerciseBurn / (resolvedGoals.cal || 2000));
+    const sections = [{
       title: "Macros",
       keys: MACROS
     }, {
@@ -8555,7 +7874,7 @@ function NutriTrack() {
         fontSize: 12,
         color: "#fbbf24"
       }
-    }, "\u26A0\uFE0F Complete your profile (Settings \u2192 Profile) for accurate auto-computed goals."), /*#__PURE__*/React.createElement("details", {
+    }, "⚠️ Complete your profile (Settings → Profile) for accurate auto-computed goals."), /*#__PURE__*/React.createElement("details", {
       style: {
         marginBottom: 12
       }
@@ -8586,7 +7905,7 @@ function NutriTrack() {
         fontWeight: 700,
         lineHeight: 1
       }
-    }, "\u24D8")), /*#__PURE__*/React.createElement("div", {
+    }, "ⓘ")), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0f172a",
         borderRadius: "0 0 10px 10px",
@@ -8602,7 +7921,7 @@ function NutriTrack() {
         lineHeight: 1.6,
         marginBottom: hasProfile ? 10 : 0
       }
-    }, "Goals are computed from your profile using BMR/TDEE formulas and vegan-adjusted RDAs. Override any value by typing in the field \u2014 it highlights in amber. Tap \u21BA to restore."), hasProfile && /*#__PURE__*/React.createElement("div", {
+    }, "Goals are computed from your profile using BMR/TDEE formulas and vegan-adjusted RDAs. Override any value by typing in the field — it highlights in amber. Tap ↺ to restore."), hasProfile && /*#__PURE__*/React.createElement("div", {
       style: {
         padding: "8px 10px",
         background: "#0a0f1a",
@@ -8610,113 +7929,172 @@ function NutriTrack() {
         fontSize: 12,
         color: "#94a3b8"
       }
-    }, /*#__PURE__*/React.createElement("div", null, "BMR: ", fmtE(10 * _wt + 6.25 * ht - 5 * (parseFloat(profile.age) || 30) + (profile.sex !== "Female" ? 5 : -161)), " ", energyLabel, " \xB7 TDEE base: ", fmtE(goals.cal), " ", energyLabel), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", null, "BMR: ", fmtE(10 * wt + 6.25 * ht - 5 * (parseFloat(profile.age) || 30) + (profile.sex !== "Female" ? 5 : -161)), " ", energyLabel, " · TDEE base: ", fmtE(goals.cal), " ", energyLabel), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 4
       }
-    }, "Protein base: ", goals.pro, "g (", _wt, "kg \xD7 1g/kg)", exerciseBurn > 0 && /*#__PURE__*/React.createElement("span", {
+    }, "Protein base: ", goals.pro, "g (", wt, "kg × 1g/kg)", exerciseBurn > 0 && /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4ade80"
       }
-    }, " \u2192 ", Math.round(goals.pro * proMultiplierDisplay), "g today (", proMultiplierDisplay.toFixed(2), "\xD7 multiplier)")), /*#__PURE__*/React.createElement("div", {
+    }, " → ", Math.round(goals.pro * proMultiplierDisplay), "g today (", proMultiplierDisplay.toFixed(2), "× multiplier)")), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 4,
         color: "#64748b"
       }
-    }, "Fat: ", goals.fat, "g (25% TDEE \xF7 9) \xB7 Carbs: ", goals.carb, "g (residual) \xB7 Fibre: ", goals.fib, "g (14g/1000kcal)")))), sections.map(function (_ref30) {
-      var title = _ref30.title,
-        keys = _ref30.keys;
+    }, "Fat: ", goals.fat, "g (25% TDEE ÷ 9) · Carbs: ", goals.carb, "g (residual) · Fibre: ", goals.fib, "g (14g/1000kcal)")))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.card,
+        marginTop: 12
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 700,
+        color: "#94a3b8",
+        marginBottom: 8,
+        textTransform: "uppercase",
+        letterSpacing: "0.05em"
+      }
+    }, "Goal Presets"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b",
+        marginBottom: 10,
+        lineHeight: 1.5
+      }
+    }, "Apply a preset to override all goals. WHO = population RDAs. Optimal = endurance-athlete levels. Your profile-based values are restored with the reset button below."), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      style: {
+        flex: 1,
+        padding: 12,
+        borderRadius: 10,
+        border: "1px solid #1e293b",
+        background: "#0f172a",
+        color: "#e2e8f0",
+        fontSize: 13,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setGoalOverrides({
+        ...WHO_GOALS
+      })
+    }, "WHO Recommended"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        flex: 1,
+        padding: 12,
+        borderRadius: 10,
+        border: "1px solid #1e293b",
+        background: "#0f172a",
+        color: "#e2e8f0",
+        fontSize: 13,
+        fontWeight: 600,
+        cursor: "pointer"
+      },
+      onClick: () => setGoalOverrides({
+        ...OPTIMAL_GOALS
+      })
+    }, "Optimal (Athlete)"))), sections.map(({
+      title,
+      keys
+    }) => /*#__PURE__*/React.createElement("div", {
+      key: title,
+      style: {
+        ...S.card,
+        marginTop: 12
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 700,
+        color: "#94a3b8",
+        marginBottom: 12,
+        textTransform: "uppercase",
+        letterSpacing: "0.05em"
+      }
+    }, title), keys.map(k => {
+      const meta = NUTRIENT_META[k];
+      const computed = goals[k] ?? 0;
+      const override = goalOverrides[k];
+      const hasOverride = override != null;
       return /*#__PURE__*/React.createElement("div", {
-        key: title,
-        style: _objectSpread(_objectSpread({}, S.card), {}, {
-          marginTop: 12
-        })
+        key: k,
+        style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "10px 0",
+          borderBottom: "1px solid #1e293b"
+        }
       }, /*#__PURE__*/React.createElement("div", {
         style: {
-          fontSize: 13,
-          fontWeight: 700,
-          color: "#94a3b8",
-          marginBottom: 12,
-          textTransform: "uppercase",
-          letterSpacing: "0.05em"
+          flex: 1
         }
-      }, title), keys.map(function (k) {
-        var _goals$k;
-        var meta = NUTRIENT_META[k];
-        var computed = (_goals$k = goals[k]) !== null && _goals$k !== void 0 ? _goals$k : 0;
-        var override = goalOverrides[k];
-        var hasOverride = override != null;
-        return /*#__PURE__*/React.createElement("div", {
-          key: k,
-          style: {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "10px 0",
-            borderBottom: "1px solid #1e293b"
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            flex: 1
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 14,
-            fontWeight: 500,
-            color: "#e2e8f0"
-          }
-        }, meta.label), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 11,
-            color: hasOverride ? "#f59e0b" : "#475569"
-          }
-        }, meta.unit, hasOverride && " · override")), /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 6
-          }
-        }, hasOverride && /*#__PURE__*/React.createElement("button", {
-          style: {
-            background: "none",
-            border: "1px solid #334155",
-            color: "#475569",
-            fontSize: 11,
-            cursor: "pointer",
-            padding: "3px 7px",
-            borderRadius: 6
-          },
-          onClick: function onClick() {
-            return setGoalOverrides(function (p) {
-              var n = _objectSpread({}, p);
-              delete n[k];
-              return n;
-            });
-          }
-        }, "\u21BA ", computed), /*#__PURE__*/React.createElement("input", {
-          style: _objectSpread(_objectSpread({}, S.input), {}, {
-            width: 90,
-            textAlign: "right",
-            padding: "8px 12px",
-            borderColor: hasOverride ? "#f59e0b" : "#1e293b"
-          }),
-          type: "number",
-          inputMode: "decimal",
-          placeholder: String(computed),
-          value: hasOverride ? String(override) : "",
-          onChange: function onChange(e) {
-            var v = e.target.value;
-            if (v === "") setGoalOverrides(function (p) {
-              var n = _objectSpread({}, p);
-              delete n[k];
-              return n;
-            });else setGoalOverrides(function (p) {
-              return _objectSpread(_objectSpread({}, p), {}, _defineProperty({}, k, parseFloat(v) || 0));
-            });
-          }
-        })));
-      }));
-    }), Object.keys(goalOverrides).length > 0 && /*#__PURE__*/React.createElement("button", {
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 14,
+          fontWeight: 500,
+          color: "#e2e8f0"
+        }
+      }, meta.label), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          color: hasOverride ? "#f59e0b" : "#475569"
+        }
+      }, meta.unit, hasOverride && " · override")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: 6
+        }
+      }, hasOverride && /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "none",
+          border: "1px solid #334155",
+          color: "#475569",
+          fontSize: 11,
+          cursor: "pointer",
+          padding: "3px 7px",
+          borderRadius: 6
+        },
+        onClick: () => setGoalOverrides(p => {
+          const n = {
+            ...p
+          };
+          delete n[k];
+          return n;
+        })
+      }, "↺ ", computed), /*#__PURE__*/React.createElement("input", {
+        style: {
+          ...S.input,
+          width: 90,
+          textAlign: "right",
+          padding: "8px 12px",
+          borderColor: hasOverride ? "#f59e0b" : "#1e293b"
+        },
+        type: "number",
+        inputMode: "decimal",
+        placeholder: String(computed),
+        value: hasOverride ? String(override) : "",
+        onChange: e => {
+          const v = e.target.value;
+          if (v === "") setGoalOverrides(p => {
+            const n = {
+              ...p
+            };
+            delete n[k];
+            return n;
+          });else setGoalOverrides(p => ({
+            ...p,
+            [k]: parseFloat(v) || 0
+          }));
+        }
+      })));
+    }))), Object.keys(goalOverrides).length > 0 && /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 12,
@@ -8730,13 +8108,12 @@ function NutriTrack() {
         marginTop: 12,
         marginBottom: 4
       },
-      onClick: function onClick() {
-        return setGoalOverrides({});
-      }
+      onClick: () => setGoalOverrides({})
     }, "Reset all overrides to computed values"), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         marginTop: 12
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
@@ -8752,7 +8129,7 @@ function NutriTrack() {
         color: "#475569",
         marginBottom: 12
       }
-    }, "How exercise calories are split across macros. Must sum to 100. Protein uses a dynamic 1\xD7\u20132\xD7 multiplier instead."), [{
+    }, "How exercise calories are split across macros. Must sum to 100. Protein uses a dynamic 1×–2× multiplier instead."), [{
       key: "carb",
       label: "Carbs (%)",
       color: NUTRIENT_META.carb.color
@@ -8764,56 +8141,55 @@ function NutriTrack() {
       key: "pro",
       label: "Protein (%)",
       color: NUTRIENT_META.pro.color
-    }].map(function (_ref31) {
-      var key = _ref31.key,
-        label = _ref31.label,
-        color = _ref31.color;
-      return /*#__PURE__*/React.createElement("div", {
-        key: key,
-        style: {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "8px 0",
-          borderBottom: "1px solid #1e293b"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 8
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 10,
-          height: 10,
-          borderRadius: 2,
-          background: color,
-          flexShrink: 0
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#e2e8f0"
-        }
-      }, label)), /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
-          width: 70,
-          textAlign: "right",
-          padding: "8px 12px"
-        }),
-        type: "number",
-        inputMode: "numeric",
-        value: exRatio[key],
-        onChange: function onChange(e) {
-          return setExRatio(function (prev) {
-            return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, key, parseInt(e.target.value) || 0));
-          });
-        }
-      }));
-    }), function () {
-      var s = exRatio.carb + exRatio.fat + exRatio.pro,
+    }].map(({
+      key,
+      label,
+      color
+    }) => /*#__PURE__*/React.createElement("div", {
+      key: key,
+      style: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "8px 0",
+        borderBottom: "1px solid #1e293b"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 10,
+        height: 10,
+        borderRadius: 2,
+        background: color,
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, label)), /*#__PURE__*/React.createElement("input", {
+      style: {
+        ...S.input,
+        width: 70,
+        textAlign: "right",
+        padding: "8px 12px"
+      },
+      type: "number",
+      inputMode: "numeric",
+      value: exRatio[key],
+      onChange: e => setExRatio(prev => ({
+        ...prev,
+        [key]: parseInt(e.target.value) || 0
+      }))
+    }))), (() => {
+      const s = exRatio.carb + exRatio.fat + exRatio.pro,
         ok = s === 100;
       return /*#__PURE__*/React.createElement("div", {
         style: {
@@ -8824,222 +8200,170 @@ function NutriTrack() {
           textAlign: "right"
         }
       }, "Sum: ", s, " ", ok ? "✓" : "needs to equal 100");
-    }())), /*#__PURE__*/React.createElement(BottomNav, null));
+    })())), /*#__PURE__*/React.createElement(BottomNav, null));
   }
   // ── EXPORT ────────────────────────────────────────────────────────────
-  var handleExportData = function handleExportData() {
-    var exportedAt = new Date();
-    var exportDateStr = dateKey(exportedAt);
+  const handleExportData = () => {
+    const exportedAt = new Date();
+    const exportDateStr = dateKey(exportedAt);
 
     // ── Gather all days that have at least one non-exercise entry ──────
     // (exercise entries contribute to exercise_kcal column but we still
     //  include days that have only exercise + no food if exercise_kcal > 0)
-    var allDayKeys = Object.keys(logs).filter(function (dk) {
-      return (logs[dk] || []).length > 0;
-    }).sort();
+    const allDayKeys = Object.keys(logs).filter(dk => (logs[dk] || []).length > 0).sort();
 
     // ── Build per-day nutrient totals (food only, supplements separate) ─
-    var csvRows = [];
-    var _iterator3 = _createForOfIteratorHelper(allDayKeys),
-      _step3;
-    try {
-      var _loop = function _loop() {
-        var dk = _step3.value;
-        var dayEntries = logs[dk] || [];
-        // Food nutrients (excludes supplements and exercise)
-        var food = {};
-        NUTRIENT_ALL_KEYS.forEach(function (k) {
-          return food[k] = 0;
-        });
-        // Supplement nutrients — keyed by nutrient key
-        var supp = {};
-        NUTRIENT_ALL_KEYS.forEach(function (k) {
-          return supp[k] = 0;
-        });
-        // Exercise kcal
-        var exercise_kcal = 0;
-        var _iterator4 = _createForOfIteratorHelper(dayEntries),
-          _step4;
-        try {
-          var _loop2 = function _loop2() {
-              var e = _step4.value;
-              if (e.type === "exercise") {
-                exercise_kcal += e.calories_burned || 0;
-                return 0; // continue
-              }
-              if (e.type === "supplement") {
-                (e.items || []).forEach(function (item) {
-                  Object.keys(item.nutrients || {}).forEach(function (k) {
-                    var _item$nutrients$k3;
-                    if (NUTRIENT_ALL_KEYS.includes(k)) supp[k] += (_item$nutrients$k3 = item.nutrients[k]) !== null && _item$nutrients$k3 !== void 0 ? _item$nutrients$k3 : 0;
-                  });
-                });
-                return 0; // continue
-              }
-              // food or recipe
-              if (e.type === "recipe") {
-                (e.derivedIngredients || []).forEach(function (ing) {
-                  var m = ing.amount_g / 100;
-                  if (ing.snapshot) {
-                    NUTRIENT_ALL_KEYS.forEach(function (k) {
-                      var _ing$snapshot$k3;
-                      food[k] += ((_ing$snapshot$k3 = ing.snapshot[k]) !== null && _ing$snapshot$k3 !== void 0 ? _ing$snapshot$k3 : 0) * m;
-                    });
-                  } else {
-                    var f = allFoods.find(function (x) {
-                      return x.id === ing.foodId;
-                    });
-                    if (!f) return;
-                    NUTRIENT_ALL_KEYS.forEach(function (k) {
-                      var _f$k;
-                      food[k] += ((_f$k = f[k]) !== null && _f$k !== void 0 ? _f$k : 0) * m;
-                    });
-                  }
-                });
-              } else {
-                var m = (e.amount || 0) / 100;
-                if (e.snapshot) {
-                  NUTRIENT_ALL_KEYS.forEach(function (k) {
-                    var _e$snapshot$k2;
-                    food[k] += ((_e$snapshot$k2 = e.snapshot[k]) !== null && _e$snapshot$k2 !== void 0 ? _e$snapshot$k2 : 0) * m;
-                  });
-                } else {
-                  var f = allFoods.find(function (x) {
-                    return x.id === e.foodId;
-                  });
-                  if (!f) return 0; // continue
-                  NUTRIENT_ALL_KEYS.forEach(function (k) {
-                    var _f$k2;
-                    food[k] += ((_f$k2 = f[k]) !== null && _f$k2 !== void 0 ? _f$k2 : 0) * m;
-                  });
-                }
-              }
-            },
-            _ret;
-          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-            _ret = _loop2();
-            if (_ret === 0) continue;
-          }
-
-          // Only include the day if there is something logged
-        } catch (err) {
-          _iterator4.e(err);
-        } finally {
-          _iterator4.f();
+    const csvRows = [];
+    for (const dk of allDayKeys) {
+      const dayEntries = logs[dk] || [];
+      // Food nutrients (excludes supplements and exercise)
+      const food = {};
+      NUTRIENT_ALL_KEYS.forEach(k => food[k] = 0);
+      // Supplement nutrients — keyed by nutrient key
+      const supp = {};
+      NUTRIENT_ALL_KEYS.forEach(k => supp[k] = 0);
+      // Exercise kcal
+      let exercise_kcal = 0;
+      for (const e of dayEntries) {
+        if (e.type === "exercise") {
+          exercise_kcal += e.calories_burned || 0;
+          continue;
         }
-        var hasFood = NUTRIENT_ALL_KEYS.some(function (k) {
-          return food[k] > 0;
-        });
-        var hasSupp = NUTRIENT_ALL_KEYS.some(function (k) {
-          return supp[k] > 0;
-        });
-        if (!hasFood && !hasSupp && exercise_kcal === 0) return 1; // continue
-
-        // Round helper — empty string for true zero (no entry vs logged zero)
-        var fmt = function fmt(v) {
-          return v === 0 ? "" : String(Math.round(v * 1000) / 1000);
-        };
-        csvRows.push({
-          date: dk,
-          cal: fmt(food.cal),
-          protein_g: fmt(food.pro),
-          carbs_g: fmt(food.carb),
-          fat_g: fmt(food.fat),
-          fibre_g: fmt(food.fib),
-          iron_mg: fmt(food.iron),
-          calcium_mg: fmt(food.calc),
-          zinc_mg: fmt(food.zinc),
-          b12_mcg: fmt(food.b12),
-          vitD_mcg: fmt(food.vitD),
-          omega3_g: fmt(food.omega3),
-          iodine_mcg: fmt(food.iod),
-          selenium_mcg: fmt(food.sel),
-          magnesium_mg: fmt(food.mag),
-          potassium_mg: fmt(food.pot),
-          folate_mcg: fmt(food.fol),
-          // Supplement columns — separate from food totals (council-mandated)
-          supp_b12_mcg: fmt(supp.b12),
-          supp_vitD_mcg: fmt(supp.vitD),
-          supp_iron_mg: fmt(supp.iron),
-          supp_iodine_mcg: fmt(supp.iod),
-          supp_omega3_g: fmt(supp.omega3),
-          // Additional supplement nutrients that the system can track
-          supp_cal_kcal: fmt(supp.cal),
-          supp_protein_g: fmt(supp.pro),
-          supp_zinc_mg: fmt(supp.zinc),
-          supp_calc_mg: fmt(supp.calc),
-          supp_mag_mg: fmt(supp.mag),
-          supp_pot_mg: fmt(supp.pot),
-          supp_fol_mcg: fmt(supp.fol),
-          supp_sel_mcg: fmt(supp.sel),
-          exercise_kcal: fmt(exercise_kcal)
-        });
-      };
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        if (_loop()) continue;
+        if (e.type === "supplement") {
+          (e.items || []).forEach(item => {
+            Object.keys(item.nutrients || {}).forEach(k => {
+              if (NUTRIENT_ALL_KEYS.includes(k)) supp[k] += item.nutrients[k] ?? 0;
+            });
+          });
+          continue;
+        }
+        // Phase 11a: water contributes no nutrients; alcohol adds calories to the food cal column.
+        if (e.type === "water") continue;
+        if (e.type === "alcohol") {
+          food.cal += e.calories || 0;
+          continue;
+        }
+        // food or recipe
+        if (e.type === "recipe") {
+          (e.derivedIngredients || []).forEach(ing => {
+            const m = ing.amount_g / 100;
+            if (ing.snapshot) {
+              NUTRIENT_ALL_KEYS.forEach(k => {
+                food[k] += (ing.snapshot[k] ?? 0) * m;
+              });
+            } else {
+              const f = allFoods.find(x => x.id === ing.foodId);
+              if (!f) return;
+              NUTRIENT_ALL_KEYS.forEach(k => {
+                food[k] += (f[k] ?? 0) * m;
+              });
+            }
+          });
+        } else {
+          const m = (e.amount || 0) / 100;
+          if (e.snapshot) {
+            NUTRIENT_ALL_KEYS.forEach(k => {
+              food[k] += (e.snapshot[k] ?? 0) * m;
+            });
+          } else {
+            const f = allFoods.find(x => x.id === e.foodId);
+            if (!f) continue;
+            NUTRIENT_ALL_KEYS.forEach(k => {
+              food[k] += (f[k] ?? 0) * m;
+            });
+          }
+        }
       }
 
-      // ── Build CSV string ───────────────────────────────────────────────
-    } catch (err) {
-      _iterator3.e(err);
-    } finally {
-      _iterator3.f();
+      // Only include the day if there is something logged
+      const hasFood = NUTRIENT_ALL_KEYS.some(k => food[k] > 0);
+      const hasSupp = NUTRIENT_ALL_KEYS.some(k => supp[k] > 0);
+      if (!hasFood && !hasSupp && exercise_kcal === 0) continue;
+
+      // Round helper — empty string for true zero (no entry vs logged zero)
+      const fmt = v => v === 0 ? "" : String(Math.round(v * 1000) / 1000);
+      csvRows.push({
+        date: dk,
+        cal: fmt(food.cal),
+        protein_g: fmt(food.pro),
+        carbs_g: fmt(food.carb),
+        fat_g: fmt(food.fat),
+        fibre_g: fmt(food.fib),
+        iron_mg: fmt(food.iron),
+        calcium_mg: fmt(food.calc),
+        zinc_mg: fmt(food.zinc),
+        b12_mcg: fmt(food.b12),
+        vitD_mcg: fmt(food.vitD),
+        omega3_g: fmt(food.omega3),
+        iodine_mcg: fmt(food.iod),
+        selenium_mcg: fmt(food.sel),
+        magnesium_mg: fmt(food.mag),
+        potassium_mg: fmt(food.pot),
+        folate_mcg: fmt(food.fol),
+        // Supplement columns — separate from food totals (council-mandated)
+        supp_b12_mcg: fmt(supp.b12),
+        supp_vitD_mcg: fmt(supp.vitD),
+        supp_iron_mg: fmt(supp.iron),
+        supp_iodine_mcg: fmt(supp.iod),
+        supp_omega3_g: fmt(supp.omega3),
+        // Additional supplement nutrients that the system can track
+        supp_cal_kcal: fmt(supp.cal),
+        supp_protein_g: fmt(supp.pro),
+        supp_zinc_mg: fmt(supp.zinc),
+        supp_calc_mg: fmt(supp.calc),
+        supp_mag_mg: fmt(supp.mag),
+        supp_pot_mg: fmt(supp.pot),
+        supp_fol_mcg: fmt(supp.fol),
+        supp_sel_mcg: fmt(supp.sel),
+        exercise_kcal: fmt(exercise_kcal)
+      });
     }
-    var csvEscape = function csvEscape(v) {
-      var s = String(v);
-      return s.includes(",") || s.includes('"') || s.includes('\n') ? "\"".concat(s.replace(/"/g, '""'), "\"") : s;
+
+    // ── Build CSV string ───────────────────────────────────────────────
+    const csvEscape = v => {
+      const s = String(v);
+      return s.includes(",") || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s;
     };
-    var csvHeaders = ["date", "cal", "protein_g", "carbs_g", "fat_g", "fibre_g", "iron_mg", "calcium_mg", "zinc_mg", "b12_mcg", "vitD_mcg", "omega3_g", "iodine_mcg", "selenium_mcg", "magnesium_mg", "potassium_mg", "folate_mcg", "supp_b12_mcg", "supp_vitD_mcg", "supp_iron_mg", "supp_iodine_mcg", "supp_omega3_g", "supp_cal_kcal", "supp_protein_g", "supp_zinc_mg", "supp_calc_mg", "supp_mag_mg", "supp_pot_mg", "supp_fol_mcg", "supp_sel_mcg", "exercise_kcal"];
-    var csvBody = [csvHeaders.join(",")].concat(_toConsumableArray(csvRows.map(function (row) {
-      return csvHeaders.map(function (h) {
-        var _row$h;
-        return csvEscape((_row$h = row[h]) !== null && _row$h !== void 0 ? _row$h : "");
-      }).join(",");
-    }))).join("\n");
+    const csvHeaders = ["date", "cal", "protein_g", "carbs_g", "fat_g", "fibre_g", "iron_mg", "calcium_mg", "zinc_mg", "b12_mcg", "vitD_mcg", "omega3_g", "iodine_mcg", "selenium_mcg", "magnesium_mg", "potassium_mg", "folate_mcg", "supp_b12_mcg", "supp_vitD_mcg", "supp_iron_mg", "supp_iodine_mcg", "supp_omega3_g", "supp_cal_kcal", "supp_protein_g", "supp_zinc_mg", "supp_calc_mg", "supp_mag_mg", "supp_pot_mg", "supp_fol_mcg", "supp_sel_mcg", "exercise_kcal"];
+    const csvBody = [csvHeaders.join(","), ...csvRows.map(row => csvHeaders.map(h => csvEscape(row[h] ?? "")).join(","))].join("\n");
 
     // ── Build JSON object ──────────────────────────────────────────────
-    var jsonObj = {
+    const jsonObj = {
       version: "1.0",
       exported_at: exportedAt.toISOString(),
-      logs: logs,
-      recipes: recipes,
-      customFoods: customFoods,
-      profile: profile,
-      exRatio: exRatio,
-      supplementStacks: supplementStacks,
+      logs,
+      recipes,
+      customFoods,
+      profile,
+      exRatio,
+      supplementStacks,
       notionStatus: {
-        lastSyncedAt: lastSyncedAt
+        lastSyncedAt
       }
     };
 
     // ── Bundle both files into a single zip and trigger one download ───
-    var zipFilename = "nutritrack-".concat(exportDateStr, ".zip");
-    var csvFilename = "nutritrack-daily-".concat(exportDateStr, ".csv");
-    var jsonFilename = "nutritrack-full-".concat(exportDateStr, ".json");
-    var sortedDays = allDayKeys.filter(function (dk) {
-      return csvRows.find(function (r) {
-        return r.date === dk;
-      });
-    });
-    var doZipDownload = function doZipDownload(JSZip) {
-      var zip = new JSZip();
+    const zipFilename = `nutritrack-${exportDateStr}.zip`;
+    const csvFilename = `nutritrack-daily-${exportDateStr}.csv`;
+    const jsonFilename = `nutritrack-full-${exportDateStr}.json`;
+    const sortedDays = allDayKeys.filter(dk => csvRows.find(r => r.date === dk));
+    const doZipDownload = JSZip => {
+      const zip = new JSZip();
       zip.file(csvFilename, csvBody);
       zip.file(jsonFilename, JSON.stringify(jsonObj, null, 2));
       zip.generateAsync({
         type: "blob"
-      }).then(function (blob) {
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
+      }).then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
         a.href = url;
         a.download = zipFilename;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function () {
-          return URL.revokeObjectURL(url);
-        }, 10000);
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
         // ── Persist timestamp & show confirmation only on success ──────
-        var isoNow = exportedAt.toISOString();
+        const isoNow = exportedAt.toISOString();
         setLastExportedAt(isoNow);
         saveData(STORAGE_KEYS.lastExportedAt, isoNow);
         setExportConfirm({
@@ -9058,25 +8382,21 @@ function NutriTrack() {
     if (window.JSZip) {
       doZipDownload(window.JSZip);
     } else {
-      var script = document.createElement("script");
+      const script = document.createElement("script");
       script.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
       script.integrity = "sha384-rRoXxn2yHlrZYB587Ki9RO1tONhLdM6XfORg7Rw4uwH4/Fh/5nP7IUX91bkaKUgs";
       script.crossOrigin = "anonymous";
-      script.onload = function () {
-        return doZipDownload(window.JSZip);
-      };
-      script.onerror = function () {
-        return alert("Export failed: JSZip could not be loaded. Connect to the internet and try again.");
-      };
+      script.onload = () => doZipDownload(window.JSZip);
+      script.onerror = () => alert("Export failed: JSZip could not be loaded. Connect to the internet and try again.");
       document.head.appendChild(script);
     }
   };
 
   // ── SETTINGS ──────────────────────────────────────────────────────────
   if (view === "settings") {
-    var formatSyncTime = function formatSyncTime(iso) {
+    const formatSyncTime = iso => {
       if (!iso) return "Never";
-      var d = new Date(iso);
+      const d = new Date(iso);
       return d.toLocaleDateString("en-GB", {
         day: "numeric",
         month: "short"
@@ -9117,20 +8437,18 @@ function NutriTrack() {
     }, "Used to personalise exercise calorie burn estimates."), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Weight (kg)"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 4
-      }),
+      },
       type: "number",
       inputMode: "decimal",
       placeholder: "e.g. 75",
       value: profile.weightKg,
-      onChange: function onChange(e) {
-        return setProfile(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            weightKg: e.target.value
-          });
-        });
-      }
+      onChange: e => setProfile(p => ({
+        ...p,
+        weightKg: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
@@ -9140,37 +8458,33 @@ function NutriTrack() {
     }, "Used to calculate your BMR and adjust calorie goals."), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Height (cm)"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 16
-      }),
+      },
       type: "number",
       inputMode: "decimal",
       placeholder: "e.g. 175",
       value: profile.heightCm || "",
-      onChange: function onChange(e) {
-        return setProfile(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            heightCm: e.target.value
-          });
-        });
-      }
+      onChange: e => setProfile(p => ({
+        ...p,
+        heightCm: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Age"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 4
-      }),
+      },
       type: "number",
       inputMode: "numeric",
       placeholder: "e.g. 30",
       value: profile.age,
-      onChange: function onChange(e) {
-        return setProfile(function (p) {
-          return _objectSpread(_objectSpread({}, p), {}, {
-            age: e.target.value
-          });
-        });
-      }
+      onChange: e => setProfile(p => ({
+        ...p,
+        age: e.target.value
+      }))
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
@@ -9186,27 +8500,23 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 4
       }
-    }, ["Male", "Female", "Other", "Prefer not to say"].map(function (opt) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: opt,
-        style: S.pill(profile.sex === opt),
-        onClick: function onClick() {
-          return setProfile(function (p) {
-            return _objectSpread(_objectSpread({}, p), {}, {
-              sex: opt
-            });
-          });
-        }
-      }, opt);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, ["Male", "Female", "Other", "Prefer not to say"].map(opt => /*#__PURE__*/React.createElement("button", {
+      key: opt,
+      style: S.pill(profile.sex === opt),
+      onClick: () => setProfile(p => ({
+        ...p,
+        sex: opt
+      }))
+    }, opt))), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#475569"
       }
     }, "Used in the BMR formula (different constants for male/female).")), profile.weightKg && /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         background: "#0f172a"
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
@@ -9222,31 +8532,31 @@ function NutriTrack() {
         color: "#e2e8f0",
         marginBottom: 4
       }
-    }, "\u2696\uFE0F ", profile.weightKg, " kg"), profile.heightCm && /*#__PURE__*/React.createElement("div", {
+    }, "⚖️ ", profile.weightKg, " kg"), profile.heightCm && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 14,
         color: "#e2e8f0",
         marginBottom: 4
       }
-    }, "\uD83D\uDCCF ", profile.heightCm, " cm"), profile.age && /*#__PURE__*/React.createElement("div", {
+    }, "📏 ", profile.heightCm, " cm"), profile.age && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 14,
         color: "#e2e8f0",
         marginBottom: 4
       }
-    }, "\uD83C\uDF82 ", profile.age, " years old"), profile.sex && /*#__PURE__*/React.createElement("div", {
+    }, "🎂 ", profile.age, " years old"), profile.sex && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 14,
         color: "#e2e8f0",
         marginBottom: 4
       }
-    }, "\u26A7 ", profile.sex), (!profile.weightKg || !profile.heightCm) && /*#__PURE__*/React.createElement("div", {
+    }, "⚧ ", profile.sex), (!profile.weightKg || !profile.heightCm) && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
         color: "#f59e0b",
         marginTop: 6
       }
-    }, "\u26A0\uFE0F Add weight and height to enable accurate goal computation")), /*#__PURE__*/React.createElement("div", {
+    }, "⚠️ Add weight and height to enable accurate goal computation")), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         fontWeight: 700,
@@ -9264,33 +8574,26 @@ function NutriTrack() {
         color: "#64748b",
         marginBottom: 14
       }
-    }, "Advanced mode shows data-quality indicators (e.g. unknown-contribution arcs on nutrient rings). Simplified mode hides these \u2014 tap a ring to see details."), /*#__PURE__*/React.createElement("div", {
+    }, "Advanced mode shows data-quality indicators (e.g. unknown-contribution arcs on nutrient rings). Simplified mode hides these — tap a ring to see details."), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         gap: 8
       }
-    }, [["advanced", "Advanced"], ["simplified", "Simplified"]].map(function (_ref32) {
-      var _ref33 = _slicedToArray(_ref32, 2),
-        val = _ref33[0],
-        label = _ref33[1];
-      return /*#__PURE__*/React.createElement("button", {
-        key: val,
-        style: {
-          flex: 1,
-          padding: "10px 0",
-          borderRadius: 10,
-          border: "none",
-          background: displayMode === val ? "#3b82f6" : "#1e293b",
-          color: displayMode === val ? "#fff" : "#64748b",
-          fontSize: 13,
-          fontWeight: 700,
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return setDisplayMode(val);
-        }
-      }, label);
-    }))), /*#__PURE__*/React.createElement("div", {
+    }, [["advanced", "Advanced"], ["simplified", "Simplified"]].map(([val, label]) => /*#__PURE__*/React.createElement("button", {
+      key: val,
+      style: {
+        flex: 1,
+        padding: "10px 0",
+        borderRadius: 10,
+        border: "none",
+        background: displayMode === val ? "#3b82f6" : "#1e293b",
+        color: displayMode === val ? "#fff" : "#64748b",
+        fontSize: 13,
+        fontWeight: 700,
+        cursor: "pointer"
+      },
+      onClick: () => setDisplayMode(val)
+    }, label)))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
@@ -9300,28 +8603,21 @@ function NutriTrack() {
         gap: 8,
         marginBottom: 4
       }
-    }, [["kcal", "kcal"], ["kJ", "kJ"]].map(function (_ref34) {
-      var _ref35 = _slicedToArray(_ref34, 2),
-        val = _ref35[0],
-        label = _ref35[1];
-      return /*#__PURE__*/React.createElement("button", {
-        key: val,
-        style: {
-          flex: 1,
-          padding: "10px 0",
-          borderRadius: 10,
-          border: "none",
-          background: energyUnit === val ? "#3b82f6" : "#1e293b",
-          color: energyUnit === val ? "#fff" : "#64748b",
-          fontSize: 13,
-          fontWeight: 700,
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return setEnergyUnit(val);
-        }
-      }, label);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, [["kcal", "kcal"], ["kJ", "kJ"]].map(([val, label]) => /*#__PURE__*/React.createElement("button", {
+      key: val,
+      style: {
+        flex: 1,
+        padding: "10px 0",
+        borderRadius: 10,
+        border: "none",
+        background: energyUnit === val ? "#3b82f6" : "#1e293b",
+        color: energyUnit === val ? "#fff" : "#64748b",
+        fontSize: 13,
+        fontWeight: 700,
+        cursor: "pointer"
+      },
+      onClick: () => setEnergyUnit(val)
+    }, label))), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#475569"
@@ -9344,39 +8640,35 @@ function NutriTrack() {
         color: "#64748b",
         marginBottom: 12
       }
-    }, "Define supplement stacks to log quickly. Nutrient contributions are added to daily totals."), supplementStacks.map(function (stack) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: stack.id,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px 0",
-          borderBottom: "1px solid #1e293b",
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return openStackEditor(stack);
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 600,
-          color: "#c4b5fd"
-        }
-      }, "\uD83D\uDC8A ", stack.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b",
-          marginTop: 2
-        }
-      }, stack.items.length === 0 ? "Empty — tap to add items" : "".concat(stack.items.length, " item").concat(stack.items.length === 1 ? "" : "s"))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          color: "#475569",
-          fontSize: 16
-        }
-      }, "\u203A"));
-    }), /*#__PURE__*/React.createElement("button", {
+    }, "Define supplement stacks to log quickly. Nutrient contributions are added to daily totals."), supplementStacks.map(stack => /*#__PURE__*/React.createElement("div", {
+      key: stack.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 0",
+        borderBottom: "1px solid #1e293b",
+        cursor: "pointer"
+      },
+      onClick: () => openStackEditor(stack)
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 600,
+        color: "#c4b5fd"
+      }
+    }, "💊 ", stack.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b",
+        marginTop: 2
+      }
+    }, stack.items.length === 0 ? "Empty — tap to add items" : `${stack.items.length} item${stack.items.length === 1 ? "" : "s"}`)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        color: "#475569",
+        fontSize: 16
+      }
+    }, "›"))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         marginTop: 12,
@@ -9389,9 +8681,7 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return openStackEditor(null);
-      }
+      onClick: () => openStackEditor(null)
     }, "+ Add stack")), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
@@ -9441,7 +8731,7 @@ function NutriTrack() {
         color: "#fbbf24",
         fontWeight: 600
       }
-    }, "\u23F3 ", syncQueue.length, " ", syncQueue.length === 1 ? "request" : "requests", " queued"), /*#__PURE__*/React.createElement("div", {
+    }, "⏳ ", syncQueue.length, " ", syncQueue.length === 1 ? "request" : "requests", " queued"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#78716c",
@@ -9462,7 +8752,7 @@ function NutriTrack() {
     }, "Clear")), notionSyncMsg && /*#__PURE__*/React.createElement("div", {
       style: {
         background: notionSyncMsg.type === "error" ? "#2d0f0f" : "#0f1f2d",
-        border: "1px solid ".concat(notionSyncMsg.type === "error" ? "#7f1d1d" : "#1d4ed8"),
+        border: `1px solid ${notionSyncMsg.type === "error" ? "#7f1d1d" : "#1d4ed8"}`,
         borderRadius: 10,
         padding: "10px 14px",
         marginBottom: 12,
@@ -9484,7 +8774,7 @@ function NutriTrack() {
         fontWeight: 600,
         marginBottom: 6
       }
-    }, syncProgress.phase === "connecting" && "Connecting to Notion…", syncProgress.phase === "listing" && "Looking for new and changed recipes…", syncProgress.phase === "fetching" && "Fetching ".concat(syncProgress.current, " of ").concat(syncProgress.total, " recipes\u2026"), syncProgress.phase === "parsing" && "Parsing ingredients (".concat(syncProgress.current, " of ").concat(syncProgress.total, ")\u2026")), syncProgress.total > 0 && /*#__PURE__*/React.createElement("div", {
+    }, syncProgress.phase === "connecting" && "Connecting to Notion…", syncProgress.phase === "listing" && "Looking for new and changed recipes…", syncProgress.phase === "fetching" && `Fetching ${syncProgress.current} of ${syncProgress.total} recipes…`, syncProgress.phase === "parsing" && `Parsing ingredients (${syncProgress.current} of ${syncProgress.total})…`), syncProgress.total > 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         height: 6,
         borderRadius: 3,
@@ -9496,7 +8786,7 @@ function NutriTrack() {
         height: "100%",
         background: "#3b82f6",
         borderRadius: 3,
-        width: "".concat(Math.round(syncProgress.current / Math.max(syncProgress.total, 1) * 100), "%"),
+        width: `${Math.round(syncProgress.current / Math.max(syncProgress.total, 1) * 100)}%`,
         transition: "width 0.3s ease"
       }
     }))), /*#__PURE__*/React.createElement("button", {
@@ -9562,7 +8852,7 @@ function NutriTrack() {
         outline: "none",
         userSelect: "none"
       }
-    }, "\u25B8 Manual import (fallback)"), /*#__PURE__*/React.createElement("div", {
+    }, "▸ Manual import (fallback)"), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 8
       }
@@ -9577,7 +8867,7 @@ function NutriTrack() {
         color: "#fcd34d",
         lineHeight: 1.5
       }
-    }, "\u26A0\uFE0F Paste-based import is parsed locally on-device. Use markdown headings (#) or a title followed by a colon to split multiple recipes. Nothing is sent to any server."), /*#__PURE__*/React.createElement("div", {
+    }, "⚠️ Paste-based import is parsed locally on-device. Use markdown headings (#) or a title followed by a colon to split multiple recipes. Nothing is sent to any server."), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#64748b",
@@ -9601,9 +8891,7 @@ function NutriTrack() {
       },
       placeholder: "e.g.\n50 g of flour\n1 tsp cornstarch",
       value: pasteText,
-      onChange: function onChange(e) {
-        return setPasteText(e.target.value);
-      }
+      onChange: e => setPasteText(e.target.value)
     }), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
@@ -9626,20 +8914,20 @@ function NutriTrack() {
         textAlign: "center",
         marginTop: 14
       }
-    }, recipes.length, " ", recipes.length === 1 ? "recipe" : "recipes", " stored locally")), function () {
-      var bytes = storageEstimate; // number | null
-      var usageStr = bytes == null ? null : bytes < 1024 ? "".concat(bytes, " bytes") : bytes < 1024 * 1024 ? "".concat((bytes / 1024).toFixed(1), " KB") : "".concat((bytes / 1024 / 1024).toFixed(2), " MB");
+    }, recipes.length, " ", recipes.length === 1 ? "recipe" : "recipes", " stored locally")), (() => {
+      const bytes = storageEstimate; // number | null
+      const usageStr = bytes == null ? null : bytes < 1024 ? `${bytes} bytes` : bytes < 1024 * 1024 ? `${(bytes / 1024).toFixed(1)} KB` : `${(bytes / 1024 / 1024).toFixed(2)} MB`;
       // Thresholds vs a 5 MB practical localStorage cap (conservative iOS estimate)
-      var CAP_BYTES = 5 * 1024 * 1024;
-      var pct = bytes != null ? bytes / CAP_BYTES * 100 : null;
-      var status = pct == null ? "unknown" : pct >= STORAGE_CRIT_PCT ? "red" : pct >= STORAGE_WARN_PCT ? "yellow" : "green";
-      var statusColor = {
+      const CAP_BYTES = 5 * 1024 * 1024;
+      const pct = bytes != null ? bytes / CAP_BYTES * 100 : null;
+      const status = pct == null ? "unknown" : pct >= STORAGE_CRIT_PCT ? "red" : pct >= STORAGE_WARN_PCT ? "yellow" : "green";
+      const statusColor = {
         green: "#10b981",
         yellow: "#f59e0b",
         red: "#ef4444",
         unknown: "#64748b"
       }[status];
-      var statusText = {
+      const statusText = {
         green: "Storage healthy",
         yellow: "Storage approaching limit — consider exporting and reviewing data",
         red: "Storage near full — export now",
@@ -9686,7 +8974,7 @@ function NutriTrack() {
           height: "100%",
           background: statusColor,
           borderRadius: 3,
-          width: "".concat(Math.min(pct, 100), "%"),
+          width: `${Math.min(pct, 100)}%`,
           transition: "width 0.4s ease"
         }
       })), /*#__PURE__*/React.createElement("div", {
@@ -9715,7 +9003,7 @@ function NutriTrack() {
           color: "#64748b"
         }
       }, "Storage usage information not available on this device.")));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         fontWeight: 700,
@@ -9740,26 +9028,26 @@ function NutriTrack() {
         fontWeight: 600,
         marginBottom: 6
       }
-    }, "\u26A0\uFE0F Storage validation warning"), /*#__PURE__*/React.createElement("div", {
+    }, "⚠️ Storage validation warning"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
         color: "#92400e",
         marginBottom: 10,
         lineHeight: 1.5
       }
-    }, function () {
-      var hasUnparseable = Object.values(STORAGE_KEYS).some(function (k) {
+    }, (() => {
+      const hasUnparseable = Object.values(STORAGE_KEYS).some(k => {
         try {
-          var _r2 = localStorage.getItem(k);
-          if (_r2 === null) return false;
-          JSON.parse(_r2);
+          const r = localStorage.getItem(k);
+          if (r === null) return false;
+          JSON.parse(r);
           return false;
-        } catch (_unused6) {
+        } catch {
           return true;
         }
       });
       return hasUnparseable ? "A storage key contains invalid data. Tap below to remove only the bad key and reload. Your other data is untouched." : "A storage key has an unexpected shape. Your data is intact — tap below to reload and clear the warning.";
-    }()), /*#__PURE__*/React.createElement("button", {
+    })()), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 10,
@@ -9771,68 +9059,66 @@ function NutriTrack() {
         fontWeight: 700,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         // If a backup exists from the inject, restore it first.
         // nt-logs-backup is intentionally excluded from STORAGE_KEYS — it is a
         // debug-only ephemeral key. Including it would cause the corruptedKeys guard,
         // storage indicator, and export bundle to treat it as app data.
-        var backup = localStorage.getItem("nt-logs-backup");
+        const backup = localStorage.getItem("nt-logs-backup");
         if (backup !== null) {
           localStorage.setItem(STORAGE_KEYS.logs, backup);
           localStorage.removeItem("nt-logs-backup");
         }
         // Remove any keys that are genuinely unparseable
-        var unparseable = Object.values(STORAGE_KEYS).filter(function (k) {
+        const unparseable = Object.values(STORAGE_KEYS).filter(k => {
           try {
-            var _r3 = localStorage.getItem(k);
-            if (_r3 === null) return false;
-            JSON.parse(_r3);
+            const r = localStorage.getItem(k);
+            if (r === null) return false;
+            JSON.parse(r);
             return false;
-          } catch (_unused7) {
+          } catch {
             return true;
           }
         });
-        unparseable.forEach(function (k) {
-          return localStorage.removeItem(k);
-        });
+        unparseable.forEach(k => localStorage.removeItem(k));
         // Fix any shape mismatches by resetting to correct empty shape
         // (covers leftover inject artifacts from previous sessions)
-        var logsRaw = localStorage.getItem(STORAGE_KEYS.logs);
+        const logsRaw = localStorage.getItem(STORAGE_KEYS.logs);
         if (logsRaw !== null) {
           try {
-            var v = JSON.parse(logsRaw);
+            const v = JSON.parse(logsRaw);
             if (Array.isArray(v)) localStorage.setItem(STORAGE_KEYS.logs, "{}");
-          } catch (_unused8) {/* already handled above */}
+          } catch {/* already handled above */}
         }
-        var recipesRaw = localStorage.getItem(STORAGE_KEYS.recipes);
+        const recipesRaw = localStorage.getItem(STORAGE_KEYS.recipes);
         if (recipesRaw !== null) {
           try {
-            var _v2 = JSON.parse(recipesRaw);
-            if (!Array.isArray(_v2)) localStorage.setItem(STORAGE_KEYS.recipes, "[]");
-          } catch (_unused9) {/* already handled above */}
+            const v = JSON.parse(recipesRaw);
+            if (!Array.isArray(v)) localStorage.setItem(STORAGE_KEYS.recipes, "[]");
+          } catch {/* already handled above */}
         }
-        var customRaw = localStorage.getItem(STORAGE_KEYS.customFoods);
+        const customRaw = localStorage.getItem(STORAGE_KEYS.customFoods);
         if (customRaw !== null) {
           try {
-            var _v3 = JSON.parse(customRaw);
-            if (!Array.isArray(_v3)) localStorage.setItem(STORAGE_KEYS.customFoods, "[]");
-          } catch (_unused0) {/* already handled above */}
+            const v = JSON.parse(customRaw);
+            if (!Array.isArray(v)) localStorage.setItem(STORAGE_KEYS.customFoods, "[]");
+          } catch {/* already handled above */}
         }
         window.location.reload();
       }
-    }, function () {
-      var hasUnparseable = Object.values(STORAGE_KEYS).some(function (k) {
+    }, (() => {
+      const hasUnparseable = Object.values(STORAGE_KEYS).some(k => {
         try {
-          var _r4 = localStorage.getItem(k);
-          if (_r4 === null) return false;
-          JSON.parse(_r4);
+          const r = localStorage.getItem(k);
+          if (r === null) return false;
+          JSON.parse(r);
           return false;
-        } catch (_unused1) {
+        } catch {
           return true;
         }
       });
       return hasUnparseable ? "Clear corrupted key and reload" : "Reload and clear warning";
-    }())), /*#__PURE__*/React.createElement("details", null, /*#__PURE__*/React.createElement("summary", {
+    })())), /*#__PURE__*/React.createElement("details", null, /*#__PURE__*/React.createElement("summary", {
       style: {
         fontSize: 12,
         color: "#475569",
@@ -9843,7 +9129,7 @@ function NutriTrack() {
         userSelect: "none",
         marginBottom: 8
       }
-    }, "\u25B8 Debug tools"), /*#__PURE__*/React.createElement("div", {
+    }, "▸ Debug tools"), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -9866,9 +9152,9 @@ function NutriTrack() {
         cursor: dbgCorruptUsed ? "default" : "pointer"
       },
       disabled: dbgCorruptUsed,
-      onClick: function onClick() {
+      onClick: () => {
         if (dbgCorruptUsed) return;
-        var current = localStorage.getItem(STORAGE_KEYS.logs);
+        const current = localStorage.getItem(STORAGE_KEYS.logs);
         if (current !== null) localStorage.setItem("nt-logs-backup", current);
         localStorage.setItem(STORAGE_KEYS.logs, "!!NOT_JSON!!");
         setDbgCorruptUsed(true);
@@ -9887,9 +9173,9 @@ function NutriTrack() {
         cursor: dbgShapeUsed ? "default" : "pointer"
       },
       disabled: dbgShapeUsed,
-      onClick: function onClick() {
+      onClick: () => {
         if (dbgShapeUsed) return;
-        var current = localStorage.getItem(STORAGE_KEYS.logs);
+        const current = localStorage.getItem(STORAGE_KEYS.logs);
         if (current !== null) localStorage.setItem("nt-logs-backup", current);
         localStorage.setItem(STORAGE_KEYS.logs, JSON.stringify([]));
         setDbgShapeUsed(true);
@@ -9908,15 +9194,15 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        var backup = localStorage.getItem("nt-logs-backup");
+      onClick: () => {
+        const backup = localStorage.getItem("nt-logs-backup");
         if (backup !== null) {
           localStorage.setItem(STORAGE_KEYS.logs, backup);
           localStorage.removeItem("nt-logs-backup");
         }
         window.location.reload();
       }
-    }, "\u21A9 Restore nt-logs from backup and reload"), /*#__PURE__*/React.createElement("div", {
+    }, "↩ Restore nt-logs from backup and reload"), /*#__PURE__*/React.createElement("div", {
       style: {
         borderTop: "1px solid #1e293b",
         marginTop: 12,
@@ -9931,22 +9217,19 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.04em"
       }
-    }, "Storage key readout"), Object.entries(STORAGE_KEYS).map(function (_ref36) {
-      var _ref37 = _slicedToArray(_ref36, 2),
-        name = _ref37[0],
-        key = _ref37[1];
-      var raw = localStorage.getItem(key);
-      var status, preview;
+    }, "Storage key readout"), Object.entries(STORAGE_KEYS).map(([name, key]) => {
+      const raw = localStorage.getItem(key);
+      let status, preview;
       if (raw === null) {
         status = "missing";
         preview = "—";
       } else {
         try {
-          var v = JSON.parse(raw);
-          var t = Array.isArray(v) ? "array" : _typeof(v);
+          const v = JSON.parse(raw);
+          const t = Array.isArray(v) ? "array" : typeof v;
           status = "ok";
-          preview = "".concat(t, " \xB7 ").concat(raw.length, " chars");
-        } catch (_unused10) {
+          preview = `${t} · ${raw.length} chars`;
+        } catch {
           status = "error";
           preview = raw.slice(0, 30);
         }
@@ -9991,7 +9274,7 @@ function NutriTrack() {
         marginBottom: 8,
         lineHeight: 1.5
       }
-    }, "Test regex ingredient parser \u2014 paste lines (one per line)."), /*#__PURE__*/React.createElement("textarea", {
+    }, "Test regex ingredient parser — paste lines (one per line)."), /*#__PURE__*/React.createElement("textarea", {
       style: {
         width: "100%",
         background: "#1e293b",
@@ -10008,9 +9291,7 @@ function NutriTrack() {
       },
       placeholder: "200g cherry tomatoes\n1 capsicum\n2 medium onions",
       value: parserTestText,
-      onChange: function onChange(e) {
-        return setParserTestText(e.target.value);
-      }
+      onChange: e => setParserTestText(e.target.value)
     }), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
@@ -10048,7 +9329,7 @@ function NutriTrack() {
         marginBottom: 8,
         lineHeight: 1.5
       }
-    }, "Surfaces the friendly error message (and logs it) for each error type. Works offline \u2014 no network needed."), /*#__PURE__*/React.createElement("div", {
+    }, "Surfaces the friendly error message (and logs it) for each error type. Works offline — no network needed."), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -10065,14 +9346,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionSyncMsg({
           type: "error",
           text: friendlyError(new Error("network: fetch failed"), "injectTest")
         });
-        setErrorLogsVersion(function (v) {
-          return v + 1;
-        });
+        setErrorLogsVersion(v => v + 1);
       }
     }, "network"), /*#__PURE__*/React.createElement("button", {
       style: {
@@ -10085,14 +9364,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionSyncMsg({
           type: "error",
           text: friendlyError(new Error("worker_502: notion_unreachable"), "injectTest")
         });
-        setErrorLogsVersion(function (v) {
-          return v + 1;
-        });
+        setErrorLogsVersion(v => v + 1);
       }
     }, "worker_502"), /*#__PURE__*/React.createElement("button", {
       style: {
@@ -10105,14 +9382,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionSyncMsg({
           type: "error",
           text: friendlyError(new Error("worker_403: forbidden"), "injectTest")
         });
-        setErrorLogsVersion(function (v) {
-          return v + 1;
-        });
+        setErrorLogsVersion(v => v + 1);
       }
     }, "worker_403"), /*#__PURE__*/React.createElement("button", {
       style: {
@@ -10125,14 +9400,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionSyncMsg({
           type: "error",
           text: friendlyError(new Error("foods.json fetch failed: 404"), "injectTest")
         });
-        setErrorLogsVersion(function (v) {
-          return v + 1;
-        });
+        setErrorLogsVersion(v => v + 1);
       }
     }, "fooddb 404"), /*#__PURE__*/React.createElement("button", {
       style: {
@@ -10145,14 +9418,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionSyncMsg({
           type: "error",
           text: friendlyError(new Error("QuotaExceededError"), "injectTest")
         });
-        setErrorLogsVersion(function (v) {
-          return v + 1;
-        });
+        setErrorLogsVersion(v => v + 1);
       }
     }, "storage quota"), /*#__PURE__*/React.createElement("button", {
       style: {
@@ -10165,14 +9436,12 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionSyncMsg({
           type: "error",
           text: friendlyError(new Error("No recipes found."), "injectTest")
         });
-        setErrorLogsVersion(function (v) {
-          return v + 1;
-        });
+        setErrorLogsVersion(v => v + 1);
       }
     }, "parse")), notionSyncMsg && notionSyncMsg.type === "error" && /*#__PURE__*/React.createElement("div", {
       style: {
@@ -10191,7 +9460,7 @@ function NutriTrack() {
         color: "#475569",
         marginTop: 6
       }
-    }, "Logged to Settings \u2192 About \u2192 Error logs.")))), /*#__PURE__*/React.createElement("div", {
+    }, "Logged to Settings → About → Error logs.")))), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         fontWeight: 700,
@@ -10223,7 +9492,7 @@ function NutriTrack() {
         cursor: "pointer",
         marginBottom: 10
       },
-      onClick: function onClick() {
+      onClick: () => {
         resetCfForm();
         setView("manageCustomFoods");
       }
@@ -10233,11 +9502,7 @@ function NutriTrack() {
         color: "#475569",
         textAlign: "center"
       }
-    }, customFoods.filter(function (f) {
-      return !f.deleted;
-    }).length, " active custom food", customFoods.filter(function (f) {
-      return !f.deleted;
-    }).length === 1 ? "" : "s")), /*#__PURE__*/React.createElement("div", {
+    }, customFoods.filter(f => !f.deleted).length, " active custom food", customFoods.filter(f => !f.deleted).length === 1 ? "" : "s")), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         fontWeight: 700,
@@ -10281,8 +9546,8 @@ function NutriTrack() {
         color: lastExportedAt ? "#10b981" : "#64748b",
         fontWeight: 600
       }
-    }, lastExportedAt ? function () {
-      var d = new Date(lastExportedAt);
+    }, lastExportedAt ? (() => {
+      const d = new Date(lastExportedAt);
       return d.toLocaleDateString("en-GB", {
         day: "numeric",
         month: "short",
@@ -10291,7 +9556,7 @@ function NutriTrack() {
         hour: "2-digit",
         minute: "2-digit"
       });
-    }() : "Never")), exportConfirm && /*#__PURE__*/React.createElement("div", {
+    })() : "Never")), exportConfirm && /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 14,
         background: "#0a1a14",
@@ -10312,7 +9577,7 @@ function NutriTrack() {
         fontWeight: 700,
         color: "#34d399"
       }
-    }, "\u2713 Export complete"), /*#__PURE__*/React.createElement("button", {
+    }, "✓ Export complete"), /*#__PURE__*/React.createElement("button", {
       style: {
         background: "none",
         border: "none",
@@ -10322,16 +9587,14 @@ function NutriTrack() {
         padding: "0 4px",
         lineHeight: 1
       },
-      onClick: function onClick() {
-        return setExportConfirm(null);
-      }
-    }, "\xD7")), /*#__PURE__*/React.createElement("div", {
+      onClick: () => setExportConfirm(null)
+    }, "×")), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
         color: "#6ee7b7",
         marginBottom: 4
       }
-    }, "\uD83D\uDDDC ", exportConfirm.zipFile), /*#__PURE__*/React.createElement("div", {
+    }, "🗜 ", exportConfirm.zipFile), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#475569",
@@ -10354,7 +9617,7 @@ function NutriTrack() {
         color: "#e2e8f0",
         fontWeight: 600
       }
-    }, exportConfirm.dateFrom ? "".concat(exportConfirm.dateFrom, " \u2192 ").concat(exportConfirm.dateTo) : "No days logged"), /*#__PURE__*/React.createElement("div", {
+    }, exportConfirm.dateFrom ? `${exportConfirm.dateFrom} → ${exportConfirm.dateTo}` : "No days logged"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#94a3b8"
@@ -10429,15 +9692,15 @@ function NutriTrack() {
         color: "#e2e8f0",
         fontWeight: 600
       }
-    }, function () {
-      var v = localStorage.getItem(STORAGE_KEYS.lastValidatedAt);
+    }, (() => {
+      const v = localStorage.getItem(STORAGE_KEYS.lastValidatedAt);
       return v ? new Date(v).toLocaleString("en-GB", {
         day: "numeric",
         month: "short",
         hour: "2-digit",
         minute: "2-digit"
       }) : "never";
-    }()), /*#__PURE__*/React.createElement("div", {
+    })()), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         color: "#94a3b8"
@@ -10471,14 +9734,14 @@ function NutriTrack() {
         color: foodDBStatus === "ready" ? "#10b981" : foodDBStatus === "error" ? "#ef4444" : "#f59e0b",
         fontWeight: 600
       }
-    }, foodDBStatus)), function () {
+    }, foodDBStatus)), (() => {
       void errorLogsVersion; // re-read localStorage whenever logs are cleared/injected
-      var logs = [];
+      let logs = [];
       try {
-        var raw = localStorage.getItem(STORAGE_KEYS.errorLogs);
+        const raw = localStorage.getItem(STORAGE_KEYS.errorLogs);
         logs = raw ? JSON.parse(raw) : [];
         if (!Array.isArray(logs)) logs = [];
-      } catch (_unused11) {
+      } catch {
         logs = [];
       }
       return /*#__PURE__*/React.createElement("details", {
@@ -10495,7 +9758,7 @@ function NutriTrack() {
           outline: "none",
           userSelect: "none"
         }
-      }, "\u25B8 Error logs (", logs.length, ")"), /*#__PURE__*/React.createElement("div", {
+      }, "▸ Error logs (", logs.length, ")"), /*#__PURE__*/React.createElement("div", {
         style: {
           marginTop: 8
         }
@@ -10512,35 +9775,33 @@ function NutriTrack() {
           maxHeight: 160,
           overflowY: "auto"
         }
-      }, logs.slice().reverse().map(function (l, i) {
-        return /*#__PURE__*/React.createElement("div", {
-          key: i,
-          style: {
-            background: "#1e293b",
-            borderRadius: 6,
-            padding: "6px 8px",
-            fontFamily: "monospace",
-            fontSize: 10,
-            color: "#94a3b8",
-            lineHeight: 1.4
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            color: "#e2e8f0"
-          }
-        }, l.ts ? new Date(l.ts).toLocaleString("en-GB", {
-          day: "numeric",
-          month: "short",
-          hour: "2-digit",
-          minute: "2-digit"
-        }) : "?", " \xB7 ", l.context || "unknown", " \xB7 ", l.type || "unknown"), /*#__PURE__*/React.createElement("div", {
-          style: {
-            color: "#64748b",
-            marginTop: 2,
-            wordBreak: "break-word"
-          }
-        }, l.raw || ""));
-      })), logs.length > 0 && /*#__PURE__*/React.createElement("button", {
+      }, logs.slice().reverse().map((l, i) => /*#__PURE__*/React.createElement("div", {
+        key: i,
+        style: {
+          background: "#1e293b",
+          borderRadius: 6,
+          padding: "6px 8px",
+          fontFamily: "monospace",
+          fontSize: 10,
+          color: "#94a3b8",
+          lineHeight: 1.4
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          color: "#e2e8f0"
+        }
+      }, l.ts ? new Date(l.ts).toLocaleString("en-GB", {
+        day: "numeric",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit"
+      }) : "?", " · ", l.context || "unknown", " · ", l.type || "unknown"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          color: "#64748b",
+          marginTop: 2,
+          wordBreak: "break-word"
+        }
+      }, l.raw || "")))), logs.length > 0 && /*#__PURE__*/React.createElement("button", {
         style: {
           marginTop: 8,
           background: "none",
@@ -10552,16 +9813,14 @@ function NutriTrack() {
           padding: "4px 8px",
           cursor: "pointer"
         },
-        onClick: function onClick() {
+        onClick: () => {
           try {
             localStorage.removeItem(STORAGE_KEYS.errorLogs);
-          } catch (_unused12) {}
-          setErrorLogsVersion(function (v) {
-            return v + 1;
-          });
+          } catch {}
+          setErrorLogsVersion(v => v + 1);
         }
       }, "Clear logs")));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         borderTop: "1px solid #1e293b",
         marginTop: 12,
@@ -10570,16 +9829,12 @@ function NutriTrack() {
         color: "#475569",
         lineHeight: 1.5
       }
-    }, "NutriTrack \u2014 offline-first nutrition tracking. All data is stored locally on this device. Use Export Data above to back up before clearing browser data."))), /*#__PURE__*/React.createElement(BottomNav, null));
+    }, "NutriTrack — offline-first nutrition tracking. All data is stored locally on this device. Use Export Data above to back up before clearing browser data."))), /*#__PURE__*/React.createElement(BottomNav, null));
   }
   // ── NOTION REVIEW ─────────────────────────────────────────────────────
   if (view === "notionReview") {
-    var allResolved = syncReviewData.every(function (r) {
-      return r.duplicateAction !== null;
-    });
-    var readyCount = syncReviewData.filter(function (r) {
-      return !r.imported && r.duplicateAction !== null && r.duplicateAction !== "skip";
-    }).length;
+    const allResolved = syncReviewData.every(r => r.duplicateAction !== null);
+    const readyCount = syncReviewData.filter(r => !r.imported && r.duplicateAction !== null && r.duplicateAction !== "skip").length;
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -10592,11 +9847,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setView("settings");
         setSyncReviewData([]);
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -10613,28 +9868,26 @@ function NutriTrack() {
       disabled: !allResolved || readyCount === 0,
       onClick: importAllReady
     }, "Import All (", readyCount, ")")), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.section), {}, {
+      style: {
+        ...S.section,
         paddingBottom: 40
-      })
+      }
     }, syncReviewData.length === 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         textAlign: "center",
         padding: "40px 0",
         color: "#475569"
       }
-    }, "No recipes to review."), syncReviewData.map(function (r, rIdx) {
-      var skippedCount = r.ingredients.filter(function (i) {
-          return i.skipped;
-        }).length,
-        matchedCount = r.ingredients.filter(function (i) {
-          return i.match && !i.skipped;
-        }).length;
+    }, "No recipes to review."), syncReviewData.map((r, rIdx) => {
+      const skippedCount = r.ingredients.filter(i => i.skipped).length,
+        matchedCount = r.ingredients.filter(i => i.match && !i.skipped).length;
       return /*#__PURE__*/React.createElement("div", {
         key: rIdx,
-        style: _objectSpread(_objectSpread({}, S.card), {}, {
+        style: {
+          ...S.card,
           marginBottom: 12,
           opacity: r.imported ? 0.5 : 1
-        })
+        }
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
@@ -10658,7 +9911,7 @@ function NutriTrack() {
           color: "#475569",
           marginTop: 2
         }
-      }, r.servings, " serving", r.servings === 1 ? "" : "s", r.source ? " \xB7 ".concat(r.source) : ""))), r.existingId && !r.imported && /*#__PURE__*/React.createElement("div", {
+      }, r.servings, " serving", r.servings === 1 ? "" : "s", r.source ? ` · ${r.source}` : ""))), r.existingId && !r.imported && /*#__PURE__*/React.createElement("div", {
         style: {
           background: "#1c1200",
           border: "1px solid #92400e",
@@ -10673,34 +9926,25 @@ function NutriTrack() {
           fontWeight: 600,
           marginBottom: 8
         }
-      }, "\u26A0\uFE0F \"", r.title, "\" already exists locally."), /*#__PURE__*/React.createElement("div", {
+      }, "⚠️ \"", r.title, "\" already exists locally."), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 6,
           flexWrap: "wrap"
         }
-      }, [["overwrite", "Overwrite"], ["copy", "Save as copy"], ["skip", "Skip"]].map(function (_ref38) {
-        var _ref39 = _slicedToArray(_ref38, 2),
-          action = _ref39[0],
-          label = _ref39[1];
-        return /*#__PURE__*/React.createElement("button", {
-          key: action,
-          style: _objectSpread(_objectSpread({}, S.pill(r.duplicateAction === action)), {}, {
-            background: r.duplicateAction === action ? action === "skip" ? "#7f1d1d" : action === "overwrite" ? "#1d4ed8" : "#14532d" : "transparent",
-            borderColor: r.duplicateAction === action ? action === "skip" ? "#ef4444" : action === "overwrite" ? "#3b82f6" : "#22c55e" : "#334155",
-            color: r.duplicateAction === action ? "#fff" : "#94a3b8"
-          }),
-          onClick: function onClick() {
-            return setSyncReviewData(function (prev) {
-              return prev.map(function (item, i) {
-                return i === rIdx ? _objectSpread(_objectSpread({}, item), {}, {
-                  duplicateAction: action
-                }) : item;
-              });
-            });
-          }
-        }, label);
-      }))), /*#__PURE__*/React.createElement("div", {
+      }, [["overwrite", "Overwrite"], ["copy", "Save as copy"], ["skip", "Skip"]].map(([action, label]) => /*#__PURE__*/React.createElement("button", {
+        key: action,
+        style: {
+          ...S.pill(r.duplicateAction === action),
+          background: r.duplicateAction === action ? action === "skip" ? "#7f1d1d" : action === "overwrite" ? "#1d4ed8" : "#14532d" : "transparent",
+          borderColor: r.duplicateAction === action ? action === "skip" ? "#ef4444" : action === "overwrite" ? "#3b82f6" : "#22c55e" : "#334155",
+          color: r.duplicateAction === action ? "#fff" : "#94a3b8"
+        },
+        onClick: () => setSyncReviewData(prev => prev.map((item, i) => i === rIdx ? {
+          ...item,
+          duplicateAction: action
+        } : item))
+      }, label)))), /*#__PURE__*/React.createElement("div", {
         style: {
           marginBottom: r.imported ? 0 : 10
         }
@@ -10713,100 +9957,91 @@ function NutriTrack() {
           textTransform: "uppercase",
           letterSpacing: "0.04em"
         }
-      }, "Ingredients \u2014 ", matchedCount, " matched", skippedCount > 0 ? ", ".concat(skippedCount, " skipped") : ""), r.ingredients.map(function (ing, iIdx) {
-        var _ing$match;
-        return /*#__PURE__*/React.createElement("div", {
-          key: iIdx,
-          style: {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "6px 0",
-            borderBottom: iIdx < r.ingredients.length - 1 ? "1px solid #1e293b" : "none"
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            flex: 1
-          }
-        }, ing.match && !ing.skipped ? /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 13,
-            color: "#4ade80"
-          }
-        }, "\u2713 ", ing.match.name) : ing.skipped && !ing.match ? /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 13,
-            color: "#64748b"
-          }
-        }, "\u2298 ", ing.name, " ", /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 11
-          }
-        }, "(no match)")) : ing.skipped ? /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 13,
-            color: "#64748b",
-            textDecoration: "line-through"
-          }
-        }, ((_ing$match = ing.match) === null || _ing$match === void 0 ? void 0 : _ing$match.name) || ing.name) : /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 13,
-            color: "#fbbf24"
-          }
-        }, "\u26A0 ", ing.name), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 11,
-            color: "#475569"
-          }
-        }, ing.amount_g, "g")), /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            gap: 6,
-            alignItems: "center"
-          }
-        }, !r.imported && !ing.skipped && !ing.match && /*#__PURE__*/React.createElement("button", {
-          style: {
-            background: "#1d2d3a",
-            border: "1px solid #334155",
-            borderRadius: 8,
-            color: "#93c5fd",
-            fontSize: 11,
-            fontWeight: 600,
-            padding: "3px 8px",
-            cursor: "pointer"
-          },
-          onClick: function onClick() {
-            setNotionIngPick({
-              recipeIdx: rIdx,
-              ingIdx: iIdx
-            });
-            setNotionIngSearch("");
-            setView("notionIngPick");
-          }
-        }, "Pick"), !r.imported && /*#__PURE__*/React.createElement("button", {
-          style: {
-            background: "none",
-            border: "none",
-            color: ing.skipped ? "#475569" : "#64748b",
-            fontSize: 11,
-            cursor: "pointer",
-            padding: "2px 4px"
-          },
-          onClick: function onClick() {
-            return setSyncReviewData(function (prev) {
-              return prev.map(function (item, ri) {
-                return ri !== rIdx ? item : _objectSpread(_objectSpread({}, item), {}, {
-                  ingredients: item.ingredients.map(function (x, ii) {
-                    return ii !== iIdx ? x : _objectSpread(_objectSpread({}, x), {}, {
-                      skipped: !x.skipped
-                    });
-                  })
-                });
-              });
-            });
-          }
-        }, ing.skipped ? "Restore" : "Skip")));
-      })), !r.imported && r.duplicateAction !== null && r.duplicateAction !== "skip" && /*#__PURE__*/React.createElement("button", {
+      }, "Ingredients — ", matchedCount, " matched", skippedCount > 0 ? `, ${skippedCount} skipped` : ""), r.ingredients.map((ing, iIdx) => /*#__PURE__*/React.createElement("div", {
+        key: iIdx,
+        style: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "6px 0",
+          borderBottom: iIdx < r.ingredients.length - 1 ? "1px solid #1e293b" : "none"
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          flex: 1
+        }
+      }, ing.match && !ing.skipped ? /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          color: "#4ade80"
+        }
+      }, "✓ ", ing.match.name) : ing.skipped && !ing.match ? /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          color: "#64748b"
+        }
+      }, "⊘ ", ing.name, " ", /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 11
+        }
+      }, "(no match)")) : ing.skipped ? /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          color: "#64748b",
+          textDecoration: "line-through"
+        }
+      }, ing.match?.name || ing.name) : /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 13,
+          color: "#fbbf24"
+        }
+      }, "⚠ ", ing.name), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          color: "#475569"
+        }
+      }, ing.amount_g, "g")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 6,
+          alignItems: "center"
+        }
+      }, !r.imported && !ing.skipped && !ing.match && /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "#1d2d3a",
+          border: "1px solid #334155",
+          borderRadius: 8,
+          color: "#93c5fd",
+          fontSize: 11,
+          fontWeight: 600,
+          padding: "3px 8px",
+          cursor: "pointer"
+        },
+        onClick: () => {
+          setNotionIngPick({
+            recipeIdx: rIdx,
+            ingIdx: iIdx
+          });
+          setNotionIngSearch("");
+          setView("notionIngPick");
+        }
+      }, "Pick"), !r.imported && /*#__PURE__*/React.createElement("button", {
+        style: {
+          background: "none",
+          border: "none",
+          color: ing.skipped ? "#475569" : "#64748b",
+          fontSize: 11,
+          cursor: "pointer",
+          padding: "2px 4px"
+        },
+        onClick: () => setSyncReviewData(prev => prev.map((item, ri) => ri !== rIdx ? item : {
+          ...item,
+          ingredients: item.ingredients.map((x, ii) => ii !== iIdx ? x : {
+            ...x,
+            skipped: !x.skipped
+          })
+        }))
+      }, ing.skipped ? "Restore" : "Skip"))))), !r.imported && r.duplicateAction !== null && r.duplicateAction !== "skip" && /*#__PURE__*/React.createElement("button", {
         style: {
           width: "100%",
           padding: 10,
@@ -10819,9 +10054,7 @@ function NutriTrack() {
           cursor: matchedCount > 0 ? "pointer" : "default"
         },
         disabled: matchedCount === 0,
-        onClick: function onClick() {
-          return importRecipe(rIdx);
-        }
+        onClick: () => importRecipe(rIdx)
       }, "Import \"", r.title, "\""), r.imported && /*#__PURE__*/React.createElement("div", {
         style: {
           textAlign: "center",
@@ -10829,16 +10062,14 @@ function NutriTrack() {
           color: "#10b981",
           fontWeight: 600
         }
-      }, "\u2713 Imported"), r.duplicateAction === "skip" && /*#__PURE__*/React.createElement("div", {
+      }, "✓ Imported"), r.duplicateAction === "skip" && /*#__PURE__*/React.createElement("div", {
         style: {
           textAlign: "center",
           fontSize: 13,
           color: "#475569"
         }
       }, "Skipped"));
-    }), syncReviewData.some(function (r) {
-      return r.imported;
-    }) && /*#__PURE__*/React.createElement("button", {
+    }), syncReviewData.some(r => r.imported) && /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
@@ -10852,21 +10083,18 @@ function NutriTrack() {
         marginTop: 4
       },
       onClick: importAllReady
-    }, "Done \u2014 Save & Finish")), /*#__PURE__*/React.createElement(BottomNav, null));
+    }, "Done — Save & Finish")), /*#__PURE__*/React.createElement(BottomNav, null));
   }
 
   // ── NOTION INGREDIENT PICKER ──────────────────────────────────────────
   if (view === "notionIngPick" && notionIngPick) {
-    var _syncReviewData$notio;
-    var filteredNotionFoods = notionIngSearch.length > 0 ? allFoods.filter(function (f) {
-      return f.name.toLowerCase().includes(notionIngSearch.toLowerCase());
-    }) : allFoods;
-    var groupedNotionFoods = filteredNotionFoods.reduce(function (acc, f) {
+    const filteredNotionFoods = notionIngSearch.length > 0 ? allFoods.filter(f => f.name.toLowerCase().includes(notionIngSearch.toLowerCase())) : allFoods;
+    const groupedNotionFoods = filteredNotionFoods.reduce((acc, f) => {
       if (!acc[f.cat]) acc[f.cat] = [];
       acc[f.cat].push(f);
       return acc;
     }, {});
-    var currentIng = (_syncReviewData$notio = syncReviewData[notionIngPick.recipeIdx]) === null || _syncReviewData$notio === void 0 ? void 0 : _syncReviewData$notio.ingredients[notionIngPick.ingIdx];
+    const currentIng = syncReviewData[notionIngPick.recipeIdx]?.ingredients[notionIngPick.ingIdx];
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -10879,11 +10107,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setNotionIngPick(null);
         setView("notionReview");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -10905,70 +10133,58 @@ function NutriTrack() {
         color: "#fbbf24"
       }
     }, "Matching: ", /*#__PURE__*/React.createElement("strong", null, currentIng.name), " (", currentIng.amount_g, "g)"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 12
-      }),
-      placeholder: "Search foods\u2026",
-      value: notionIngSearch,
-      onChange: function onChange(e) {
-        return setNotionIngSearch(e.target.value);
       },
+      placeholder: "Search foods…",
+      value: notionIngSearch,
+      onChange: e => setNotionIngSearch(e.target.value),
       autoFocus: true
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         maxHeight: "calc(100vh - 220px)",
         overflowY: "auto"
       }
-    }, Object.entries(groupedNotionFoods).map(function (_ref40) {
-      var _ref41 = _slicedToArray(_ref40, 2),
-        cat = _ref41[0],
-        foods = _ref41[1];
-      return /*#__PURE__*/React.createElement("div", {
-        key: cat
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          fontWeight: 700,
-          color: "#475569",
-          padding: "10px 0 4px",
-          letterSpacing: "0.05em",
-          textTransform: "uppercase"
-        }
-      }, cat), foods.map(function (f) {
-        return /*#__PURE__*/React.createElement("div", {
-          key: f.id,
-          style: S.srchItem,
-          onClick: function onClick() {
-            setSyncReviewData(function (prev) {
-              return prev.map(function (item, ri) {
-                return ri !== notionIngPick.recipeIdx ? item : _objectSpread(_objectSpread({}, item), {}, {
-                  ingredients: item.ingredients.map(function (ing, ii) {
-                    return ii !== notionIngPick.ingIdx ? ing : _objectSpread(_objectSpread({}, ing), {}, {
-                      match: f,
-                      skipped: false
-                    });
-                  })
-                });
-              });
-            });
-            setNotionIngPick(null);
-            setView("notionReview");
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 12,
-            color: "#f59e0b",
-            "float": "right"
-          }
-        }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 14,
-            fontWeight: 500,
-            color: "#e2e8f0"
-          }
-        }, f.name));
-      }));
-    }), filteredNotionFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
+    }, Object.entries(groupedNotionFoods).map(([cat, foods]) => /*#__PURE__*/React.createElement("div", {
+      key: cat
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: "#475569",
+        padding: "10px 0 4px",
+        letterSpacing: "0.05em",
+        textTransform: "uppercase"
+      }
+    }, cat), foods.map(f => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: S.srchItem,
+      onClick: () => {
+        setSyncReviewData(prev => prev.map((item, ri) => ri !== notionIngPick.recipeIdx ? item : {
+          ...item,
+          ingredients: item.ingredients.map((ing, ii) => ii !== notionIngPick.ingIdx ? ing : {
+            ...ing,
+            match: f,
+            skipped: false
+          })
+        }));
+        setNotionIngPick(null);
+        setView("notionReview");
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: "#f59e0b",
+        float: "right"
+      }
+    }, fmtE(f.cal), " ", energyLabel, "/100g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, f.name))))), filteredNotionFoods.length === 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         padding: 20,
         textAlign: "center",
@@ -10979,98 +10195,80 @@ function NutriTrack() {
   }
   // ── DETAIL VIEWS ──────────────────────────────────────────────────────
   if (view === "proDetail") {
-    var aaTotals = {};
-    AA_KEYS.forEach(function (k) {
+    const aaTotals = {};
+    AA_KEYS.forEach(k => {
       aaTotals[k] = 0;
     });
-    dayLog.forEach(function (e) {
+    dayLog.forEach(e => {
       if (e.type === "exercise" || e.type === "supplement") return;
       if (e.type === "recipe") {
-        (e.derivedIngredients || []).forEach(function (ing) {
-          var m = ing.amount_g / 100;
+        (e.derivedIngredients || []).forEach(ing => {
+          const m = ing.amount_g / 100;
           if (ing.snapshot) {
-            AA_KEYS.forEach(function (k) {
-              var _ing$snapshot$k4;
-              aaTotals[k] += ((_ing$snapshot$k4 = ing.snapshot[k]) !== null && _ing$snapshot$k4 !== void 0 ? _ing$snapshot$k4 : 0) * m;
+            AA_KEYS.forEach(k => {
+              aaTotals[k] += (ing.snapshot[k] ?? 0) * m;
             });
           } else {
-            var f = allFoods.find(function (x) {
-              return x.id === ing.foodId;
-            });
+            const f = allFoods.find(x => x.id === ing.foodId);
             if (!f) return;
-            AA_KEYS.forEach(function (k) {
-              var _f$k3;
-              aaTotals[k] += ((_f$k3 = f[k]) !== null && _f$k3 !== void 0 ? _f$k3 : 0) * m;
+            AA_KEYS.forEach(k => {
+              aaTotals[k] += (f[k] ?? 0) * m;
             });
           }
         });
         return;
       }
-      var m = e.amount / 100;
+      const m = e.amount / 100;
       if (e.snapshot) {
-        AA_KEYS.forEach(function (k) {
-          var _e$snapshot$k3;
-          aaTotals[k] += ((_e$snapshot$k3 = e.snapshot[k]) !== null && _e$snapshot$k3 !== void 0 ? _e$snapshot$k3 : 0) * m;
+        AA_KEYS.forEach(k => {
+          aaTotals[k] += (e.snapshot[k] ?? 0) * m;
         });
       } else {
-        var f = allFoods.find(function (x) {
-          return x.id === e.foodId;
-        });
+        const f = allFoods.find(x => x.id === e.foodId);
         if (!f) return;
-        AA_KEYS.forEach(function (k) {
-          var _f$k4;
-          aaTotals[k] += ((_f$k4 = f[k]) !== null && _f$k4 !== void 0 ? _f$k4 : 0) * m;
+        AA_KEYS.forEach(k => {
+          aaTotals[k] += (f[k] ?? 0) * m;
         });
       }
     });
-    var aaGoals = computeAAGoals(profile.weightKg);
+    const aaGoals = computeAAGoals(profile.weightKg);
     // Apply same exercise multiplier as protein goal
-    var scaledAAGoals = Object.fromEntries(Object.entries(aaGoals).map(function (_ref42) {
-      var _ref43 = _slicedToArray(_ref42, 2),
-        k = _ref43[0],
-        v = _ref43[1];
-      return [k, v * proMultiplier];
-    }));
-    var limitingKey = "aaLys",
+    const scaledAAGoals = Object.fromEntries(Object.entries(aaGoals).map(([k, v]) => [k, v * proMultiplier]));
+    let limitingKey = "aaLys",
       lowestPct = Infinity;
-    AA_KEYS.forEach(function (k) {
-      var p = aaTotals[k] / scaledAAGoals[k] * 100;
+    AA_KEYS.forEach(k => {
+      const p = aaTotals[k] / scaledAAGoals[k] * 100;
       if (p < lowestPct) {
         lowestPct = p;
         limitingKey = k;
       }
     });
-    var proCont = dayLog.flatMap(function (e) {
-      var _e$snapshot$pro, _allFoods$find$pro, _allFoods$find;
+    const proCont = dayLog.flatMap(e => {
       if (e.type === "exercise") return [];
       if (e.type === "supplement") {
-        var v = suppContrib(e, "pro");
+        const v = suppContrib(e, "pro");
         return v > 0 ? [{
-          name: "\uD83D\uDC8A ".concat(e.stackName),
+          name: `💊 ${e.stackName}`,
           label: "supplement",
           value: v,
           isSupp: true
         }] : [];
       }
       if (e.type === "recipe") {
-        var _n2 = computeEntryNutrition(e.derivedIngredients || [], allFoods);
-        return _n2.pro ? [{
-          name: "\uD83D\uDCD6 ".concat(e.recipeName),
-          label: "".concat(e.servings, " srv"),
-          value: _n2.pro
+        const n = computeEntryNutrition(e.derivedIngredients || [], allFoods);
+        return n.pro ? [{
+          name: `📖 ${e.recipeName}`,
+          label: `${e.servings} srv`,
+          value: n.pro
         }] : [];
       }
-      var val = e.snapshot ? ((_e$snapshot$pro = e.snapshot.pro) !== null && _e$snapshot$pro !== void 0 ? _e$snapshot$pro : 0) * e.amount / 100 : ((_allFoods$find$pro = (_allFoods$find = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      })) === null || _allFoods$find === void 0 ? void 0 : _allFoods$find.pro) !== null && _allFoods$find$pro !== void 0 ? _allFoods$find$pro : 0) * e.amount / 100;
+      const val = e.snapshot ? (e.snapshot.pro ?? 0) * e.amount / 100 : (allFoods.find(x => x.id === e.foodId)?.pro ?? 0) * e.amount / 100;
       return val ? [{
         name: e.foodName,
-        label: "".concat(e.amount, "g"),
+        label: `${e.amount}g`,
         value: val
       }] : [];
-    }).sort(function (a, b) {
-      return b.value - a.value;
-    });
+    }).sort((a, b) => b.value - a.value);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -11083,10 +10281,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("log")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -11098,40 +10294,29 @@ function NutriTrack() {
     })), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         textAlign: "center"
-      })
-    }, function () {
-      var k = "pro",
+      }
+    }, (() => {
+      const k = "pro",
         goal = effectiveGoals[k] || 1,
-        nv = allFoodsForRender.map(function (f) {
-          return f[k];
-        }).filter(function (v) {
-          return v != null && v > 0;
-        }).sort(function (a, b) {
-          return a - b;
-        }),
+        nv = allFoodsForRender.map(f => f[k]).filter(v => v != null && v > 0).sort((a, b) => a - b),
         med = nv.length ? nv[Math.floor(nv.length / 2)] : null;
-      var est = 0;
-      dayLog.forEach(function (e) {
-        var _allFoodsForRender$fi4;
+      let est = 0;
+      dayLog.forEach(e => {
         if (e.type === "exercise" || e.type === "supplement") return;
         if (e.type === "recipe") {
-          (e.derivedIngredients || []).forEach(function (ing) {
-            var _allFoodsForRender$fi3;
-            var v = ing.snapshot ? ing.snapshot[k] : (_allFoodsForRender$fi3 = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            })) === null || _allFoodsForRender$fi3 === void 0 ? void 0 : _allFoodsForRender$fi3[k];
+          (e.derivedIngredients || []).forEach(ing => {
+            const v = ing.snapshot ? ing.snapshot[k] : allFoodsForRender.find(f => f.id === ing.foodId)?.[k];
             if (v === null || v === undefined) est += med != null ? ing.amount_g / 100 * med : 0;
           });
           return;
         }
-        var v = e.snapshot ? e.snapshot[k] : (_allFoodsForRender$fi4 = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        })) === null || _allFoodsForRender$fi4 === void 0 ? void 0 : _allFoodsForRender$fi4[k];
+        const v = e.snapshot ? e.snapshot[k] : allFoodsForRender.find(f => f.id === e.foodId)?.[k];
         if (v === null || v === undefined) est += med != null ? (e.amount || 0) / 100 * med : 0;
       });
-      var arc = Math.min(est / goal, 1);
+      const arc = Math.min(est / goal, 1);
       return /*#__PURE__*/React.createElement(Ring, {
         value: totals.pro,
         max: effectiveGoals.pro,
@@ -11154,7 +10339,7 @@ function NutriTrack() {
         fill: "#64748b",
         fontSize: 10
       }, "/ ", effectiveGoals.pro, "g"));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12,
         fontSize: 14,
@@ -11181,8 +10366,8 @@ function NutriTrack() {
       style: {
         color: "#4ade80"
       }
-    }, " \xB7 ", proMultiplier.toFixed(2), "\xD7 exercise scaling")), AA_KEYS.map(function (k) {
-      var val = aaTotals[k],
+    }, " · ", proMultiplier.toFixed(2), "× exercise scaling")), AA_KEYS.map(k => {
+      const val = aaTotals[k],
         ear = scaledAAGoals[k],
         bp = Math.min(val / ear * 100, 100),
         rp = Math.round(val / ear * 100),
@@ -11247,7 +10432,7 @@ function NutriTrack() {
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           height: "100%",
-          width: "".concat(bp, "%"),
+          width: `${bp}%`,
           background: col,
           borderRadius: 3,
           transition: "width 0.5s ease"
@@ -11264,73 +10449,66 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Today's Sources"), proCont.map(function (c, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: i,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "7px 0",
-          borderBottom: i < proCont.length - 1 ? "1px solid #1e293b" : "none",
-          background: c.isSupp ? "rgba(167,139,250,0.05)" : "transparent",
-          borderRadius: c.isSupp ? 6 : 0
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          color: c.isSupp ? "#c4b5fd" : "#e2e8f0"
-        }
-      }, c.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, c.label)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: NUTRIENT_META.pro.color
-        }
-      }, n1(c.value), "g"));
-    }))));
+    }, "Today's Sources"), proCont.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "7px 0",
+        borderBottom: i < proCont.length - 1 ? "1px solid #1e293b" : "none",
+        background: c.isSupp ? "rgba(167,139,250,0.05)" : "transparent",
+        borderRadius: c.isSupp ? 6 : 0
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: c.isSupp ? "#c4b5fd" : "#e2e8f0"
+      }
+    }, c.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, c.label)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: NUTRIENT_META.pro.color
+      }
+    }, n1(c.value), "g"))))));
   }
   if (view === "calDetail") {
-    var proK = totals.pro * 4,
+    const proK = totals.pro * 4,
       carbK = totals.carb * 4,
       fatK = totals.fat * 9,
       totK = proK + carbK + fatK;
-    var calCont = dayLog.flatMap(function (e) {
-      var _e$snapshot$cal3, _allFoods$find$cal, _allFoods$find2;
+    const calCont = dayLog.flatMap(e => {
       if (e.type === "exercise") return [];
       if (e.type === "supplement") {
-        var v = suppContrib(e, "cal");
+        const v = suppContrib(e, "cal");
         return v > 0 ? [{
-          name: "\uD83D\uDC8A ".concat(e.stackName),
+          name: `💊 ${e.stackName}`,
           label: "supplement",
           value: v,
           isSupp: true
         }] : [];
       }
       if (e.type === "recipe") {
-        var _n3 = computeEntryNutrition(e.derivedIngredients || [], allFoods);
-        return _n3.cal ? [{
-          name: "\uD83D\uDCD6 ".concat(e.recipeName),
-          label: "".concat(e.servings, " srv"),
-          value: _n3.cal
+        const n = computeEntryNutrition(e.derivedIngredients || [], allFoods);
+        return n.cal ? [{
+          name: `📖 ${e.recipeName}`,
+          label: `${e.servings} srv`,
+          value: n.cal
         }] : [];
       }
-      var val = e.snapshot ? ((_e$snapshot$cal3 = e.snapshot.cal) !== null && _e$snapshot$cal3 !== void 0 ? _e$snapshot$cal3 : 0) * e.amount / 100 : ((_allFoods$find$cal = (_allFoods$find2 = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      })) === null || _allFoods$find2 === void 0 ? void 0 : _allFoods$find2.cal) !== null && _allFoods$find$cal !== void 0 ? _allFoods$find$cal : 0) * e.amount / 100;
+      const val = e.snapshot ? (e.snapshot.cal ?? 0) * e.amount / 100 : (allFoods.find(x => x.id === e.foodId)?.cal ?? 0) * e.amount / 100;
       return val ? [{
         name: e.foodName,
-        label: "".concat(e.amount, "g"),
+        label: `${e.amount}g`,
         value: val
       }] : [];
-    }).sort(function (a, b) {
-      return b.value - a.value;
-    });
+    }).sort((a, b) => b.value - a.value);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -11343,10 +10521,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("log")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -11358,40 +10534,29 @@ function NutriTrack() {
     })), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         textAlign: "center"
-      })
-    }, function () {
-      var k = "cal",
+      }
+    }, (() => {
+      const k = "cal",
         goal = effectiveGoals[k] || 1,
-        nv = allFoodsForRender.map(function (f) {
-          return f[k];
-        }).filter(function (v) {
-          return v != null && v > 0;
-        }).sort(function (a, b) {
-          return a - b;
-        }),
+        nv = allFoodsForRender.map(f => f[k]).filter(v => v != null && v > 0).sort((a, b) => a - b),
         med = nv.length ? nv[Math.floor(nv.length / 2)] : null;
-      var est = 0;
-      dayLog.forEach(function (e) {
-        var _allFoodsForRender$fi6;
+      let est = 0;
+      dayLog.forEach(e => {
         if (e.type === "exercise" || e.type === "supplement") return;
         if (e.type === "recipe") {
-          (e.derivedIngredients || []).forEach(function (ing) {
-            var _allFoodsForRender$fi5;
-            var v = ing.snapshot ? ing.snapshot[k] : (_allFoodsForRender$fi5 = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            })) === null || _allFoodsForRender$fi5 === void 0 ? void 0 : _allFoodsForRender$fi5[k];
+          (e.derivedIngredients || []).forEach(ing => {
+            const v = ing.snapshot ? ing.snapshot[k] : allFoodsForRender.find(f => f.id === ing.foodId)?.[k];
             if (v === null || v === undefined) est += med != null ? ing.amount_g / 100 * med : 0;
           });
           return;
         }
-        var v = e.snapshot ? e.snapshot[k] : (_allFoodsForRender$fi6 = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        })) === null || _allFoodsForRender$fi6 === void 0 ? void 0 : _allFoodsForRender$fi6[k];
+        const v = e.snapshot ? e.snapshot[k] : allFoodsForRender.find(f => f.id === e.foodId)?.[k];
         if (v === null || v === undefined) est += med != null ? (e.amount || 0) / 100 * med : 0;
       });
-      var arc = Math.min(est / goal, 1);
+      const arc = Math.min(est / goal, 1);
       return /*#__PURE__*/React.createElement(Ring, {
         value: totals.cal,
         max: effectiveGoals.cal,
@@ -11414,7 +10579,7 @@ function NutriTrack() {
         fill: "#64748b",
         fontSize: 10
       }, "/ ", fmtE(effectiveGoals.cal), " ", energyLabel));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12,
         fontSize: 14,
@@ -11442,17 +10607,17 @@ function NutriTrack() {
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(proK / totK * 100, "%"),
+        width: `${proK / totK * 100}%`,
         background: NUTRIENT_META.pro.color
       }
     }), /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(carbK / totK * 100, "%"),
+        width: `${carbK / totK * 100}%`,
         background: NUTRIENT_META.carb.color
       }
     }), /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(fatK / totK * 100, "%"),
+        width: `${fatK / totK * 100}%`,
         background: NUTRIENT_META.fat.color
       }
     })) : /*#__PURE__*/React.createElement("div", {
@@ -11480,63 +10645,62 @@ function NutriTrack() {
       kcal: fatK,
       grams: totals.fat,
       mult: "×9"
-    }].map(function (_ref44, i) {
-      var key = _ref44.key,
-        label = _ref44.label,
-        kcal = _ref44.kcal,
-        grams = _ref44.grams,
-        mult = _ref44.mult;
-      return /*#__PURE__*/React.createElement("div", {
-        key: key,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px 0",
-          borderBottom: i < 2 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 10
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 12,
-          height: 12,
-          borderRadius: 3,
-          background: NUTRIENT_META[key].color,
-          flexShrink: 0
-        }
-      }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          color: "#e2e8f0",
-          fontWeight: 500
-        }
-      }, label), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, n1(grams), "g ", mult))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          textAlign: "right"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 15,
-          fontWeight: 700,
-          color: NUTRIENT_META[key].color
-        }
-      }, fmtE(kcal), " ", energyLabel), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, totK > 0 ? Math.round(kcal / totK * 100) : 0, "%")));
-    })), calCont.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }].map(({
+      key,
+      label,
+      kcal,
+      grams,
+      mult
+    }, i) => /*#__PURE__*/React.createElement("div", {
+      key: key,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 0",
+        borderBottom: i < 2 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 12,
+        height: 12,
+        borderRadius: 3,
+        background: NUTRIENT_META[key].color,
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        color: "#e2e8f0",
+        fontWeight: 500
+      }
+    }, label), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, n1(grams), "g ", mult))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: "right"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 15,
+        fontWeight: 700,
+        color: NUTRIENT_META[key].color
+      }
+    }, fmtE(kcal), " ", energyLabel), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, totK > 0 ? Math.round(kcal / totK * 100) : 0, "%"))))), calCont.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -11547,99 +10711,85 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Today's Sources"), calCont.map(function (c, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: i,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "7px 0",
-          borderBottom: i < calCont.length - 1 ? "1px solid #1e293b" : "none",
-          background: c.isSupp ? "rgba(167,139,250,0.05)" : "transparent",
-          borderRadius: c.isSupp ? 6 : 0
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          color: c.isSupp ? "#c4b5fd" : "#e2e8f0"
-        }
-      }, c.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, c.label)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: NUTRIENT_META.cal.color
-        }
-      }, fmtE(c.value), " ", energyLabel));
-    }))));
+    }, "Today's Sources"), calCont.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "7px 0",
+        borderBottom: i < calCont.length - 1 ? "1px solid #1e293b" : "none",
+        background: c.isSupp ? "rgba(167,139,250,0.05)" : "transparent",
+        borderRadius: c.isSupp ? 6 : 0
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: c.isSupp ? "#c4b5fd" : "#e2e8f0"
+      }
+    }, c.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, c.label)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: NUTRIENT_META.cal.color
+      }
+    }, fmtE(c.value), " ", energyLabel))))));
   }
   if (view === "fibDetail") {
-    var fibSol = dayLog.reduce(function (s, e) {
-      var _e$snapshot$fibSol, _f$fibSol;
+    const fibSol = dayLog.reduce((s, e) => {
       if (e.type === "exercise" || e.type === "supplement") return s;
       if (e.type === "recipe") return s + recipeSubtotal(e, "fibSol");
-      if (e.snapshot) return s + ((_e$snapshot$fibSol = e.snapshot.fibSol) !== null && _e$snapshot$fibSol !== void 0 ? _e$snapshot$fibSol : 0) * e.amount / 100;
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
-      return s + (f ? ((_f$fibSol = f.fibSol) !== null && _f$fibSol !== void 0 ? _f$fibSol : 0) * e.amount / 100 : 0);
+      if (e.snapshot) return s + (e.snapshot.fibSol ?? 0) * e.amount / 100;
+      const f = allFoods.find(x => x.id === e.foodId);
+      return s + (f ? (f.fibSol ?? 0) * e.amount / 100 : 0);
     }, 0);
-    var fibInsol = dayLog.reduce(function (s, e) {
-      var _e$snapshot$fibInsol, _f$fibInsol;
+    const fibInsol = dayLog.reduce((s, e) => {
       if (e.type === "exercise" || e.type === "supplement") return s;
       if (e.type === "recipe") return s + recipeSubtotal(e, "fibInsol");
-      if (e.snapshot) return s + ((_e$snapshot$fibInsol = e.snapshot.fibInsol) !== null && _e$snapshot$fibInsol !== void 0 ? _e$snapshot$fibInsol : 0) * e.amount / 100;
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
-      return s + (f ? ((_f$fibInsol = f.fibInsol) !== null && _f$fibInsol !== void 0 ? _f$fibInsol : 0) * e.amount / 100 : 0);
+      if (e.snapshot) return s + (e.snapshot.fibInsol ?? 0) * e.amount / 100;
+      const f = allFoods.find(x => x.id === e.foodId);
+      return s + (f ? (f.fibInsol ?? 0) * e.amount / 100 : 0);
     }, 0);
-    var fibT = fibSol + fibInsol;
-    var fibCont = dayLog.flatMap(function (e) {
-      var _f$fibSol2, _f$fibInsol2;
+    const fibT = fibSol + fibInsol;
+    const fibCont = dayLog.flatMap(e => {
       if (e.type === "exercise" || e.type === "supplement") return [];
       if (e.type === "recipe") {
-        var _n4 = computeEntryNutrition(e.derivedIngredients || [], allFoods);
-        if (!_n4.fib) return [];
+        const n = computeEntryNutrition(e.derivedIngredients || [], allFoods);
+        if (!n.fib) return [];
         return [{
-          name: "\uD83D\uDCD6 ".concat(e.recipeName),
-          label: "".concat(e.servings, " srv"),
-          total: _n4.fib,
+          name: `📖 ${e.recipeName}`,
+          label: `${e.servings} srv`,
+          total: n.fib,
           sol: recipeSubtotal(e, "fibSol"),
           insol: recipeSubtotal(e, "fibInsol")
         }];
       }
       if (e.snapshot) {
-        var _e$snapshot$fib, _e$snapshot$fibSol2, _e$snapshot$fibInsol2;
-        var t = ((_e$snapshot$fib = e.snapshot.fib) !== null && _e$snapshot$fib !== void 0 ? _e$snapshot$fib : 0) * e.amount / 100;
+        const t = (e.snapshot.fib ?? 0) * e.amount / 100;
         if (!t) return [];
         return [{
           name: e.foodName,
-          label: "".concat(e.amount, "g"),
+          label: `${e.amount}g`,
           total: t,
-          sol: ((_e$snapshot$fibSol2 = e.snapshot.fibSol) !== null && _e$snapshot$fibSol2 !== void 0 ? _e$snapshot$fibSol2 : 0) * e.amount / 100,
-          insol: ((_e$snapshot$fibInsol2 = e.snapshot.fibInsol) !== null && _e$snapshot$fibInsol2 !== void 0 ? _e$snapshot$fibInsol2 : 0) * e.amount / 100
+          sol: (e.snapshot.fibSol ?? 0) * e.amount / 100,
+          insol: (e.snapshot.fibInsol ?? 0) * e.amount / 100
         }];
       }
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
+      const f = allFoods.find(x => x.id === e.foodId);
       if (!f || !f.fib) return [];
       return [{
         name: e.foodName,
-        label: "".concat(e.amount, "g"),
+        label: `${e.amount}g`,
         total: f.fib * e.amount / 100,
-        sol: ((_f$fibSol2 = f.fibSol) !== null && _f$fibSol2 !== void 0 ? _f$fibSol2 : 0) * e.amount / 100,
-        insol: ((_f$fibInsol2 = f.fibInsol) !== null && _f$fibInsol2 !== void 0 ? _f$fibInsol2 : 0) * e.amount / 100
+        sol: (f.fibSol ?? 0) * e.amount / 100,
+        insol: (f.fibInsol ?? 0) * e.amount / 100
       }];
-    }).sort(function (a, b) {
-      return b.total - a.total;
-    });
+    }).sort((a, b) => b.total - a.total);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -11652,10 +10802,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("log")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -11667,40 +10815,29 @@ function NutriTrack() {
     })), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         textAlign: "center"
-      })
-    }, function () {
-      var k = "fib",
+      }
+    }, (() => {
+      const k = "fib",
         goal = effectiveGoals[k] || 1,
-        nv = allFoodsForRender.map(function (f) {
-          return f[k];
-        }).filter(function (v) {
-          return v != null && v > 0;
-        }).sort(function (a, b) {
-          return a - b;
-        }),
+        nv = allFoodsForRender.map(f => f[k]).filter(v => v != null && v > 0).sort((a, b) => a - b),
         med = nv.length ? nv[Math.floor(nv.length / 2)] : null;
-      var est = 0;
-      dayLog.forEach(function (e) {
-        var _allFoodsForRender$fi8;
+      let est = 0;
+      dayLog.forEach(e => {
         if (e.type === "exercise" || e.type === "supplement") return;
         if (e.type === "recipe") {
-          (e.derivedIngredients || []).forEach(function (ing) {
-            var _allFoodsForRender$fi7;
-            var v = ing.snapshot ? ing.snapshot[k] : (_allFoodsForRender$fi7 = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            })) === null || _allFoodsForRender$fi7 === void 0 ? void 0 : _allFoodsForRender$fi7[k];
+          (e.derivedIngredients || []).forEach(ing => {
+            const v = ing.snapshot ? ing.snapshot[k] : allFoodsForRender.find(f => f.id === ing.foodId)?.[k];
             if (v === null || v === undefined) est += med != null ? ing.amount_g / 100 * med : 0;
           });
           return;
         }
-        var v = e.snapshot ? e.snapshot[k] : (_allFoodsForRender$fi8 = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        })) === null || _allFoodsForRender$fi8 === void 0 ? void 0 : _allFoodsForRender$fi8[k];
+        const v = e.snapshot ? e.snapshot[k] : allFoodsForRender.find(f => f.id === e.foodId)?.[k];
         if (v === null || v === undefined) est += med != null ? (e.amount || 0) / 100 * med : 0;
       });
-      var arc = Math.min(est / goal, 1);
+      const arc = Math.min(est / goal, 1);
       return /*#__PURE__*/React.createElement(Ring, {
         value: totals.fib,
         max: effectiveGoals.fib,
@@ -11723,7 +10860,7 @@ function NutriTrack() {
         fill: "#64748b",
         fontSize: 10
       }, "/ ", effectiveGoals.fib, "g"));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12,
         fontSize: 14,
@@ -11751,12 +10888,12 @@ function NutriTrack() {
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(fibSol / fibT * 100, "%"),
+        width: `${fibSol / fibT * 100}%`,
         background: FIB_SOL_COLOR
       }
     }), /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(fibInsol / fibT * 100, "%"),
+        width: `${fibInsol / fibT * 100}%`,
         background: FIB_INSOL_COLOR
       }
     })) : /*#__PURE__*/React.createElement("div", {
@@ -11776,63 +10913,62 @@ function NutriTrack() {
       value: fibInsol,
       color: FIB_INSOL_COLOR,
       note: "Adds bulk, speeds gut transit, supports bowel regularity"
-    }].map(function (_ref45, i) {
-      var label = _ref45.label,
-        value = _ref45.value,
-        color = _ref45.color,
-        note = _ref45.note;
-      return /*#__PURE__*/React.createElement("div", {
-        key: label,
-        style: {
-          padding: "10px 0",
-          borderBottom: i === 0 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 10
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 12,
-          height: 12,
-          borderRadius: 3,
-          background: color
-        }
-      }), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 14,
-          color: "#e2e8f0",
-          fontWeight: 500
-        }
-      }, label)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 15,
-          fontWeight: 700,
-          color: color
-        }
-      }, n1(value), "g"), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 11,
-          color: "#64748b",
-          marginLeft: 6
-        }
-      }, fibT > 0 ? Math.round(value / fibT * 100) : 0, "%"))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#475569",
-          marginTop: 4,
-          paddingLeft: 22
-        }
-      }, note));
-    })), fibCont.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }].map(({
+      label,
+      value,
+      color,
+      note
+    }, i) => /*#__PURE__*/React.createElement("div", {
+      key: label,
+      style: {
+        padding: "10px 0",
+        borderBottom: i === 0 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 12,
+        height: 12,
+        borderRadius: 3,
+        background: color
+      }
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 14,
+        color: "#e2e8f0",
+        fontWeight: 500
+      }
+    }, label)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 15,
+        fontWeight: 700,
+        color
+      }
+    }, n1(value), "g"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 11,
+        color: "#64748b",
+        marginLeft: 6
+      }
+    }, fibT > 0 ? Math.round(value / fibT * 100) : 0, "%"))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        marginTop: 4,
+        paddingLeft: 22
+      }
+    }, note)))), fibCont.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -11843,46 +10979,44 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Today's Sources"), fibCont.map(function (c, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: i,
-        style: {
-          padding: "8px 0",
-          borderBottom: i < fibCont.length - 1 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, c.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, c.label)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          textAlign: "right"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: NUTRIENT_META.fib.color
-        }
-      }, n1(c.total), "g"), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, n1(c.sol), " sol / ", n1(c.insol), " insol"))));
-    })), /*#__PURE__*/React.createElement("div", {
+    }, "Today's Sources"), fibCont.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        padding: "8px 0",
+        borderBottom: i < fibCont.length - 1 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, c.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, c.label)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: "right"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: NUTRIENT_META.fib.color
+      }
+    }, n1(c.total), "g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, n1(c.sol), " sol / ", n1(c.insol), " insol")))))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -11893,118 +11027,97 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Top Sources (per 100g)"), _toConsumableArray(allFoods).sort(function (a, b) {
-      var _b$fib, _a$fib;
-      return ((_b$fib = b.fib) !== null && _b$fib !== void 0 ? _b$fib : 0) - ((_a$fib = a.fib) !== null && _a$fib !== void 0 ? _a$fib : 0);
-    }).slice(0, 8).map(function (f, i) {
-      var _f$fib, _f$fibSol3, _f$fibInsol3;
-      return /*#__PURE__*/React.createElement("div", {
-        key: f.id,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "7px 0",
-          borderBottom: i < 7 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, f.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          textAlign: "right"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: NUTRIENT_META.fib.color
-        }
-      }, n1((_f$fib = f.fib) !== null && _f$fib !== void 0 ? _f$fib : null), "g"), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, n1((_f$fibSol3 = f.fibSol) !== null && _f$fibSol3 !== void 0 ? _f$fibSol3 : null), " sol / ", n1((_f$fibInsol3 = f.fibInsol) !== null && _f$fibInsol3 !== void 0 ? _f$fibInsol3 : null), " insol")));
-    }))));
+    }, "Top Sources (per 100g)"), [...allFoods].sort((a, b) => (b.fib ?? 0) - (a.fib ?? 0)).slice(0, 8).map((f, i) => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "7px 0",
+        borderBottom: i < 7 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, f.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: "right"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: NUTRIENT_META.fib.color
+      }
+    }, n1(f.fib ?? null), "g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, n1(f.fibSol ?? null), " sol / ", n1(f.fibInsol ?? null), " insol")))))));
   }
   if (view === "fatDetail") {
-    var fatSat = dayLog.reduce(function (s, e) {
-      var _e$snapshot$fatSat, _f$fatSat;
+    const fatSat = dayLog.reduce((s, e) => {
       if (e.type === "exercise" || e.type === "supplement") return s;
       if (e.type === "recipe") return s + recipeSubtotal(e, "fatSat");
-      if (e.snapshot) return s + ((_e$snapshot$fatSat = e.snapshot.fatSat) !== null && _e$snapshot$fatSat !== void 0 ? _e$snapshot$fatSat : 0) * e.amount / 100;
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
-      return s + (f ? ((_f$fatSat = f.fatSat) !== null && _f$fatSat !== void 0 ? _f$fatSat : 0) * e.amount / 100 : 0);
+      if (e.snapshot) return s + (e.snapshot.fatSat ?? 0) * e.amount / 100;
+      const f = allFoods.find(x => x.id === e.foodId);
+      return s + (f ? (f.fatSat ?? 0) * e.amount / 100 : 0);
     }, 0);
-    var fatMufa = dayLog.reduce(function (s, e) {
-      var _e$snapshot$fatMufa, _f$fatMufa;
+    const fatMufa = dayLog.reduce((s, e) => {
       if (e.type === "exercise" || e.type === "supplement") return s;
       if (e.type === "recipe") return s + recipeSubtotal(e, "fatMufa");
-      if (e.snapshot) return s + ((_e$snapshot$fatMufa = e.snapshot.fatMufa) !== null && _e$snapshot$fatMufa !== void 0 ? _e$snapshot$fatMufa : 0) * e.amount / 100;
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
-      return s + (f ? ((_f$fatMufa = f.fatMufa) !== null && _f$fatMufa !== void 0 ? _f$fatMufa : 0) * e.amount / 100 : 0);
+      if (e.snapshot) return s + (e.snapshot.fatMufa ?? 0) * e.amount / 100;
+      const f = allFoods.find(x => x.id === e.foodId);
+      return s + (f ? (f.fatMufa ?? 0) * e.amount / 100 : 0);
     }, 0);
-    var fatPufa = dayLog.reduce(function (s, e) {
-      var _e$snapshot$fatPufa, _f$fatPufa;
+    const fatPufa = dayLog.reduce((s, e) => {
       if (e.type === "exercise" || e.type === "supplement") return s;
       if (e.type === "recipe") return s + recipeSubtotal(e, "fatPufa");
-      if (e.snapshot) return s + ((_e$snapshot$fatPufa = e.snapshot.fatPufa) !== null && _e$snapshot$fatPufa !== void 0 ? _e$snapshot$fatPufa : 0) * e.amount / 100;
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
-      return s + (f ? ((_f$fatPufa = f.fatPufa) !== null && _f$fatPufa !== void 0 ? _f$fatPufa : 0) * e.amount / 100 : 0);
+      if (e.snapshot) return s + (e.snapshot.fatPufa ?? 0) * e.amount / 100;
+      const f = allFoods.find(x => x.id === e.foodId);
+      return s + (f ? (f.fatPufa ?? 0) * e.amount / 100 : 0);
     }, 0);
-    var fatT = fatSat + fatMufa + fatPufa;
-    var fatCont = dayLog.flatMap(function (e) {
-      var _f$fatSat2, _f$fatMufa2, _f$fatPufa2;
+    const fatT = fatSat + fatMufa + fatPufa;
+    const fatCont = dayLog.flatMap(e => {
       if (e.type === "exercise" || e.type === "supplement") return [];
       if (e.type === "recipe") {
-        var _n5 = computeEntryNutrition(e.derivedIngredients || [], allFoods);
-        if (!_n5.fat) return [];
+        const n = computeEntryNutrition(e.derivedIngredients || [], allFoods);
+        if (!n.fat) return [];
         return [{
-          name: "\uD83D\uDCD6 ".concat(e.recipeName),
-          label: "".concat(e.servings, " srv"),
-          total: _n5.fat,
+          name: `📖 ${e.recipeName}`,
+          label: `${e.servings} srv`,
+          total: n.fat,
           sat: recipeSubtotal(e, "fatSat"),
           mufa: recipeSubtotal(e, "fatMufa"),
           pufa: recipeSubtotal(e, "fatPufa")
         }];
       }
       if (e.snapshot) {
-        var _e$snapshot$fat, _e$snapshot$fatSat2, _e$snapshot$fatMufa2, _e$snapshot$fatPufa2;
-        var t = ((_e$snapshot$fat = e.snapshot.fat) !== null && _e$snapshot$fat !== void 0 ? _e$snapshot$fat : 0) * e.amount / 100;
+        const t = (e.snapshot.fat ?? 0) * e.amount / 100;
         if (!t) return [];
         return [{
           name: e.foodName,
-          label: "".concat(e.amount, "g"),
+          label: `${e.amount}g`,
           total: t,
-          sat: ((_e$snapshot$fatSat2 = e.snapshot.fatSat) !== null && _e$snapshot$fatSat2 !== void 0 ? _e$snapshot$fatSat2 : 0) * e.amount / 100,
-          mufa: ((_e$snapshot$fatMufa2 = e.snapshot.fatMufa) !== null && _e$snapshot$fatMufa2 !== void 0 ? _e$snapshot$fatMufa2 : 0) * e.amount / 100,
-          pufa: ((_e$snapshot$fatPufa2 = e.snapshot.fatPufa) !== null && _e$snapshot$fatPufa2 !== void 0 ? _e$snapshot$fatPufa2 : 0) * e.amount / 100
+          sat: (e.snapshot.fatSat ?? 0) * e.amount / 100,
+          mufa: (e.snapshot.fatMufa ?? 0) * e.amount / 100,
+          pufa: (e.snapshot.fatPufa ?? 0) * e.amount / 100
         }];
       }
-      var f = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      });
+      const f = allFoods.find(x => x.id === e.foodId);
       if (!f || !f.fat) return [];
       return [{
         name: e.foodName,
-        label: "".concat(e.amount, "g"),
+        label: `${e.amount}g`,
         total: f.fat * e.amount / 100,
-        sat: ((_f$fatSat2 = f.fatSat) !== null && _f$fatSat2 !== void 0 ? _f$fatSat2 : 0) * e.amount / 100,
-        mufa: ((_f$fatMufa2 = f.fatMufa) !== null && _f$fatMufa2 !== void 0 ? _f$fatMufa2 : 0) * e.amount / 100,
-        pufa: ((_f$fatPufa2 = f.fatPufa) !== null && _f$fatPufa2 !== void 0 ? _f$fatPufa2 : 0) * e.amount / 100
+        sat: (f.fatSat ?? 0) * e.amount / 100,
+        mufa: (f.fatMufa ?? 0) * e.amount / 100,
+        pufa: (f.fatPufa ?? 0) * e.amount / 100
       }];
-    }).sort(function (a, b) {
-      return b.total - a.total;
-    });
+    }).sort((a, b) => b.total - a.total);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -12017,10 +11130,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("log")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -12032,40 +11143,29 @@ function NutriTrack() {
     })), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         textAlign: "center"
-      })
-    }, function () {
-      var k = "fat",
+      }
+    }, (() => {
+      const k = "fat",
         goal = effectiveGoals[k] || 1,
-        nv = allFoodsForRender.map(function (f) {
-          return f[k];
-        }).filter(function (v) {
-          return v != null && v > 0;
-        }).sort(function (a, b) {
-          return a - b;
-        }),
+        nv = allFoodsForRender.map(f => f[k]).filter(v => v != null && v > 0).sort((a, b) => a - b),
         med = nv.length ? nv[Math.floor(nv.length / 2)] : null;
-      var est = 0;
-      dayLog.forEach(function (e) {
-        var _allFoodsForRender$fi0;
+      let est = 0;
+      dayLog.forEach(e => {
         if (e.type === "exercise" || e.type === "supplement") return;
         if (e.type === "recipe") {
-          (e.derivedIngredients || []).forEach(function (ing) {
-            var _allFoodsForRender$fi9;
-            var v = ing.snapshot ? ing.snapshot[k] : (_allFoodsForRender$fi9 = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            })) === null || _allFoodsForRender$fi9 === void 0 ? void 0 : _allFoodsForRender$fi9[k];
+          (e.derivedIngredients || []).forEach(ing => {
+            const v = ing.snapshot ? ing.snapshot[k] : allFoodsForRender.find(f => f.id === ing.foodId)?.[k];
             if (v === null || v === undefined) est += med != null ? ing.amount_g / 100 * med : 0;
           });
           return;
         }
-        var v = e.snapshot ? e.snapshot[k] : (_allFoodsForRender$fi0 = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        })) === null || _allFoodsForRender$fi0 === void 0 ? void 0 : _allFoodsForRender$fi0[k];
+        const v = e.snapshot ? e.snapshot[k] : allFoodsForRender.find(f => f.id === e.foodId)?.[k];
         if (v === null || v === undefined) est += med != null ? (e.amount || 0) / 100 * med : 0;
       });
-      var arc = Math.min(est / goal, 1);
+      const arc = Math.min(est / goal, 1);
       return /*#__PURE__*/React.createElement(Ring, {
         value: totals.fat,
         max: effectiveGoals.fat,
@@ -12088,7 +11188,7 @@ function NutriTrack() {
         fill: "#64748b",
         fontSize: 10
       }, "/ ", effectiveGoals.fat, "g"));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12,
         fontSize: 14,
@@ -12116,17 +11216,17 @@ function NutriTrack() {
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(fatSat / fatT * 100, "%"),
+        width: `${fatSat / fatT * 100}%`,
         background: FAT_SAT_COLOR
       }
     }), /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(fatMufa / fatT * 100, "%"),
+        width: `${fatMufa / fatT * 100}%`,
         background: FAT_MUFA_COLOR
       }
     }), /*#__PURE__*/React.createElement("div", {
       style: {
-        width: "".concat(fatPufa / fatT * 100, "%"),
+        width: `${fatPufa / fatT * 100}%`,
         background: FAT_PUFA_COLOR
       }
     })) : /*#__PURE__*/React.createElement("div", {
@@ -12151,63 +11251,62 @@ function NutriTrack() {
       value: fatPufa,
       color: FAT_PUFA_COLOR,
       note: "Includes omega-3 & omega-6 — essential, anti-inflammatory"
-    }].map(function (_ref46, i) {
-      var label = _ref46.label,
-        value = _ref46.value,
-        color = _ref46.color,
-        note = _ref46.note;
-      return /*#__PURE__*/React.createElement("div", {
-        key: label,
-        style: {
-          padding: "10px 0",
-          borderBottom: i < 2 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 10
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 12,
-          height: 12,
-          borderRadius: 3,
-          background: color
-        }
-      }), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 14,
-          color: "#e2e8f0",
-          fontWeight: 500
-        }
-      }, label)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 15,
-          fontWeight: 700,
-          color: color
-        }
-      }, n1(value), "g"), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 11,
-          color: "#64748b",
-          marginLeft: 6
-        }
-      }, fatT > 0 ? Math.round(value / fatT * 100) : 0, "%"))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#475569",
-          marginTop: 4,
-          paddingLeft: 22
-        }
-      }, note));
-    })), fatCont.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }].map(({
+      label,
+      value,
+      color,
+      note
+    }, i) => /*#__PURE__*/React.createElement("div", {
+      key: label,
+      style: {
+        padding: "10px 0",
+        borderBottom: i < 2 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 12,
+        height: 12,
+        borderRadius: 3,
+        background: color
+      }
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 14,
+        color: "#e2e8f0",
+        fontWeight: 500
+      }
+    }, label)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 15,
+        fontWeight: 700,
+        color
+      }
+    }, n1(value), "g"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 11,
+        color: "#64748b",
+        marginLeft: 6
+      }
+    }, fatT > 0 ? Math.round(value / fatT * 100) : 0, "%"))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        marginTop: 4,
+        paddingLeft: 22
+      }
+    }, note)))), fatCont.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -12218,46 +11317,44 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Today's Sources"), fatCont.map(function (c, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: i,
-        style: {
-          padding: "8px 0",
-          borderBottom: i < fatCont.length - 1 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, c.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, c.label)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          textAlign: "right"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: NUTRIENT_META.fat.color
-        }
-      }, n1(c.total), "g"), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, n1(c.sat), " sat \xB7 ", n1(c.mufa), " mufa \xB7 ", n1(c.pufa), " pufa"))));
-    })), /*#__PURE__*/React.createElement("div", {
+    }, "Today's Sources"), fatCont.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        padding: "8px 0",
+        borderBottom: i < fatCont.length - 1 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, c.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, c.label)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: "right"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: NUTRIENT_META.fat.color
+      }
+    }, n1(c.total), "g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, n1(c.sat), " sat · ", n1(c.mufa), " mufa · ", n1(c.pufa), " pufa")))))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -12268,77 +11365,66 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Top Sources (per 100g)"), _toConsumableArray(allFoods).sort(function (a, b) {
-      var _b$fat, _a$fat;
-      return ((_b$fat = b.fat) !== null && _b$fat !== void 0 ? _b$fat : 0) - ((_a$fat = a.fat) !== null && _a$fat !== void 0 ? _a$fat : 0);
-    }).slice(0, 8).map(function (f, i) {
-      var _f$fat, _f$fatSat3, _f$fatMufa3, _f$fatPufa3;
-      return /*#__PURE__*/React.createElement("div", {
-        key: f.id,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "7px 0",
-          borderBottom: i < 7 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, f.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          textAlign: "right"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: NUTRIENT_META.fat.color
-        }
-      }, n1((_f$fat = f.fat) !== null && _f$fat !== void 0 ? _f$fat : null), "g"), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, n1((_f$fatSat3 = f.fatSat) !== null && _f$fatSat3 !== void 0 ? _f$fatSat3 : null), " sat \xB7 ", n1((_f$fatMufa3 = f.fatMufa) !== null && _f$fatMufa3 !== void 0 ? _f$fatMufa3 : null), " mufa \xB7 ", n1((_f$fatPufa3 = f.fatPufa) !== null && _f$fatPufa3 !== void 0 ? _f$fatPufa3 : null), " pufa")));
-    }))));
+    }, "Top Sources (per 100g)"), [...allFoods].sort((a, b) => (b.fat ?? 0) - (a.fat ?? 0)).slice(0, 8).map((f, i) => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "7px 0",
+        borderBottom: i < 7 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, f.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: "right"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: NUTRIENT_META.fat.color
+      }
+    }, n1(f.fat ?? null), "g"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, n1(f.fatSat ?? null), " sat · ", n1(f.fatMufa ?? null), " mufa · ", n1(f.fatPufa ?? null), " pufa")))))));
   }
   if (view === "detail" && detailNutrient) {
-    var k = detailNutrient,
+    const k = detailNutrient,
       meta = NUTRIENT_META[k];
-    var cont = dayLog.flatMap(function (e) {
-      var _e$snapshot$k4, _allFoods$find$k, _allFoods$find3;
+    const cont = dayLog.flatMap(e => {
       if (e.type === "exercise") return [];
       if (e.type === "supplement") {
-        var v = suppContrib(e, k);
+        const v = suppContrib(e, k);
         return v > 0 ? [{
-          name: "\uD83D\uDC8A ".concat(e.stackName),
+          name: `💊 ${e.stackName}`,
           label: "supplement",
           value: v,
           isSupp: true
         }] : [];
       }
       if (e.type === "recipe") {
-        var _n6 = computeEntryNutrition(e.derivedIngredients || [], allFoods);
-        return _n6[k] ? [{
-          name: "\uD83D\uDCD6 ".concat(e.recipeName),
-          label: "".concat(e.servings, " srv"),
-          value: _n6[k]
+        const n = computeEntryNutrition(e.derivedIngredients || [], allFoods);
+        return n[k] ? [{
+          name: `📖 ${e.recipeName}`,
+          label: `${e.servings} srv`,
+          value: n[k]
         }] : [];
       }
-      var val = e.snapshot ? ((_e$snapshot$k4 = e.snapshot[k]) !== null && _e$snapshot$k4 !== void 0 ? _e$snapshot$k4 : 0) * e.amount / 100 : ((_allFoods$find$k = (_allFoods$find3 = allFoods.find(function (x) {
-        return x.id === e.foodId;
-      })) === null || _allFoods$find3 === void 0 ? void 0 : _allFoods$find3[k]) !== null && _allFoods$find$k !== void 0 ? _allFoods$find$k : 0) * e.amount / 100;
+      const val = e.snapshot ? (e.snapshot[k] ?? 0) * e.amount / 100 : (allFoods.find(x => x.id === e.foodId)?.[k] ?? 0) * e.amount / 100;
       return val ? [{
         name: e.foodName,
-        label: "".concat(e.amount, "g"),
+        label: `${e.amount}g`,
         value: val
       }] : [];
-    }).sort(function (a, b) {
-      return b.value - a.value;
-    });
+    }).sort((a, b) => b.value - a.value);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -12351,10 +11437,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("log");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("log")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -12366,39 +11450,28 @@ function NutriTrack() {
     })), /*#__PURE__*/React.createElement("div", {
       style: S.section
     }, /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+      style: {
+        ...S.card,
         textAlign: "center"
-      })
-    }, function () {
-      var goal = goals[k] || 1,
-        nv = allFoodsForRender.map(function (f) {
-          return f[k];
-        }).filter(function (v) {
-          return v != null && v > 0;
-        }).sort(function (a, b) {
-          return a - b;
-        }),
+      }
+    }, (() => {
+      const goal = goals[k] || 1,
+        nv = allFoodsForRender.map(f => f[k]).filter(v => v != null && v > 0).sort((a, b) => a - b),
         med = nv.length ? nv[Math.floor(nv.length / 2)] : null;
-      var est = 0;
-      dayLog.forEach(function (e) {
-        var _allFoodsForRender$fi10;
+      let est = 0;
+      dayLog.forEach(e => {
         if (e.type === "exercise" || e.type === "supplement") return;
         if (e.type === "recipe") {
-          (e.derivedIngredients || []).forEach(function (ing) {
-            var _allFoodsForRender$fi1;
-            var v = ing.snapshot ? ing.snapshot[k] : (_allFoodsForRender$fi1 = allFoodsForRender.find(function (f) {
-              return f.id === ing.foodId;
-            })) === null || _allFoodsForRender$fi1 === void 0 ? void 0 : _allFoodsForRender$fi1[k];
+          (e.derivedIngredients || []).forEach(ing => {
+            const v = ing.snapshot ? ing.snapshot[k] : allFoodsForRender.find(f => f.id === ing.foodId)?.[k];
             if (v === null || v === undefined) est += med != null ? ing.amount_g / 100 * med : 0;
           });
           return;
         }
-        var v = e.snapshot ? e.snapshot[k] : (_allFoodsForRender$fi10 = allFoodsForRender.find(function (f) {
-          return f.id === e.foodId;
-        })) === null || _allFoodsForRender$fi10 === void 0 ? void 0 : _allFoodsForRender$fi10[k];
+        const v = e.snapshot ? e.snapshot[k] : allFoodsForRender.find(f => f.id === e.foodId)?.[k];
         if (v === null || v === undefined) est += med != null ? (e.amount || 0) / 100 * med : 0;
       });
-      var arc = Math.min(est / goal, 1);
+      const arc = Math.min(est / goal, 1);
       return /*#__PURE__*/React.createElement(Ring, {
         value: totals[k],
         max: goals[k],
@@ -12421,7 +11494,7 @@ function NutriTrack() {
         fill: "#64748b",
         fontSize: 10
       }, "/ ", goals[k], " ", meta.unit));
-    }(), /*#__PURE__*/React.createElement("div", {
+    })(), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12,
         fontSize: 14,
@@ -12437,35 +11510,33 @@ function NutriTrack() {
         marginBottom: 10,
         textTransform: "uppercase"
       }
-    }, "Today's Sources"), cont.map(function (c, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: i,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "6px 0",
-          borderBottom: "1px solid #1e293b",
-          background: c.isSupp ? "rgba(167,139,250,0.05)" : "transparent",
-          borderRadius: c.isSupp ? 6 : 0
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          color: c.isSupp ? "#c4b5fd" : "#e2e8f0"
-        }
-      }, c.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, c.label)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: meta.color
-        }
-      }, n1(c.value), " ", meta.unit));
-    })), /*#__PURE__*/React.createElement("div", {
+    }, "Today's Sources"), cont.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "6px 0",
+        borderBottom: "1px solid #1e293b",
+        background: c.isSupp ? "rgba(167,139,250,0.05)" : "transparent",
+        borderRadius: c.isSupp ? 6 : 0
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: c.isSupp ? "#c4b5fd" : "#e2e8f0"
+      }
+    }, c.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, c.label)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: meta.color
+      }
+    }, n1(c.value), " ", meta.unit)))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -12475,63 +11546,52 @@ function NutriTrack() {
         marginBottom: 10,
         textTransform: "uppercase"
       }
-    }, "Top Sources (per 100g)"), _toConsumableArray(allFoods).sort(function (a, b) {
-      var _b$k, _a$k;
-      return ((_b$k = b[k]) !== null && _b$k !== void 0 ? _b$k : 0) - ((_a$k = a[k]) !== null && _a$k !== void 0 ? _a$k : 0);
-    }).slice(0, 8).map(function (f, i) {
-      var _f$k5;
-      return /*#__PURE__*/React.createElement("div", {
-        key: f.id,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "6px 0",
-          borderBottom: "1px solid #1e293b"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, f.name), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          fontWeight: 600,
-          color: meta.color
-        }
-      }, n1((_f$k5 = f[k]) !== null && _f$k5 !== void 0 ? _f$k5 : null), " ", meta.unit));
-    }))));
+    }, "Top Sources (per 100g)"), [...allFoods].sort((a, b) => (b[k] ?? 0) - (a[k] ?? 0)).slice(0, 8).map((f, i) => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "6px 0",
+        borderBottom: "1px solid #1e293b"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, f.name), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 13,
+        fontWeight: 600,
+        color: meta.color
+      }
+    }, n1(f[k] ?? null), " ", meta.unit))))));
   }
 
   // ── EDIT LOGGED RECIPE ────────────────────────────────────────────────
   if (view === "editLoggedRecipe" && editingLogEntry) {
-    var recipe = recipes.find(function (r) {
-      return r.id === editingLogEntry.recipeId;
-    });
-    var servings = parseFloat(editLogServings) || 1;
-    var previewDI = editingLogEntry.derivedIngredients || [];
+    const recipe = recipes.find(r => r.id === editingLogEntry.recipeId);
+    const servings = parseFloat(editLogServings) || 1;
+    let previewDI = editingLogEntry.derivedIngredients || [];
     if (previewDI.length > 0) {
       // Scale derivedIngredients proportionally — preserves log-time removals
-      var origServings = editingLogEntry.servings || 1;
-      var scale = servings / origServings;
-      previewDI = previewDI.map(function (ing) {
-        return _objectSpread(_objectSpread({}, ing), {}, {
-          amount_g: Math.round(ing.amount_g * scale * 10) / 10
-        });
-      });
+      const origServings = editingLogEntry.servings || 1;
+      const scale = servings / origServings;
+      previewDI = previewDI.map(ing => ({
+        ...ing,
+        amount_g: Math.round(ing.amount_g * scale * 10) / 10
+      }));
     } else if (recipe) {
       // Fallback for old log entries that predate W1 (no derivedIngredients saved)
-      var _rs = Math.max(Number(recipe.servings) || 1, 0.01);
-      var _frac = servings / _rs;
-      previewDI = recipe.ingredients.map(function (ing) {
-        return {
-          foodId: ing.foodId,
-          foodName: ing.foodName,
-          amount_g: Math.round(ing.amount_g * _frac * 10) / 10
-        };
-      });
+      const rs = Math.max(Number(recipe.servings) || 1, 0.01);
+      const frac = servings / rs;
+      previewDI = recipe.ingredients.map(ing => ({
+        foodId: ing.foodId,
+        foodName: ing.foodName,
+        amount_g: Math.round(ing.amount_g * frac * 10) / 10
+      }));
     }
-    var _nut = computeEntryNutrition(previewDI, allFoodsForRender);
+    const nut = computeEntryNutrition(previewDI, allFoodsForRender);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -12544,11 +11604,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setEditingLogEntry(null);
         setView("log");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -12572,20 +11632,19 @@ function NutriTrack() {
         color: "#a78bfa",
         marginBottom: 12
       }
-    }, "\uD83D\uDCD6 ", editingLogEntry.recipeName), /*#__PURE__*/React.createElement("div", {
+    }, "📖 ", editingLogEntry.recipeName), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Servings"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 8
-      }),
+      },
       type: "number",
       inputMode: "decimal",
       value: editLogServings,
-      onChange: function onChange(e) {
-        return setEditLogServings(e.target.value);
-      }
+      onChange: e => setEditLogServings(e.target.value)
     }), /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
@@ -12593,15 +11652,11 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 16
       }
-    }, [0.5, 1, 1.5, 2, 3, 4].map(function (q) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: q,
-        style: S.pill(editLogServings === String(q)),
-        onClick: function onClick() {
-          return setEditLogServings(String(q));
-        }
-      }, q === 0.5 ? "½" : q);
-    })), /*#__PURE__*/React.createElement("label", {
+    }, [0.5, 1, 1.5, 2, 3, 4].map(q => /*#__PURE__*/React.createElement("button", {
+      key: q,
+      style: S.pill(editLogServings === String(q)),
+      onClick: () => setEditLogServings(String(q))
+    }, q === 0.5 ? "½" : q))), /*#__PURE__*/React.createElement("label", {
       style: S.label
     }, "Meal"), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -12610,15 +11665,11 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 16
       }
-    }, MEALS.map(function (m) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: m,
-        style: S.pill(editLogMeal === m),
-        onClick: function onClick() {
-          return setEditLogMeal(m);
-        }
-      }, m);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, MEALS.map(m => /*#__PURE__*/React.createElement("button", {
+      key: m,
+      style: S.pill(editLogMeal === m),
+      onClick: () => setEditLogMeal(m)
+    }, m))), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0a0f1a",
         borderRadius: 10,
@@ -12638,26 +11689,23 @@ function NutriTrack() {
         gridTemplateColumns: "repeat(5,1fr)",
         gap: 6
       }
-    }, MACROS.map(function (k) {
-      var _nut$k3, _nut$k4;
-      return /*#__PURE__*/React.createElement("div", {
-        key: k,
-        style: {
-          textAlign: "center"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 700,
-          color: NUTRIENT_META[k].color
-        }
-      }, k === "cal" ? fmtE((_nut$k3 = _nut[k]) !== null && _nut$k3 !== void 0 ? _nut$k3 : 0) : n1((_nut$k4 = _nut[k]) !== null && _nut$k4 !== void 0 ? _nut$k4 : null)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#64748b"
-        }
-      }, k === "cal" ? energyLabel : NUTRIENT_META[k].label));
-    })))), /*#__PURE__*/React.createElement("div", {
+    }, MACROS.map(k => /*#__PURE__*/React.createElement("div", {
+      key: k,
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 700,
+        color: NUTRIENT_META[k].color
+      }
+    }, k === "cal" ? fmtE(nut[k] ?? 0) : n1(nut[k] ?? null)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#64748b"
+      }
+    }, k === "cal" ? energyLabel : NUTRIENT_META[k].label)))))), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -12668,28 +11716,26 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Ingredients at this serving"), previewDI.map(function (ing, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: i,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "7px 0",
-          borderBottom: i < previewDI.length - 1 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 13,
-          color: "#e2e8f0"
-        }
-      }, ing.foodName), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b"
-        }
-      }, ing.amount_g, "g"));
-    }), previewDI.length === 0 && /*#__PURE__*/React.createElement("div", {
+    }, "Ingredients at this serving"), previewDI.map((ing, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "7px 0",
+        borderBottom: i < previewDI.length - 1 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: "#e2e8f0"
+      }
+    }, ing.foodName), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b"
+      }
+    }, ing.amount_g, "g"))), previewDI.length === 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
         color: "#475569",
@@ -12701,14 +11747,12 @@ function NutriTrack() {
 
   // ── EDIT LOGGED EXERCISE ──────────────────────────────────────────────
   if (view === "editLoggedExercise" && editingLogEntry) {
-    var _dur = parseFloat(editLogDuration) || 0;
-    var _act = EXERCISE_ACTIVITIES.find(function (a) {
-      return a.id === editLogActivityId;
-    }) || EXERCISE_ACTIVITIES[0];
-    var _wt2 = parseFloat(profile === null || profile === void 0 ? void 0 : profile.weightKg) || 70;
-    var _autoBurn = Math.round(_act.met * _wt2 * (_dur / 60));
-    var previewBurn = editLogBurn !== "" ? parseInt(editLogBurn) || 0 : _autoBurn;
-    var _actGroups = EXERCISE_ACTIVITIES.reduce(function (acc, a) {
+    const dur = parseFloat(editLogDuration) || 0;
+    const act = EXERCISE_ACTIVITIES.find(a => a.id === editLogActivityId) || EXERCISE_ACTIVITIES[0];
+    const wt = parseFloat(profile?.weightKg) || 70;
+    const autoBurn = Math.round(act.met * wt * (dur / 60));
+    const previewBurn = editLogBurn !== "" ? parseInt(editLogBurn) || 0 : autoBurn;
+    const actGroups = EXERCISE_ACTIVITIES.reduce((acc, a) => {
       if (!acc[a.label]) acc[a.label] = [];
       acc[a.label].push(a);
       return acc;
@@ -12725,11 +11769,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setEditingLogEntry(null);
         setView("log");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -12756,56 +11800,51 @@ function NutriTrack() {
         fontSize: 12,
         color: "#f59e0b"
       }
-    }, "No weight set in Settings \u2014 using 70kg default"), /*#__PURE__*/React.createElement("div", {
+    }, "No weight set in Settings — using 70kg default"), /*#__PURE__*/React.createElement("div", {
       style: S.card
     }, /*#__PURE__*/React.createElement("label", {
       style: S.label
-    }, "Activity"), Object.entries(_actGroups).map(function (_ref47) {
-      var _ref48 = _slicedToArray(_ref47, 2),
-        grp = _ref48[0],
-        acts = _ref48[1];
-      return /*#__PURE__*/React.createElement("div", {
-        key: grp,
-        style: {
-          marginBottom: 10
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#475569",
-          fontWeight: 700,
-          textTransform: "uppercase",
-          letterSpacing: "0.05em",
-          marginBottom: 6
-        }
-      }, grp), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          gap: 6,
-          flexWrap: "wrap"
-        }
-      }, acts.map(function (a) {
-        return /*#__PURE__*/React.createElement("button", {
-          key: a.id,
-          style: S.pill(editLogActivityId === a.id),
-          onClick: function onClick() {
-            setEditLogActivityId(a.id);
-            setEditLogBurn("");
-          }
-        }, a.intensity);
-      })));
-    }), /*#__PURE__*/React.createElement("label", {
-      style: _objectSpread(_objectSpread({}, S.label), {}, {
+    }, "Activity"), Object.entries(actGroups).map(([grp, acts]) => /*#__PURE__*/React.createElement("div", {
+      key: grp,
+      style: {
+        marginBottom: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569",
+        fontWeight: 700,
+        textTransform: "uppercase",
+        letterSpacing: "0.05em",
+        marginBottom: 6
+      }
+    }, grp), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        flexWrap: "wrap"
+      }
+    }, acts.map(a => /*#__PURE__*/React.createElement("button", {
+      key: a.id,
+      style: S.pill(editLogActivityId === a.id),
+      onClick: () => {
+        setEditLogActivityId(a.id);
+        setEditLogBurn("");
+      }
+    }, a.intensity))))), /*#__PURE__*/React.createElement("label", {
+      style: {
+        ...S.label,
         marginTop: 8
-      })
+      }
     }, "Duration (minutes)"), /*#__PURE__*/React.createElement("input", {
-      style: _objectSpread(_objectSpread({}, S.input), {}, {
+      style: {
+        ...S.input,
         marginBottom: 8
-      }),
+      },
       type: "number",
       inputMode: "numeric",
       value: editLogDuration,
-      onChange: function onChange(e) {
+      onChange: e => {
         setEditLogDuration(e.target.value);
         setEditLogBurn("");
       }
@@ -12816,16 +11855,14 @@ function NutriTrack() {
         flexWrap: "wrap",
         marginBottom: 16
       }
-    }, [30, 45, 60, 90, 120, 180].map(function (d) {
-      return /*#__PURE__*/React.createElement("button", {
-        key: d,
-        style: S.pill(editLogDuration === String(d) && editLogBurn === ""),
-        onClick: function onClick() {
-          setEditLogDuration(String(d));
-          setEditLogBurn("");
-        }
-      }, d);
-    })), /*#__PURE__*/React.createElement("div", {
+    }, [30, 45, 60, 90, 120, 180].map(d => /*#__PURE__*/React.createElement("button", {
+      key: d,
+      style: S.pill(editLogDuration === String(d) && editLogBurn === ""),
+      onClick: () => {
+        setEditLogDuration(String(d));
+        setEditLogBurn("");
+      }
+    }, d))), /*#__PURE__*/React.createElement("div", {
       style: {
         background: "#0a0f1a",
         borderRadius: 10,
@@ -12857,7 +11894,7 @@ function NutriTrack() {
         fontSize: 12,
         color: "#64748b"
       }
-    }, energyLabel, /*#__PURE__*/React.createElement("br", null), _act.label, " \xB7 ", _act.intensity, /*#__PURE__*/React.createElement("br", null), _dur, " min @ MET ", _act.met)), /*#__PURE__*/React.createElement("div", {
+    }, energyLabel, /*#__PURE__*/React.createElement("br", null), act.label, " · ", act.intensity, /*#__PURE__*/React.createElement("br", null), dur, " min @ MET ", act.met)), /*#__PURE__*/React.createElement("div", {
       style: {
         marginTop: 12
       }
@@ -12867,24 +11904,22 @@ function NutriTrack() {
       style: S.input,
       type: "number",
       inputMode: "numeric",
-      placeholder: "Auto: " + _autoBurn + " " + energyLabel,
+      placeholder: "Auto: " + autoBurn + " " + energyLabel,
       value: editLogBurn,
-      onChange: function onChange(e) {
-        return setEditLogBurn(e.target.value);
-      }
+      onChange: e => setEditLogBurn(e.target.value)
     }))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
         borderRadius: 12,
         border: "none",
-        background: _dur > 0 ? "#16a34a" : "#1e293b",
-        color: _dur > 0 ? "#fff" : "#64748b",
+        background: dur > 0 ? "#16a34a" : "#1e293b",
+        color: dur > 0 ? "#fff" : "#64748b",
         fontSize: 15,
         fontWeight: 700,
-        cursor: _dur > 0 ? "pointer" : "default"
+        cursor: dur > 0 ? "pointer" : "default"
       },
-      disabled: _dur <= 0,
+      disabled: dur <= 0,
       onClick: saveEditedExerciseEntry
     }, "Save Changes"))));
   }
@@ -12903,11 +11938,11 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         setEditingLogEntry(null);
         setView("log");
       }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -12931,7 +11966,7 @@ function NutriTrack() {
         color: "#c4b5fd",
         marginBottom: 12
       }
-    }, "\uD83D\uDC8A ", editingLogEntry.stackName), /*#__PURE__*/React.createElement("div", {
+    }, "💊 ", editingLogEntry.stackName), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
         color: "#64748b",
@@ -12939,59 +11974,55 @@ function NutriTrack() {
       }
     }, "Adjust doses. Tap a dose field to override."), /*#__PURE__*/React.createElement("div", {
       style: S.card
-    }, editLogSuppItems.map(function (item, idx) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: idx,
-        style: _objectSpread({}, S.suppRow)
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#e2e8f0"
-        }
-      }, item.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 12,
-          color: "#64748b",
-          marginTop: 2
-        }
-      }, "Logged: ", item.dose_amount, item.dose_unit)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 100
-        }
-      }, /*#__PURE__*/React.createElement("input", {
-        style: _objectSpread(_objectSpread({}, S.input), {}, {
-          width: "100%",
-          padding: "6px 8px",
-          fontSize: 13,
-          textAlign: "right"
-        }),
-        type: "number",
-        inputMode: "decimal",
-        placeholder: String(item.dose_amount),
-        value: item.doseOverride,
-        onChange: function onChange(e) {
-          return setEditLogSuppItems(function (prev) {
-            return prev.map(function (x, i) {
-              return i === idx ? _objectSpread(_objectSpread({}, x), {}, {
-                doseOverride: e.target.value
-              }) : x;
-            });
-          });
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 10,
-          color: "#475569",
-          textAlign: "right",
-          marginTop: 2
-        }
-      }, item.dose_unit)));
-    })), /*#__PURE__*/React.createElement("button", {
+    }, editLogSuppItems.map((item, idx) => /*#__PURE__*/React.createElement("div", {
+      key: idx,
+      style: {
+        ...S.suppRow
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, item.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#64748b",
+        marginTop: 2
+      }
+    }, "Logged: ", item.dose_amount, item.dose_unit)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 100
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      style: {
+        ...S.input,
+        width: "100%",
+        padding: "6px 8px",
+        fontSize: 13,
+        textAlign: "right"
+      },
+      type: "number",
+      inputMode: "decimal",
+      placeholder: String(item.dose_amount),
+      value: item.doseOverride,
+      onChange: e => setEditLogSuppItems(prev => prev.map((x, i) => i === idx ? {
+        ...x,
+        doseOverride: e.target.value
+      } : x))
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: "#475569",
+        textAlign: "right",
+        marginTop: 2
+      }
+    }, item.dose_unit))))), /*#__PURE__*/React.createElement("button", {
       style: {
         width: "100%",
         padding: 14,
@@ -13010,12 +12041,8 @@ function NutriTrack() {
 
   // ── MANAGE CUSTOM FOODS ───────────────────────────────────────────────
   if (view === "manageCustomFoods") {
-    var active = customFoods.filter(function (f) {
-      return !f.deleted;
-    });
-    var deleted = customFoods.filter(function (f) {
-      return f.deleted;
-    });
+    const active = customFoods.filter(f => !f.deleted);
+    const deleted = customFoods.filter(f => f.deleted);
     return /*#__PURE__*/React.createElement("div", {
       style: S.app
     }, /*#__PURE__*/React.createElement("div", {
@@ -13028,10 +12055,8 @@ function NutriTrack() {
         fontSize: 15,
         cursor: "pointer"
       },
-      onClick: function onClick() {
-        return setView("add");
-      }
-    }, "\u2190 Back"), /*#__PURE__*/React.createElement("span", {
+      onClick: () => setView("add")
+    }, "← Back"), /*#__PURE__*/React.createElement("span", {
       style: {
         fontSize: 15,
         fontWeight: 700
@@ -13045,7 +12070,7 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: "pointer"
       },
-      onClick: function onClick() {
+      onClick: () => {
         resetCfForm();
         setView("customAdd");
       }
@@ -13058,25 +12083,21 @@ function NutriTrack() {
         fontWeight: 600,
         cursor: active.length === 0 ? "default" : "pointer"
       },
-      onClick: function onClick() {
-        var envelope = buildCustomFoodPatch(customFoods);
-        var blob = new Blob([JSON.stringify(envelope, null, 2)], {
+      onClick: () => {
+        const envelope = buildCustomFoodPatch(customFoods);
+        const blob = new Blob([JSON.stringify(envelope, null, 2)], {
           type: "application/json"
         });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
         a.href = url;
-        a.download = "nutritrack-custom-foods-patch-".concat(new Date().toISOString().slice(0, 10), ".json");
+        a.download = `nutritrack-custom-foods-patch-${new Date().toISOString().slice(0, 10)}.json`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function () {
-          return URL.revokeObjectURL(url);
-        }, 10000);
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
         setCustomFoodExportMsg("Patch exported — append each entry to the foods array in foods.json.");
-        setTimeout(function () {
-          return setCustomFoodExportMsg(null);
-        }, 6000);
+        setTimeout(() => setCustomFoodExportMsg(null), 6000);
       },
       disabled: active.length === 0
     }, "Export patch")), /*#__PURE__*/React.createElement("div", {
@@ -13091,10 +12112,11 @@ function NutriTrack() {
         fontSize: 12,
         color: "#34d399"
       }
-    }, "\u2713 ", customFoodExportMsg), /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+    }, "✓ ", customFoodExportMsg), /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.card,
         marginBottom: 12
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 12,
@@ -13105,7 +12127,7 @@ function NutriTrack() {
       style: {
         color: "#e2e8f0"
       }
-    }, "Promote to foods.json:"), " Export a JSON patch of your active custom foods. Every nutrient field (macros, fibre/fat subtypes, amino acids, micronutrients) is included \u2014 unknown values are ", /*#__PURE__*/React.createElement("code", {
+    }, "Promote to foods.json:"), " Export a JSON patch of your active custom foods. Every nutrient field (macros, fibre/fat subtypes, amino acids, micronutrients) is included — unknown values are ", /*#__PURE__*/React.createElement("code", {
       style: {
         color: "#cbd5e1"
       }
@@ -13124,7 +12146,7 @@ function NutriTrack() {
         fontSize: 32,
         marginBottom: 8
       }
-    }, "\uD83E\uDD58"), /*#__PURE__*/React.createElement("div", {
+    }, "🥘"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 14
       }
@@ -13139,72 +12161,67 @@ function NutriTrack() {
         textTransform: "uppercase",
         letterSpacing: "0.05em"
       }
-    }, "Active (", active.length, ")"), active.map(function (f, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: f.id,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px 0",
-          borderBottom: i < active.length - 1 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1,
-          minWidth: 0
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#e2e8f0"
-        }
-      }, f.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#64748b"
-        }
-      }, f.cat, " \xB7 ", fmtE(f.cal), " ", energyLabel, "/100g")), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          gap: 6,
-          flexShrink: 0
-        }
-      }, /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "1px solid #3b82f6",
-          borderRadius: 8,
-          color: "#3b82f6",
-          fontSize: 12,
-          fontWeight: 600,
-          padding: "4px 10px",
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return openEditCustomFood(f);
-        }
-      }, "Edit"), /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "1px solid #ef4444",
-          borderRadius: 8,
-          color: "#ef4444",
-          fontSize: 12,
-          fontWeight: 600,
-          padding: "4px 10px",
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return softDeleteCustomFood(f.id);
-        }
-      }, "Delete")));
-    })), deleted.length > 0 && /*#__PURE__*/React.createElement("div", {
-      style: _objectSpread(_objectSpread({}, S.card), {}, {
+    }, "Active (", active.length, ")"), active.map((f, i) => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 0",
+        borderBottom: i < active.length - 1 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#e2e8f0"
+      }
+    }, f.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#64748b"
+      }
+    }, f.cat, " · ", fmtE(f.cal), " ", energyLabel, "/100g")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        flexShrink: 0
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "1px solid #3b82f6",
+        borderRadius: 8,
+        color: "#3b82f6",
+        fontSize: 12,
+        fontWeight: 600,
+        padding: "4px 10px",
+        cursor: "pointer"
+      },
+      onClick: () => openEditCustomFood(f)
+    }, "Edit"), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "1px solid #ef4444",
+        borderRadius: 8,
+        color: "#ef4444",
+        fontSize: 12,
+        fontWeight: 600,
+        padding: "4px 10px",
+        cursor: "pointer"
+      },
+      onClick: () => softDeleteCustomFood(f.id)
+    }, "Delete"))))), deleted.length > 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...S.card,
         marginTop: 12,
         opacity: 0.7
-      })
+      }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 13,
@@ -13220,44 +12237,40 @@ function NutriTrack() {
         color: "#475569",
         marginBottom: 10
       }
-    }, "Deleted foods are hidden from search but historical log entries still display correctly."), deleted.map(function (f, i) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: f.id,
-        style: {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px 0",
-          borderBottom: i < deleted.length - 1 ? "1px solid #1e293b" : "none"
-        }
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#64748b",
-          textDecoration: "line-through"
-        }
-      }, f.name), /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 11,
-          color: "#475569"
-        }
-      }, f.cat, " \xB7 ", fmtE(f.cal), " ", energyLabel, "/100g")), /*#__PURE__*/React.createElement("button", {
-        style: {
-          background: "none",
-          border: "1px solid #3b82f6",
-          borderRadius: 8,
-          color: "#3b82f6",
-          fontSize: 12,
-          fontWeight: 600,
-          padding: "4px 10px",
-          cursor: "pointer"
-        },
-        onClick: function onClick() {
-          return restoreCustomFood(f.id);
-        }
-      }, "Restore"));
-    }))));
+    }, "Deleted foods are hidden from search but historical log entries still display correctly."), deleted.map((f, i) => /*#__PURE__*/React.createElement("div", {
+      key: f.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 0",
+        borderBottom: i < deleted.length - 1 ? "1px solid #1e293b" : "none"
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 500,
+        color: "#64748b",
+        textDecoration: "line-through"
+      }
+    }, f.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: "#475569"
+      }
+    }, f.cat, " · ", fmtE(f.cal), " ", energyLabel, "/100g")), /*#__PURE__*/React.createElement("button", {
+      style: {
+        background: "none",
+        border: "1px solid #3b82f6",
+        borderRadius: 8,
+        color: "#3b82f6",
+        fontSize: 12,
+        fontWeight: 600,
+        padding: "4px 10px",
+        cursor: "pointer"
+      },
+      onClick: () => restoreCustomFood(f.id)
+    }, "Restore"))))));
   }
   return null;
 }

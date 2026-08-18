@@ -361,6 +361,71 @@ const MACROS = ["cal","pro","carb","fat","fib"];
 const MICROS = ["iron","calc","zinc","b12","vitD","omega3","iod","sel","mag","pot","fol","sod","vitA","vitC"];
 const MEALS  = ["Breakfast","Lunch","Dinner","Snack"];
 
+// ── Phase 11a: Water & Alcohol tracking ────────────────────────────────
+// Alcohol calorie formula: volume_ml × ABV% × 7.89 kcal per g of alcohol.
+// Brief specifies volume × abv% × 7.89 treating ABV as a fraction; ABV is entered
+// as a percentage (e.g. 5) so we divide by 100 before applying the factor.
+const ALCOHOL_KCAL_FACTOR = 7.89;
+const alcoholCalories = (volumeMl, abvPercent) => {
+  const v = parseFloat(volumeMl) || 0;
+  const a = parseFloat(abvPercent) || 0;
+  return Math.round((v * (a / 100) * ALCOHOL_KCAL_FACTOR) * 10) / 10;
+};
+// Drink categories with default ABV (brief 11a: beer 5%, wine 12%, spirits 40%).
+const ALCOHOL_CATEGORIES = [
+  { id:"beer",    label:"Beer",    abv:5  },
+  { id:"wine",    label:"Wine",    abv:12 },
+  { id:"spirits", label:"Spirits", abv:40 },
+  { id:"cider",   label:"Cider",   abv:5  },
+  { id:"cocktail",label:"Cocktail",abv:15 },
+];
+const WATER_UNITS = ["ml","glass","bottle"];
+const WATER_UNIT_TO_ML = { ml:1, glass:250, bottle:500 };
+const waterAmountMl = (amount, unit) => Math.round((parseFloat(amount)||0) * (WATER_UNIT_TO_ML[unit||"ml"] ?? 1));
+
+// ── Phase 11b: Traffic-light system ───────────────────────────────
+// Green < 100% of target, Yellow 100–120%, Red > 120% (brief 11b).
+const TRAFFIC_GREEN_PCT  = 100;
+const TRAFFIC_RED_PCT    = 120;
+const TRAFFIC_COLORS = { green:"#22c55e", yellow:"#eab308", red:"#ef4444" };
+const trafficLevel = pct => (pct > TRAFFIC_RED_PCT ? "red" : pct >= TRAFFIC_GREEN_PCT ? "yellow" : "green");
+const trafficColor = pct => TRAFFIC_COLORS[trafficLevel(pct)];
+// Short explanation shown by the info button per nutrient (brief 11b).
+const NUTRIENT_EXPLANATIONS = {
+  cal:  "Exceeding calorie targets regularly leads to unwanted weight gain. For endurance cycling, match intake to your ride intensity.",
+  pro:  "Too little protein impairs recovery; excess is generally unused. Aim for the target range around long rides.",
+  carb: "Carbs fuel riding. Going under target limits endurance; going far over can displace other nutrients.",
+  fat:  "Fat is essential but calorie-dense. High excess can slow recovery and shift the macro balance.",
+  fib:  "Fibre supports gut health. Sudden large excesses during a ride can cause GI discomfort.",
+  iron: "Low iron reduces oxygen transport and endurance. Excess iron is hard to excrete and can be toxic.",
+  calc: "Calcium supports bone strength for riding. Chronic excess can impair other mineral absorption.",
+  zinc: "Zinc supports immunity and recovery. Excess can interfere with copper and iron absorption.",
+  b12:  "B12 is critical for vegans and endurance. Very high intakes are usually harmless but unneeded.",
+  vitD: "Vitamin D supports bone and immune function. Excess over long periods can cause toxicity.",
+  omega3:"Omega-3 supports recovery and inflammation control. Very high doses can thin the blood.",
+  iod:  "Iodine supports thyroid function central to metabolism. Both low and high intake disrupt it.",
+  sel:  "Selenium is an antioxidant. Excess over time can cause selenosis (hair/nail changes).",
+  mag:  "Magnesium supports muscle function and sleep. Large excess can cause GI upset.",
+  pot:  "Potassium balances fluids and cramping. Very high intake can affect heart rhythm.",
+  fol:  "Folate supports blood and cell repair. Excess is generally excreted but masks B12 deficiency signs.",
+  sod:  "Sodium is lost in sweat during rides. Chronic excess raises blood pressure in sensitive people.",
+  vitA: "Vitamin A supports vision and immunity. Excess (retinol form) can be toxic over time.",
+  vitC: "Vitamin C supports immunity and iron absorption. Excess is excreted but can cause GI upset.",
+};
+// ── Phase 11b: WHO Recommended and Optimal goal presets ────────
+// WHO base RDAs (population averages). Optimal scales RDAs for active endurance
+// athletes (higher protein, antioxidant vitamins, electrolytes).
+const WHO_GOALS = {
+  cal: 2000, pro: 50, carb: 260, fat: 70, fib: 25,
+  iron: 14, calc: 1000, zinc: 11, b12: 2.4, vitD: 15, omega3: 1.6, iod: 150,
+  sel: 55, mag: 400, pot: 3510, fol: 400, sod: 2000, vitA: 900, vitC: 90,
+};
+const OPTIMAL_GOALS = {
+  cal: 2800, pro: 90, carb: 400, fat: 85, fib: 38,
+  iron: 18, calc: 1200, zinc: 15, b12: 3.0, vitD: 25, omega3: 3.0, iod: 200,
+  sel: 75, mag: 500, pot: 4000, fol: 600, sod: 2300, vitA: 1000, vitC: 120,
+};
+
 const FIB_SOL_COLOR   = "#8B5CF6";
 const FIB_INSOL_COLOR = "#94A3B8";
 const FAT_SAT_COLOR   = "#EF4444";
@@ -842,6 +907,14 @@ export default function NutriTrack() {
   const [suppLogItems, setSuppLogItems] = useState([]);
 
   // One-off supplement
+  // Phase 11a: Water & Alcohol entry form state
+  const [waterAmount, setWaterAmount] = useState("250");
+  const [waterUnit,   setWaterUnit]   = useState("ml");
+  const [alcCategory, setAlcCategory] = useState(ALCOHOL_CATEGORIES[0].id);
+  const [alcVolume,   setAlcVolume]   = useState("");
+  const [alcAbv,      setAlcAbv]      = useState(String(ALCOHOL_CATEGORIES[0].abv));
+  // Phase 11b: traffic-light info tooltip state (nutrient key or null)
+  const [trafficInfoKey, setTrafficInfoKey] = useState(null);
   const [oneOffData,   setOneOffData]   = useState({ name:"", dose_amount:"", dose_unit:"mcg", nutrients:{} });
   const [oneOffNutKey, setOneOffNutKey] = useState("b12");
   const [oneOffNutVal, setOneOffNutVal] = useState("");
@@ -1087,6 +1160,9 @@ export default function NutriTrack() {
     const t = {}; Object.keys(NUTRIENT_META).forEach(k => t[k] = 0);
     dayLog.forEach(e => {
       if (e.type === "exercise") return;
+      // Phase 11a: water contributes no calories/nutrients; alcohol adds calories only.
+      if (e.type === "water") return;
+      if (e.type === "alcohol") { t.cal += (e.calories ?? 0); return; }
       if (e.type === "supplement") {
         (e.items || []).forEach(item => {
           Object.keys(item.nutrients || {}).forEach(k => { if (NUTRIENT_META[k]) t[k] += (item.nutrients[k] ?? 0); });
@@ -1191,6 +1267,24 @@ export default function NutriTrack() {
       upsertRecent(selectedFood.id, selectedFood.name, parseFloat(amount), meal);
     }
     setSelectedFood(null); setAmount("100"); setSearchTerm(""); setView("log");
+  };
+
+  // Phase 11a: log a water entry. type:"water", amount stored in ml for totals.
+  const logWater = () => {
+    const ml = waterAmountMl(waterAmount, waterUnit);
+    if (!ml) return;
+    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), { id:Date.now().toString(), type:"water", amount:ml, unit:"ml", meal, time:new Date().toISOString() }] }));
+    setWaterAmount("250"); setWaterUnit("ml"); setView("log");
+  };
+  // Phase 11a: log an alcohol entry. Calories contribute to the daily total.
+  const logAlcohol = () => {
+    const vol = parseFloat(alcVolume) || 0;
+    const abv = parseFloat(alcAbv) || 0;
+    if (!vol || !abv) return;
+    const cals = alcoholCalories(vol, abv);
+    const cat = ALCOHOL_CATEGORIES.find(c => c.id === alcCategory) || ALCOHOL_CATEGORIES[0];
+    setLogs(prev => ({ ...prev, [currentDate]: [...(prev[currentDate]||[]), { id:Date.now().toString(), type:"alcohol", category:cat.id, categoryLabel:cat.label, volume:vol, abv, calories:cals, meal, time:new Date().toISOString(), snapshot:{ cal:cals } }] }));
+    setAlcVolume(""); setView("log");
   };
 
   // Quick-log a recent food at its lastAmount/lastMeal without opening the amount screen
@@ -1664,8 +1758,12 @@ export default function NutriTrack() {
   // ── LOG VIEW ──────────────────────────────────────────────────────────
   if (view === "log") {
     const grouped = {}; MEALS.forEach(m => grouped[m] = []);
-    dayLog.forEach(e => { if (e.type==="exercise"||e.type==="supplement") return; if (!grouped[e.meal]) grouped[e.meal]=[]; grouped[e.meal].push(e); });
+    dayLog.forEach(e => { if (e.type==="exercise"||e.type==="supplement"||e.type==="water"||e.type==="alcohol") return; if (!grouped[e.meal]) grouped[e.meal]=[]; grouped[e.meal].push(e); });
     const suppEntries = dayLog.filter(e => e.type === "supplement");
+    const waterEntries = dayLog.filter(e => e.type === "water");
+    const alcEntries   = dayLog.filter(e => e.type === "alcohol");
+    const waterTotalMl = waterEntries.reduce((s,e) => s + (e.amount||0), 0);
+    const alcTotalCals = alcEntries.reduce((s,e) => s + (e.calories||0), 0);
     return (
       <div style={S.app}>
         {globalBanners}
@@ -1677,9 +1775,9 @@ export default function NutriTrack() {
         )}
         <div style={S.header}>
           <div style={{display:"flex",alignItems:"center",gap:12}}>
-            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:20,padding:"4px 8px",cursor:"pointer"}} onClick={() => changeDate(-1)}>‹</button>
+            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:24,minWidth:44,minHeight:44,display:"flex",alignItems:"center",justifyContent:"center",padding:"4px 10px",cursor:"pointer"}} onClick={() => changeDate(-1)}>‹</button>
             <span style={{fontSize:15,fontWeight:600,color:"#e2e8f0",letterSpacing:"-0.01em"}}>{formatDate(currentDate)}{currentDate===today()&&<span style={{fontSize:10,color:"#3b82f6",fontWeight:600,marginLeft:6}}>TODAY</span>}</span>
-            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:20,padding:"4px 8px",cursor:"pointer"}} onClick={() => changeDate(1)}>›</button>
+            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:24,minWidth:44,minHeight:44,display:"flex",alignItems:"center",justifyContent:"center",padding:"4px 10px",cursor:"pointer"}} onClick={() => changeDate(1)}>›</button>
           </div>
         </div>
         <div style={S.macroGrid}>
@@ -1693,7 +1791,7 @@ export default function NutriTrack() {
               }}>
                 <Ring value={totals[k]} max={effectiveGoals[k]} color={NUTRIENT_META[k].color}
                   size={48} stroke={4} nullArc={arc} simplified={displayMode==="simplified"}>
-                  <text x="50%" y="50%" textAnchor="middle" dy="0.35em" fill={NUTRIENT_META[k].color} fontSize={10} fontWeight={700}>{pct(k)}%</text>
+                  <text x="50%" y="50%" textAnchor="middle" dy="0.35em" fill={trafficColor(pct(k))} fontSize={10} fontWeight={700}>{pct(k)}%</text>
                 </Ring>
                 <div style={S.macroLabel}>{NUTRIENT_META[k].label}{hasNull&&<span style={{fontSize:9,marginLeft:2,color:"#94a3b8"}}>?</span>}</div>
                 <div style={S.macroVal}>{k==="cal"?fmtE(totals[k]):n1(totals[k])}<span style={{fontSize:9,color:"#64748b"}}>{k==="cal"?energyLabel:NUTRIENT_META[k].unit}</span></div>
@@ -1718,7 +1816,21 @@ export default function NutriTrack() {
         )}
         <div style={S.section}>
           <div style={S.card}>
-            <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:8,letterSpacing:"0.05em",textTransform:"uppercase"}}>Micronutrients</div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+            <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",letterSpacing:"0.05em",textTransform:"uppercase"}}>Micronutrients</div>
+            <button style={{background:"none",border:"none",color:"#64748b",fontSize:16,cursor:"pointer",padding:"0 4px",lineHeight:1}} onClick={()=>setTrafficInfoKey(trafficInfoKey==="__info"?null:"__info")}>{info}</button>
+          </div>
+          {trafficInfoKey==="__info" && (
+            <div style={{margin:"0 0 10px",background:"#0a0f1a",border:"1px solid #334155",borderRadius:8,padding:"10px 12px",fontSize:11,color:"#94a3b8",lineHeight:1.6}}>
+              <div style={{display:"flex",gap:10,alignItems:"center",marginBottom:4}}>
+                <span style={{color:TRAFFIC_COLORS.green,fontWeight:700}}>Green</span><span>&lt; 100% target</span>
+                <span style={{color:TRAFFIC_COLORS.yellow,fontWeight:700,marginLeft:8}}>Yellow</span><span>100–120%</span>
+                <span style={{color:TRAFFIC_COLORS.red,fontWeight:700,marginLeft:8}}>Red</span><span>&gt; 120%</span>
+              </div>
+              <div style={{color:"#64748b"}}>Tap any nutrient name for detail. Tap {info} on a row for why exceeding the limit matters.</div>
+              <button style={{background:"none",border:"none",color:"#60a5fa",fontSize:11,cursor:"pointer",padding:"4px 0 0",textDecoration:"underline"}} onClick={e=>{e.stopPropagation();setTrafficInfoKey(null);}}>Close</button>
+            </div>
+          )}
             {MICROS.map(k => {
               const p=pct(k), meta=NUTRIENT_META[k], hasNull=!!nullData.foodsByKey[k];
               const arc = nullData.arcByKey[k] || 0;
@@ -1731,13 +1843,14 @@ export default function NutriTrack() {
                     else { setDetailNutrient(k); setView("detail"); }
                   }}>
                     <span style={{fontSize:12,color:"#e2e8f0",width:80,fontWeight:500}}>{meta.label}</span>
+                    <button style={{background:"none",border:"none",color:trafficInfoKey===k?"#60a5fa":"#475569",fontSize:13,cursor:"pointer",padding:"0 6px 0 0",lineHeight:1,flexShrink:0}} onClick={e=>{e.stopPropagation();setTrafficInfoKey(trafficInfoKey===k?null:k);}}>{info}</button>
                     <div style={S.microBar}>
-                      <div style={{position:"absolute",left:0,top:0,height:"100%",width:`${confirmedPct}%`,background:meta.color,borderRadius:2,transition:"width 0.5s ease"}}/>
+                      <div style={{position:"absolute",left:0,top:0,height:"100%",width:`${confirmedPct}%`,background:trafficColor(p),borderRadius:2,transition:"width 0.5s ease"}}/>
                       {hasNull && displayMode==="advanced" && nullWidth > 0 && (
                         <div style={{position:"absolute",left:`${confirmedPct}%`,top:0,height:"100%",width:`${nullWidth}%`,background:"repeating-linear-gradient(90deg,#475569 0px,#475569 3px,transparent 3px,transparent 6px)",borderRadius:2,opacity:0.7}}/>
                       )}
                     </div>
-                    <span style={{fontSize:11,color:p>=100?"#10b981":p>=60?"#f59e0b":"#ef4444",width:32,textAlign:"right"}}>{p}%</span>
+                    <span style={{fontSize:11,color:trafficColor(p),width:32,textAlign:"right"}}>{p}%</span>
                     {hasNull && <span style={{fontSize:11,color:"#64748b",marginLeft:2}}>?</span>}
                   </div>
                   {hasNull && nullPanelKey===k && (
@@ -1746,6 +1859,13 @@ export default function NutriTrack() {
                       <div style={{color:"#7dd3fc",marginBottom:4}}>{nullData.foodsByKey[k].length} food{nullData.foodsByKey[k].length===1?"":"s"} had no data: {nullData.foodsByKey[k].join(", ")}.</div>
                       {displayMode==="advanced" && <div style={{color:"#475569",marginBottom:4}}>The grey segment shows an estimate based on typical values.</div>}
                       <button style={{background:"none",border:"none",color:"#60a5fa",fontSize:12,cursor:"pointer",padding:0,textDecoration:"underline"}} onClick={e=>{e.stopPropagation();setNullPanelKey(null);setDetailNutrient(k);setView("detail");}}>View full detail →</button>
+                    </div>
+                  )}
+                  {trafficInfoKey===k && (
+                    <div style={{background:"#0a0f1a",border:"1px solid #334155",borderRadius:8,padding:"8px 10px",margin:"2px 0 6px",fontSize:11,color:"#94a3b8",lineHeight:1.5}}>
+                      <div style={{fontWeight:700,marginBottom:4,color:"#cbd5e1"}}>{meta.label} · {trafficLevel(p)}</div>
+                      <div style={{color:"#64748b"}}>{NUTRIENT_EXPLANATIONS[k]||"No info available."}</div>
+                      <button style={{background:"none",border:"none",color:"#60a5fa",fontSize:11,cursor:"pointer",padding:"4px 0 0",textDecoration:"underline"}} onClick={e=>{e.stopPropagation();setTrafficInfoKey(null);}}>Close</button>
                     </div>
                   )}
                 </div>
@@ -1779,8 +1899,34 @@ export default function NutriTrack() {
               </div>
             );
           })}
-          {dayLog.filter(e=>e.type!=="exercise"&&e.type!=="supplement").length===0 && !suppEntries.length && (
+          {dayLog.filter(e=>e.type!=="exercise"&&e.type!=="supplement"&&e.type!=="water"&&e.type!=="alcohol").length===0 && !suppEntries.length && !waterEntries.length && !alcEntries.length && (
             <div style={{textAlign:"center",padding:"40px 0",color:"#475569"}}><div style={{fontSize:32,marginBottom:8}}>🥗</div><div style={{fontSize:14}}>No food logged today</div><div style={{fontSize:12,color:"#64748b"}}>Tap + to add your first meal</div></div>
+          )}
+          {waterEntries.length > 0 && (
+            <div>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"12px 0 4px"}}><div style={S.mealHdr}>Water</div><span style={{fontSize:12,color:"#38bdf8",fontWeight:600}}>💧 {fmtE(waterTotalMl)} ml</span></div>
+              {waterEntries.map(e => (
+                <SwipeableEntry key={e.id} onDelete={() => removeEntry(e.id)}>
+                  <div style={{...S.entry,background:"#08151f"}}>
+                    <div style={{flex:1}}><div style={{fontSize:14,fontWeight:500,color:"#7dd3fc"}}>💧 Water</div><div style={{fontSize:12,color:"#64748b"}}>{e.amount} ml · {e.meal||"Snack"}</div></div>
+                    <div style={{display:"flex",alignItems:"center"}}><span style={{fontSize:12,color:"#64748b",marginRight:4}}>{new Date(e.time).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}</span><button style={S.delBtn} onClick={ev => { ev.stopPropagation(); removeEntry(e.id); }}>×</button></div>
+                  </div>
+                </SwipeableEntry>
+              ))}
+            </div>
+          )}
+          {alcEntries.length > 0 && (
+            <div>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"12px 0 4px"}}><div style={S.mealHdr}>Alcohol</div><span style={{fontSize:12,color:"#fbbf24",fontWeight:600}}>{fmtE(alcTotalCals)} {energyLabel}</span></div>
+              {alcEntries.map(e => (
+                <SwipeableEntry key={e.id} onDelete={() => removeEntry(e.id)}>
+                  <div style={{...S.entry,background:"#1f1208"}}>
+                    <div style={{flex:1}}><div style={{fontSize:14,fontWeight:500,color:"#fcd34d"}}>🍾 {e.categoryLabel||e.category}</div><div style={{fontSize:12,color:"#64748b"}}>{e.volume} ml · {e.abv}% ABV · {e.meal||"Snack"}</div></div>
+                    <div style={{display:"flex",alignItems:"center"}}><span style={{fontSize:12,color:"#f59e0b",marginRight:4,fontWeight:600}}>{fmtE(e.calories)} {energyLabel}</span><button style={S.delBtn} onClick={ev => { ev.stopPropagation(); removeEntry(e.id); }}>×</button></div>
+                  </div>
+                </SwipeableEntry>
+              ))}
+            </div>
           )}
           {suppEntries.length > 0 && (
             <div>
@@ -1817,7 +1963,7 @@ export default function NutriTrack() {
   if (view === "add") {
     const ModePicker = () => (
       <div style={S.modePicker}>
-        {[["food","🍎 Food"],["recipe","📖 Recipe"],["supplement","💊 Supps"]].map(([m,label]) => (
+        {[["food","🍎 Food"],["recipe","📖 Recipe"],["supplement","💊 Supps"],["hydrate","💧 Water/Alc"]].map(([m,label]) => (
           <button key={m} style={S.modeTab(addMode===m)} onClick={() => { setAddMode(m); setSelectedFood(null); setSearchTerm(""); }}>{label}</button>
         ))}
       </div>
@@ -2085,6 +2231,60 @@ export default function NutriTrack() {
               </div>
             </div>
           </div>
+        </div>
+      );
+    }
+
+    // Phase 11a: Water & Alcohol entry
+    if (addMode === "hydrate") {
+      const alcCals = alcoholCalories(alcVolume, alcAbv);
+      return (
+        <div style={S.app}>
+          <div style={S.header}>
+            <button style={{background:"none",border:"none",color:"#94a3b8",fontSize:15,cursor:"pointer"}} onClick={() => setView("log")}>← Back</button>
+            <span style={{fontSize:15,fontWeight:700}}>{water} Water / Alcohol</span><div style={{width:64}}/>
+          </div>
+          <div style={S.section}>
+            <ModePicker/>
+            <div style={S.card}>
+              <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:10,textTransform:"uppercase",letterSpacing:"0.05em"}}>{water} Water</div>
+              <div style={{display:"flex",gap:8,marginBottom:12}}>
+                <div style={{flex:1}}><label style={S.label}>Amount</label><input style={S.input} type="number" inputMode="numeric" value={waterAmount} onChange={e=>setWaterAmount(e.target.value)} placeholder="250"/></div>
+                <div style={{width:110}}><label style={S.label}>Unit</label><select style={{...S.input,padding:"11px 8px"}} value={waterUnit} onChange={e=>setWaterUnit(e.target.value)}>{WATER_UNITS.map(u=><option key={u} value={u}>{u}{u!=="ml"?" ("+WATER_UNIT_TO_ML[u]+"ml)":""}</option>)}</select></div>
+              </div>
+              <label style={S.label}>Meal</label>
+              <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
+                {MEALS.map(m => <button key={m} style={S.pill(meal===m)} onClick={() => setMeal(m)}>{m}</button>)}
+              </div>
+              <div style={{background:"#08151f",borderRadius:10,padding:"10px 12px",marginBottom:12,display:"flex",justifyContent:"space-between"}}>
+                <span style={{fontSize:13,color:"#7dd3fc"}}>Total</span>
+                <span style={{fontSize:13,color:"#38bdf8",fontWeight:700}}>{fmtE(waterAmountMl(waterAmount, waterUnit))} ml</span>
+              </div>
+              <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:(waterAmountMl(waterAmount,waterUnit)>0)?"#0ea5e9":"#1e293b",color:"#fff",fontSize:15,fontWeight:700,cursor:(waterAmountMl(waterAmount,waterUnit)>0)?"pointer":"default"}} disabled={!(waterAmountMl(waterAmount,waterUnit)>0)} onClick={logWater}>Add water to {meal}</button>
+            </div>
+            <div style={{...S.card,marginTop:12}}>
+              <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:10,textTransform:"uppercase",letterSpacing:"0.05em"}}>{beer} Alcohol</div>
+              <label style={S.label}>Drink category</label>
+              <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
+                {ALCOHOL_CATEGORIES.map(c => <button key={c.id} style={S.pill(alcCategory===c.id)} onClick={() => { setAlcCategory(c.id); setAlcAbv(String(c.abv)); }}>{c.label}</button>)}
+              </div>
+              <div style={{display:"flex",gap:8,marginBottom:12}}>
+                <div style={{flex:1}}><label style={S.label}>Volume (ml)</label><input style={S.input} type="number" inputMode="decimal" value={alcVolume} onChange={e=>setAlcVolume(e.target.value)} placeholder="e.g. 330"/></div>
+                <div style={{width:100}}><label style={S.label}>ABV (%)</label><input style={S.input} type="number" inputMode="decimal" value={alcAbv} onChange={e=>setAlcAbv(e.target.value)} placeholder="5"/></div>
+              </div>
+              <label style={S.label}>Meal</label>
+              <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
+                {MEALS.map(m => <button key={m} style={S.pill(meal===m)} onClick={() => setMeal(m)}>{m}</button>)}
+              </div>
+              <div style={{background:"#1f1208",borderRadius:10,padding:"10px 12px",marginBottom:12,display:"flex",justifyContent:"space-between"}}>
+                <span style={{fontSize:13,color:"#fcd34d"}}>Calories</span>
+                <span style={{fontSize:13,color:"#fbbf24",fontWeight:700}}>{fmtE(alcCals)} {energyLabel}</span>
+              </div>
+              <button style={{width:"100%",padding:14,borderRadius:12,border:"none",background:(parseFloat(alcVolume)>0&&parseFloat(alcAbv)>0)?"#d97706":"#1e293b",color:"#fff",fontSize:15,fontWeight:700,cursor:(parseFloat(alcVolume)>0&&parseFloat(alcAbv)>0)?"pointer":"default"}} disabled={!(parseFloat(alcVolume)>0&&parseFloat(alcAbv)>0)} onClick={logAlcohol}>Add drink to {meal}</button>
+              <div style={{fontSize:11,color:"#64748b",marginTop:8,lineHeight:1.5}}>Calories = volume × ABV% × 7.89. Alcohol calories count toward your daily total.</div>
+            </div>
+          </div>
+          <BottomNav/>
         </div>
       );
     }
@@ -2453,7 +2653,7 @@ export default function NutriTrack() {
         <div style={S.section}>
           <div style={S.card}>
             <label style={S.label}>Recipe name *</label><input style={{...S.input,marginBottom:12}} placeholder="e.g. Red Lentil Dal" value={recipeInProgress.name} onChange={e=>setRecipeInProgress(p=>({...p,name:e.target.value}))}/>
-            <label style={S.label}>Source (optional)</label><input style={{...S.input,marginBottom:12}} placeholder="e.g. Mum's recipe" value={recipeInProgress.source} onChange={e=>setRecipeInProgress(p=>({...p,source:e.target.value}))}/>
+
             <label style={S.label}>Number of servings</label><input style={{...S.input,marginBottom:6}} type="number" inputMode="decimal" value={recipeInProgress.servings} onChange={e=>setRecipeInProgress(p=>({...p,servings:e.target.value}))}/>
             <div style={{display:"flex",gap:6,marginTop:6,flexWrap:"wrap"}}>{[1,2,3,4,6,8].map(n=><button key={n} style={S.pill(recipeInProgress.servings===String(n))} onClick={()=>setRecipeInProgress(p=>({...p,servings:String(n)}))}>{n}</button>)}</div>
           </div>
@@ -2640,6 +2840,14 @@ export default function NutriTrack() {
               )}
             </div>
           </details>
+          <div style={{...S.card,marginTop:12}}>
+            <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:8,textTransform:"uppercase",letterSpacing:"0.05em"}}>Goal Presets</div>
+            <div style={{fontSize:11,color:"#64748b",marginBottom:10,lineHeight:1.5}}>Apply a preset to override all goals. WHO = population RDAs. Optimal = endurance-athlete levels. Your profile-based values are restored with the reset button below.</div>
+            <div style={{display:"flex",gap:8}}>
+              <button style={{flex:1,padding:12,borderRadius:10,border:"1px solid #1e293b",background:"#0f172a",color:"#e2e8f0",fontSize:13,fontWeight:600,cursor:"pointer"}} onClick={()=>setGoalOverrides({...WHO_GOALS})}>WHO Recommended</button>
+              <button style={{flex:1,padding:12,borderRadius:10,border:"1px solid #1e293b",background:"#0f172a",color:"#e2e8f0",fontSize:13,fontWeight:600,cursor:"pointer"}} onClick={()=>setGoalOverrides({...OPTIMAL_GOALS})}>Optimal (Athlete)</button>
+            </div>
+          </div>
           {sections.map(({ title, keys }) => (
             <div key={title} style={{...S.card,marginTop:12}}>
               <div style={{fontSize:13,fontWeight:700,color:"#94a3b8",marginBottom:12,textTransform:"uppercase",letterSpacing:"0.05em"}}>{title}</div>
@@ -2723,6 +2931,9 @@ export default function NutriTrack() {
           });
           continue;
         }
+        // Phase 11a: water contributes no nutrients; alcohol adds calories to the food cal column.
+        if (e.type === "water") continue;
+        if (e.type === "alcohol") { food.cal += (e.calories || 0); continue; }
         // food or recipe
         if (e.type === "recipe") {
           (e.derivedIngredients || []).forEach(ing => {
