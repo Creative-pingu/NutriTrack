@@ -1400,7 +1400,7 @@ function SwipeableEntry({
   }, children));
 }
 // ── MAIN APP ──────────────────────────────────────────────────────────────
-export default function NutriTrack() {
+function NutriTrack() {
   // ── FOOD DB (async-loaded from /foods.json) ────────────────
   const [foodDB, setFoodDB] = useState([]); // loaded array
   const [foodDBStatus, setFoodDBStatus] = useState("loading"); // "loading" | "ready" | "error"
