@@ -12026,4 +12026,5 @@ export default function NutriTrack() {
     }, "Restore"))))));
   }
   return null;
-}
+}window.NutriTrack = NutriTrack;
+window._MainApp = NutriTrack;
