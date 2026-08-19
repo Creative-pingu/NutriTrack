@@ -1,3 +1,4 @@
+console.log('[DIAG] NutriTrack.js starting to load');
 import { useState, useEffect, useCallback, useRef } from "react";
 
 // FOOD_DB is loaded asynchronously from /NutriTrack/foods.json at app start.
@@ -12028,3 +12029,4 @@ export default function NutriTrack() {
   return null;
 }window.NutriTrack = NutriTrack;
 window._MainApp = NutriTrack;
+console.log('[DIAG] NutriTrack.js executed, set window.NutriTrack and window._MainApp');

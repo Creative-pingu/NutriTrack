@@ -202,6 +202,9 @@
             const appScript = document.createElement('script');
             appScript.src = './NutriTrack.js?v=' + SHELL_APP_VERSION.replace('v','');
             appScript.onload = function() {
+                console.log('[DIAG] Script loaded, checking window._MainApp...');
+                console.log('[DIAG] window._MainApp:', typeof window._MainApp, window._MainApp);
+                console.log('[DIAG] window.NutriTrack:', typeof window.NutriTrack, window.NutriTrack);
                 updateStep(3, 'loaded');
                 updateStep(4, 'current', 'Rendering...');
                 try {
@@ -215,6 +218,7 @@
                         updateStep(4, 'loaded', 'Success!');
                         setStatus('NutriTrack loaded successfully');
                     } else {
+                        console.log('[DIAG] ERROR: App not found! window._MainApp:', window._MainApp, 'window.NutriTrack:', window.NutriTrack);
                         throw new Error('App not found');
                     }
                 } catch (e) {
