@@ -1,5 +1,5 @@
 // NutriTrack Service Worker
-const CACHE_VERSION = "nutritrack-v73";
+const CACHE_VERSION = "nutritrack-v74";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.js",
@@ -12,12 +12,9 @@ const PRECACHE_ASSETS = [
 // CDN scripts the app loads at bootstrap (React, ReactDOM).
 // These are cross-origin; precaching them makes the app boot offline.
 // Keep these in sync with the <script src> URLs in index.html.
-const CDN_ASSETS = [
-  "https://unpkg.com/react@18/umd/react.production.min.js",
-  "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js",
-  // Babel is no longer loaded at runtime: JSX is pre-compiled to
-  // NutriTrack.js at build time (Phase 7b), removing the dynamic code-evaluation XSS vector.
-];
+// Phase 6m-4: CDN assets removed from PRECACHE_ASSETS (cache.addAll is all-or-nothing
+// and unpkg redirects cause failures). CDN scripts cache naturally in browser.
+const CDN_ASSETS = [];
 
 const WORKER_ORIGIN = "https://nutritrack-proxy.nickkropf.workers.dev";
 

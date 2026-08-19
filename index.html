@@ -127,6 +127,9 @@
             navigator.serviceWorker.register('/NutriTrack/sw.js?v=' + SHELL_APP_VERSION, { scope: '/NutriTrack/' })
                 .then(function(reg) {
                     document.getElementById('sw-status').textContent = 'SW: ' + SHELL_APP_VERSION + ' active';
+                    // Phase 6m-3: Force bypass HTTP cache for sw.js to ensure updatefound fires
+                    fetch('/NutriTrack/sw.js?v=' + SHELL_APP_VERSION, { cache: 'no-store' }).catch(() => {});
+                    reg.update();
                     // Expose the ready promise so NutriTrack.jsx's Phase 6d
                     // update detection can reuse it without racing.
                     window._swReady = navigator.serviceWorker.ready;
