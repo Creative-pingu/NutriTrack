@@ -560,8 +560,9 @@ async function loadData(key, fallback) {
 async function saveData(key, val) {
   try {
     localStorage.setItem(key, JSON.stringify(val));
+    console.log("[NutriTrack] Saved successfully:", key, "(" + (JSON.stringify(val)?.length || 0) + " bytes)");
   } catch (e) {
-    console.error("saveData failed:", key, e);
+    console.error("[NutriTrack] saveData failed:", key, e);
   }
 }
 
