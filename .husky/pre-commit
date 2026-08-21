@@ -1,0 +1,57 @@
+#!/bin/sh
+# NutriTrack Pre-commit Hook
+# Runs build and path consistency checks before allowing commit
+
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-commit checks..."
+
+# Check if we have Node.js
+if ! command -v node >/dev/null 2>&1; then
+  echo "❌ Node.js not found. Skipping pre-commit checks."
+  echo "   Install Node.js to enable automated build validation."
+  exit 0
+fi
+
+# Check if Babel dependencies are installed
+if [ ! -d "node_modules/@babel/core" ]; then
+  echo "⚠ Babel dependencies not installed. Attempting to install..."
+  npm install 2>/dev/null
+  
+  if [ ! -d "node_modules/@babel/core" ]; then
+    echo "❌ Failed to install Babel dependencies."
+    echo "   Run 'npm install' manually to install dependencies."
+    exit 1
+  fi
+fi
+
+# Run the build
+echo "Building NutriTrack..."
+if node build.js; then
+  echo "✓ Build successful"
+else
+  echo "❌ Build failed. Commit aborted."
+  exit 1
+fi
+
+# Run path consistency check
+echo "Checking path consistency..."
+if node scripts/check-paths.js; then
+  echo "✓ Path consistency check passed"
+else
+  echo "❌ Path consistency check failed. Commit aborted."
+  exit 1
+fi
+
+# Validate the compiled output
+echo "Validating compiled output..."
+if node --check NutriTrack.js; then
+  echo "✓ Syntax check passed"
+else
+  echo "❌ Syntax check failed. Commit aborted."
+  exit 1
+fi
+
+echo ""
+echo "✅ All pre-commit checks passed!"
+exit 0

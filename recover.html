@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NutriTrack - Emergency Recovery</title>
+<style>
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 20px; 
+  background: #f5f5f5; 
+}
+h1 { 
+  color: #d32f2f; 
+  border-bottom: 2px solid #d32f2f; 
+  padding-bottom: 10px;
+}
+button { 
+  background: #1976d2; 
+  color: white; 
+  border: none; 
+  padding: 12px 24px; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  margin: 10px 10px 10px 0;
+  transition: background 0.2s;
+}
+button:hover:not(:disabled) { 
+  background: #1565c0; 
+}
+button:disabled { 
+  background: #cccccc; 
+  cursor: not-allowed;
+}
+button.secondary { 
+  background: #6c757d; 
+}
+button.secondary:hover:not(:disabled) { 
+  background: #5a6268; 
+}
+#output { 
+  background: white; 
+  padding: 15px; 
+  border-radius: 4px; 
+  margin-top: 20px; 
+  white-space: pre-wrap; 
+  max-height: 300px; 
+  overflow-y: auto; 
+  font-family: monospace; 
+  font-size: 12px; 
+  border: 1px solid #ddd;
+}
+.success { color: #388e3c; }
+.error { color: #d32f2f; }
+.warning { color: #ff9800; }
+.info { color: #2196f3; }
+
+.instructions {
+  background: #fff3cd;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 20px 0;
+  border-left: 4px solid #ffc107;
+}
+
+.summary {
+  background: #e3f2fd;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
+  border-left: 4px solid #2196f3;
+}
+</style>
+</head>
+<body>
+<h1>NutriTrack - Emergency Recovery</h1>
+
+<div class="instructions">
+  <strong>⚠️ Emergency Mode:</strong> This page works even if the main app is broken.
+  <p>Use this to export your data before clearing cache or reinstalling.</p>
+</div>
+
+<div>
+  <button onclick="exportData()">Export All Data</button>
+  <button onclick="checkStorage()" class="secondary">Check Storage Usage</button>
+  <button onclick="clearCache()" class="secondary">Clear Cache (After Export!)</button>
+</div>
+
+<h3>Quick Instructions:</h3>
+<ol>
+  <li>Click <strong>"Export All Data"</strong> to download a JSON backup</li>
+  <li>Save the downloaded file to a safe location</li>
+  <li>After fixing the app, use <strong>Settings → Import</strong> to restore your data</li>
+</ol>
+
+<h3>Output Log:</h3>
+<pre id="output"></pre>
+
+<script>
+const NT_PREFIX = 'nt-';
+
+function log(msg, type) {
+  var output = document.getElementById('output');
+  var ts = new Date().toLocaleTimeString();
+  var cls = type === 'error' ? 'error' : type === 'warning' ? 'warning' : type === 'success' ? 'success' : type === 'info' ? 'info' : '';
+  output.innerHTML += '<span class="' + cls + '">[' + ts + '] [' + type.toUpperCase() + '] ' + msg + '</span><br>';
+  output.scrollTop = output.scrollHeight;
+}
+
+function checkStorage() {
+  log('Checking storage usage...', 'info');
+  
+  var count = 0, total = 0;
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (key.startsWith(NT_PREFIX)) {
+      count++;
+      var value = localStorage.getItem(key);
+      total += key.length + (value ? value.length : 0);
+    }
+  }
+  var pct = (total / (5 * 1024 * 1024) * 100).toFixed(1);
+  log('localStorage: ' + count + ' NutriTrack keys, ' + (total/1024/1024).toFixed(2) + ' MB / 5 MB (' + pct + '%)', 'info');
+  
+  if (window.indexedDB) {
+    checkIndexedDB();
+  } else {
+    log('IndexedDB not supported in this browser', 'warning');
+  }
+  
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+      if (registrations.length > 0) {
+        log('Service Worker registrations: ' + registrations.length, 'info');
+      } else {
+        log('No Service Worker registrations', 'info');
+      }
+    });
+  }
+}
+
+function checkIndexedDB() {
+  log('Checking IndexedDB...', 'info');
+  var request = indexedDB.open('nutritrack', 1);
+  request.onerror = function(e) { log('IndexedDB error: ' + e.target.error, 'error'); };
+  request.onsuccess = function(e) {
+    var db = e.target.result;
+    if (!db.objectStoreNames.contains('nutritrack')) { 
+      log('No IndexedDB data found', 'info'); return; 
+    }
+    var tx = db.transaction(['nutritrack'], 'readonly');
+    var store = tx.objectStore('nutritrack');
+    var getAll = store.getAll();
+    getAll.onsuccess = function(e) { log('IndexedDB: ' + e.target.result.length + ' records', 'success'); };
+    getAll.onerror = function(e) { log('IndexedDB read error: ' + e.target.error, 'error'); };
+  };
+}
+
+function exportData() {
+  var button = event.target;
+  button.disabled = true;
+  button.textContent = 'Exporting...';
+  log('Starting export...', 'info');
+  
+  var exportData = {
+    timestamp: new Date().toISOString(),
+    version: '1.0',
+    userAgent: navigator.userAgent,
+    url: window.location.href,
+    localStorage: {},
+    indexedDB: null
+  };
+  
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (key.startsWith(NT_PREFIX)) {
+      try { exportData.localStorage[key] = localStorage.getItem(key); }
+      catch (e) { log('Failed to read ' + key + ': ' + e.message, 'error'); }
+    }
+  }
+  log('Exported ' + Object.keys(exportData.localStorage).length + ' localStorage keys', 'success');
+  
+  if (window.indexedDB) {
+    var dbRequest = indexedDB.open('nutritrack', 1);
+    dbRequest.onerror = function(e) { log('IndexedDB not available: ' + e.target.error, 'warning'); completeExport(exportData, button); };
+    dbRequest.onsuccess = function(e) {
+      var db = e.target.result;
+      if (db.objectStoreNames.contains('nutritrack')) {
+        var tx = db.transaction(['nutritrack'], 'readonly');
+        var store = tx.objectStore('nutritrack');
+        var getAll = store.getAll();
+        getAll.onsuccess = function(e) { exportData.indexedDB = e.target.result; log('Exported ' + exportData.indexedDB.length + ' IndexedDB records', 'success'); completeExport(exportData, button); };
+        getAll.onerror = function(e) { log('IndexedDB read failed: ' + e.target.error, 'error'); completeExport(exportData, button); };
+      } else { log('No IndexedDB data', 'info'); completeExport(exportData, button); }
+    };
+  } else { log('IndexedDB not supported', 'warning'); completeExport(exportData, button); }
+}
+
+function completeExport(data, button) {
+  var now = new Date();
+  var dateStr = now.toISOString().split('T')[0];
+  var timeStr = now.toISOString().split('T')[1].split('.')[0].replace(/:/g, '-');
+  var filename = 'nutritrack-recovery-' + dateStr + '-' + timeStr + '.json';
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = filename; a.style.display = 'none';
+  document.body.appendChild(a); a.click();
+  setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  log('EXPORT COMPLETE! File: ' + filename, 'success');
+  log('localStorage keys: ' + Object.keys(data.localStorage).length, 'success');
+  log('IndexedDB records: ' + (data.indexedDB ? data.indexedDB.length : 0), 'success');
+  button.disabled = false; button.textContent = 'Export All Data';
+}
+
+// Initialize
+log('Emergency recovery tool loaded. Use the buttons above to export or check your data.', 'success');
+</script>
+</body>
+</html>
