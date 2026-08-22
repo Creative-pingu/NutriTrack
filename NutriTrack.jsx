@@ -561,49 +561,9 @@ async function saveData(key, val) {
   try {
     localStorage.setItem(key, JSON.stringify(val));
     console.log("[NutriTrack] Saved successfully:", key, "(" + (JSON.stringify(val)?.length || 0) + " bytes)");
-    
-    // Show visible notification for mobile users without console access
-    try {
-      const size = JSON.stringify(val)?.length || 0;
-      showSaveNotification('Saved: ' + key + ' (' + size + ' bytes)', '#388e3c');
-    } catch (e) {
-      console.warn("[NutriTrack] Notification display failed:", e);
-    }
   } catch (e) {
     console.error("[NutriTrack] saveData failed:", key, e);
-    try {
-      showSaveNotification('FAILED to save: ' + key, '#d32f2f');
-    } catch (e2) {
-      console.error("[NutriTrack] Error notification failed:", e2);
-    }
   }
-}
-
-// Helper function to show save notifications on screen
-function showSaveNotification(message, backgroundColor) {
-  const notification = document.createElement('div');
-  notification.textContent = message;
-  notification.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: ${backgroundColor};
-    color: white;
-    padding: 12px 16px;
-    border-radius: 4px;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    z-index: 99999;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    max-width: 300px;
-  `;
-  notification.id = 'nt-save-notification';
-  document.body.appendChild(notification);
-  setTimeout(() => {
-    notification.style.opacity = '0';
-    notification.style.transition = 'opacity 0.3s';
-    setTimeout(() => notification.remove(), 300);
-  }, 2000);
 }
 
 // ── STORAGE VALIDATION (Phase 6b) ─────────────────────────────────────────
