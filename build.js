@@ -42,6 +42,7 @@ try {
   
   // 3. Add the loader footer
   compiledCode = compiledCode.trimEnd() + '\n';
+  compiledCode += 'window.NutriTrack = NutriTrack;\n';
   compiledCode += 'window._MainApp = (typeof NutriTrack !== "undefined" ? NutriTrack : null);\n';
   
   // 4. Add header comment
