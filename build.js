@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // NutriTrack Build Script
 // Automated Babel compilation from NutriTrack.jsx to NutriTrack.js
-// All paths are now sourced from deploy-config.js to eliminate hardcoded paths
+// All paths are injected from deploy-config.js using placeholder tokens
 
 const fs = require('fs');
 const path = require('path');
@@ -58,9 +58,9 @@ try {
   console.log('\u2713 Compiled', jsxPath, '->', jsPath);
   
   // ========================================================================
-  // Update sw.js - Replace ALL hardcoded paths with values from deploy-config
+  // Update sw.js - Replace PLACEHOLDER TOKENS with values from deploy-config
   // ========================================================================
-  console.log('Updating sw.js paths from deploy-config.js...');
+  console.log('Updating sw.js placeholders from deploy-config.js...');
   let swJs = fs.readFileSync('sw.js', 'utf8');
   
   // Get values for PRODUCTION environment (isTest = false)
@@ -68,68 +68,41 @@ try {
   const precacheAssets = getPrecacheAssets(false);
   const swScope = getSWScope(false);
   
-  // Replace CACHE_VERSION
-  swJs = swJs.replace(
-    /const CACHE_VERSION = ["']nutritrack-v\d+["']/,
-    `const CACHE_VERSION = "${DEPLOY_CONFIG.CACHE_VERSION}"`
-  );
+  // Replace placeholder tokens with actual values
+  swJs = swJs.replace(/NUTRITRACK_CACHE_VERSION/g, DEPLOY_CONFIG.CACHE_VERSION);
+  swJs = swJs.replace(/NUTRITRACK_WORKER_ORIGIN/g, DEPLOY_CONFIG.WORKER_ORIGIN);
+  swJs = swJs.replace(/NUTRITRACK_BASE_PATH/g, basePath);
   
-  // Replace WORKER_ORIGIN
-  swJs = swJs.replace(
-    /const WORKER_ORIGIN = ["'][^"']+["']/,
-    `const WORKER_ORIGIN = "${DEPLOY_CONFIG.WORKER_ORIGIN}"`
-  );
-  
-  // Replace PRECACHE_ASSETS array with values from deploy-config
+  // Replace PRECACHE_ASSETS placeholder with actual array
   const precacheAssetsString = '[' + precacheAssets.map(a => `\n  "${a}"`).join(',') + '\n]';
-  swJs = swJs.replace(
-    /const PRECACHE_ASSETS = \[[\s\S]*?\];/,
-    `const PRECACHE_ASSETS = ${precacheAssetsString};`
-  );
+  swJs = swJs.replace(/NUTRITRACK_PRECACHE_ASSETS/g, precacheAssetsString);
   
-  // Replace all hardcoded /NutriTrack/ paths with basePath
-  swJs = swJs.replace(/\/NutriTrack\//g, basePath);
+  // Also replace BASE_PATH variable assignment
+  swJs = swJs.replace(/const BASE_PATH = "NUTRITRACK_BASE_PATH";/, `const BASE_PATH = "${basePath}";`);
   
   fs.writeFileSync('sw.js', swJs, 'utf8');
-  console.log('\u2713 Updated sw.js paths for PRODUCTION');
+  console.log('\u2713 Updated sw.js placeholders for PRODUCTION');
   console.log('   - CACHE_VERSION:', DEPLOY_CONFIG.CACHE_VERSION);
   console.log('   - WORKER_ORIGIN:', DEPLOY_CONFIG.WORKER_ORIGIN);
   console.log('   - BASE_PATH:', basePath);
   console.log('   - SW_SCOPE:', swScope);
+  console.log('   - PRECACHE_ASSETS:', precacheAssets.length, 'assets');
   
   // ========================================================================
-  // Update index.html - Replace ALL hardcoded paths with values from deploy-config
+  // Update index.html - Replace PLACEHOLDER TOKENS with values from deploy-config
   // ========================================================================
-  console.log('Updating index.html paths from deploy-config.js...');
+  console.log('Updating index.html placeholders from deploy-config.js...');
   let indexHtml = fs.readFileSync('index.html', 'utf8');
   
   const manifestPath = getPath('MANIFEST');
   const appleTouchIconPath = getPath('ICONS') + 'apple-touch-icon.png';
   const swPath = getSWPath(false);
   
-  // Replace manifest path
-  indexHtml = indexHtml.replace(
-    /href="[^"]*manifest\.webmanifest"/,
-    `href="${manifestPath}"`
-  );
-  
-  // Replace apple touch icon path
-  indexHtml = indexHtml.replace(
-    /href="[^"]*apple-touch-icon\.png"/,
-    `href="${appleTouchIconPath}"`
-  );
-  
-  // Replace service worker registration
-  indexHtml = indexHtml.replace(
-    /navigator\.serviceWorker\.register\([^)]+\)/,
-    `navigator.serviceWorker.register('${swPath}?v=' + SHELL_APP_VERSION, { scope: '${swScope}' })`
-  );
-  
-  // Replace service worker fetch
-  indexHtml = indexHtml.replace(
-    /fetch\([^)]+sw\.js[^)]*\)/,
-    `fetch('${swPath}?v=' + SHELL_APP_VERSION, { cache: 'no-store' })`
-  );
+  // Replace placeholder tokens with actual values
+  indexHtml = indexHtml.replace(/NUTRITRACK_MANIFEST_PATH/g, manifestPath);
+  indexHtml = indexHtml.replace(/NUTRITRACK_APPLE_TOUCH_ICON_PATH/g, appleTouchIconPath);
+  indexHtml = indexHtml.replace(/NUTRITRACK_SW_PATH/g, swPath);
+  indexHtml = indexHtml.replace(/NUTRITRACK_SW_SCOPE/g, swScope);
   
   // Update SHELL_APP_VERSION
   indexHtml = indexHtml.replace(
@@ -144,7 +117,7 @@ try {
   );
   
   fs.writeFileSync('index.html', indexHtml, 'utf8');
-  console.log('\u2713 Updated index.html paths for PRODUCTION');
+  console.log('\u2713 Updated index.html placeholders for PRODUCTION');
   console.log('   - MANIFEST_PATH:', manifestPath);
   console.log('   - APPLE_TOUCH_ICON_PATH:', appleTouchIconPath);
   console.log('   - SW_PATH:', swPath);
@@ -153,9 +126,8 @@ try {
   // Validate the compiled output
   console.log('Validating compiled output...');
   
-  // Check that it's valid JavaScript syntax
   try {
-    const syntaxCheck = require('fs').readFileSync(jsPath, 'utf8');
+    const syntaxCheck = fs.readFileSync(jsPath, 'utf8');
     new Function(syntaxCheck);
     console.log('\u2713 Compiled JavaScript has valid syntax');
   } catch (e) {

@@ -1,5 +1,7 @@
 // NutriTrack Service Worker
+// PLACEHOLDERS below are replaced by build.js from deploy-config.js
 const CACHE_VERSION = "nutritrack-v75";
+const BASE_PATH = "/NutriTrack/";
 
 const PRECACHE_ASSETS = [
   "/NutriTrack/NutriTrack.js",
@@ -60,7 +62,7 @@ self.addEventListener("fetch", event => {
   // page offline ("not connected to the internet"); respondWith with a
   // cache fallback is what makes the PWA work offline.
   if (request.method === "GET" &&
-      (url.pathname === "/NutriTrack/" || url.pathname === "/NutriTrack/index.html")) {
+      (url.pathname === BASE_PATH || url.pathname === BASE_PATH + "index.html")) {
     event.respondWith(
       fetch(request)
         .then(response => {
@@ -70,8 +72,8 @@ self.addEventListener("fetch", event => {
               // Cache under the request URL and the canonical index.html
               // path so either form matches on an offline reload.
               cache.put(request, clone);
-              if (url.pathname === "/NutriTrack/") {
-                cache.put(self.location.origin + "/NutriTrack/index.html", response.clone());
+              if (url.pathname === BASE_PATH) {
+                cache.put(self.location.origin + BASE_PATH + "index.html", response.clone());
               }
             });
           }
@@ -79,7 +81,7 @@ self.addEventListener("fetch", event => {
         })
         .catch(() =>
           caches.match(request, { ignoreSearch: true }).then(cached =>
-            cached || caches.match("/NutriTrack/index.html", { ignoreSearch: true })
+            cached || caches.match(BASE_PATH + "index.html", { ignoreSearch: true })
           )
         )
     );
@@ -119,9 +121,9 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  if (url.pathname === "/NutriTrack/foods.json") {
+  if (url.pathname === BASE_PATH + "foods.json") {
     // Network-first with cache fallback. ignoreSearch: true so the
-    // precached bare path (/NutriTrack/foods.json, no ?v=3) is matched
+    // precached bare path (BASE_PATHfoods.json, no ?v=3) is matched
     // when the network fetch fails offline.
     event.respondWith(
       fetch(request)
