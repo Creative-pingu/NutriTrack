@@ -801,6 +801,8 @@ export default function NutriTrack() {
   // Export
   const [lastExportedAt, setLastExportedAt] = useState(null);
   const [exportConfirm,  setExportConfirm]  = useState(null); // null or { csvRows, jsonEntries, dateRange }
+  const [importPreview, setImportPreview] = useState(null); // null or preview data for confirmation
+  const [importError,   setImportError]   = useState(null); // null or error message
 
   // Recents (W1)
   const [recents, setRecents] = useState([]); // [{ foodId, foodName, lastAmount, lastMeal, loggedAt }]
@@ -2826,6 +2828,27 @@ export default function NutriTrack() {
       </div>
     );
   }
+  // ── CHECKSUM UTILITIES (Phase 11.7) ─────────────────────────────────────────────
+  // SHA-256 checksum generation using Web Crypto API
+  async function generateChecksum(data) {
+    try {
+      const encoder = new TextEncoder();
+      const dataString = JSON.stringify(data);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", encoder.encode(dataString));
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    } catch (e) {
+      console.error("[NutriTrack] Checksum generation failed:", e);
+      return null;
+    }
+  }
+
+  async function validateChecksum(data, expectedChecksum) {
+    if (!expectedChecksum) return false;
+    const actualChecksum = await generateChecksum(data);
+    return actualChecksum === expectedChecksum;
+  }
+
   // ── EXPORT ────────────────────────────────────────────────────────────
   const handleExportData = () => {
     const exportedAt = new Date();
@@ -2932,7 +2955,7 @@ export default function NutriTrack() {
 
     // ── Build JSON object ──────────────────────────────────────────────
     const jsonObj = {
-      version: "1.0",
+      version: "1.1",
       exported_at: exportedAt.toISOString(),
       logs,
       recipes,
@@ -2941,6 +2964,21 @@ export default function NutriTrack() {
       exRatio,
       supplementStacks,
       notionStatus: { lastSyncedAt },
+      checksum: null, // Will be set below
+
+    // Generate SHA-256 checksum for integrity validation (Phase 11.7)
+    jsonObj.checksum = await generateChecksum({
+      logs: jsonObj.logs,
+      recipes: jsonObj.recipes,
+      customFoods: jsonObj.customFoods,
+      profile: jsonObj.profile,
+      exRatio: jsonObj.exRatio,
+      supplementStacks: jsonObj.supplementStacks,
+    });
+    if (!jsonObj.checksum) {
+      alert("Export failed: Could not generate checksum. Please try again.");
+      return;
+    }
     };
 
     // ── Bundle both files into a single zip and trigger one download ───
@@ -2989,6 +3027,126 @@ export default function NutriTrack() {
       script.onerror = () => alert("Export failed: JSZip could not be loaded. Connect to the internet and try again.");
       document.head.appendChild(script);
     }
+  };
+
+  // ── IMPORT FUNCTIONS (Phase 11.7) ──────────────────────────────────────────────────
+  const handleImportData = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    setImportError(null);
+    setImportPreview(null);
+
+    try {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const fileContent = e.target.result;
+          const data = JSON.parse(fileContent);
+
+          // Validate schema version
+          const SUPPORTED_VERSIONS = ["1.0", "1.1"];
+          if (!data.version || !SUPPORTED_VERSIONS.includes(data.version)) {
+            setImportError(`Unsupported export version: ${data.version}. Supported: ${SUPPORTED_VERSIONS.join(", ")}`);
+            return;
+          }
+
+          // Validate required fields
+          const requiredFields = ["logs", "recipes", "customFoods", "profile", "exRatio", "supplementStacks"];
+          const missingFields = requiredFields.filter(f => data[f] === undefined);
+          if (missingFields.length > 0) {
+            setImportError(`Missing required fields: ${missingFields.join(", ")}`);
+            return;
+          }
+
+          // Validate checksum if present
+          let checksumValid = true;
+          if (data.checksum) {
+            const coreData = {
+              logs: data.logs,
+              recipes: data.recipes,
+              customFoods: data.customFoods,
+              profile: data.profile,
+              exRatio: data.exRatio,
+              supplementStacks: data.supplementStacks,
+            };
+            checksumValid = await validateChecksum(coreData, data.checksum);
+            if (!checksumValid) {
+              setImportError("Checksum validation failed. The file may be corrupted.");
+              return;
+            }
+          } else if (data.version === "1.1") {
+            // Version 1.1 should have checksum
+            setImportError("Export file is missing checksum. This may indicate corruption.");
+            return;
+          }
+
+          // Prepare preview for user confirmation
+          const preview = {
+            version: data.version,
+            checksumValid,
+            exportedAt: data.exported_at,
+            logCount: Object.values(data.logs || {}).flat().length,
+            recipeCount: data.recipes?.length || 0,
+            customFoodCount: data.customFoods?.length || 0,
+            data: data,
+          };
+          setImportPreview(preview);
+        } catch (parseError) {
+          setImportError("Failed to parse the file. Please ensure it is a valid NutriTrack export.");
+        }
+      };
+      reader.readAsText(file);
+    } catch (e) {
+      setImportError(`Import failed: ${e.message}`);
+    }
+  };
+
+  const confirmImport = async () => {
+    if (!importPreview) return;
+
+    setImportError(null);
+    const data = importPreview.data;
+
+    // Create backup of current data first (safety measure)
+    const currentState = {
+      logs,
+      recipes,
+      customFoods,
+      profile,
+      exRatio,
+      supplementStacks,
+    };
+    // Store backup in sessionStorage (cleared on tab close)
+    try {
+      sessionStorage.setItem("nt-import-backup", JSON.stringify(currentState));
+    } catch (e) {
+      console.warn("[NutriTrack] Could not create import backup:", e);
+    }
+
+    // Restore the imported data
+    setLogs(data.logs || {});
+    setRecipes(data.recipes || []);
+    setCustomFoods(data.customFoods || []);
+    setProfile(data.profile || DEFAULT_PROFILE);
+    setExRatio(data.exRatio || DEFAULT_EX_RATIO);
+    setSupplementStacks(data.supplementStacks || DEFAULT_SUPPLEMENT_STACKS);
+    if (data.notionStatus) {
+      setLastSyncedAt(data.notionStatus.lastSyncedAt || null);
+    }
+
+    // Update lastExportedAt to the imported data
+    if (data.exported_at) {
+      setLastExportedAt(data.exported_at);
+    }
+
+    // Clear import state
+    setImportPreview(null);
+  };
+
+  const cancelImport = () => {
+    setImportPreview(null);
+    setImportError(null);
   };
 
   // ── SETTINGS ──────────────────────────────────────────────────────────
