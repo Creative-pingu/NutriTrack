@@ -84,7 +84,7 @@ function mapFoodRecord(r) {
 var APP_VERSION = typeof window !== "undefined" && window.APP_VERSION || "unknown";
 
 // Bump this string whenever you deploy a new foods.json to bust the ATHS cache.
-var FOODS_DB_VERSION = "5"; // Bumped for Phase 11.5;
+var FOODS_DB_VERSION = "6"; // Bumped for Phase 11.5;
 function loadFoodDB() {
   return _loadFoodDB.apply(this, arguments);
 } // ── WORKER CONFIG ─────────────────────────────────────────────────────────
