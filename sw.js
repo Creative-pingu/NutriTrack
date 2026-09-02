@@ -1,5 +1,5 @@
 // NutriTrack Service Worker
-const CACHE_VERSION = "nutritrack-v75";
+const CACHE_VERSION = "nutritrack-v76";
 
 const BASE_PATH = "/NutriTrack/";
 
@@ -54,7 +54,8 @@ self.addEventListener("message", event => {
 
 self.addEventListener("fetch", event => {
   const { request } = event;
-  const url = new URL(request.url);
+  cons
+t url = new URL(request.url);
 
   // App shell (index.html): network-first so online users always get the
   // freshest HTML, but fall back to the last cached copy when offline.
@@ -107,7 +108,8 @@ self.addEventListener("fetch", event => {
   if (isCdnAsset) {
     event.respondWith(
       caches.match(request, { ignoreSearch: true }).then(cached => {
-        const networkFetch = fetch(request).then(response => {
+        const networkFetch = fetch(request).then(resp
+onse => {
           if (response.ok) {
             const clone = response.clone();
             caches.open(CACHE_VERSION).then(cache => cache.put(request, clone));
